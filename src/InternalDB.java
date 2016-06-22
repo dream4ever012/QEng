@@ -20,11 +20,10 @@ public interface InternalDB {
 	
 }
 
+
+//ignore these I'm keeping them here for things I might return from or use in the internal H2
 //import oracle.jdbc.rowset.OracleWebRowSet;
-
-
 //import java.sql.SQLException;
-
 //import javax.sql.RowSet;
 //import javax.sql.rowset.JoinRowSet;
 //import oracle.jdbc.rowset.OracleJoinRowSet;
