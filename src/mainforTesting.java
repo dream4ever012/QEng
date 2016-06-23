@@ -1,9 +1,9 @@
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.Connection;
+//import java.sql.Driver;
+//import java.sql.DriverManager;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Statement;
 
 public class mainforTesting {
 
@@ -14,33 +14,37 @@ public class mainforTesting {
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver";
 	private static final String XLURLBase = "jdbc:nilostep:excel:./Data/";
 
-	private static final String REQTableName = "\"[Requirements_1.1].[Requirements_1.1]\"";
+	private static final String DEMOTableName = "\"demo.xlsqly8\"";
+	private static final String REQTableName = "\"Requirements2.Requirements2\"";
 
 	//private static final String CCDIR = "./Data/CodeClass_1.1.xls";
 	//private static final String TMDIR = "./Data/CC-REQ-TM.csv";
 	
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-		
+	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
+	public static void main(String[] args) 
+	{
 		InternalDB myH2 = new InternalH2();
 		
-		myH2.createLink("com.nilostep.xlsql.jdbc.xlDriver", "jdbc:nilostep:excel:./Data/","","","\"demo.xlsqly8\"");
+		//myH2.createLink("com.nilostep.xlsql.jdbc.xlDriver", "jdbc:nilostep:excel:./Data/","","","\"demo.xlsqly8\"");
 		
-		System.out.println("Test2");
+	//	System.out.println("Test2");
 		
-		myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
+		//myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
 		
-		//TODO: make theese work properly using the form above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
-		//Though I think the problem is with the _1.1 because the dot is meaningful to sql I'm trying to add brackets and such around it to get it to work.
-		//myH2.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+	//	System.out.println("Test3");
+		
+		myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
+		
+		System.out.println("Useful Tables");
+		//TODO: make these work properly using the form above by changing the Static String URLs above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
+		//Though I think the problem is with the _1.1 because the dot is meaningful to SQL I'm trying to add brackets and such around it to get it to work.
+		//Might be a driver issue I might need to tweak the driver to get it working the project is an old one last update was 2008 just after xlsx came out.
+		myH2.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 		//myH2.createLink(XLDriver, XLURLBase + REQDIR, null,null, "Requirements");
 		//myH2.createLink(XLDriver, XLURLBase + CCDIR , null,null, "CodeClass");
-		
-		
+			
 		//xlSQLTest();
 	
-	
-		
 		//myH2.Query(TestQueries.TQ001);
 		//myH2.Query(TestQueries.TQ002);
 		//myH2.Query(TestQueries.TQ003);
