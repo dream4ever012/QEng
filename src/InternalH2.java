@@ -187,7 +187,18 @@ public class InternalH2 implements InternalDB {
 
 	@Override
 	public ResultSet QueryToRS(String SQLString) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = null;
+		try {
+			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			rs = stmt.executeQuery(SQLString);
+			iconn.close();
+
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }
