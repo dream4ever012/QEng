@@ -1,3 +1,5 @@
+import java.io.File;
+
 //Does your github grab this?
 
 //import java.sql.Connection;
@@ -18,12 +20,13 @@ public class mainforTesting {
 	private static final String XLURLBase = "jdbc:nilostep:excel:./Data/";
 
 	private static final String DEMOTableName = "\"demo.xlsqly8\"";
-//	private static final String REQTableName = "\"Requirements2.Requirements2\"";
-//	private static final String TMTableName = "\"CC-REQ-TM.csv\"";
+	//private static final String REQTableName = "\"Requirements2.Requirements2\"";
+	//private static final String TMTableName = "\"CC-REQ-TM.csv\"";
 
 	//private static final String CCDIR = "./Data/CodeClass_1.1.xls";
 	//private static final String TMDIR = "./Data/CC-REQ-TM.csv";
 	
+	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
 	public static void main(String[] args) 
 	{
@@ -33,15 +36,20 @@ public class mainforTesting {
 		
 	//	System.out.println("Test2");
 		
-		//myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
+		myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
 		
 	//	System.out.println("Test3");
 		
-		myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
+	//	myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
 		
 	//	myH2.createLink(XLDriver, XLURLBase,null,null, TMTableName);
 		
-		myH2.QueryToXML("SELECT * FROM "  + DEMOTableName + ";");
+		File queryResult = null;
+		queryResult = myH2.quickXMLFile();
+		
+		
+		myH2.QueryToXML("SELECT Count(*) FROM "  + DEMOTableName + ";", queryResult );
+		
 		
 		System.out.println("Useful Tables");
 		//TODO: make these work properly using the form above by changing the Static String URLs above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
@@ -58,16 +66,17 @@ public class mainforTesting {
 		//myH2.Query(TestQueries.TQ002);
 		//myH2.Query(TestQueries.TQ003);
 	
-		
 	}
 
+
+	
 	//Method for testing
-	private static void xlSQLCreateSheetFromArray(String[] s)
+/*	private static void xlSQLCreateSheetFromArray(String[] s)
 	{
 		
 		
 	}
-	
+	*/
 
 	/*private static void xlSQLTest() {
 		

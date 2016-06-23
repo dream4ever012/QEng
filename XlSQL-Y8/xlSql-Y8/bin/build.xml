@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." default="usage" name="xlSQL">
+    <!--===========-->
+    <!--PROPERTIES-->
+    <!--===========-->
+    <property name="src.dir" value="./src"/>
+    <property name="lib.dir" value="./lib"/>
+    <property name="dist.dir" value="./target/dist"/>
+    <property name="docs.dir" value="./target/docs"/>
+    <property name="javadoc.dir" value="${docs.dir}/javadoc"/>
+    <property name="build.classes.dir" value="target/classes"/>
+    <property name="appjar" value="./xlSQL_Y8.jar"/>
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    <!--==============-->
+    <!--USAGE TARGETS-->
+    <!--==============-->
+    <target name="usage">
+        <echo message="ant [option]"/>
+        <echo message="compile - compile program"/>
+        <echo message="javadoc - generate api docs"/>
+        <echo message="jar - create jar"/>
+        <echo message=""/>
+    </target>
+    <target depends="compile, jar, javadoc" name="all"/>
+    <!--======-->
+    <!--CLEAN-->
+    <!--======-->
+    <target name="clean">
+        <delete dir="${build.classes.dir}"/>
+        <delete file="${appjar}"/>
+    </target>
+    <!--===-->
+    <!--INIT-->
+    <!--===-->
+    <target name="init" depends="clean">
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${javadoc.dir}"/>
+    </target>
+    <!--========-->
+    <!--COMPILE-->
+    <!--========-->
+    <target name="compile" depends="init">
+        <javac debug="true" destdir="${build.classes.dir}" source="1.4" srcdir="${src.dir}">
+            <patternset id="javac.sourcepath">
+                <include name="/**"/>
+                <include name="com/**"/>
+            </patternset>
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+    <!--===-->
+    <!--JAR-->
+    <!--===-->
+    <target name="jar" depends="compile" description="Create JAR">
+        <jar destfile="${appjar}" update="false">
+            <fileset dir="${build.classes.dir}">
+                <patternset>
+                    <include name="**/*"/>
+                </patternset>
+            </fileset>
+        </jar>
+    </target>
+    <!--========-->
+    <!--JAVADOC-->
+    <!--========-->
+    <target name="javadoc" depends="compile">
+        <delete dir="${javadoc.dir}"/>
+        <javadoc author="true" destdir="${javadoc.dir}" private="yes" source="1.4"
+            use="true" version="true" windowtitle="xlsql">
+            <fileset defaultexcludes="yes" dir="src">
+                <include name="**/*.java"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+            <doctitle><![CDATA[<h1>xlSQL Y8-dev</h1>]]></doctitle>
+            <bottom><![CDATA[<i>Copyright &#169; 2004 nilo de roock. All Rights Reserved.</i>]]></bottom>
+        </javadoc>
+    </target>
+</project>

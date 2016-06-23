@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<properties>
+  <category name="general">
+    <property name="database" value="P:&#092;xlSQL&#092;src&#092;bin"/>
+    <property name="engine" value="hsqldb"/>
+    <property name="log" value="xlsql.log"/>
+  </category>
+  <category name="hsqldb">
+    <property name="driver" value="org.hsqldb.jdbcDriver"/>
+    <property name="password" value=""/>
+    <property name="schema" value=""/>
+    <property name="url" value="jdbc:hsqldb:."/>
+    <property name="user" value="sa"/>
+  </category>
+</properties>
