@@ -46,8 +46,6 @@ public class mainforTesting {
 		//Though I think the problem is with the _1.1 because the dot is meaningful to SQL I'm trying to add brackets and such around it to get it to work.
 		//Might be a driver issue I might need to tweak the driver to get it working the project is an old one last update was 2008 just after xlsx came out.
 		
-	
-		
 		//myH2.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 		//myH2.createLink(XLDriver, XLURLBase + REQDIR, null,null, "Requirements");
 		//myH2.createLink(XLDriver, XLURLBase + CCDIR , null,null, "CodeClass");
@@ -61,8 +59,8 @@ public class mainforTesting {
 		
 	}
 
-	
-	private static void xlSQLCreateTable()
+	//Method for testing
+	private static void xlSQLCreateSheetFromArray(String[] s)
 	{
 		
 		
