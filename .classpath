@@ -10,5 +10,9 @@
 	<classpathentry kind="lib" path="FileAccessDependencies/hsqldb/hsqldb.jar"/>
 	<classpathentry kind="lib" path="FileAccessDependencies/commons/commons-cli-1.0.jar"/>
 	<classpathentry kind="lib" path="FileAccessDependencies/jexcelapi/jxl.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/jaxp.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/crimson.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/jmxri.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/commons/commons-logging.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

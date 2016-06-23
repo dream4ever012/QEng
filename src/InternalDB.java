@@ -22,16 +22,3 @@ public interface InternalDB {
 	public void CreateLocalTable();
 	
 }
-
-
-//ignore these I'm keeping them here for things I might return from or use in the internal H2
-//import oracle.jdbc.rowset.OracleWebRowSet;
-//import java.sql.SQLException;
-//import javax.sql.RowSet;
-//import javax.sql.rowset.JoinRowSet;
-//import oracle.jdbc.rowset.OracleJoinRowSet;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.ResultSet;
-//import java.sql.ResultSet;
-//import java.sql.Statement;

@@ -1,14 +1,18 @@
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.sql.RowSet;
 
+import oracle.jdbc.rowset.OracleWebRowSet;
+
 public class InternalH2 implements InternalDB {
-	
+
 	//TODO: Make SINGLETON
-	
+
 	// this is a Sentinel connection to keep the database from being closed
 	// the embedded h2 will close after the last connection is closed
 	// so to avoid constant closure and reopening of the DB during TiQi's session
@@ -18,10 +22,10 @@ public class InternalH2 implements InternalDB {
 	private		String IH2DBURL = "jdbc:h2:./Data/test";
 	private		String IH2PASS = "";
 	private		String IH2USER = "sys";
-	
+	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.
 	private		Boolean debugMode = false;
 
-	
+
 	public InternalH2()
 	{
 		//TODO:Consider setting Page Size to tune performance, default is 2kb and it needs to be set on DB creation.
@@ -44,9 +48,9 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	//Specialized constructor to create the database at a different location
 	//TODO: convert to throws instead of try/catch and handle the exceptions in the containing class
 	public InternalH2(String DBURL)
@@ -73,29 +77,29 @@ public class InternalH2 implements InternalDB {
 			IH2DBURL = DBURL;
 		}
 	}
-	
+
 	@Override
 	public IDBReturnEnum createLink(String jdbc_driver,String url, String user, String pass , String tablename)
 	{
 		//TODO: add enum return statements, IDK what it returns yet
-			try {
+		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
-			
+
 			String TLSQL = "DROP TABLE "+ tablename +" IF EXISTS;" + "CREATE LINKED TABLE " + tablename + "('"+ jdbc_driver + "','" + url + "','" + user + "','" + pass + "','"+tablename+"');";
 			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
-				Integer i = stmt.executeUpdate(TLSQL);
-			
+			Integer i = stmt.executeUpdate(TLSQL);
+
 			if(i==0)
 			{
 				// SQL returned 0 
-				
+
 			}
 			if(i>0)
 			{
 				//Manipulated rows returned (not expected)
 			}
-			
+
 			iconn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -104,22 +108,64 @@ public class InternalH2 implements InternalDB {
 		return null;
 	}
 
+	//TODO: fix to have one exit.
 	@Override
 	public RowSet Query(String SQLString) {
-		// TODO Auto-generated method stub
+		try {
+			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			ResultSet rs = stmt.executeQuery(SQLString);
+
+			//just for debug/development
+			//while (rs.next()) {
+			//	System.out.println("Result has " + rs.getString(1));
+			//} 
+
+
+			toXML(rs);
+
+			iconn.close();
+
+			return null;
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 		return null;
 	}
+
+
+	public void toXML(ResultSet rs) throws SQLException, FileNotFoundException{
+		new File("./results/").mkdirs();
+		File f = new File("./results/"+rs.getMetaData().getTableName(1) + ".xml");
+		
+		FileOutputStream fos = new FileOutputStream(f);
+		OracleWebRowSet set = new OracleWebRowSet();
+				set.writeXml(rs, fos);
+				set.close();
+		
+	}
+
+	
+	
+
 
 	@Override
 	public void PopulateLocalTable() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void CreateLocalTable() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -144,7 +190,7 @@ public class InternalH2 implements InternalDB {
 	public void setDebugMode(Boolean debugMode) {
 		this.debugMode = debugMode;
 	}
-	
+
 	public String getIDBURL()
 	{
 		return IH2DBURL;
@@ -155,6 +201,6 @@ public class InternalH2 implements InternalDB {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+
 }
