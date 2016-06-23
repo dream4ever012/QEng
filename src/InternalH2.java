@@ -127,12 +127,15 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return f;
 	}
+
 
 	public File toXML(ResultSet rs) throws SQLException, FileNotFoundException{
 		new File("./results/").mkdirs();
 		File f = new File("./results/"+rs.getMetaData().getTableName(1) + ".xml");
+		
 		FileOutputStream fos = new FileOutputStream(f);
 		OracleWebRowSet set = new OracleWebRowSet();
 				set.writeXml(rs, fos);
