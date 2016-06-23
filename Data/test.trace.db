@@ -439,3 +439,74 @@ DROP TABLE tablename IF EXISTS;CREATE LINKED TABLE "demo.xlsqly8"('com.nilostep.
 2016-06-22 20:58:34 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE [[*]DEMO.XLSQLY8] IF EXISTS;CREATE LINKED TABLE [DEMO.XLSQLY8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo.xlsqly8]'); "; expected "identifier"; SQL statement:
 DROP TABLE [demo.xlsqly8] IF EXISTS;CREATE LINKED TABLE [demo.xlsqly8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo.xlsqly8]'); [42001-192]
+2016-06-22 22:29:34 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from .\Data\"Requirements_1.1.Requirements_1.1"; SQL statement:
+DROP TABLE Requirements IF EXISTS;CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/"Requirements_1.1.Requirements_1.1"','null','null','Requirements'); [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:30)
+Caused by: java.sql.SQLException: jxlReader cannot read from .\Data\"Requirements_1.1.Requirements_1.1"
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.CommandList.executeRemaining(CommandList.java:36)
+	at org.h2.command.CommandList.update(CommandList.java:43)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 22:31:26 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table """Requirements_1.1.Requirements_1.1""(java.sql.SQLException: Table not found: Requirements_1.1.Requirements_1.1 in statement [SELECT * FROM ""Requirements_1.1.Requirements_1.1""])" not found; SQL statement:
+DROP TABLE "Requirements_1.1.Requirements_1.1" IF EXISTS;CREATE LINKED TABLE "Requirements_1.1.Requirements_1.1"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','"Requirements_1.1.Requirements_1.1"'); [42102-192]
+2016-06-22 22:32:23 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table """Requirements_1.1.Requirements_1.1""(java.sql.SQLException: Table not found: Requirements_1.1.Requirements_1.1 in statement [SELECT * FROM ""Requirements_1.1.Requirements_1.1""])" not found; SQL statement:
+DROP TABLE "Requirements_1.1.Requirements_1.1" IF EXISTS;CREATE LINKED TABLE "Requirements_1.1.Requirements_1.1"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','"Requirements_1.1.Requirements_1.1"'); [42102-192]
+2016-06-22 22:33:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE ""Requirements_1'.'1.Requirements_1'.'1""('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','""Requirements_1'.[*]'1.Requirements_1'.'1""');"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+CREATE LINKED TABLE "Requirements_1'.'1.Requirements_1'.'1"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','"Requirements_1'.'1.Requirements_1'.'1"'); [42001-192]
+2016-06-22 22:34:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table """[Requirements_1.1.Requirements_1.1]""(java.sql.SQLException: Table not found: [Requirements_1.1.Requirements_1.1] in statement [SELECT * FROM ""[Requirements_1.1.Requirements_1.1]""])" not found; SQL statement:
+DROP TABLE "[Requirements_1.1.Requirements_1.1]" IF EXISTS;CREATE LINKED TABLE "[Requirements_1.1.Requirements_1.1]"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','"[Requirements_1.1.Requirements_1.1]"'); [42102-192]
+2016-06-22 22:34:28 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table """[Requirements_1.1].[Requirements_1.1]""(java.sql.SQLException: Table not found: [Requirements_1.1].[Requirements_1.1] in statement [SELECT * FROM ""[Requirements_1.1].[Requirements_1.1]""])" not found; SQL statement:
+DROP TABLE "[Requirements_1.1].[Requirements_1.1]" IF EXISTS;CREATE LINKED TABLE "[Requirements_1.1].[Requirements_1.1]"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null','"[Requirements_1.1].[Requirements_1.1]"'); [42102-192]
+2016-06-22 22:35:35 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE [[*]DEMO].[XLSQLY8] IF EXISTS;CREATE LINKED TABLE [DEMO].[XLSQLY8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo].[xlsqly8]'); "; expected "identifier"; SQL statement:
+DROP TABLE [demo].[xlsqly8] IF EXISTS;CREATE LINKED TABLE [demo].[xlsqly8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo].[xlsqly8]'); [42001-192]
+2016-06-22 22:36:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table """[demo].[xlsqly8]""(java.sql.SQLException: Table not found: [demo].[xlsqly8] in statement [SELECT * FROM ""[demo].[xlsqly8]""])" not found; SQL statement:
+DROP TABLE "[demo].[xlsqly8]" IF EXISTS;CREATE LINKED TABLE "[demo].[xlsqly8]"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','"[demo].[xlsqly8]"'); [42102-192]
+2016-06-22 22:36:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Schema "DEMO" not found; SQL statement:
+DROP TABLE demo.xlsqly8" IF EXISTS;CREATE LINKED TABLE demo.xlsqly8"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','demo.xlsqly8"'); [90079-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.getSchema(Parser.java:679)
+	at org.h2.command.Parser.getSchema(Parser.java:685)
+	at org.h2.command.Parser.parseDrop(Parser.java:1370)
+	at org.h2.command.Parser.parsePrepared(Parser.java:376)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:126)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:27)

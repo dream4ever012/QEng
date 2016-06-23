@@ -12,10 +12,10 @@ public class mainforTesting {
 	
 	
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver";
-	private static final String XLURLBase = "jdbc:nilostep:excel:";
-	//private static final String CombinedDIR = "./Data/";
-	
-	//private static final String REQDIR = "./Data/Requirements_1.1";
+	private static final String XLURLBase = "jdbc:nilostep:excel:./Data/";
+
+	private static final String REQTableName = "\"[Requirements_1.1].[Requirements_1.1]\"";
+
 	//private static final String CCDIR = "./Data/CodeClass_1.1.xls";
 	//private static final String TMDIR = "./Data/CC-REQ-TM.csv";
 	
@@ -26,8 +26,13 @@ public class mainforTesting {
 		
 		myH2.createLink("com.nilostep.xlsql.jdbc.xlDriver", "jdbc:nilostep:excel:./Data/","","","\"demo.xlsqly8\"");
 		
+		System.out.println("Test2");
+		
+		myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
+		
 		//TODO: make theese work properly using the form above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
-		//myH2.createLink(XLDriver, XLURLBase + CombinedDIR, null,null, "Requirements");
+		//Though I think the problem is with the _1.1 because the dot is meaningful to sql I'm trying to add brackets and such around it to get it to work.
+		//myH2.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 		//myH2.createLink(XLDriver, XLURLBase + REQDIR, null,null, "Requirements");
 		//myH2.createLink(XLDriver, XLURLBase + CCDIR , null,null, "CodeClass");
 		
