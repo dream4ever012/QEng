@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.sql.RowSet;
 
 import oracle.jdbc.rowset.OracleWebRowSet;
 
@@ -110,24 +109,17 @@ public class InternalH2 implements InternalDB {
 
 	//TODO: fix to have one exit.
 	@Override
-	public RowSet Query(String SQLString) {
+	public File QueryToXML(String SQLString) {
+		File f=null;
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
 			ResultSet rs = stmt.executeQuery(SQLString);
-
-			//just for debug/development
-			//while (rs.next()) {
-			//	System.out.println("Result has " + rs.getString(1));
-			//} 
-
-
-			toXML(rs);
+			f = toXML(rs);
 
 			iconn.close();
 
-			return null;
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,12 +128,11 @@ public class InternalH2 implements InternalDB {
 			e.printStackTrace();
 		}
 
-
-		return null;
+		return f;
 	}
 
 
-	public void toXML(ResultSet rs) throws SQLException, FileNotFoundException{
+	public File toXML(ResultSet rs) throws SQLException, FileNotFoundException{
 		new File("./results/").mkdirs();
 		File f = new File("./results/"+rs.getMetaData().getTableName(1) + ".xml");
 		
@@ -149,17 +140,12 @@ public class InternalH2 implements InternalDB {
 		OracleWebRowSet set = new OracleWebRowSet();
 				set.writeXml(rs, fos);
 				set.close();
-		
+		return f;
 	}
-
-	
-	
-
 
 	@Override
 	public void PopulateLocalTable() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -202,5 +188,9 @@ public class InternalH2 implements InternalDB {
 		return null;
 	}
 
-
+	@Override
+	public ResultSet QueryToRS(String SQLString) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -2,17 +2,18 @@
 //importing only necessary classes to avoid bloat.
 
 
-import javax.sql.RowSet;
+import java.io.File;
+import java.sql.ResultSet;
 
 public interface InternalDB {
 
 	//TODO: fix method signatures
-	//TODO: add additonal  methods to the interface as neede
+	//TODO: add additional  methods to the interface as needed
 	
 	public IDBReturnEnum createLink(String JDBC_Driver,String URL, String USER, String PASS, String TableName); //for registering the link for the external datasource 
 	public IDBReturnEnum createLink(String JDBC_Driver,String URL, String TableName); //For connecting to tables without Authentication like Flat Files.
-	public RowSet Query(String SQLString); 	  //for sending SQL to the internal DB Could also use the JDBC embedded driver to communicate from the module externally	
-	
+	public File			 QueryToXML(String SQLString); 	  //for sending SQL to the internal DB Could also use the JDBC embedded driver to communicate from the module externally	
+	public ResultSet 	 QueryToRS(String SQLString);
 	
 	public IDBReturnEnum close();
 	

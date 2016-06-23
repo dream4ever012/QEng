@@ -39,7 +39,7 @@ public class mainforTesting {
 		
 	//	myH2.createLink(XLDriver, XLURLBase,null,null, TMTableName);
 		
-		myH2.Query("SELECT * FROM "  + DEMOTableName + ";");
+		myH2.QueryToXML("SELECT * FROM "  + DEMOTableName + ";");
 		
 		System.out.println("Useful Tables");
 		//TODO: make these work properly using the form above by changing the Static String URLs above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
@@ -61,6 +61,13 @@ public class mainforTesting {
 		
 	}
 
+	
+	private static void xlSQLCreateTable()
+	{
+		
+		
+	}
+	
 
 	/*private static void xlSQLTest() {
 		
