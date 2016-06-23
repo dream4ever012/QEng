@@ -1,0 +1,441 @@
+2016-06-22 18:27:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: General error: "java.lang.NoClassDefFoundError: org/jconfig/event/ConfigurationListener"; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:291)
+	at org.h2.command.Command.executeUpdate(Command.java:266)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:17)
+Caused by: java.lang.NoClassDefFoundError: org/jconfig/event/ConfigurationListener
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:760)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:103)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+Caused by: java.lang.ClassNotFoundException: org.jconfig.event.ConfigurationListener
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 30 more
+2016-06-22 19:14:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: org.hsqldb.jdbcDriver; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: org.hsqldb.jdbcDriver
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:155)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:15:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: org.hsqldb.jdbcDriver; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: org.hsqldb.jdbcDriver
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:155)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:22:25 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:22:58 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:23:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:24:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:45:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:24)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 19:46:42 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:25)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 20:06:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.xls', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:25)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.xls
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 20:07:38 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null')[*]; "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','null','null'); [42001-192]
+2016-06-22 20:08:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Database "COM" not found; SQL statement:
+CREATE LINKED TABLE Requirements(com.nilostep.xlsql.jdbc.xlDriver,'jdbc:nilostep:excel:./Data/','null','null'); [90013-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTermObjectDot(Parser.java:2698)
+	at org.h2.command.Parser.readTerm(Parser.java:2799)
+	at org.h2.command.Parser.readFactor(Parser.java:2320)
+	at org.h2.command.Parser.readSum(Parser.java:2307)
+	at org.h2.command.Parser.readConcat(Parser.java:2277)
+	at org.h2.command.Parser.readCondition(Parser.java:2127)
+	at org.h2.command.Parser.readAnd(Parser.java:2099)
+	at org.h2.command.Parser.readExpression(Parser.java:2091)
+	at org.h2.command.Parser.readString(Parser.java:3120)
+	at org.h2.command.Parser.parseCreateLinkedTable(Parser.java:5921)
+	at org.h2.command.Parser.parseCreate(Parser.java:4204)
+	at org.h2.command.Parser.parsePrepared(Parser.java:362)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:126)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:25)
+2016-06-22 20:08:42 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','')[*]; "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','',''); [42001-192]
+2016-06-22 20:11:13 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.Requirements_1.1; SQL statement:
+CREATE LINKED TABLE LINK('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:/QEng/Data/Requirements_1.1.Requirements_1.1', 'root', '', 'REQ') [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:25)
+Caused by: java.sql.SQLException: jxlReader cannot read from \QEng\Data\Requirements_1.1.Requirements_1.1
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 20:27:25 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/""Requirements_1.1.Requirements_1.1""','null','null')[*]; "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/"Requirements_1.1.Requirements_1.1"','null','null'); [42001-192]
+2016-06-22 20:27:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/""Requirements_1.1.Requirements_1.1""','','')[*]; "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/"Requirements_1.1.Requirements_1.1"','',''); [42001-192]
+2016-06-22 20:28:35 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1.Requirements_1.1','','')[*]; "; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1.Requirements_1.1','',''); [42001-192]
+2016-06-22 20:38:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE TEST('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:demo.xlsqly8','','')[*];"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE TEST('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:demo.xlsqly8','',''); [42001-192]
+2016-06-22 20:38:38 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','null','null')[*];"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','null','null'); [42001-192]
+2016-06-22 20:38:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','sa','sa')[*];"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','sa','sa'); [42001-192]
+2016-06-22 20:41:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','sa','sa')[*];"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,"; SQL statement:
+CREATE LINKED TABLE TEST('null','jdbc:nilostep:excel:demo.xlsqly8','sa','sa'); [42001-192]
+2016-06-22 20:48:25 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS_1.1[*]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); "; expected "., COMMENT, ("; SQL statement:
+CREATE LINKED TABLE Requirements_1.1('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); [42001-192]
+2016-06-22 20:48:26 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS_1.1[*]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); "; expected "., COMMENT, ("; SQL statement:
+CREATE LINKED TABLE Requirements_1.1('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); [42001-192]
+2016-06-22 20:49:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE LINKED TABLE REQUIREMENTS_1.1[*]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); "; expected "., COMMENT, ("; SQL statement:
+CREATE LINKED TABLE Requirements_1.1('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements_1.1'); [42001-192]
+2016-06-22 20:49:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: jxlReader cannot read from .\Data\Requirements_1.1; SQL statement:
+CREATE LINKED TABLE Requirements('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/Requirements_1.1','null','null','Requirements'); [0-192]
+	at org.h2.message.DbException.addSQL(DbException.java:132)
+	at org.h2.command.Command.executeUpdate(Command.java:270)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:130)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:27)
+Caused by: java.sql.SQLException: jxlReader cannot read from .\Data\Requirements_1.1
+	at com.nilostep.xlsql.jdbc.xlConnection.startup(xlConnection.java:575)
+	at com.nilostep.xlsql.jdbc.xlConnectionHSQLDB.<init>(xlConnectionHSQLDB.java:46)
+	at com.nilostep.xlsql.jdbc.xlConnection.factory(xlConnection.java:84)
+	at com.nilostep.xlsql.jdbc.xlDriver.connect(xlDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:281)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:263)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:90)
+	at org.h2.table.TableLinkConnection.open(TableLinkConnection.java:77)
+	at org.h2.engine.Database.getLinkConnection(Database.java:2433)
+	at org.h2.table.TableLink.connect(TableLink.java:96)
+	at org.h2.table.TableLink.<init>(TableLink.java:79)
+	at org.h2.schema.Schema.createTableLink(Schema.java:614)
+	at org.h2.command.ddl.CreateLinkedTable.update(CreateLinkedTable.java:77)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	... 4 more
+2016-06-22 20:51:40 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Schema "DEMO" not found; SQL statement:
+CREATE LINKED TABLE demo.xlsqly8('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','demo.xlsqly8'); [90079-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.getSchema(Parser.java:679)
+	at org.h2.command.Parser.getSchema(Parser.java:685)
+	at org.h2.command.Parser.parseCreateLinkedTable(Parser.java:5913)
+	at org.h2.command.Parser.parseCreate(Parser.java:4204)
+	at org.h2.command.Parser.parsePrepared(Parser.java:362)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:126)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:115)
+	at InternalH2.createLink(InternalH2.java:87)
+	at mainforTesting.main(mainforTesting.java:32)
+2016-06-22 20:54:07 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "demo.xlsqly8" already exists; SQL statement:
+CREATE LINKED TABLE "demo.xlsqly8"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','"demo.xlsqly8"'); [42101-192]
+2016-06-22 20:55:14 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "demo.xlsqly8" already exists; SQL statement:
+DROP TABLE tablename IF EXISTS;CREATE LINKED TABLE "demo.xlsqly8"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','"demo.xlsqly8"'); [42101-192]
+2016-06-22 20:58:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE [[*]DEMO.XLSQLY8] IF EXISTS;CREATE LINKED TABLE [DEMO.XLSQLY8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo.xlsqly8]'); "; expected "identifier"; SQL statement:
+DROP TABLE [demo.xlsqly8] IF EXISTS;CREATE LINKED TABLE [demo.xlsqly8]('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./Data/','','','[demo.xlsqly8]'); [42001-192]

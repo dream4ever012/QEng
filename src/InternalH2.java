@@ -28,6 +28,7 @@ public class InternalH2 implements InternalDB {
 		try {
 			//Register the JDBC driver for internal communication and create a sentinel connection
 			Class.forName("org.h2.Driver").newInstance();
+			Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
 			h2conn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 
 		} catch (InstantiationException e) {
@@ -81,18 +82,18 @@ public class InternalH2 implements InternalDB {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 			
-			String TLSQL = "CREATE LINKED TABLE " + tablename + "("+ jdbc_driver + "," + url + "," + user + "," + pass + ");";
-			
-			Integer i = stmt.executeUpdate(TLSQL);
+			String TLSQL = "DROP TABLE "+ tablename +" IF EXISTS;" + "CREATE LINKED TABLE " + tablename + "('"+ jdbc_driver + "','" + url + "','" + user + "','" + pass + "','"+tablename+"');";
+			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
+				Integer i = stmt.executeUpdate(TLSQL);
 			
 			if(i==0)
 			{
-				//something
+				// SQL returned 0 
 				
 			}
 			if(i>0)
 			{
-				//mainpulated rows
+				//Manipulated rows returned (not expected)
 			}
 			
 			iconn.close();
@@ -147,6 +148,12 @@ public class InternalH2 implements InternalDB {
 	public String getIDBURL()
 	{
 		return IH2DBURL;
+	}
+
+	@Override
+	public IDBReturnEnum createLink(String JDBC_Driver, String URL, String TableName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -5,6 +5,10 @@
 	<classpathentry kind="lib" path="EMBEDDED DBMS/h2-1.4.192.jar"/>
 	<classpathentry kind="lib" path="JDBC - Drivers/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="lib" path="JDBC - Drivers/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="JDBC - Drivers/xlSQL_Y8.jar"/>
+	<classpathentry kind="lib" path="JDBC - Drivers/xlSQL_Y8.jar" sourcepath="C:/Users/bobby/Downloads/XlSQL-Y8.zip"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/jconfig.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/hsqldb/hsqldb.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/commons/commons-cli-1.0.jar"/>
+	<classpathentry kind="lib" path="FileAccessDependencies/jexcelapi/jxl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
