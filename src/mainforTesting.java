@@ -27,7 +27,9 @@ public class mainforTesting {
 	//private static final String DEMOTableName = "\"CodeClass.CodeClass_1.0\"";
 //	private static final String REQTableName = "\"Requirements2.Requirements2\"";
 //	private static final String TMTableName = "\"CC-REQ-TM.csv\"";
+	
 	//private static final String DEMOTableName = "\"codeclass.codeclass\"";
+	
 	//TODO: it worked after lowercased file name and sheet name. But,have to figure out which work and which doesn't
 	//private static final String CCTableName = "\"codeclass.codeclass\""; // codeclass directory
 	//private static final String TMTableName = "./Data/CC-REQ-TM.csv"; // Trace matrix directory
@@ -50,11 +52,11 @@ public class mainforTesting {
 		
 	//	System.out.println("Test2");
 		
-		myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
+		//myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
 		
 	//	System.out.println("Test3");
 		
-	//	myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
+		myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
 		
 	//	myH2.createLink(XLDriver, XLURLBase,null,null, TMTableName);
 		
