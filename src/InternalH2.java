@@ -23,6 +23,7 @@ public class InternalH2 implements InternalDB {
 	private		String IH2USER = "sys";
 	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.
 	private		Boolean debugMode = false;
+	private 	File TEMPDIR 	= new File("./temp/");
 
 
 	public InternalH2()
@@ -31,9 +32,11 @@ public class InternalH2 implements InternalDB {
 		try {
 			//Register the JDBC driver for internal communication and create a sentinel connection
 			Class.forName("org.h2.Driver").newInstance();
-			Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
+			//Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
 			h2conn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
-
+			
+			//setup temp directory for storing session queries.
+			TEMPDIR.mkdirs();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,66 +84,79 @@ public class InternalH2 implements InternalDB {
 	public IDBReturnEnum createLink(String jdbc_driver,String url, String user, String pass , String tablename)
 	{
 		//TODO: add enum return statements, IDK what it returns yet
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		
+		if(url == null || tablename == null){return rt;}
+		
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
 			String TLSQL = "DROP TABLE "+ tablename +" IF EXISTS;" + "CREATE LINKED TABLE " + tablename + "('"+ jdbc_driver + "','" + url + "','" + user + "','" + pass + "','"+tablename+"');";
 			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
-			Integer i = stmt.executeUpdate(TLSQL);
-
-			if(i==0)
-			{
-				// SQL returned 0 
-
-			}
-			if(i>0)
-			{
-				//Manipulated rows returned (not expected)
-			}
-
+			stmt.executeUpdate(TLSQL);
 			iconn.close();
+			
+			rt = IDBReturnEnum.SUCCESS;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return rt;
 	}
 
 	//TODO: fix to have one exit.
 	@Override
-	public File QueryToXML(String SQLString) {
-		File f=null;
+	public IDBReturnEnum QueryToXML(String SQLString,File resultLocation) {
+		
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		if(SQLString == null || resultLocation == null){return rt;}
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
+			
 			ResultSet rs = stmt.executeQuery(SQLString);
-			f = toXML(rs);
-
+			rt = toXML(rs, resultLocation);
 			iconn.close();
 
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
-		return f;
+		return rt;
 	}
 
 
-	public File toXML(ResultSet rs) throws SQLException, FileNotFoundException{
-		new File("./results/").mkdirs();
-		File f = new File("./results/"+rs.getMetaData().getTableName(1) + ".xml");
+	//TODO: check if fref is a directory and generate the intermediate directories to place the result in a the path then create a UUID for the temporary file.
+	//TODO: add an additional toXML file that takes either a writer or an output stream instead of a file for in memory only XML operations if needed.
+	//TODO: create additional Enums for result reference is null and ResultSet is null.
+	public IDBReturnEnum toXML(ResultSet rs, File fref) {
+	//	new File("./results/").mkdirs();
+	//	File f = new File("./results/"+ fref.getPath() + ".xml");
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		if(fref == null || rs == null){return rt;}
 		
-		FileOutputStream fos = new FileOutputStream(f);
-		OracleWebRowSet set = new OracleWebRowSet();
-				set.writeXml(rs, fos);
-				set.close();
-		return f;
+		FileOutputStream fos;
+		try {
+			
+			fos = new FileOutputStream(fref);
+			OracleWebRowSet set = new OracleWebRowSet();
+			set.writeXml(rs, fos);
+			set.close();
+			
+			rt = IDBReturnEnum.SUCCESS;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rt;
 	}
 
 	@Override
@@ -188,20 +204,49 @@ public class InternalH2 implements InternalDB {
 		return null;
 	}
 
+	//TODO: 
 	@Override
-	public ResultSet QueryToRS(String SQLString) {
-		ResultSet rs = null;
+	public IDBReturnEnum QueryToRS(String SQLString, ResultSet rsRef) {
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			rs = stmt.executeQuery(SQLString);
+			rsRef = stmt.executeQuery(SQLString);
 			iconn.close();
-
+			rt = IDBReturnEnum.SUCCESS;
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return rs;
+		return rt;
 	}
+	
+	
+	// TODO: Uncomment ref.deleteOnExit() to enable temp file cleanup on the JVM close.
+	@Override
+	public File quickXMLFile() {
+		// TODO Auto-generated method stub
+		
+		try {
+			File ref = File.createTempFile("tmp",".xml", TEMPDIR );	
+			//ref.deleteOnExit();
+			return ref;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;		
+		
+	}
+
+	@Override
+	public IDBReturnEnum FileFree(File ref) {
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		if(ref!=null){
+		ref.delete();
+		}
+		return rt;
+	}
+
 }
