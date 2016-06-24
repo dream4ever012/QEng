@@ -22,15 +22,16 @@ public class mainforTesting {
 	private static final String XLURLBase = "jdbc:nilostep:excel:./Data/"; //
 	//private static final String XLURLBase = "jdbc:nilostep:excel:./Data/"; //
 
-	private static final String DEMOTableName = "\"demo.xlsqly8\"";
+	//private static final String DEMOTableName = "\"demo.xlsqly8\"";
 
 	//private static final String DEMOTableName = "\"CodeClass.CodeClass_1.0\"";
 //	private static final String REQTableName = "\"Requirements2.Requirements2\"";
 //	private static final String TMTableName = "\"CC-REQ-TM.csv\"";
 	
-	//private static final String DEMOTableName = "\"codeclass.codeclass\"";
-	
+	private static final String DEMOTableName = "\"codeclass.codeclass\"";
+	//private static final String DEMOTableName = "\"codeclasses.codeclass\"";	
 	//TODO: it worked after lowercased file name and sheet name. But,have to figure out which work and which doesn't
+	
 	//private static final String CCTableName = "\"codeclass.codeclass\""; // codeclass directory
 	//private static final String TMTableName = "./Data/CC-REQ-TM.csv"; // Trace matrix directory
 	//private static final String DEMOTableName = "\"ccreqtm.ccreqtm.csv\""; // Trace matrix directory
