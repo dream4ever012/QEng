@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-=======
 import java.io.File;
 
 //Does your github grab this?
->>>>>>> origin/master
+
 
 //import java.sql.Connection;
 //import java.sql.Driver;
@@ -25,7 +23,7 @@ public class mainforTesting {
 	//private static final String XLURLBase = "jdbc:nilostep:excel:./Data/"; //
 
 	private static final String DEMOTableName = "\"demo.xlsqly8\"";
-<<<<<<< HEAD
+
 	//private static final String DEMOTableName = "\"CodeClass.CodeClass_1.0\"";
 //	private static final String REQTableName = "\"Requirements2.Requirements2\"";
 //	private static final String TMTableName = "\"CC-REQ-TM.csv\"";
@@ -34,13 +32,13 @@ public class mainforTesting {
 	//private static final String CCTableName = "\"codeclass.codeclass\""; // codeclass directory
 	//private static final String TMTableName = "./Data/CC-REQ-TM.csv"; // Trace matrix directory
 	//private static final String DEMOTableName = "\"ccreqtm.ccreqtm.csv\""; // Trace matrix directory
-=======
+
 	//private static final String REQTableName = "\"Requirements2.Requirements2\"";
 	//private static final String TMTableName = "\"CC-REQ-TM.csv\"";
 
 	//private static final String CCDIR = "./Data/CodeClass_1.1.xls";
 	//private static final String TMDIR = "./Data/CC-REQ-TM.csv";
->>>>>>> origin/master
+
 	
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
@@ -60,15 +58,12 @@ public class mainforTesting {
 		
 	//	myH2.createLink(XLDriver, XLURLBase,null,null, TMTableName);
 		
-<<<<<<< HEAD
-		myH2.QueryToXML("SELECT COUNT(*) FROM "  + DEMOTableName + ";");
-=======
 		File queryResult = null;
 		queryResult = myH2.quickXMLFile();
 		
 		
 		myH2.QueryToXML("SELECT Count(*) FROM "  + DEMOTableName + ";", queryResult );
->>>>>>> origin/master
+
 		
 		
 		System.out.println("Useful Tables");
