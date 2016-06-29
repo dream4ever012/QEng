@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="EMBEDDED DBMS/h2-1.4.192.jar"/>
 	<classpathentry kind="lib" path="JDBC - Drivers/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="lib" path="JDBC - Drivers/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="JDBC - Drivers/xlSQL_Y8.jar" sourcepath="C:/Users/bobby/Downloads/XlSQL-Y8.zip"/>
@@ -14,5 +13,7 @@
 	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/crimson.jar"/>
 	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/jmxri.jar"/>
 	<classpathentry kind="lib" path="FileAccessDependencies/commons/commons-logging.jar"/>
+	<classpathentry kind="lib" path="EMBEDDED DBMS/h2-1.4.192.jar" sourcepath="EMBEDDED DBMS/h2-1.4.192-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

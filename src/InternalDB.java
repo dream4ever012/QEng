@@ -24,5 +24,6 @@ public interface InternalDB {
 	//ForTesting/Future use
 	public void PopulateLocalTable();
 	public void CreateLocalTable();
+	void arbitrarySQL(String SQL);
 	
 }

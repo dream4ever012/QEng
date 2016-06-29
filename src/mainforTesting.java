@@ -1,4 +1,10 @@
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ListIterator;
 
 //Does your github grab this?
 
@@ -19,7 +25,7 @@ public class mainforTesting {
 	
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	//private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver";
-	private static final String XLURLBase = "jdbc:nilostep:excel:./Data/"; //
+	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
 	//private static final String XLURLBase = "jdbc:nilostep:excel:./Data/"; //
 
 	//private static final String DEMOTableName = "\"demo.xlsqly8\"";
@@ -28,77 +34,203 @@ public class mainforTesting {
 //	private static final String REQTableName = "\"Requirements2.Requirements2\"";
 //	private static final String TMTableName = "\"CC-REQ-TM.csv\"";
 	
-	private static final String DEMOTableName = "\"codeclass.codeclass\"";
-	//private static final String DEMOTableName = "\"codeclasses.codeclass\"";	
-	//TODO: it worked after lowercased file name and sheet name. But,have to figure out which work and which doesn't
-	
+	//private static final String DEMOTableName = "\"codeclass.codeclass\"";
+	////TODO: it worked after lowercased file name and sheet name. But,have to figure out which work and which doesn't // Check out ./SecondData/Requirements.xls it works with uppercase table and sheet names
 	//private static final String CCTableName = "\"codeclass.codeclass\""; // codeclass directory
 	//private static final String TMTableName = "./Data/CC-REQ-TM.csv"; // Trace matrix directory
 	//private static final String DEMOTableName = "\"ccreqtm.ccreqtm.csv\""; // Trace matrix directory
 
-	//private static final String REQTableName = "\"Requirements2.Requirements2\"";
+	private static final String REQTableName = "\"Requirements.ReqSheet\"";
+	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	//private static final String TMTableName = "\"CC-REQ-TM.csv\"";
+	
+	private static final String TMTableName = "CC_REQ_TM";
 
 	//private static final String CCDIR = "./Data/CodeClass_1.1.xls";
 	//private static final String TMDIR = "./Data/CC-REQ-TM.csv";
 
 	
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
+	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
 	public static void main(String[] args) 
 	{
-		InternalDB myH2 = new InternalH2();
+		//Demo
 		
-		//myH2.createLink("com.nilostep.xlsql.jdbc.xlDriver", "jdbc:nilostep:excel:./Data/","","","\"demo.xlsqly8\"");
+		//createReqSheet() creates an .xls file through the JDBC driver. I'm just showing off the full SQL support for files.
+		//createReqSheet();
+		//createCCSheet();
 		
-	//	System.out.println("Test2");
-		
-		//myH2.createLink(XLDriver, XLURLBase, null,null, "\"demo.xlsqly8\"");
-		
-	//	System.out.println("Test3");
-		
-		myH2.createLink(XLDriver, XLURLBase,null,null, DEMOTableName);
-		
-	//	myH2.createLink(XLDriver, XLURLBase,null,null, TMTableName);
-		
-		File queryResult = null;
-		queryResult = myH2.quickXMLFile();
-		
-		
-		myH2.QueryToXML("SELECT Count(*) FROM "  + DEMOTableName + ";", queryResult );
+		//This is how our TiQi front end would create an instance of the internal database system for use
+		InternalDB myDB = new InternalH2();
 
+		//This is a demo of how our TiQi front end might create links for accessing external datasources
+		
+		//myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
+		//myDB.createLink(XLDriver, XLURLBase,null,null,REQTableName);
 		
 		
-		System.out.println("Useful Tables");
-		//TODO: make these work properly using the form above by changing the Static String URLs above. The problem was for excel linked tables I needed the \"filename.sheetname\" notice the escaped double quotes.
-		//Though I think the problem is with the _1.1 because the dot is meaningful to SQL I'm trying to add brackets and such around it to get it to work.
-		//Might be a driver issue I might need to tweak the driver to get it working the project is an old one last update was 2008 just after xlsx came out.
+		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 		
-		//myH2.createLink(XLDriver, XLURLBase, null,null, REQTableName);
-		//myH2.createLink(XLDriver, XLURLBase + REQDIR, null,null, "Requirements");
-		//myH2.createLink(XLDriver, XLURLBase + CCDIR , null,null, "CodeClass");
-			
-		//xlSQLTest();
+		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		
+		myDB.arbitrarySQL(ArbSQL);
+		
+		//Retriveing an xml representation of the .csv generated table
+		String SQLString = "SELECT * FROM " + TMTableName;
+		File ArbFile = new File("./Arbfile.xml");
+		
+		myDB.QueryToXML(SQLString, ArbFile);
+		
+		
+		//Retrieving an xml representation of the tracematrix joined with the requirements table
+		File SimpleJoin = new File("./REQandTM.xml");
 	
-		//myH2.Query(TestQueries.TQ001);
-		//myH2.Query(TestQueries.TQ002);
-		//myH2.Query(TestQueries.TQ003);
+		SQLString = "SELECT " + TMTableName + ".ClassName, " + REQTableName + ".* " + 
+					"FROM " + TMTableName + " " + 
+					"INNER JOIN " + REQTableName + " " +
+					"ON "+ TMTableName + ".ID = "+ REQTableName + ".ID;";
+		
+
+					
+		myDB.QueryToXML(SQLString, SimpleJoin);
 	
+		//Retrieving an xml representation of the tracematrix joined with the codeclass table
+		File SimpleJoin2 = new File("./CCandTM.xml");
+		
+		SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
+					"FROM " + CCTableName + " " +
+					"INNER JOIN " + TMTableName + " " +
+					"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
+				
+		myDB.QueryToXML(SQLString, SimpleJoin2);
+		
+		
+		
+		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
+		SQLString = "SELECT " + REQTableName + ".*, " + CCTableName + ".*" + " " +
+					"FROM " + REQTableName + " " +
+					"INNER JOIN " + TMTableName + " " +
+					"ON " + TMTableName + ".ID = " + REQTableName + ".ID" + " " +
+					"INNER JOIN " + CCTableName + " " +
+					"ON " + CCTableName + ".ClassName = " + TMTableName + ".ClassName;";
+		
+		File TripleJoin = new File("./TripleJoin.xml");
+		
+		myDB.QueryToXML(SQLString, TripleJoin);
+		
+		//The following is going to be the execution of the test queries provided to me by Caleb
+		
+		
+		
+		
+		
 	}
 
 
 	
 	//Method for testing
-/*	private static void xlSQLCreateSheetFromArray(String[] s)
+	private static void createReqSheet()
 	{
+		
+		RequirementsTableData reqtable = new RequirementsTableData();
+		
+		//Logistics setup
+			try {
+				Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
+				String protocol = "jdbc:nilostep:excel";
+				String database = "./SecondData/";
+				String url = protocol + ":" + database;
+				
+				//Connection setup
+				Connection con = DriverManager.getConnection(url);
+				Statement stmt = con.createStatement();
+		           
+				String sql = "DROP TABLE \"Requirements.ReqSheet\" IF EXISTS;"
+	                       + "CREATE TABLE \"Requirements.ReqSheet\" (ID varchar, Type varchar, Class varchar, Category varchar, Description varchar(3028), DateCreated varchar, Author varchar, Priority varchar);";
+	            stmt.execute(sql);
+				
+	            ListIterator<RequirementsRowData> it = reqtable.ReqTestData.listIterator();
+	            
+	            
+	           while(it.hasNext()){
+	        	   RequirementsRowData d = it.next();
+	               // sql = "INSERT INTO \"Requirements.ReqSheet\" VALUES ('" + d.ID + "','" + d.Type + "','" + d.Class + "','" + d.Category + "\",\"" + d.Descripton + "\",\"" + d.DateCreated + "\",\"" + d.Author + "\",\"" + d.Priority + "\");";
+	        	   sql = "Insert INTO \"Requirements.ReqSheet\" VALUES ('" + d.ID + "','" + d.Type+ "','" + d.Class + "','" + d.Category + "','"+ d.Descripton + "','" + d.DateCreated+ "','" + d.Author + "','" + d.Priority + "');";
+	                stmt.execute(sql);
+	            }
+	           
+	           sql = "select count(*) from \"Requirements.ReqSheet\"";
+	           ResultSet rs = stmt.executeQuery(sql);
+	           
+	           while (rs.next()) {
+	                System.out.println("Sheet ReqSheet has " + rs.getString(1)
+	                                   + " rows.");
+	            }
+	           //closing the connection flushes the database changes through to the underlying file.
+	           con.close();
+	           
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+	}
+	
+	
+	
+	private static void createCCSheet()
+	{
+		RequirementsTableData reqtable = new RequirementsTableData();
+		
+		//Logistics setup
+			try {
+				Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
+				String protocol = "jdbc:nilostep:excel";
+				String database = "./SecondData/";
+				String url = protocol + ":" + database;
+				
+				//Connection setup
+				Connection con = DriverManager.getConnection(url);
+				Statement stmt = con.createStatement();
+		           
+				String sql = "DROP TABLE \"codeclasses.codeclass\" IF EXISTS;"
+	                       + "CREATE TABLE \"codeclasses.codeclass\" (ClassName varchar, Description varchar, CreatedBy varchar, CreatedOn varchar, Version varchar);";
+	            stmt.execute(sql);
+	           for(int i = 0; i<ClassNameTableData.TableData.length; i++)
+	           {
+	        	sql = "INSERT INTO \"codeclasses.codeclass\" VALUES (" + ClassNameTableData.TableData[i] + ");";
+	        	stmt.execute(sql);  
+	        		    
+	           }
+	            
+	           sql = "select count(*) from \"codeclasses.codeclass\"";
+	           ResultSet rs = stmt.executeQuery(sql);
+	           
+	           while (rs.next()) {
+	                System.out.println("Sheet CCSheet has " + rs.getString(1)
+	                                   + " rows.");
+	            }
+	           //closing the connection flushes the database changes through to the underlying file.
+	           con.close();
+	           
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		
 		
 	}
-	*/
+	
 
 	/*private static void xlSQLTest() {
 		
-		//not great but 
+		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		  try {
 	            
 	            String driver = "com.nilostep.xlsql.jdbc.xlDriver";
@@ -117,7 +249,6 @@ public class mainforTesting {
 	                       + "CREATE TABLE \"demo.xlsqly8\" (TestColumn varchar);";
 	            stm.execute(sql);
 
-	            // because it is release Y8 we'll do 8000
 	            //dont do this do batch instead
 	            for (int i = 0; i < 8000; i++) {
 	                sql = "INSERT INTO \"demo.xlsqly8\" VALUES ('TestValue');";

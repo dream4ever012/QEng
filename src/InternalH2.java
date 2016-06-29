@@ -129,7 +129,30 @@ public class InternalH2 implements InternalDB {
 		return rt;
 	}
 
+	@Override
+	public void arbitrarySQL(String SQLString)
+	{
+		
+		Connection iconn;
+		try {
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
 
+			
+			stmt.execute(SQLString);
+			iconn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		
+		
+		
+	}
+	
+	
 	//TODO: check if fref is a directory and generate the intermediate directories to place the result in a the path then create a UUID for the temporary file.
 	//TODO: add an additional toXML file that takes either a writer or an output stream instead of a file for in memory only XML operations if needed.
 	//TODO: create additional Enums for result reference is null and ResultSet is null.
@@ -199,9 +222,27 @@ public class InternalH2 implements InternalDB {
 	}
 
 	@Override
-	public IDBReturnEnum createLink(String JDBC_Driver, String URL, String TableName) {
-		// TODO Auto-generated method stub
-		return null;
+	public IDBReturnEnum createLink(String jdbc_driver, String url, String tablename) {
+	IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		
+		if(url == null || tablename == null){return rt;}
+		
+		try {
+			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			String TLSQL = "DROP TABLE "+ tablename +" IF EXISTS;" + "CREATE LINKED TABLE " + tablename + "('"+ jdbc_driver + "','" + url + "','','','"+tablename+"');";
+			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
+			stmt.executeUpdate(TLSQL);
+			iconn.close();
+			
+			rt = IDBReturnEnum.SUCCESS;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
 	}
 
 	//TODO: 
