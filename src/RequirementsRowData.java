@@ -22,5 +22,4 @@ public class RequirementsRowData {
 	Author = auth;
 	Priority = pri;
 	}
-
 }
