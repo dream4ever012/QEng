@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListIterator;
 
-//Does your github grab this?
-
 
 //import java.sql.Connection;
 //import java.sql.Driver;
@@ -207,6 +205,7 @@ public class mainforTesting {
 			stmt.execute(sql);
 			for(int i = 0; i<ClassNameTableData.TableData.length; i++)
 			{
+				
 				sql = "INSERT INTO \"codeclasses.codeclass\" VALUES (" + ClassNameTableData.TableData[i] + ");";
 				stmt.execute(sql);  
 

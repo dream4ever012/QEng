@@ -144,14 +144,8 @@ public class InternalH2 implements InternalDB {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-
-		
-		
-		
+		}		
 	}
-	
 	
 	//TODO: check if fref is a directory and generate the intermediate directories to place the result in a the path then create a UUID for the temporary file.
 	//TODO: add an additional toXML file that takes either a writer or an output stream instead of a file for in memory only XML operations if needed.
