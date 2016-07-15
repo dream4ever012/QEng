@@ -27,7 +27,11 @@ public class mainforTesting {
 	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
-
+	
+	private static final String REQTableNameTC1_0 = "\"Requirements_TC1_0.ReqSheet\"";
+	private static final String CCTableNameTC1_0 = "\"codeclasses_TC1_0.codeclass\"";
+	private static final String TMTableNameTC1_0 = "CC_REQ_TM_TC1_0";
+	
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
@@ -46,6 +50,8 @@ public class mainforTesting {
 		//these links are persistent so once created they never have to be created again.
 		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
 		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+		
+
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 
@@ -133,6 +139,15 @@ public class mainforTesting {
 
 		myDB.QueryToXML(SQLString, TQ5);
 
+		// 
+		File TQ6 = new File("./results/TQ6.xml");
+		
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " +REQTableNameTC1_0 + " " +
+				"INNER JOIN " + TMTableNameTC1_0 + " " +
+				"ON " + TMTableNameTC1_0 + ".ID= " + REQTableNameTC1_0 + ".ID;";
+		myDB.QueryToXML(SQLString, TQ6);		
+				
 	}
 
 
