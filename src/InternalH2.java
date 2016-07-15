@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+
 import oracle.jdbc.rowset.OracleWebRowSet;
 
 public class InternalH2 implements InternalDB {
@@ -151,8 +152,8 @@ public class InternalH2 implements InternalDB {
 	//TODO: add an additional toXML file that takes either a writer or an output stream instead of a file for in memory only XML operations if needed.
 	//TODO: create additional Enums for result reference is null and ResultSet is null.
 	public IDBReturnEnum toXML(ResultSet rs, File fref) {
-	//	new File("./results/").mkdirs();
-	//	File f = new File("./results/"+ fref.getPath() + ".xml");
+	//new File("./results/").mkdirs();
+	//File f = new File("./results/"+ fref.getPath() + ".xml");
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		if(fref == null || rs == null){return rt;}
 		
@@ -262,7 +263,6 @@ public class InternalH2 implements InternalDB {
 	@Override
 	public File quickXMLFile() {
 		// TODO Auto-generated method stub
-		
 		try {
 			File ref = File.createTempFile("tmp",".xml", TEMPDIR );	
 			//ref.deleteOnExit();
@@ -280,8 +280,48 @@ public class InternalH2 implements InternalDB {
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		if(ref!=null){
 		ref.delete();
+		rt = IDBReturnEnum.SUCCESS;
 		}
 		return rt;
+	}
+
+	@Override
+	public IDBReturnEnum RegisterUncompiledUDF(String Alias, String Imports, String Code) {
+		// TODO Auto-generated method stub
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		Connection iconn;
+		try {
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+			
+			String UDFString = "CREATE ALIAS " + Alias + " AS $$ " +
+								Imports 
+								+ "\n@CODE\n" +
+								Code 
+								+ " $$;";
+			
+			stmt.execute(UDFString);
+			iconn.close();
+			rt = IDBReturnEnum.SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return rt;
+	}
+
+	@Override
+	public IDBReturnEnum RegisterUncompiledUDF(String Alias, String Source) {
+		// TODO Check performance gains of not doing context switch at the end.
+		// TODO switch the regex to split after the last import statement not the first
+		String [] tmp = Source.split("([^;]*\bimport\b[^;]*;)");
+		System.out.println("The two strings are ");
+		String Imports = tmp[1];
+		System.out.println(Imports);
+		String Code = tmp[2];
+		System.out.println(Code);
+		
+		return RegisterUncompiledUDF(Alias, Imports, Code);
 	}
 
 }

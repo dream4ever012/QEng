@@ -36,8 +36,8 @@ public class mainforTesting {
 		//Demo
 
 		//creates an .xls file through the JDBC driver. I'm just showing off the full SQL support for files.
-		createReqSheet();
-		createCCSheet();
+		//createReqSheet();
+		//createCCSheet();
 
 		//This is how our TiQi front end would create an instance of the internal database system for use
 		InternalDB myDB = new InternalH2();
@@ -137,6 +137,7 @@ public class mainforTesting {
 
 
 	//Method for testing
+	@SuppressWarnings("unused")
 	private static void createReqSheet()
 	{
 
@@ -185,6 +186,7 @@ public class mainforTesting {
 		}	
 	}
 
+	@SuppressWarnings("unused")
 	private static void createCCSheet()
 	{
 		RequirementsTableData reqtable = new RequirementsTableData();
