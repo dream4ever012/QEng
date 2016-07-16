@@ -28,11 +28,11 @@ public class mainforTesting {
 	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
-/*	
+	
 	private static final String REQTableNameTC1_0 = "\"RequirementsTC.ReqSheet\"";
 	private static final String CCTableNameTC1_0 = "\"codeclassTC.codeclass\"";
 	private static final String TMTableNameTC1_0 = "CC_REQ_TM";
-*/
+
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
@@ -41,16 +41,16 @@ public class mainforTesting {
 		//Demo
 
 		//creates an .xls file through the JDBC driver. I'm just showing off the full SQL support for files.
-		createReqSheet();
-		createCCSheet();
+		//createReqSheet();
+		//createCCSheet();
 
 		//This is how our TiQi front end would create an instance of the internal database system for use
 		InternalDB myDB = new InternalH2();
 
 		//This is a demo of how our TiQi front end might create links for accessing external datasources
 		//these links are persistent so once created they never have to be created again.
-		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
-		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1_0);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1_0);
 
@@ -141,7 +141,7 @@ public class mainforTesting {
 
 		myDB.QueryToXML(SQLString, TQ5);
 
-/*
+
 		File TQ6 = new File("./results/TQ6.xml");
 		
 		SQLString = "SELECT COUNT(*) " +
@@ -149,7 +149,15 @@ public class mainforTesting {
 				"INNER JOIN " + TMTableName + " " +
 				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
 		myDB.QueryToXML(SQLString, TQ6);
-*/			
+		
+		
+		
+		
+		
+		
+		
+		
+			
 //		xlSQLTest();
 	}
 
