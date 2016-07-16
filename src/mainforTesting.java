@@ -163,6 +163,7 @@ public class mainforTesting {
 
 
 	//Method for testing
+	@SuppressWarnings("unused")
 	private static void createReqSheet()
 	{
 
@@ -211,6 +212,7 @@ public class mainforTesting {
 		}	
 	}
 
+	@SuppressWarnings("unused")
 	private static void createCCSheet()
 	{
 		RequirementsTableData reqtable = new RequirementsTableData();
