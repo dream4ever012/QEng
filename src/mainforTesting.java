@@ -27,6 +27,10 @@ public class mainforTesting {
 	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
+	
+	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
+	private static final String CCTableNameTC1 = "\"codeclassTC1.codeclass\"";	
+	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
@@ -44,19 +48,28 @@ public class mainforTesting {
 
 		//This is a demo of how our TiQi front end might create links for accessing external datasources
 		//these links are persistent so once created they never have to be created again.
-		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
-		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
-
+		//myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
+		//myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+		//myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1);
+		//myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
+		//myDB.createLink(XLDriver, XLURLBase, null,null, TMTableNameTC1);
+		
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-
 		myDB.arbitrarySQL(ArbSQL);
-
+		
+		
+		
 		//Retriveing an xml representation of the .csv generated table
 		String SQLString = "SELECT * FROM " + TMTableName;
 		File ArbFile = new File("./results/Arbfile.xml");
-
+		
+		ArbSQL = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC1.csv');";
+		myDB.arbitrarySQL(ArbSQL);
+		
+		File ArbFile1 = new File("./results/Arbfile1.xml");
+		
 		myDB.QueryToXML(SQLString, ArbFile);
 
 		//Retrieving an xml representation of the tracematrix joined with the requirements table
@@ -132,7 +145,49 @@ public class mainforTesting {
 				"WHERE Type = 'Functional';";
 
 		myDB.QueryToXML(SQLString, TQ5);
+		
+		// TQ6: cost of join
+				File TQ6 = new File("./results/TQ6.xml");
+				SQLString = "SELECT COUNT(*) " +
+						"FROM " + REQTableName + " " +
+						"INNER JOIN " + TMTableName + " " +
+						"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
+				measureCost(myDB, SQLString, TQ6);
+				
+				long m1, m2;
+				
+				// TQ7: cost of Req(27) JOIN TM
+				File TQ7 = new File("./results/TQ7.xml");
+				SQLString = "SELECT COUNT(*) " +
+						"FROM " + REQTableNameTC1 + " " +
+						"INNER JOIN " + TMTableNameTC1 + " " +
+						"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
+				m1 = System.currentTimeMillis() % 1000;
+				myDB.QueryToXML(SQLString, TQ7);
+				m2 = System.currentTimeMillis() % 1000;
+				System.out.println(TQ7.getName().toString() +" cost: " + (m2 - m1));
+				
+				// TQ8: cost of Req(27) JOIN TM
+				File TQ8 = new File("./results/TQ8.xml");
+				SQLString = "SELECT COUNT(*) " +
+						"FROM " + TMTableNameTC1 + " " +
+						"INNER JOIN " + REQTableNameTC1 + " " +
+						"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
+				m1 = System.currentTimeMillis() % 1000;
+				myDB.QueryToXML(SQLString, TQ8);
+				m2 = System.currentTimeMillis() % 1000;
+				System.out.println(TQ8.getName().toString() +" cost: " + (m2 - m1));
 
+	}
+
+	// compare the cost by millisecond with QueryToXML
+	private static void measureCost(InternalDB myDB, String SQLString, File TQ)
+	{	
+		long m1, m2;
+		m1 = System.currentTimeMillis() % 1000;
+		myDB.QueryToXML(SQLString, TQ);
+		m2 = System.currentTimeMillis() % 1000;
+		System.out.println(TQ.getName().toString() +" cost: " + (m2 - m1));
 	}
 
 
