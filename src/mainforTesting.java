@@ -28,11 +28,11 @@ public class mainforTesting {
 	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
-	
-	private static final String REQTableNameTC1_0 = "\"Requirements_TC1_0.ReqSheet\"";
-	private static final String CCTableNameTC1_0 = "\"codeclasses_TC1_0.codeclass\"";
-	private static final String TMTableNameTC1_0 = "CC_REQ_TM_TC1_0";
-	
+/*	
+	private static final String REQTableNameTC1_0 = "\"RequirementsTC.ReqSheet\"";
+	private static final String CCTableNameTC1_0 = "\"codeclassTC.codeclass\"";
+	private static final String TMTableNameTC1_0 = "CC_REQ_TM";
+*/
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
@@ -141,16 +141,16 @@ public class mainforTesting {
 
 		myDB.QueryToXML(SQLString, TQ5);
 
-/*		// 
+/*
 		File TQ6 = new File("./results/TQ6.xml");
 		
 		SQLString = "SELECT COUNT(*) " +
-				"FROM " + REQTableNameTC1_0 + " " +
-				"INNER JOIN " + TMTableNameTC1_0 + " " +
-				"ON " + TMTableNameTC1_0 + ".ID= " + REQTableNameTC1_0 + ".ID;";
+				"FROM " + REQTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
 		myDB.QueryToXML(SQLString, TQ6);
 */			
-		xlSQLTest();
+//		xlSQLTest();
 	}
 
 
@@ -315,9 +315,10 @@ public class mainforTesting {
 	            
 	            Connection con = DriverManager.getConnection(url);
 	            Statement stm = con.createStatement();
-
-
-	            String sql = "select count(*) from \"Requirements_TC1_0.ReqSheet\"";
+	            
+	            String sql = "select count(*) from \"codeclasses.codeclass\"";
+	            //String sql = "select count(*) from \"RequirementsTC.ReqSheet\"";
+	            //String sql = "select count(*) from \"Requirements.ReqSheet\"";
 	            ResultSet rs = stm.executeQuery(sql);
 
 	            while (rs.next()) {
