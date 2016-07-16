@@ -1,5 +1,6 @@
 import java.io.File;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +28,10 @@ public class mainforTesting {
 	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
+	
+	private static final String REQTableNameTC1_0 = "\"RequirementsTC.ReqSheet\"";
+	private static final String CCTableNameTC1_0 = "\"codeclassTC.codeclass\"";
+	private static final String TMTableNameTC1_0 = "CC_REQ_TM";
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
@@ -44,8 +49,11 @@ public class mainforTesting {
 
 		//This is a demo of how our TiQi front end might create links for accessing external datasources
 		//these links are persistent so once created they never have to be created again.
-		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
-		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1_0);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1_0);
+
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 
@@ -133,6 +141,24 @@ public class mainforTesting {
 
 		myDB.QueryToXML(SQLString, TQ5);
 
+
+		File TQ6 = new File("./results/TQ6.xml");
+		
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " + REQTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
+		myDB.QueryToXML(SQLString, TQ6);
+		
+		
+		
+		
+		
+		
+		
+		
+			
+//		xlSQLTest();
 	}
 
 
@@ -232,8 +258,9 @@ public class mainforTesting {
 		}	
 	}
 
+	/*	            
 
-	/*private static void xlSQLTest() {
+	private static void xlSQLTest() {
 
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		  try {
@@ -247,9 +274,11 @@ public class mainforTesting {
 	            String database = "./Data/";
 	            String url = protocol + ":" + database;
 
+	            
+	            
 	            Connection con = DriverManager.getConnection(url);
 	            Statement stm = con.createStatement();
-
+	            
 	            String sql = "DROP TABLE \"demo.xlsqly8\" IF EXISTS;"
 	                       + "CREATE TABLE \"demo.xlsqly8\" (TestColumn varchar);";
 	            stm.execute(sql);
@@ -275,5 +304,43 @@ public class mainforTesting {
 	            System.out.println("Are you sure this is WinXP and Java 1.4.2 ..? ");
 	            e.printStackTrace();
 	        }
-	}*/
+	}
+*/
+	
+	private static void xlSQLTest() {
+
+		//not great but this is the template for Y8 Connections until I can address some issues in Y8
+		  try {
+
+	            String driver = "com.nilostep.xlsql.jdbc.xlDriver";
+	            // holding d so I could confirm in debug mode that I have the right driver
+	            Driver d = (Driver) Class.forName(driver).newInstance();
+	            System.out.println("Driver was successfully loaded.");
+	            String protocol = "jdbc:nilostep:excel";
+	            //String database = System.getProperty("user.dir");
+	            String database = "./SecondData/";
+	            String url = protocol + ":" + database;
+
+	            
+	            
+	            Connection con = DriverManager.getConnection(url);
+	            Statement stm = con.createStatement();
+	            
+	            String sql = "select count(*) from \"codeclasses.codeclass\"";
+	            //String sql = "select count(*) from \"RequirementsTC.ReqSheet\"";
+	            //String sql = "select count(*) from \"Requirements.ReqSheet\"";
+	            ResultSet rs = stm.executeQuery(sql);
+
+	            while (rs.next()) {
+	                System.out.println("Sheet xlsqly8 has " + rs.getString(1)
+	                                   + " rows.");
+	            }
+
+	            con.close();
+	        } catch (Exception e) {
+	            System.out.println("Are you sure this is WinXP and Java 1.4.2 ..? ");
+	            e.printStackTrace();
+	        }
+	}
+
 }
