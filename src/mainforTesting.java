@@ -133,25 +133,39 @@ public class mainforTesting {
 
 		myDB.QueryToXML(SQLString, TQ4);
 
+		// TQ5: cost of simple select
 		File TQ5 = new File ("./results/TQ5.xml");
 
 		SQLString = "SELECT ID as RequirementID " +
 				"From " + REQTableName + " " +
 				"WHERE Type = 'Functional';";
-
-		myDB.QueryToXML(SQLString, TQ5);
-
-
-		File TQ6 = new File("./results/TQ6.xml");
 		
+		//myDB.QueryToXML(SQLString, TQ5);
+		measureCost(myDB, SQLString, TQ5);
+		
+		// TQ6: cost of join
+		File TQ6 = new File("./results/TQ6.xml");
 		SQLString = "SELECT COUNT(*) " +
 				"FROM " + REQTableName + " " +
 				"INNER JOIN " + TMTableName + " " +
 				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
-		myDB.QueryToXML(SQLString, TQ6);
+		measureCost(myDB, SQLString, TQ6);
 		
+		// TQ7: cost of Req(27) JOIN TM
+		File TQ7 = new File("./results/TQ7.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " + REQTableNameTC1_0 + " " +
+				"INNER JOIN " + TMTableNameTC1_0 + " " +
+				"ON " + TMTableNameTC1_0 + ".ID= " + REQTableNameTC1_0 + ".ID;";
+		measureCost(myDB, SQLString, TQ7);
 		
-		
+		// TQ8: cost of Req(27) JOIN TM
+		File TQ8 = new File("./results/TQ8.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " + TMTableNameTC1_0 + " " +
+				"INNER JOIN " + REQTableNameTC1_0 + " " +
+				"ON " + TMTableNameTC1_0 + ".ID= " + REQTableNameTC1_0 + ".ID;";
+		measureCost(myDB, SQLString, TQ8);
 		
 		
 		
@@ -161,6 +175,15 @@ public class mainforTesting {
 //		xlSQLTest();
 	}
 
+	// compare the cost by millisecond with QueryToXML
+	private static void measureCost(InternalDB myDB, String SQLString, File TQ)
+	{	
+		long m1, m2;
+		m1 = System.currentTimeMillis() % 1000;
+		myDB.QueryToXML(SQLString, TQ);
+		m2 = System.currentTimeMillis() % 1000;
+		System.out.println(TQ.getName().toString() +" cost: " + (m2 - m1));
+	}
 
 	//Method for testing
 	private static void createReqSheet()
