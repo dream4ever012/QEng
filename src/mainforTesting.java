@@ -172,8 +172,18 @@ public class mainforTesting {
 				"WHERE " + REQTableNameTC1 + ".TYPE= 'Safety';";
 		
 		//measureCostToXml(myDB, SQLString, TQ71);
-		measureCostToRS(myDB, SQLString, TQ71);
+		measureCostToRS(myDB, SQLString, TQ71);	
 
+		File TQ77 = new File("./results/TQ77.xml");
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableNameTC1 + ".* " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID " +
+				"INNER JOIN " + CCTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		
+		//measureCostToXml(myDB, SQLString, TQ77);
+		measureCostToRS(myDB, SQLString, TQ77);	
 		
 		// TQ8: cost of Req(27) JOIN TM
 		File TQ8 = new File("./results/TQ8.xml");
@@ -183,6 +193,7 @@ public class mainforTesting {
 				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
 		measureCostToXml(myDB, SQLString, TQ8);
 		
+			
 	}
 
 	// compare the cost by millisecond with QueryToXML
