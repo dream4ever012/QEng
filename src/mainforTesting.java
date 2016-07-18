@@ -29,9 +29,9 @@ public class mainforTesting {
 	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
 	
-	private static final String REQTableNameTC1_0 = "\"RequirementsTC.ReqSheet\"";
-	private static final String CCTableNameTC1_0 = "\"codeclassTC.codeclass\"";
-	private static final String TMTableNameTC1_0 = "CC_REQ_TM";
+	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
+	private static final String CCTableNameTC1 = "\"codeclassTC1.codeclass\"";
+	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
@@ -51,16 +51,18 @@ public class mainforTesting {
 		//these links are persistent so once created they never have to be created again.
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
-//		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1_0);
-//		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1_0);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1);
+//		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
 
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-
 		myDB.arbitrarySQL(ArbSQL);
-
+		
+		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		myDB.arbitrarySQL(ArbSQL1);
+		
 		//Retriveing an xml representation of the .csv generated table
 		String SQLString = "SELECT * FROM " + TMTableName;
 		File ArbFile = new File("./results/Arbfile.xml");
@@ -138,8 +140,7 @@ public class mainforTesting {
 		SQLString = "SELECT ID as RequirementID " +
 				"From " + REQTableName + " " +
 				"WHERE Type = 'Functional';";
-
-		myDB.QueryToXML(SQLString, TQ5);
+		measureCostToRS(myDB, SQLString, TQ5);
 
 
 		File TQ6 = new File("./results/TQ6.xml");
@@ -148,19 +149,44 @@ public class mainforTesting {
 				"FROM " + REQTableName + " " +
 				"INNER JOIN " + TMTableName + " " +
 				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
-		myDB.QueryToXML(SQLString, TQ6);
+		measureCostToRS(myDB, SQLString, TQ6);
+		
+		File TQ77 = new File("./results/TQ77.xml");	
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableNameTC1 + ".* " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID " +
+				"INNER JOIN " + CCTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		
+		measureCostToRS(myDB, SQLString, TQ77);
 		
 		
-		
-		
-		
-		
-		
-		
-			
+
 //		xlSQLTest();
 	}
 
+	// compare the cost by millisecond with QueryToXML
+	private static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
+	{	
+		long m1, m2;
+		m1 = System.currentTimeMillis();
+		myDB.QueryToXML(SQLString, TQ);
+		m2 = System.currentTimeMillis();
+		System.out.println(TQ.getName().toString() +" cost: " + (m2 - m1));
+	}
+	
+	// compare the cost by millisecond with QueryToXML
+	private static void measureCostToRS(InternalDB myDB, String SQLString, File TQ)
+	{	
+		long m1, m2;
+		ResultSet rsRef = null;
+		m1 = System.currentTimeMillis();
+		myDB.QueryToRS(SQLString, rsRef);
+		m2 = System.currentTimeMillis();
+		System.out.println(TQ.getName().toString() + " cost: " + (m2 - m1));
+		
+	}
 
 	//Method for testing
 	@SuppressWarnings("unused")
