@@ -149,14 +149,6 @@ public class mainforTesting {
 				"INNER JOIN " + TMTableName + " " +
 				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
 		myDB.QueryToXML(SQLString, TQ6);
-		
-		
-		
-		
-		
-		
-		
-		
 			
 //		xlSQLTest();
 	}

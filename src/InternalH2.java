@@ -324,4 +324,25 @@ public class InternalH2 implements InternalDB {
 		return RegisterUncompiledUDF(Alias, Imports, Code);
 	}
 
+	@Override
+	public IDBReturnEnum RegisterCompiledUDF(String Alias, String classname) {
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		Connection iconn;
+		try {
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+			
+			String UDFString = "CREATE ALIAS " + Alias + 
+							   " FOR $$" +  classname + "$$;";
+			
+			stmt.execute(UDFString);
+			iconn.close();
+			rt = IDBReturnEnum.SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return rt;
+	}
+
 }
