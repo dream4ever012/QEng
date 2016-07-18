@@ -314,7 +314,7 @@ public class InternalH2 implements InternalDB {
 	public IDBReturnEnum RegisterUncompiledUDF(String Alias, String Source) {
 		// TODO Check performance gains of not doing context switch at the end.
 		// TODO switch the regex to split after the last import statement not the first
-		String [] tmp = Source.split("([^;]*\bimport\b[^;]*;)");
+		String [] tmp = Source.split("([^;]*\bimport\b[^;]*;)*");
 		System.out.println("The two strings are ");
 		String Imports = tmp[1];
 		System.out.println(Imports);
