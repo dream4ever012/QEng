@@ -213,6 +213,13 @@ public class mainforTesting {
 				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
 		measureCostToRS(myDB, SQLString, TQ66);
 */		
+		
+		// create CCTableNameTC1 in memory
+		File TQ13 = new File("./results/TQ13.xml");	
+		ArbSQL = "DROP TABLE CCTableNameTC1 IF EXISTS; Create table CCTableNameTC1 AS Select + " + 
+				CCTableNameTC1 + ".*" +
+				"FROM " + CCTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ13);
 
 		// micro tunning of join operation?-comparison w/ TQ66
 		File TQ67 = new File("./results/TQ67.xml");
@@ -222,6 +229,8 @@ public class mainforTesting {
 				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
 		measureCostToRS(myDB, SQLString, TQ67);
 
+		
+		
 		// run query with the memory
 		
 		//String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
