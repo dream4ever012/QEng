@@ -166,6 +166,16 @@ public class mainforTesting {
 		
 		measureCostToRS(myDB, SQLString, TQ77);
 		
+		File TQ8 = new File("./results/TQ8.xml");	
+		ArbSQL = "DROP TABLE TQ77pt1 IF EXISTS; Create table TQ77pt1 AS Select + " + 
+				REQTableNameTC1 + ".*" +
+				"FROM " + REQTableNameTC1 + 
+				"INNER JOIN " + TMTableNameTC1 + " " + 
+				"ON " + TMTableNameTC1 + ".id= " + REQTableNameTC1 + ".id;";
+		
+		measureCostArbitrary(myDB, ArbSQL, TQ8);
+
+		
 //		xlSQLTest();
 	}
 
@@ -188,6 +198,17 @@ public class mainforTesting {
 		m1 = System.currentTimeMillis();
 		//myDB.QueryToRS(SQLString, rsRef);
 		rsRef = myDB.QueryToRS(SQLString);
+		m2 = System.currentTimeMillis();
+		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
+		//RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
+	}
+	
+	private static void measureCostArbitrary(InternalDB myDB, String ArbSQL, File TQ)
+	{	
+		long m1, m2;
+		ResultSet rsRef = null;
+		m1 = System.currentTimeMillis();
+		myDB.arbitrarySQL(ArbSQL);
 		m2 = System.currentTimeMillis();
 		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
 		//RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
