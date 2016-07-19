@@ -107,7 +107,7 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, TripleJoin);
 
 		//The following is going to be the execution of the test queries provided to me by Caleb
-
+/*
 		File TQ1 = new File ("./results/TQ1.xml");
 
 		SQLString = "SELECT ID as RequirementID " +
@@ -146,7 +146,7 @@ public class mainforTesting {
 				"From " + REQTableName + " " +
 				"WHERE Type = 'Functional';";
 		measureCostToRS(myDB, SQLString, TQ5);
-
+*/
 
 		File TQ6 = new File("./results/TQ6.xml");
 		
@@ -172,9 +172,20 @@ public class mainforTesting {
 				"FROM " + REQTableNameTC1 + 
 				"INNER JOIN " + TMTableNameTC1 + " " + 
 				"ON " + TMTableNameTC1 + ".id= " + REQTableNameTC1 + ".id;";
-		
 		measureCostArbitrary(myDB, ArbSQL, TQ8);
-
+		
+		// to check if the table exist
+		File TQ9 = new File("./results/TQ9.xml");	
+		ArbSQL = "SELECT * FROM TQ77pt1;";
+		/*+ 
+				REQTableNameTC1 + ".*" +
+				"FROM " + REQTableNameTC1 + 
+				"INNER JOIN " + TMTableNameTC1 + " " + 
+				"ON " + TMTableNameTC1 + ".id= " + REQTableNameTC1 + ".id;";
+				*/
+		measureCostArbitrary(myDB, ArbSQL, TQ9);
+		
+		
 		
 //		xlSQLTest();
 	}
