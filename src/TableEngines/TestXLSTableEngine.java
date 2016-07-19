@@ -62,6 +62,7 @@ public class TestXLSTableEngine implements TableEngine{
 	  //TODO: implement the scan.
 	  		public TestXLSTable(CreateTableData data) {
 	  			super(data);
+	  			System.out.println("TestXLSTable called");
 	  			scanIndex = new XLSScan(this);
 	  			// TODO adapt this implementation for XLS
 	  			regTableConst(data);
@@ -314,9 +315,6 @@ public class TestXLSTableEngine implements TableEngine{
 		System.out.println("CTD temp " + data.temporary);
 		System.out.println("CTD schema " + data.schema);
 
-		
-		
-		
 		
 		return new TestXLSTable(data);
 	}
