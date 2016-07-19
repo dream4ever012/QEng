@@ -51,3 +51,6 @@ Data/test.mv.db
 xlsql.log
 results/TQ1.xml
 results/TQ4.xml
+Data/test.mv.db
+Data/test.trace.db
+xlsql.log

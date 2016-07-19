@@ -166,8 +166,6 @@ public class mainforTesting {
 		
 		measureCostToRS(myDB, SQLString, TQ77);
 		
-		
-
 //		xlSQLTest();
 	}
 
@@ -188,10 +186,11 @@ public class mainforTesting {
 		long m1, m2;
 		ResultSet rsRef = null;
 		m1 = System.currentTimeMillis();
-		myDB.QueryToRS(SQLString, rsRef);
+		//myDB.QueryToRS(SQLString, rsRef);
+		rsRef = myDB.QueryToRS(SQLString);
 		m2 = System.currentTimeMillis();
 		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
-		RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
+		//RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
 	}
 
 	//Method for testing

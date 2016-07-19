@@ -16,78 +16,77 @@ public class RStoXLSWriter {
 
 	public static void RStoXLSWrite(ResultSet rs, File output){
 		
-		//RequirementsTableData reqtable = new RequirementsTableData();
-
-		//Logistics setup
 		
-		
+		//TODO: switch to batch statements for better performance though this is only for testing purposes
 		try {
 			ResultSetMetaData md = rs.getMetaData();
 			int colCount = md.getColumnCount();
 			
 			String colsSQL = "";
-			for(int i = 0; i<= colCount;i++){
-			colsSQL = colsSQL + md.getColumnLabel(i) + " " + md.getColumnType(i);
-				
+			for(int i = 1; i <= colCount; i++){
+			colsSQL = colsSQL + "\""+ md.getColumnLabel(i) + i + "\" " + md.getColumnTypeName(i);
+				if(i < colCount){ colsSQL = colsSQL + ", ";}
 			}
 			
 			System.out.println(colsSQL);
 			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
-/*		try {
 			Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
 			String protocol = "jdbc:nilostep:excel";
-			String database = "./Results/";
+			String database = "./SecondData/";
 			String url = protocol + ":" + database;
+			String TableName = "\"" + output.getName() + ".Result\"";
 
-			
-			
 			//Connection setup
 			Connection con = DriverManager.getConnection(url);
 			Statement stmt = con.createStatement();
 
-			String sql = "DROP TABLE \""+ output.getName() + ".Result\" IF EXISTS;"
-					+ "CREATE TABLE \""+ output.getName() + ".Result\" (ID varchar, Type varchar, Class varchar, Category varchar, Description varchar(3028), DateCreated varchar, Author varchar, Priority varchar);";
+			String sql = "DROP TABLE " + TableName + " IF EXISTS;"
+					+ "CREATE TABLE " + TableName + " ("+colsSQL+");";
+			
 			stmt.execute(sql);
 
-			ListIterator<RequirementsRowData> it = reqtable.ReqTestData.listIterator();
-
-			while(it.hasNext()){
-				RequirementsRowData d = it.next();
-				// sql = "INSERT INTO \"Requirements.ReqSheet\" VALUES ('" + d.ID + "','" + d.Type + "','" + d.Class + "','" + d.Category + "\",\"" + d.Descripton + "\",\"" + d.DateCreated + "\",\"" + d.Author + "\",\"" + d.Priority + "\");";
-				sql = "Insert INTO \"Requirements.ReqSheet\" VALUES ('" + d.ID + "','" + d.Type+ "','" + d.Class + "','" + d.Category + "','"+ d.Descripton + "','" + d.DateCreated+ "','" + d.Author + "','" + d.Priority + "');";
+			String rowValsSQL;
+			int ct;
+			while(rs.next()){
+				rowValsSQL = "";
+				for(int k = 1; k <= colCount; k++){
+					ct = md.getColumnType(k);
+					if(ct == java.sql.Types.VARCHAR || ct == java.sql.Types.DATE || ct == java.sql.Types.LONGVARCHAR || ct == java.sql.Types.LONGNVARCHAR){
+						rowValsSQL = rowValsSQL+ "\'" + rs.getString(k) + "\'";
+					} else {
+						rowValsSQL = rowValsSQL + rs.getString(k);
+					}
+				if(k < colCount){ rowValsSQL = rowValsSQL + ", ";}
+				}
+				sql = "Insert INTO " + TableName + " VALUES (" +rowValsSQL + ");";
+				System.out.println(sql);
 				stmt.execute(sql);
 			}
 
-			sql = "select count(*) from \"Requirements.ReqSheet\"";
-			ResultSet rs = stmt.executeQuery(sql);
+			sql = "select count(*) from " + TableName;
+			ResultSet vRS = stmt.executeQuery(sql);
 
-			while (rs.next()) {
-				System.out.println("Sheet ReqSheet has " + rs.getString(1)
+			while (vRS.next()) {
+				System.out.println("Sheet "+ TableName +" has " + vRS.getString(1)
 				+ " rows.");
 			}
 			//closing the connection flushes the database changes through to the underlying file.
 			con.close();
 
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}	
-		*/
-		
-		
+			
 	}
 
 }

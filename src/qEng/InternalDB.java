@@ -24,7 +24,7 @@ public interface InternalDB {
 	//for sending SQL to the internal DB Could also use the JDBC embedded driver to communicate from the module externally	
 	public IDBReturnEnum QueryToXML(String SQLString, File FileRef); 	  			  							
 	
-	public IDBReturnEnum QueryToRS(String SQLString, ResultSet ResultRef);
+	public ResultSet QueryToRS(String SQLString);
 	
 	public IDBReturnEnum RegisterUncompiledUDF(String Alias, String Imports, String Code);
 	

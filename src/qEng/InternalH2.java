@@ -264,22 +264,21 @@ public class InternalH2 implements InternalDB {
 		return rt;
 	}
 
-	//TODO: 
+	//TODO: try to revert to signature: IDBReturnEnum QueryToRS(String , ResultSet) but java wasn't changing the 
 	@Override
-	public IDBReturnEnum QueryToRS(String SQLString, ResultSet rsRef) {
-		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+	public ResultSet QueryToRS(String SQLString) {
+		ResultSet rsRef = null;
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
 			rsRef = stmt.executeQuery(SQLString);
-			iconn.close();
-			rt = IDBReturnEnum.SUCCESS;
+			//iconn.close();
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return rt;
+		return rsRef;
 	}
 	
 	

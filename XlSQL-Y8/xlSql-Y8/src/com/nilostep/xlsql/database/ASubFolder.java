@@ -87,9 +87,6 @@ public abstract class ASubFolder {
         else if (i == DELETE) {
             bDirty[DELETE] = true;            
         }
-
-
-
     }
 
     /**
