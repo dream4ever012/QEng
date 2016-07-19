@@ -149,14 +149,8 @@ public class mainforTesting {
 		measureCostToRS(myDB, SQLString, TQ5);
 */
 
-		File TQ6 = new File("./results/TQ6.xml");
-		
-		SQLString = "SELECT COUNT(*) " +
-				"FROM " + REQTableName + " " +
-				"INNER JOIN " + TMTableName + " " +
-				"ON " + TMTableName + ".ID= " + REQTableName + ".ID;";
-		measureCostToRS(myDB, SQLString, TQ6);
-		
+
+/*	
 		File TQ77 = new File("./results/TQ77.xml");	
 		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableNameTC1 + ".* " +
 				"FROM " + REQTableNameTC1 + " " +
@@ -178,13 +172,57 @@ public class mainforTesting {
 		// to check if the table exist
 		File TQ9 = new File("./results/TQ9.xml");	
 		ArbSQL = "SELECT * FROM " + TMTableNameTC1 + ";";
-		/*+ 
-				REQTableNameTC1 + ".*" +
-				"FROM " + REQTableNameTC1 + 
-				"INNER JOIN " + TMTableNameTC1 + " " + 
-				"ON " + TMTableNameTC1 + ".id= " + REQTableNameTC1 + ".id;";
-				*/
+		
 		measureCostArbitrary(myDB, ArbSQL, TQ9);
+*/
+/*		
+		// create TMTC1 in memory
+		File TQ10 = new File("./results/TQ10.xml");
+		ArbSQL = "DROP TABLE TMTableNameTC1 IF EXISTS; Create table TMTableNameTC1 AS Select + " + 
+				TMTableNameTC1 + ".*" +
+				"FROM " + TMTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ10);
+		
+		// create ReqTC1 in memory
+		File TQ11 = new File("./results/TQ11.xml");
+		ArbSQL = "DROP TABLE REQTableNameTC1 IF EXISTS; Create table REQTableNameTC1 AS Select + " + 
+				REQTableNameTC1 + ".*" +
+				"FROM " + REQTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ11);
+		
+		// create CCTC1 in memory
+		File TQ12 = new File("./results/TQ12.xml");
+		ArbSQL = "DROP TABLE CCTableNameTC1 IF EXISTS; Create table CCTableNameTC1 AS Select + " + 
+				CCTableNameTC1 + ".*" +
+				"FROM " + CCTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ12);
+
+		// performance comparison between excel vs. in-memory table
+		File TQ6 = new File("./results/TQ6.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
+		measureCostToRS(myDB, SQLString, TQ6);
+*/		
+/*
+		File TQ66 = new File("./results/TQ66.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM REQTableNameTC1 " +
+				"INNER JOIN TMTableNameTC1 " +
+				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
+		measureCostToRS(myDB, SQLString, TQ66);
+*/		
+
+		// micro tunning of join operation?-comparison w/ TQ66
+		File TQ67 = new File("./results/TQ67.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM  TMTableNameTC1 " +
+				"INNER JOIN REQTableNameTC1 " +
+				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
+		measureCostToRS(myDB, SQLString, TQ67);
+
+		// run query with the memory
 		
 		//String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		//myDB.arbitrarySQL(ArbSQL1);
