@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListIterator;
 
+import testDataObjects.RequirementsRowData;
+import testDataObjects.RequirementsTableData;
+import utils.RStoXLSWriter;
 
 //import java.sql.Connection;
 //import java.sql.Driver;
@@ -175,7 +178,8 @@ public class mainforTesting {
 		m1 = System.currentTimeMillis();
 		myDB.QueryToXML(SQLString, TQ);
 		m2 = System.currentTimeMillis();
-		System.out.println(TQ.getName().toString() +" cost: " + (m2 - m1));
+		System.out.println(TQ.getName() +" cost: " + (m2 - m1));
+		
 	}
 	
 	// compare the cost by millisecond with QueryToXML
@@ -186,8 +190,8 @@ public class mainforTesting {
 		m1 = System.currentTimeMillis();
 		myDB.QueryToRS(SQLString, rsRef);
 		m2 = System.currentTimeMillis();
-		System.out.println(TQ.getName().toString() + " cost: " + (m2 - m1));
-		
+		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
+		RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
 	}
 
 	//Method for testing

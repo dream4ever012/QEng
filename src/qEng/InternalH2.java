@@ -81,6 +81,30 @@ public class InternalH2 implements InternalDB {
 		}
 	}
 
+	public InternalH2(String DBURL, String USER, String PASS) {
+		try {
+			//Register the JDBC driver for internal communication and create a sentinel connection
+			Class.forName("org.h2.Driver").newInstance();
+			h2conn = DriverManager.getConnection(DBURL,USER,PASS);
+
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//update the URL so the program can find it.
+			IH2DBURL = DBURL;
+		}
+	}
+
 	@Override
 	public IDBReturnEnum createLink(String jdbc_driver,String url, String user, String pass , String tablename)
 	{
