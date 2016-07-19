@@ -174,9 +174,7 @@ public class TestXLSTableEngine implements TableEngine{
 			}
 
 		}
-
 		
-
 		@Override
 		public boolean lock(Session session, boolean exclusive, boolean forceLockEvenInMvcc) {
 			// TODO Auto-generated method stub
@@ -208,17 +206,11 @@ public class TestXLSTableEngine implements TableEngine{
 
 		}
 
-
-
-
 		@Override
 		public void truncate(Session session) {
 			// TODO Auto-generated method stub
 
 		}
-
-
-
 
 		@Override
 		public void addRow(Session session, Row row) {
@@ -226,17 +218,11 @@ public class TestXLSTableEngine implements TableEngine{
 
 		}
 
-
-
-
 		@Override
 		public void checkSupportAlter() {
 			// TODO Auto-generated method stub
 
 		}
-
-
-
 
 		@Override
 		public String getTableType() {
@@ -244,17 +230,11 @@ public class TestXLSTableEngine implements TableEngine{
 			return null;
 		}
 
-
-
-
 		@Override
 		public Index getScanIndex(Session session) {
 			// TODO Auto-generated method stub
 			return null;
 		}
-
-
-
 
 		@Override
 		public Index getUniqueIndex() {
@@ -262,17 +242,11 @@ public class TestXLSTableEngine implements TableEngine{
 			return null;
 		}
 
-
-
-
 		@Override
 		public ArrayList<Index> getIndexes() {
 			// TODO Auto-generated method stub
 			return null;
 		}
-
-
-
 
 		@Override
 		public boolean isLockedExclusively() {
@@ -292,17 +266,11 @@ public class TestXLSTableEngine implements TableEngine{
 			return false;
 		}
 
-
-
-
 		@Override
 		public boolean canGetRowCount() {
 			// TODO Auto-generated method stub
 			return false;
 		}
-
-
-
 
 		@Override
 		public boolean canDrop() {
@@ -310,17 +278,11 @@ public class TestXLSTableEngine implements TableEngine{
 			return false;
 		}
 
-
-
-
 		@Override
 		public long getRowCount(Session session) {
 			// TODO Auto-generated method stub
 			return 0;
 		}
-
-
-
 
 		@Override
 		public long getRowCountApproximation() {
@@ -328,31 +290,34 @@ public class TestXLSTableEngine implements TableEngine{
 			return 0;
 		}
 
-
-
-
 		@Override
 		public long getDiskSpaceUsed() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
-
-
-
 		@Override
 		public void checkRename() {
 			// TODO Auto-generated method stub
 
 		}
-
-
 	}
 
 	@Override
 	public Table createTable(CreateTableData data) {
+		
+		System.out.println("CreateTableData Contents");
+		System.out.println("CTD id " + data.id);
+		System.out.println("CTD tableEngine " + data.tableEngine);
+		System.out.println("CTD table Name " + data.tableName);
+		System.out.println("CTD Columns " + data.columns.toString());
+		System.out.println("CTD temp " + data.temporary);
+		System.out.println("CTD schema " + data.schema);
+
+		
+		
+		
+		
 		return new TestXLSTable(data);
 	}
-
-
 }
