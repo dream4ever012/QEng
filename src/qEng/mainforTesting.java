@@ -36,15 +36,15 @@ public class mainforTesting {
 	
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
 	private static final String CCTableNameTC1 = "\"codeclassTC1.codeclass\"";
+	//private static final String CCTableNameTC2 = "\"codeclassTC2.codeclass\"";
 	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
+	
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
 	//TODO: create table link object interface, to allow sentinal connections to be held for linked tables to speed up performance
 	public static void main(String[] args) 
 	{
-		//Demo
-
 		//creates an .xls file through the JDBC driver. I'm just showing off the full SQL support for files.
 		//createReqSheet();
 		//createCCSheet();
@@ -57,7 +57,9 @@ public class mainforTesting {
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1);
+		// myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC2);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
+		
 
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
@@ -68,167 +70,57 @@ public class mainforTesting {
 		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL1);
 		
+		/* MUST RUN
+		 * create In-memory table
+		 */
+		//createTablesInMemory(myDB);
+		// TO-DO: probably drop tables?
+		/*
+		 * create In-memory table
+		 */
 		
 		//Retriveing an xml representation of the .csv generated table
 		String SQLString = "SELECT * FROM " + TMTableName;
 		File ArbFile = new File("./results/Arbfile.xml");
-
 		myDB.QueryToXML(SQLString, ArbFile);
 
-		//Retrieving an xml representation of the tracematrix joined with the requirements table
-		File SimpleJoin = new File("./results/REQandTM.xml");
-
-		SQLString = "SELECT " + TMTableName + ".ClassName, " + REQTableName + ".* " + 
-				"FROM " + TMTableName + " " + 
-				"INNER JOIN " + REQTableName + " " +
-				"ON "+ TMTableName + ".ID = "+ REQTableName + ".ID;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin);
-
-		//Retrieving an xml representation of the tracematrix joined with the codeclass table
-		File SimpleJoin2 = new File("./results/CCandTM.xml");
-
-		SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
-				"FROM " + CCTableName + " " +
-				"INNER JOIN " + TMTableName + " " +
-				"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin2);
-
-		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
-		SQLString = "SELECT " + REQTableName + ".*, " + CCTableName + ".*" + " " +
-				"FROM " + REQTableName + " " +
-				"INNER JOIN " + TMTableName + " " +
-				"ON " + TMTableName + ".ID = " + REQTableName + ".ID" + " " +
-				"INNER JOIN " + CCTableName + " " +
-				"ON " + CCTableName + ".ClassName = " + TMTableName + ".ClassName;";
-
-		File TripleJoin = new File("./results/TripleJoin.xml");
-
-		myDB.QueryToXML(SQLString, TripleJoin);
-
 		//The following is going to be the execution of the test queries provided to me by Caleb
-/*
-		File TQ1 = new File ("./results/TQ1.xml");
-
-		SQLString = "SELECT ID as RequirementID " +
-				"FROM " + REQTableName + " " +
-				"WHERE CATEGORY='Basal flow rate' OR CATEGORY='Sensors';";
-
-		myDB.QueryToXML(SQLString,TQ1);
-
-		File TQ2 = new File ("./results/TQ2.xml");
-
-		SQLString = "SELECT ClassName " +
-				"FROM " + CCTableName + " " +
-				"WHERE Version = 'V3.1';";
-
-		myDB.QueryToXML(SQLString, TQ2);
-
-		File TQ3 = new File ("./results/TQ3.xml");
-
-		SQLString = "SELECT ID " +
-				"FROM " + REQTableName + " " +
-				"WHERE DateCreated >= '12-15-15' AND DateCreated < '12-31-16';"; 
-
-		myDB.QueryToXML(SQLString, TQ3);
-
-		File TQ4 = new File ("./results/TQ4.xml");
-
-		SQLString = "SELECT ID as RequirementID " +
-				"FROM " + REQTableName + " " +
-				"WHERE Type = 'Functional';";
-
-		myDB.QueryToXML(SQLString, TQ4);
-
-		File TQ5 = new File ("./results/TQ5.xml");
-
-		SQLString = "SELECT ID as RequirementID " +
-				"From " + REQTableName + " " +
-				"WHERE Type = 'Functional';";
-		measureCostToRS(myDB, SQLString, TQ5);
-*/
-
-
-/*	
-		File TQ77 = new File("./results/TQ77.xml");	
-		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableNameTC1 + ".* " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableNameTC1 + " " +
-				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID " +
-				"INNER JOIN " + CCTableNameTC1 + " " +
-				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		// micro tunning of join operation?-comparison w/ TQ66
 		
-		measureCostToRS(myDB, SQLString, TQ77);
-		
-		File TQ8 = new File("./results/TQ8.xml");	
-		ArbSQL = "DROP TABLE TQ77pt1 IF EXISTS; Create table TQ77pt1 AS Select + " + 
-				REQTableNameTC1 + ".*" +
-				"FROM " + REQTableNameTC1 + 
-				"INNER JOIN " + TMTableNameTC1 + " " + 
-				"ON " + TMTableNameTC1 + ".id= " + REQTableNameTC1 + ".id;";
-		measureCostArbitrary(myDB, ArbSQL, TQ8);
-		
-		// to check if the table exist
-		File TQ9 = new File("./results/TQ9.xml");	
-		ArbSQL = "SELECT * FROM " + TMTableNameTC1 + ";";
-		
-		measureCostArbitrary(myDB, ArbSQL, TQ9);
-*/
-/*		
-		// create TMTC1 in memory
-		File TQ10 = new File("./results/TQ10.xml");
-		ArbSQL = "DROP TABLE TMTableNameTC1 IF EXISTS; Create table TMTableNameTC1 AS Select + " + 
-				TMTableNameTC1 + ".*" +
-				"FROM " + TMTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ10);
-		
-		// create ReqTC1 in memory
-		File TQ11 = new File("./results/TQ11.xml");
-		ArbSQL = "DROP TABLE REQTableNameTC1 IF EXISTS; Create table REQTableNameTC1 AS Select + " + 
-				REQTableNameTC1 + ".*" +
-				"FROM " + REQTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ11);
-		
-		// create CCTC1 in memory
-		File TQ12 = new File("./results/TQ12.xml");
-		ArbSQL = "DROP TABLE CCTableNameTC1 IF EXISTS; Create table CCTableNameTC1 AS Select + " + 
-				CCTableNameTC1 + ".*" +
-				"FROM " + CCTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ12);
 
-		// performance comparison between excel vs. in-memory table
-		File TQ6 = new File("./results/TQ6.xml");
-		SQLString = "SELECT COUNT(*) " +
+
+		File TQ7 = new File("./results/TQ7.xml");
+		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
 				"FROM " + REQTableNameTC1 + " " +
 				"INNER JOIN " + TMTableNameTC1 + " " +
 				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
-		measureCostToRS(myDB, SQLString, TQ6);
-*/		
-/*
-		File TQ66 = new File("./results/TQ66.xml");
-		SQLString = "SELECT COUNT(*) " +
-				"FROM REQTableNameTC1 " +
-				"INNER JOIN TMTableNameTC1 " +
-				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
-		measureCostToRS(myDB, SQLString, TQ66);
-*/		
+		//measureCostToXml(myDB, SQLString, TQ7);
+		measureCostToRS(myDB, SQLString, TQ7);
 		
-		// create CCTableNameTC1 in memory
-		File TQ13 = new File("./results/TQ13.xml");	
-		ArbSQL = "DROP TABLE CCTableNameTC1 IF EXISTS; Create table CCTableNameTC1 AS Select + " + 
-				CCTableNameTC1 + ".*" +
-				"FROM " + CCTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ13);
 
-		// micro tunning of join operation?-comparison w/ TQ66
+		File TQ66 = new File("./results/TQ66.xml");
+		SQLString = "EXPLAIN SELECT COUNT(*) " +
+				"FROM REQTableNameTC11 " +
+				"INNER JOIN TMTableNameTC11 " +
+				"ON TMTableNameTC11.ID= " + "REQTableNameTC11.ID;";
+		measureCostToRS(myDB, SQLString, TQ66);
+		myDB.QueryToXML(SQLString, TQ66);
+
+/*
+*/
+/*
+ * 
 		File TQ67 = new File("./results/TQ67.xml");
-		SQLString = "SELECT COUNT(*) " +
+		SQLString = "EXPLAIN SELECT COUNT(*) " +
 				"FROM  TMTableNameTC1 " +
 				"INNER JOIN REQTableNameTC1 " +
 				"ON TMTableNameTC1.ID= " + "REQTableNameTC1.ID;";
 		measureCostToRS(myDB, SQLString, TQ67);
-
+		myDB.QueryToXML(SQLString, TQ67);
+		
+		
+		
+*/
 		
 		
 		// run query with the memory
@@ -239,7 +131,35 @@ public class mainforTesting {
 		
 //		xlSQLTest();
 	}
+	
+	/*
+	 *  creates in-memory tables
+	 */
+	private static void createTablesInMemory(InternalDB myDB){
+		String ArbSQL = null; 
 
+		// create TMTC1 in memory
+		File TQ10 = new File("./results/TQ10.xml");
+		ArbSQL = "DROP TABLE TMTableNameTC11 IF EXISTS; Create table TMTableNameTC11 AS Select + " + 
+				TMTableNameTC1 + ".*" +
+				"FROM " + TMTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ10);
+			
+		// create ReqTC1 in memory
+		File TQ11 = new File("./results/TQ11.xml");
+		ArbSQL = "DROP TABLE REQTableNameTC11 IF EXISTS; Create table REQTableNameTC11 AS Select + " + 
+				REQTableNameTC1 + ".*" +
+				"FROM " + REQTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ11);
+				
+		// create CCTableNameTC1 in memory
+		File TQ12 = new File("./results/TQ12.xml");
+		ArbSQL = "DROP TABLE CCTableNameTC11 IF EXISTS; Create table CCTableNameTC11 AS Select + " + 
+				CCTableNameTC1 + ".*" +
+				"FROM " + CCTableNameTC1 + ";";
+		measureCostArbitrary(myDB, ArbSQL, TQ12);
+
+	}
 	// compare the cost by millisecond with QueryToXML
 	private static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
 	{	
@@ -419,6 +339,40 @@ public class mainforTesting {
 	        }
 	}
 */
+/*  Robert's initial test cases for quality check
+		//Retrieving an xml representation of the tracematrix joined with the requirements table
+		File SimpleJoin = new File("./results/REQandTM.xml");
+
+		SQLString = "SELECT " + TMTableName + ".ClassName, " + REQTableName + ".* " + 
+				"FROM " + TMTableName + " " + 
+				"INNER JOIN " + REQTableName + " " +
+				"ON "+ TMTableName + ".ID = "+ REQTableName + ".ID;";
+
+		myDB.QueryToXML(SQLString, SimpleJoin);
+
+		//Retrieving an xml representation of the tracematrix joined with the codeclass table
+		File SimpleJoin2 = new File("./results/CCandTM.xml");
+
+		SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
+				"FROM " + CCTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
+
+		myDB.QueryToXML(SQLString, SimpleJoin2);
+
+		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
+		SQLString = "SELECT " + REQTableName + ".*, " + CCTableName + ".*" + " " +
+				"FROM " + REQTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ID = " + REQTableName + ".ID" + " " +
+				"INNER JOIN " + CCTableName + " " +
+				"ON " + CCTableName + ".ClassName = " + TMTableName + ".ClassName;";
+
+		File TripleJoin = new File("./results/TripleJoin.xml");
+
+		myDB.QueryToXML(SQLString, TripleJoin);
+*/
+
 	
 	private static void xlSQLTest() {
 
