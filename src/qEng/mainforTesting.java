@@ -68,6 +68,7 @@ public class mainforTesting {
 		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL1);
 		
+		
 		//Retriveing an xml representation of the .csv generated table
 		String SQLString = "SELECT * FROM " + TMTableName;
 		File ArbFile = new File("./results/Arbfile.xml");
@@ -176,7 +177,7 @@ public class mainforTesting {
 		
 		// to check if the table exist
 		File TQ9 = new File("./results/TQ9.xml");	
-		ArbSQL = "SELECT * FROM TQ77pt1;";
+		ArbSQL = "SELECT * FROM " + TMTableNameTC1 + ";";
 		/*+ 
 				REQTableNameTC1 + ".*" +
 				"FROM " + REQTableNameTC1 + 
@@ -185,6 +186,8 @@ public class mainforTesting {
 				*/
 		measureCostArbitrary(myDB, ArbSQL, TQ9);
 		
+		//String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		//myDB.arbitrarySQL(ArbSQL1);
 		
 		
 //		xlSQLTest();
