@@ -94,35 +94,59 @@ public class mainforTesting {
 		
 		String SQLString = null;
 
+
+
+		
+		// JOIN W/ predicate (selection)
+		File TQ62 = new File("./results/TQ62.xml");
+		SQLString = "DROP TABLE TQ62 IF EXISTS; CREATE TEMPORARY TABLE TQ62 AS " +
+				"SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		measureCostArbitrary(myDB, SQLString, TQ62);
+		
+		// selection first scheme   
+		File TQ64 = new File("./results/TQ64.xml");
+		SQLString = "SELECT * " +
+				"FROM " + TMTableName5k + " " +
+				"INNER JOIN TQ62 " +
+				"ON " + TMTableName5k + ".ID= " + "TQ62.ID;";
+		measureCostArbitrary(myDB, SQLString, TQ64);
+
+/*
+		//  
+		File TQ63 = new File("./results/TQ63.xml");
+		SQLString = "SELECT * " +
+				"FROM TQ62 " + 
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + "TQ62.ID;";
+		measureCostArbitrary(myDB, SQLString, TQ63);
+		
+		
+		File TQ62 = new File("./results/TQ62.xml");
+		SQLString = "DROP TABLE TQ62 IF EXISTS; CREATE TEMPORARY TABLE TQ62 AS " +
+				"SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		measureCostArbitrary(myDB, SQLString, TQ62);
+		
+		
+		File TQ61 = new File("./results/TQ61.xml");
+		SQLString = " SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		//myDB.QueryToXML(SQLString, TQ61);
+		measureCostToRS(myDB, SQLString, TQ61);
+		
 		File TQ6 = new File("./results/TQ6.xml");
 		SQLString = "SELECT * " +
 				"FROM " + REQTableNameTC1 + " " +
 				"INNER JOIN " + TMTableName5k + " " +
 				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		measureCostToRS(myDB, SQLString, TQ6);
-		
-		File TQ61 = new File("./results/TQ61.xml");
-		SQLString = "EXPLAIN SELECT * " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID " +
-				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
-		myDB.QueryToXML(SQLString, TQ61);
-		measureCostToRS(myDB, SQLString, TQ61);
-
-		File TQ62 = new File("./results/TQ62.xml");
-		SQLString = "EXPLAIN SELECT * " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID " +
-				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
-		myDB.QueryToXML(SQLString, TQ62);
-		measureCostToRS(myDB, SQLString, TQ62);
-		
-		
-
-/*
-		
+			
 		File TQ9 = new File("./results/TQ9.xml");
 		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
 				"FROM " + CCTableNameTC1 + " " +
