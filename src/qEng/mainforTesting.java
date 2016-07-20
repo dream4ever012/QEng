@@ -36,9 +36,10 @@ public class mainforTesting {
 	
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
 	private static final String CCTableNameTC1 = "\"codeclassTC1.codeclass\"";
+	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
 	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
 	private static final String TMTableNameTC2 = "CC_REQ_TMTC2";
-	
+	private static final String TMTableName5k = "CC_REQ_TM5k";
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
@@ -57,7 +58,7 @@ public class mainforTesting {
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC1);
-		// myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC2);
+		//myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName5k);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
 		
 
@@ -69,10 +70,10 @@ public class mainforTesting {
 		
 		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC1.csv');";
 		myDB.arbitrarySQL(ArbSQL1);
-		
-		String ArbSQL2 = "DROP TABLE "+ TMTableNameTC2 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC2 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC2.csv');";
-		myDB.arbitrarySQL(ArbSQL2);
-*/	
+			
+		String ArbSQL3 = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
+		myDB.arbitrarySQL(ArbSQL3);
+*/
 		/* MUST RUN
 		 * create In-memory table
 		 */
@@ -93,6 +94,34 @@ public class mainforTesting {
 		
 		String SQLString = null;
 
+		File TQ6 = new File("./results/TQ6.xml");
+		SQLString = "SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		measureCostToRS(myDB, SQLString, TQ6);
+		
+		File TQ61 = new File("./results/TQ61.xml");
+		SQLString = "EXPLAIN SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		myDB.QueryToXML(SQLString, TQ61);
+		measureCostToRS(myDB, SQLString, TQ61);
+
+		File TQ62 = new File("./results/TQ62.xml");
+		SQLString = "EXPLAIN SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		myDB.QueryToXML(SQLString, TQ62);
+		measureCostToRS(myDB, SQLString, TQ62);
+		
+		
+
+/*
 		
 		File TQ9 = new File("./results/TQ9.xml");
 		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
@@ -102,7 +131,37 @@ public class mainforTesting {
 		//measureCostToXml(myDB, SQLString, TQ9);
 		measureCostToRS(myDB, SQLString, TQ9);
 		
+
+/*		
+ * 		
+
 		
+		File TQ7 = new File("./results/TQ7.xml");
+		SQLString = "SELECT COUNT(*) " +
+				"FROM " + TMTableName5k + " " +
+				"INNER JOIN " + REQTableNameTC1 + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID" +
+				"WHEN " + REQTableNameTC1 +".TYPE= 'Functional';";
+		measureCostToRS(myDB, SQLString, TQ7);	
+		 		
+ 		File TQ9 = new File("./results/TQ9.xml");
+		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
+				"FROM " + CCTableNameTC1 + " " +
+				"INNER JOIN " + TMTableNameTC2 + " " +
+				"ON " + TMTableNameTC2 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		//measureCostToXml(myDB, SQLString, TQ9);
+		measureCostToRS(myDB, SQLString, TQ9);
+	
+		File TQ10 = new File("./results/TQ10.xml");
+		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
+				"FROM " + TMTableNameTC1 + " " +
+				"INNER JOIN " + CCTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		//measureCostToXml(myDB, SQLString, TQ10);
+		measureCostToRS(myDB, SQLString, TQ10);
+
+ 
+*/
 
 /*
 		File TQ10 = new File("./results/TQ10.xml");
