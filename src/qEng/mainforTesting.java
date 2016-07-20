@@ -89,22 +89,23 @@ public class mainforTesting {
 		
 
 
-		File TQ7 = new File("./results/TQ7.xml");
-		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableNameTC1 + " " +
-				"ON " + TMTableNameTC1 + ".ID= " + REQTableNameTC1 + ".ID;";
-		//measureCostToXml(myDB, SQLString, TQ7);
-		measureCostToRS(myDB, SQLString, TQ7);
 		
-
-		File TQ66 = new File("./results/TQ66.xml");
-		SQLString = "EXPLAIN SELECT COUNT(*) " +
-				"FROM REQTableNameTC11 " +
-				"INNER JOIN TMTableNameTC11 " +
-				"ON TMTableNameTC11.ID= " + "REQTableNameTC11.ID;";
-		measureCostToRS(myDB, SQLString, TQ66);
-		myDB.QueryToXML(SQLString, TQ66);
+		File TQ9 = new File("./results/TQ9.xml");
+		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
+				"FROM " + CCTableNameTC1 + " " +
+				"INNER JOIN " + TMTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		//measureCostToXml(myDB, SQLString, TQ9);
+		measureCostToRS(myDB, SQLString, TQ9);
+		
+		File TQ10 = new File("./results/TQ10.xml");
+		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
+				"FROM " + TMTableNameTC1 + " " +
+				"INNER JOIN " + CCTableNameTC1 + " " +
+				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+		//measureCostToXml(myDB, SQLString, TQ10);
+		measureCostToRS(myDB, SQLString, TQ10);
+		
 
 /*
 */
