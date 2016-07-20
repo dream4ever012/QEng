@@ -30,14 +30,14 @@ public class mainforTesting {
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
 
-	private static final String REQTableName = "\"Requirements.ReqSheet\"";
-	private static final String CCTableName = "\"codeclasses.codeclass\"";	
+//	private static final String REQTableName = "\"Requirements.ReqSheet\"";
+//	private static final String CCTableName = "\"codeclasses.codeclass\"";	
 	private static final String TMTableName = "CC_REQ_TM";
 	
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
 	private static final String CCTableNameTC1 = "\"codeclassTC1.codeclass\"";
-	//private static final String CCTableNameTC2 = "\"codeclassTC2.codeclass\"";
 	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
+	private static final String TMTableNameTC2 = "CC_REQ_TMTC2";
 	
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
@@ -67,8 +67,11 @@ public class mainforTesting {
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL);
 		
-		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC1.csv');";
 		myDB.arbitrarySQL(ArbSQL1);
+		
+		String ArbSQL2 = "DROP TABLE "+ TMTableNameTC2 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC2 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC2.csv');";
+		myDB.arbitrarySQL(ArbSQL2);
 		
 		/* MUST RUN
 		 * create In-memory table
