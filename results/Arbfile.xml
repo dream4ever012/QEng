@@ -41,7 +41,7 @@
       <nullable>1</nullable>
       <signed>true</signed>
       <searchable>true</searchable>
-      <column-display-size>15</column-display-size>
+      <column-display-size>2147483647</column-display-size>
       <column-label>CLASSNAME</column-label>
       <column-name>CLASSNAME</column-name>
       <schema-name>PUBLIC</schema-name>
@@ -60,7 +60,7 @@
       <nullable>1</nullable>
       <signed>true</signed>
       <searchable>true</searchable>
-      <column-display-size>15</column-display-size>
+      <column-display-size>2147483647</column-display-size>
       <column-label>ID</column-label>
       <column-name>ID</column-name>
       <schema-name>PUBLIC</schema-name>

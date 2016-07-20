@@ -63,7 +63,7 @@ public class mainforTesting {
 
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
-
+/*
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL);
 		
@@ -72,7 +72,7 @@ public class mainforTesting {
 		
 		String ArbSQL2 = "DROP TABLE "+ TMTableNameTC2 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC2 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TMTC2.csv');";
 		myDB.arbitrarySQL(ArbSQL2);
-		
+*/	
 		/* MUST RUN
 		 * create In-memory table
 		 */
@@ -101,6 +101,9 @@ public class mainforTesting {
 		//measureCostToXml(myDB, SQLString, TQ9);
 		measureCostToRS(myDB, SQLString, TQ9);
 		
+		
+
+/*
 		File TQ10 = new File("./results/TQ10.xml");
 		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
 				"FROM " + TMTableNameTC1 + " " +
@@ -108,9 +111,8 @@ public class mainforTesting {
 				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
 		//measureCostToXml(myDB, SQLString, TQ10);
 		measureCostToRS(myDB, SQLString, TQ10);
-		
 
-/*
+ 
 */
 /*
  * 
