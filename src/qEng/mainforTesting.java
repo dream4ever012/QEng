@@ -83,21 +83,22 @@ public class mainforTesting {
 		 */
 		
 		//Retriveing an xml representation of the .csv generated table
+/*
 		String SQLString = "SELECT * FROM " + TMTableName;
 		File ArbFile = new File("./results/Arbfile.xml");
 		myDB.QueryToXML(SQLString, ArbFile);
-
+*/
 		//The following is going to be the execution of the test queries provided to me by Caleb
 		// micro tunning of join operation?-comparison w/ TQ66
 		
-
+		String SQLString = null;
 
 		
 		File TQ9 = new File("./results/TQ9.xml");
 		SQLString = "SELECT * " +//"SELECT COUNT(*) " +
 				"FROM " + CCTableNameTC1 + " " +
-				"INNER JOIN " + TMTableNameTC1 + " " +
-				"ON " + TMTableNameTC1 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
+				"INNER JOIN " + TMTableNameTC2 + " " +
+				"ON " + TMTableNameTC2 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
 		//measureCostToXml(myDB, SQLString, TQ9);
 		measureCostToRS(myDB, SQLString, TQ9);
 		
