@@ -92,8 +92,50 @@ public class mainforTesting {
 		//The following is going to be the execution of the test queries provided to me by Caleb
 		String SQLString = null;
 		
+		// with predicate reduced rows
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				//"INNER JOIN " + TMTableName5k + " " + 
+				//"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
+		
+		// w/ reduced rows only ==> reducing column ==> both
+		File TQ122 = new File("./results/TQ122.xml");
+		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
+				"SELECT * " +
+				"FROM TQ121" + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";// +
+				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ122);
+		
+		
+/*
+		File TQ12 = new File("./results/TQ12.xml");
+		SQLString =  //"DROP TABLE TQ12 IF EXISTS; CREATE TABLE TQ12 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ12);
+		myDB.QueryToXML(SQLString, TQ12);
+		
+		File TQ112 = new File("./results/TQ112.xml");
+		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ112);
+		myDB.QueryToXML(SQLString, TQ112);
+
+		
 		File TQ11 = new File("./results/TQ11.xml");
-		SQLString = "EXPLAIN ANALYZE SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
 				"FROM " + REQTableNameTC1 + " " +
 				"INNER JOIN " + TMTableName5k + " " +
 				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
@@ -101,25 +143,7 @@ public class mainforTesting {
 				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
 		measureCostArbitrary(myDB, SQLString, TQ11);
 		myDB.QueryToXML(SQLString, TQ11);
-
-		File TQ112 = new File("./results/TQ112.xml");
-		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
-				"EXPLAIN ANALYZE SELECT * " +
-				"FROM " + CCTableName5k + " " +
-				"INNER JOIN " + TMTableName5k + " " + 
-				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName;";
-		measureCostArbitrary(myDB, SQLString, TQ112);
-		myDB.QueryToXML(SQLString, TQ112);
-
-		File TQ111 = new File("./results/TQ111.xml");
-		SQLString = //"DROP TABLE TQ111 IF EXISTS; CREATE TABLE TQ111 AS " + //TEMPORARY 
-				"EXPLAIN ANALYZE SELECT * " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " + 
-				"ON " + REQTableNameTC1 + ".ID = " + TMTableName5k + ".ID;";
-		measureCostArbitrary(myDB, SQLString, TQ111);		
-		myDB.QueryToXML(SQLString, TQ111);
-		
+*/	
 /*
 		
 

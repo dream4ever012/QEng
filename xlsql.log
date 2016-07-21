@@ -814,3 +814,95 @@ Jul 20, 2016 7:02:54 PM com.nilostep.xlsql.database.xlInstance <init>
 INFO: Instance created with engine hsqldb
 Jul 20, 2016 7:02:59 PM com.nilostep.xlsql.jdbc.xlDriver connect
 INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:33:34 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:33:39 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:34:24 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:34:29 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:34:55 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:35:00 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:35:49 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:35:54 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:36:15 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:36:20 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:44:13 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:44:18 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:44:37 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:44:42 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:47:09 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:47:14 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:47:58 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:48:03 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:48:38 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:48:43 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:49:01 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:49:07 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:49:28 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:49:34 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:51:10 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:51:15 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:52:54 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:52:59 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:53:18 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:53:23 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:53:40 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:53:45 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 8:58:43 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 8:58:48 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:00:01 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:00:06 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:01:55 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:02:00 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:02:48 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:02:53 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:03:08 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:03:13 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:03:32 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:03:37 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 20, 2016 9:04:02 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 20, 2016 9:04:07 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
