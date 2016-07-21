@@ -92,14 +92,50 @@ public class mainforTesting {
 		//The following is going to be the execution of the test queries provided to me by Caleb
 		String SQLString = null;
 
+		// w/ reduced rows only ==> reducing column ==> both
+		File TQ122 = new File("./results/TQ122.xml");
+		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
+				"SELECT * " +
+				"FROM TQ121" + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ122);
+
+
 /*
 		// DROP Table
 		File TQ999 = new File("./results/TQ999.xml");
 		SQLString =  "DROP TABLE TQ121 IF EXISTS;";
 		measureCostArbitrary(myDB, SQLString, TQ999);
 */	
+
 		
-				
+/*
+		// with predicate reduced rows
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
+
+		
+		File TQ62 = new File("./results/TQ62.xml");
+		SQLString = "DROP TABLE TQ62 IF EXISTS; CREATE TEMPORARY TABLE TQ62 AS " +
+				"SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
+		measureCostArbitrary(myDB, SQLString, TQ62);
+
+		File TQ64 = new File("./results/TQ64.xml");
+		SQLString = "SELECT * " +
+			"FROM TQ62" + " " +
+			"INNER JOIN "  + TMTableName5k + " " +
+			"ON " + TMTableName5k + ".ID= " + "TQ62.ID;";
+		measureCostArbitrary(myDB, SQLString, TQ64);
+		
+
+
 		File TQ12 = new File("./results/TQ12.xml");
 		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
 				"SELECT * " +
@@ -109,21 +145,6 @@ public class mainforTesting {
 				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
 		measureCostArbitrary(myDB, SQLString, TQ12);
 		myDB.QueryToXML(SQLString, TQ12);
-
-
-
-
-		
-/*
-		// w/ reduced rows only ==> reducing column ==> both
-		File TQ122 = new File("./results/TQ122.xml");
-		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
-				"SELECT * " +
-				"FROM TQ121" + " " +
-				"INNER JOIN " + TMTableName5k + " " + 
-				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";// +
-				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		measureCostArbitrary(myDB, SQLString, TQ122);
 
 		// w/ reduced rows only ==> reducing column ==> both
 		File TQ125 = new File("./results/TQ125.xml");
