@@ -98,6 +98,7 @@ public class mainforTesting {
 		SQLString =  "DROP TABLE TQ121 IF EXISTS;";
 		measureCostArbitrary(myDB, SQLString, TQ999);
 */	
+		
 		// w/ reduced rows only ==> reducing column ==> both
 		File TQ122 = new File("./results/TQ122.xml");
 		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
@@ -107,10 +108,35 @@ public class mainforTesting {
 				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";// +
 				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
 		measureCostArbitrary(myDB, SQLString, TQ122);
+				
+
+
+
 
 		
-		
 /*
+		File TQ12 = new File("./results/TQ12.xml");
+		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ12);
+		myDB.QueryToXML(SQLString, TQ12);
+		
+		// w/ reduced rows only ==> reducing column ==> both
+		File TQ125 = new File("./results/TQ125.xml");
+		SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
+				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ125);
+		// spits out error: duplicate column
+
+		
 		File TQ13 = new File("./results/TQ13.xml");
 		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
 				"SELECT " + CCTableName5k + ".ClassName, CreatedBy " +
