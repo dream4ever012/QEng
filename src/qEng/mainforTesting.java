@@ -90,14 +90,63 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, ArbFile);
 */
 		//The following is going to be the execution of the test queries provided to me by Caleb
-		// micro tunning of join operation?-comparison w/ TQ66
-		
 		String SQLString = null;
-
-
-
 		
-		// JOIN W/ predicate (selection)
+		File TQ11 = new File("./results/TQ11.xml");
+		SQLString = "EXPLAIN ANALYZE SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + CCTableName5k + " " +
+				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ11);
+		myDB.QueryToXML(SQLString, TQ11);
+
+		File TQ112 = new File("./results/TQ112.xml");
+		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
+				"EXPLAIN ANALYZE SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k + ".ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ112);
+		myDB.QueryToXML(SQLString, TQ112);
+
+		File TQ111 = new File("./results/TQ111.xml");
+		SQLString = //"DROP TABLE TQ111 IF EXISTS; CREATE TABLE TQ111 AS " + //TEMPORARY 
+				"EXPLAIN ANALYZE SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + REQTableNameTC1 + ".ID = " + TMTableName5k + ".ID;";
+		measureCostArbitrary(myDB, SQLString, TQ111);		
+		myDB.QueryToXML(SQLString, TQ111);
+		
+/*
+		
+
+		// triple join1
+		
+		// triple join1: switched join order
+		File TQ12 = new File("./results/TQ12.xml");
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + CCTableName5k + " " +
+				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID;";		
+		measureCostArbitrary(myDB, SQLString, TQ12);
+		
+		// triple join1
+		File TQ11 = new File("./results/TQ11.xml");
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + CCTableName5k + " " +
+				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ11);
+		
+		//  
+  				// JOIN W/ predicate (selection)
 		File TQ62 = new File("./results/TQ62.xml");
 		SQLString = "DROP TABLE TQ62 IF EXISTS; CREATE TEMPORARY TABLE TQ62 AS " +
 				"SELECT * " +
@@ -105,16 +154,20 @@ public class mainforTesting {
 				"WHERE " + REQTableNameTC1 + ".TYPE = 'Functional';";
 		measureCostArbitrary(myDB, SQLString, TQ62);
 		
-		// selection first scheme   
+		// selection first scheme  
+		File TQ65 = new File("./results/TQ64.xml");
+		SQLString = "SELECT * " +
+				"FROM " + TMTableName5k2 + " " +
+				"INNER JOIN TQ62 " +
+				"ON " + TMTableName5k2 + ".ID= " + "TQ62.ID;";
+		measureCostArbitrary(myDB, SQLString, TQ65);
 		File TQ64 = new File("./results/TQ64.xml");
 		SQLString = "SELECT * " +
 				"FROM " + TMTableName5k + " " +
 				"INNER JOIN TQ62 " +
 				"ON " + TMTableName5k + ".ID= " + "TQ62.ID;";
 		measureCostArbitrary(myDB, SQLString, TQ64);
-
-/*
-		//  
+		
 		File TQ63 = new File("./results/TQ63.xml");
 		SQLString = "SELECT * " +
 				"FROM TQ62 " + 
@@ -154,8 +207,7 @@ public class mainforTesting {
 				"ON " + TMTableNameTC2 + ".ClassName= " + CCTableNameTC1 + ".ClassName;";
 		//measureCostToXml(myDB, SQLString, TQ9);
 		measureCostToRS(myDB, SQLString, TQ9);
-		
-
+*/
 /*		
  * 		
 
