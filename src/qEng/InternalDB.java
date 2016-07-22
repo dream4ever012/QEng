@@ -44,5 +44,6 @@ public interface InternalDB {
 	public void PopulateLocalTable();
 	public void CreateLocalTable();
 	void arbitrarySQL(String SQL);
+
 	
 }

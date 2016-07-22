@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListIterator;
@@ -92,6 +93,22 @@ public class mainforTesting {
 		//The following is going to be the execution of the test queries provided to me by Caleb
 		String SQLString = null;
 
+		// with predicate reduced rows
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
+		
+		File TQ1221 = new File("./results/TQ1221.xml");
+		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
+				"SELECT * " +
+				"FROM TQ121;";
+		measureCostArbitrary(myDB, SQLString, TQ1221);
+		getMetaData(myDB, SQLString, TQ1221);
+
+		
 		// w/ reduced rows only ==> reducing column ==> both
 		File TQ122 = new File("./results/TQ122.xml");
 		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
@@ -100,7 +117,7 @@ public class mainforTesting {
 				"INNER JOIN " + TMTableName5k + " " + 
 				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";
 		measureCostArbitrary(myDB, SQLString, TQ122);
-
+		getMetaData(myDB, SQLString, TQ122);
 
 /*
 		// DROP Table
@@ -111,13 +128,7 @@ public class mainforTesting {
 
 		
 /*
-		// with predicate reduced rows
-		File TQ121 = new File("./results/TQ121.xml");
-		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
-				"SELECT * " +
-				"FROM " + CCTableName5k + " " +
-				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		measureCostArbitrary(myDB, SQLString, TQ121);
+
 
 		
 		File TQ62 = new File("./results/TQ62.xml");
@@ -406,7 +417,8 @@ public class mainforTesting {
 				TMTableNameTC1 + ".*" +
 				"FROM " + TMTableNameTC1 + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ10);
-			
+		
+		
 		// create ReqTC1 in memory
 		File TQ11 = new File("./results/TQ11.xml");
 		ArbSQL = "DROP TABLE REQTableNameTC11 IF EXISTS; Create table REQTableNameTC11 AS Select + " + 
@@ -445,6 +457,27 @@ public class mainforTesting {
 		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
 		//RStoXLSWriter.RStoXLSWrite(rsRef,TQ);
 	}
+	
+	// compare the cost by millisecond with QueryToXML
+	private static void getMetaData(InternalDB myDB, String SQLString, File TQ)
+	{
+		ResultSet rs = null;
+		rs = myDB.QueryToRS(SQLString);
+		ResultSetMetaData md;
+		try {
+			md = rs.getMetaData();
+			int colCount = md.getColumnCount();
+			String colsSQL = "";
+			for(int i = 1; i <= colCount; i++){
+				colsSQL = colsSQL + "\""+ md.getColumnLabel(i) + i + "\" " + md.getColumnTypeName(i);
+				if(i < colCount){ colsSQL = colsSQL + ", ";}
+			}
+			System.out.println(colsSQL);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 	
 	private static void measureCostArbitrary(InternalDB myDB, String ArbSQL, File TQ)
 	{	
