@@ -5,13 +5,18 @@ import static org.junit.Assert.*;
 import java.io.File;
 import org.junit.Test;
 import qEng.InternalDB;
+import utils.*;
 
 public class InMemoryNY8Test {
+	
+	
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
 	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
 	private static final String TMTableName5k = "CC_REQ_TM5k";
+	private String SQLString;
+	InternalDB myDB;
 	
 	@Test
 	public void test() {
@@ -56,6 +61,8 @@ public class InMemoryNY8Test {
 		measureCostArbitrary(myDB, SQLString, TQ21);
 
 	}
+	
+	@Test
 	private static void createTablesInMemory(InternalDB myDB){
 		String ArbSQL = null; 
 
@@ -81,7 +88,7 @@ public class InMemoryNY8Test {
 				"FROM " + CCTableName5k + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ12);
 
-		
+	
 	}
 	
 
