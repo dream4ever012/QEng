@@ -270,7 +270,7 @@ public class InternalH2 implements InternalDB {
 		ResultSet rsRef = null;
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
-			Statement stmt = iconn.createStatement();
+			Statement stmt = iconn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
 			rsRef = stmt.executeQuery(SQLString);
 			//iconn.close();
