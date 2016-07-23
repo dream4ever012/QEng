@@ -153,12 +153,6 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 		measureCostArbitrary(myDB, SQLString, TQ999);
 */	
 
-<<<<<<< HEAD
-=======
-		
-		
-		
->>>>>>> origin/master
 //		xlSQLTest();
 	}
 	
