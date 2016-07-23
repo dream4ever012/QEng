@@ -92,7 +92,32 @@ public class mainforTesting {
 */
 		//The following is going to be the execution of the test queries provided to me by Caleb
 		String SQLString = null;
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
 
+		File TQ1211 = new File("./results/TQ1211.xml");
+		SQLString =  //"DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM TQ121;";
+		measureCostArbitrary(myDB, SQLString, TQ1211);
+		getMetaData(myDB, SQLString, TQ1211);
+
+/*
+// w/ reduced rows only ==> reducing column ==> both
+File TQ125 = new File("./results/TQ125.xml");
+SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
+		"SELECT * " +
+		"FROM " + CCTableName5k + " " +
+		"INNER JOIN " + TMTableName5k + " " + 
+		"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
+		//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+measureCostArbitrary(myDB, SQLString, TQ125);
+// spits out error: duplicate column
+*/
 		File TQ122 = new File("./results/TQ122.xml");
 		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
 				"SELECT * " +
@@ -108,10 +133,13 @@ public class mainforTesting {
 				"FROM TQ121;";
 		measureCostArbitrary(myDB, SQLString, TQ1221);
 		
+		
 		printScanCost(myDB, CCTableName5k);
 		printScanCost(myDB, "TQ121");
 		printRowCount(myDB, CCTableName5k);
 		int temp = rowCount(myDB, CCTableName5k);
+		
+		
 		System.out.println(temp);
 		// with predicate reduced rows
 
@@ -123,7 +151,6 @@ public class mainforTesting {
 */	
 
 		
-
 		
 		
 //		xlSQLTest();
@@ -471,12 +498,6 @@ public class mainforTesting {
 	        }
 	}
 	/*
-		File TQ121 = new File("./results/TQ121.xml");
-			SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
-					"SELECT * " +
-					"FROM " + CCTableName5k + " " +
-					"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-			measureCostArbitrary(myDB, SQLString, TQ121);
 		
 		
 		// w/ reduced rows only ==> reducing column ==> both
@@ -487,17 +508,6 @@ public class mainforTesting {
 				"INNER JOIN " + TMTableName5k + " " + 
 				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";
 		measureCostArbitrary(myDB, SQLString, TQ122);
-
-	// w/ reduced rows only ==> reducing column ==> both
-	File TQ125 = new File("./results/TQ125.xml");
-	SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
-			"SELECT * " +
-			"FROM " + CCTableName5k + " " +
-			"INNER JOIN " + TMTableName5k + " " + 
-			"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
-			//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-	measureCostArbitrary(myDB, SQLString, TQ125);
-	// spits out error: duplicate column
 	
 	File TQ62 = new File("./results/TQ62.xml");
 	SQLString = "DROP TABLE TQ62 IF EXISTS; CREATE TEMPORARY TABLE TQ62 AS " +
