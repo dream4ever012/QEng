@@ -81,80 +81,44 @@ public class mainforTesting {
 		/* MUST RUN
 		 * create In-memory table
 		 */
-		//createTablesInMemory(myDB);
+		// createTablesInMemory(myDB);
+		// dropTQTables(myDB,2000);
 		// TO-DO: probably drop tables?
 		/*
 		 * create In-memory table
 		 */
 		
-		//Retriveing an xml representation of the .csv generated table
-/*
-		String SQLString = "SELECT * FROM " + TMTableName;
-		File ArbFile = new File("./results/Arbfile.xml");
-		myDB.QueryToXML(SQLString, ArbFile);
-*/
-		//The following is going to be the execution of the test queries provided to me by Caleb
-		String SQLString = null;
-		File TQ121 = new File("./results/TQ121.xml");
-		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
-				"SELECT * " +
+		// TMTableNameT
+		// REQTableNameT
+		// CCTableNameT
+		File TQ16 = new File("./results/TQ16.xml");
+		String SQLString = "SELECT * " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		measureCostToRS(myDB, SQLString, TQ16);
+
+		File TQ17 = new File("./results/TQ17.xml");
+		SQLString = "SELECT * " +
+				"FROM REQTableNameT" + " " +
+				"INNER JOIN TMTableNameT" + " " +
+				"ON TMTableNameT" + ".ID= " + "REQTableNameT.ID;";
+		measureCostToRS(myDB, SQLString, TQ17);
+		
+		File TQ18 = new File("./results/TQ18.xml");
+		SQLString = "SELECT * " +
 				"FROM " + CCTableName5k + " " +
-				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		measureCostArbitrary(myDB, SQLString, TQ121);
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ClassName= " + CCTableName5k + ".ClassName;";
+		measureCostToRS(myDB, SQLString, TQ18);
 
-		File TQ1211 = new File("./results/TQ1211.xml");
-		SQLString =  //"DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
-				"SELECT * " +
-				"FROM TQ121;";
-		measureCostArbitrary(myDB, SQLString, TQ1211);
-		getMetaData(myDB, SQLString, TQ1211);
-
-/*
-// w/ reduced rows only ==> reducing column ==> both
-File TQ125 = new File("./results/TQ125.xml");
-SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
-		"SELECT * " +
-		"FROM " + CCTableName5k + " " +
-		"INNER JOIN " + TMTableName5k + " " + 
-		"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
-		//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-measureCostArbitrary(myDB, SQLString, TQ125);
-// spits out error: duplicate column
-*/
-		File TQ122 = new File("./results/TQ122.xml");
-		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
-				"SELECT * " +
-				"FROM TQ121" + " " +
-				"INNER JOIN " + TMTableName5k + " " + 
-				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";// +
-				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		measureCostArbitrary(myDB, SQLString, TQ122);
-
-		File TQ1221 = new File("./results/TQ1221.xml");
-		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
-				"SELECT COUNT(*) " +
-				"FROM TQ121;";
-		measureCostArbitrary(myDB, SQLString, TQ1221);
+		File TQ19 = new File("./results/TQ19.xml");
+		SQLString = "SELECT * " +
+				"FROM CCTableNameT" + " " +
+				"INNER JOIN TMTableNameT" + " " +
+				"ON TMTableNameT" + ".ClassName= " + "CCTableNameT.ClassName;";
+		measureCostToRS(myDB, SQLString, TQ19);
 		
-		
-		printScanCost(myDB, CCTableName5k);
-		printScanCost(myDB, "TQ121");
-		printRowCount(myDB, CCTableName5k);
-		int temp = rowCount(myDB, CCTableName5k);
-		
-		dropTQTables(myDB, 2000);
-
-		
-				
-		// with predicate reduced rows
-
-/*
-		// DROP Table
-		File TQ999 = new File("./results/TQ999.xml");
-		SQLString =  "DROP TABLE TQ121 IF EXISTS;";
-		measureCostArbitrary(myDB, SQLString, TQ999);
-*/	
-
 //		xlSQLTest();
 	}
 	
@@ -233,7 +197,7 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 				
 		// create CCTableNameTC1 in memory
 		File TQ12 = new File("./results/TQ12.xml");
-		ArbSQL = "DROP TABLE CCTableNameTC11 IF EXISTS; Create table CCTableNameT AS Select + " + 
+		ArbSQL = "DROP TABLE CCTableNameT IF EXISTS; Create table CCTableNameT AS Select + " + 
 				CCTableName5k + ".*" +
 				"FROM " + CCTableName5k + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ12);
@@ -506,7 +470,58 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 	            e.printStackTrace();
 	        }
 	}
-	/*
+/*
+		// w/ reduced rows only ==> reducing column ==> both
+		File TQ125 = new File("./results/TQ125.xml");
+		SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
+				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ125);
+		// spits out error: duplicate column
+
+		
+		//The following is going to be the execution of the test queries provided to me by Caleb
+		String SQLString = null;
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
+
+		File TQ1211 = new File("./results/TQ1211.xml");
+		SQLString =  //"DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM TQ121;";
+		measureCostArbitrary(myDB, SQLString, TQ1211);
+		getMetaData(myDB, SQLString, TQ1211);
+
+
+		File TQ122 = new File("./results/TQ122.xml");
+		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
+				"SELECT * " +
+				"FROM TQ121" + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = TQ121.ClassName;";// +
+				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ122);
+
+		File TQ1221 = new File("./results/TQ1221.xml");
+		SQLString =  //"DROP TABLE TQ122 IF EXISTS; CREATE TEMPORARY TABLE TQ122 AS " + 
+				"SELECT COUNT(*) " +
+				"FROM TQ121;";
+		measureCostArbitrary(myDB, SQLString, TQ1221);
+		
+		
+		printScanCost(myDB, CCTableName5k);
+		printScanCost(myDB, "TQ121");
+		printRowCount(myDB, CCTableName5k);
+		int temp = rowCount(myDB, CCTableName5k);
+
+		
 		
 		
 		// w/ reduced rows only ==> reducing column ==> both
