@@ -1266,3 +1266,11 @@ Jul 23, 2016 4:05:16 PM com.nilostep.xlsql.database.xlInstance <init>
 INFO: Instance created with engine hsqldb
 Jul 23, 2016 4:05:22 PM com.nilostep.xlsql.jdbc.xlDriver connect
 INFO: Connection to HSQL Database Engine established.
+Jul 23, 2016 4:21:37 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 23, 2016 4:21:43 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
+Jul 23, 2016 4:28:48 PM com.nilostep.xlsql.database.xlInstance <init>
+INFO: Instance created with engine hsqldb
+Jul 23, 2016 4:28:53 PM com.nilostep.xlsql.jdbc.xlDriver connect
+INFO: Connection to HSQL Database Engine established.
