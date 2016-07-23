@@ -7,7 +7,7 @@ import qEng.InternalDB;
 public class MeasureCostToXml {
 	
 	// compare the cost by millisecond with QueryToXML
-	private static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
+	public static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
 	{	
 		long m1, m2;
 		m1 = System.currentTimeMillis();

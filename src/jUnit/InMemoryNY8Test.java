@@ -29,11 +29,11 @@ public class InMemoryNY8Test {
 	public void init()
 	{
 		
-		if(new File("./Data/TestCaseDataBases/SimpleQueryTests.mv.db").delete())
+		if(new File("./Data/TestCaseDataBases/InMemoryNY8Tests.mv.db").delete())
 		{
 			System.out.println("Old Database Deleted");
 		}
-		if(new File("./Data/TestCaseDataBases/SimpleQueryTests.trace.db").delete())
+		if(new File("./Data/TestCaseDataBases/InMemoryNY8Tests.trace.db").delete())
 		{
 			System.out.println("Old Trace Deleted");
 		}		
@@ -66,14 +66,15 @@ public class InMemoryNY8Test {
 				"FROM " + CCTableName5k + " " +
 				"INNER JOIN " + TMTableName5k + " " +
 				"ON " + TMTableName5k + ".ClassName= " + CCTableName5k + ".ClassName;";
-		measureCostToRS(myDB, SQLString, TQ18);
+		//new MeasureCostToRS(myDB, SQLString, TQ18);
+		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ18);
 
 		File TQ19 = new File("./results/TQ19.xml");
 		SQLString = "SELECT * " +
 				"FROM CCTableNameT" + " " +
 				"INNER JOIN TMTableNameT" + " " +
 				"ON TMTableNameT" + ".ClassName= " + "CCTableNameT.ClassName;";
-		measureCostToRS(myDB, SQLString, TQ19);
+		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ19);
 		
 		File TQ20 = new File("./results/TQ20.xml");
 		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
@@ -82,7 +83,7 @@ public class InMemoryNY8Test {
 				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
 				"INNER JOIN " + CCTableName5k + " " +
 				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
-		measureCostArbitrary(myDB, SQLString, TQ20);
+		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ20);
 		
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT REQTableNameT.*, " + "CCTableNameT.*" + " " +
@@ -91,7 +92,7 @@ public class InMemoryNY8Test {
 				"ON TMTableNameT.ID = REQTableNameT.ID" + " " +
 				"INNER JOIN CCTableNameT" + " " +
 				"ON CCTableNameT.ClassName = TMTableNameT.ClassName;";
-		measureCostArbitrary(myDB, SQLString, TQ21);
+		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ21);
 
 	}
 	
@@ -104,7 +105,7 @@ public class InMemoryNY8Test {
 		ArbSQL = "DROP TABLE TMTableNameT IF EXISTS; Create table TMTableNameT AS Select + " + 
 				TMTableName5k + ".*" +
 				"FROM " + TMTableName5k + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ10);
+		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ10);
 		
 		
 		// create ReqTC1 in memory
@@ -112,14 +113,14 @@ public class InMemoryNY8Test {
 		ArbSQL = "DROP TABLE REQTableNameT IF EXISTS; Create table REQTableNameT AS Select + " + 
 				REQTableNameTC1 + ".*" +
 				"FROM " + REQTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ11);
+		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ11);
 				
 		// create CCTableNameTC1 in memory
 		File TQ12 = new File("./results/TQ12.xml");
 		ArbSQL = "DROP TABLE CCTableNameT IF EXISTS; Create table CCTableNameT AS Select + " + 
 				CCTableName5k + ".*" +
 				"FROM " + CCTableName5k + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ12);
+		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ12);
 
 	
 	}

@@ -10,7 +10,7 @@ public class MeasureCostToRS {
 	public MeasureCostToRS(InternalDB myDB, String SQLString, File TQ){
 		measureCostToRS(myDB, SQLString, TQ);
 	}
-	private static void measureCostToRS(InternalDB myDB, String SQLString, File TQ)
+	public static void measureCostToRS(InternalDB myDB, String SQLString, File TQ)
 	{	
 		long m1, m2;
 		ResultSet rsRef = null;

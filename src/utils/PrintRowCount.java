@@ -5,11 +5,11 @@ import java.sql.SQLException;
 import qEng.InternalDB;
 
 public class PrintRowCount {
-	private static void printRowCount(InternalDB myDB, String tableName) {
+	public static void printRowCount(InternalDB myDB, String tableName) {
 		System.out.println("# of rows of table " + tableName + ": " + rowCount(myDB, tableName));
 	}
 
-	private static int rowCount(InternalDB myDB, String tableName){
+	public static int rowCount(InternalDB myDB, String tableName){
 		ResultSet rs =  null;
 		int rowCount;
 				

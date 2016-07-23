@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import qEng.InternalDB;
 
 public class GetMetaData {
-	private static void getMetaData(InternalDB myDB, String SQLString, File TQ)
+	public static void getMetaData(InternalDB myDB, String SQLString, File TQ)
 	{
 		ResultSet rs = null;
 		rs = myDB.QueryToRS(SQLString);
