@@ -133,7 +133,7 @@ public class InternalH2 implements InternalDB {
 		return rt;
 	}
 
-	//TODO: fix to have one exit.
+
 	@Override
 	public IDBReturnEnum QueryToXML(String SQLString,File resultLocation) {
 		
@@ -146,6 +146,7 @@ public class InternalH2 implements InternalDB {
 			
 			ResultSet rs = stmt.executeQuery(SQLString);
 			rt = toXML(rs, resultLocation);
+			rs.close();
 			iconn.close();
 
 		}catch (SQLException e) {
@@ -267,6 +268,7 @@ public class InternalH2 implements InternalDB {
 	}
 
 	//TODO: try to revert to signature: IDBReturnEnum QueryToRS(String , ResultSet) but java wasn't changing the 
+	//TODO: the result set requires a connection which is what (I THINK) is causing the access denied error when using Y8 on multiple source folders though I'm not sure.
 	@Override
 	public ResultSet QueryToRS(String SQLString) {
 		ResultSet rsRef = null;

@@ -57,3 +57,5 @@ xlsql.log
 Data/test.trace.db
 Data/test.mv.db
 xlsql.log
+Data/test.trace.db
+xlsql.log
