@@ -98,44 +98,6 @@ public class mainforTesting {
 				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		measureCostToRS(myDB, SQLString, TQ16);
 
-		File TQ17 = new File("./results/TQ17.xml");
-		SQLString = "SELECT * " +
-				"FROM REQTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT" + ".ID= " + "REQTableNameT.ID;";
-		measureCostToRS(myDB, SQLString, TQ17);
-		
-		File TQ18 = new File("./results/TQ18.xml");
-		SQLString = "SELECT * " +
-				"FROM " + CCTableName5k + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ClassName= " + CCTableName5k + ".ClassName;";
-		measureCostToRS(myDB, SQLString, TQ18);
-
-		File TQ19 = new File("./results/TQ19.xml");
-		SQLString = "SELECT * " +
-				"FROM CCTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT" + ".ClassName= " + "CCTableNameT.ClassName;";
-		measureCostToRS(myDB, SQLString, TQ19);
-		
-		File TQ20 = new File("./results/TQ20.xml");
-		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
-				"INNER JOIN " + CCTableName5k + " " +
-				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
-		measureCostArbitrary(myDB, SQLString, TQ20);
-		
-		File TQ21 = new File("./results/TQ21.xml");
-		SQLString = "SELECT REQTableNameT.*, " + "CCTableNameT.*" + " " +
-				"FROM REQTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT.ID = REQTableNameT.ID" + " " +
-				"INNER JOIN CCTableNameT" + " " +
-				"ON CCTableNameT.ClassName = TMTableNameT.ClassName;";
-		measureCostArbitrary(myDB, SQLString, TQ21);
 		
 //		xlSQLTest();
 	}
@@ -150,7 +112,7 @@ public class mainforTesting {
 	}
 
 	private static void printRowCount(InternalDB myDB, String tableName) {
-		System.out.println("# of rows of table " + tableName + ": " + rowCount(myDB, CCTableName5k));
+		System.out.println("# of rows of table " + tableName + ": " + rowCount(myDB, tableName));
 	}
 
 	private static int rowCount(InternalDB myDB, String tableName){
@@ -192,36 +154,6 @@ public class mainforTesting {
 		return m2-m1;
 	}
 	
-	/*
-	 *  creates in-memory tables
-	 */
-	private static void createTablesInMemory(InternalDB myDB){
-		String ArbSQL = null; 
-
-		// create TMTC1 in memory
-		File TQ10 = new File("./results/TQ10.xml");
-		ArbSQL = "DROP TABLE TMTableNameT IF EXISTS; Create table TMTableNameT AS Select + " + 
-				TMTableName5k + ".*" +
-				"FROM " + TMTableName5k + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ10);
-		
-		
-		// create ReqTC1 in memory
-		File TQ11 = new File("./results/TQ11.xml");
-		ArbSQL = "DROP TABLE REQTableNameT IF EXISTS; Create table REQTableNameT AS Select + " + 
-				REQTableNameTC1 + ".*" +
-				"FROM " + REQTableNameTC1 + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ11);
-				
-		// create CCTableNameTC1 in memory
-		File TQ12 = new File("./results/TQ12.xml");
-		ArbSQL = "DROP TABLE CCTableNameT IF EXISTS; Create table CCTableNameT AS Select + " + 
-				CCTableName5k + ".*" +
-				"FROM " + CCTableName5k + ";";
-		measureCostArbitrary(myDB, ArbSQL, TQ12);
-
-		
-	}
 	// compare the cost by millisecond with QueryToXML
 	private static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
 	{	
@@ -230,7 +162,6 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, TQ);
 		m2 = System.currentTimeMillis();
 		System.out.println(TQ.getName() +" cost: " + (m2 - m1));
-		
 	}
 	
 	// compare the cost by millisecond with QueryToXML

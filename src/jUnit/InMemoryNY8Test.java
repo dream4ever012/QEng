@@ -3,20 +3,52 @@ package jUnit;
 import static org.junit.Assert.*;
 
 import java.io.File;
+
+import org.junit.Before;
 import org.junit.Test;
 import qEng.InternalDB;
+import qEng.InternalH2;
 import utils.*;
 
 public class InMemoryNY8Test {
 	
+	private InternalDB myDB;
+	private String SQLString;
 	
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
+	private static final String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/SimpleQueryTests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private static final String ResultsURL = "./Results/InMemoryNY8Tests/";
+
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
 	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
 	private static final String TMTableName5k = "CC_REQ_TM5k";
-	private String SQLString;
-	InternalDB myDB;
+	
+	
+	@Before
+	public void init()
+	{
+		
+		if(new File("./Data/TestCaseDataBases/SimpleQueryTests.mv.db").delete())
+		{
+			System.out.println("Old Database Deleted");
+		}
+		if(new File("./Data/TestCaseDataBases/SimpleQueryTests.trace.db").delete())
+		{
+			System.out.println("Old Trace Deleted");
+		}		
+		new File(ResultsURL).mkdirs();
+		myDB = new InternalH2(IH2DBURL);
+		
+		//create relevant table links
+		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName5k);
+		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
+		
+		//read CSV trace matrix
+		String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		myDB.arbitrarySQL(ArbSQL);		
+	}
+
 	
 	@Test
 	public void test() {
@@ -26,7 +58,8 @@ public class InMemoryNY8Test {
 				"FROM REQTableNameT" + " " +
 				"INNER JOIN TMTableNameT" + " " +
 				"ON TMTableNameT" + ".ID= " + "REQTableNameT.ID;";
-		measureCostToRS(myDB, SQLString, TQ17);
+		new MeasureCostToRS(myDB, SQLString, TQ17);
+		//measureCostToRS(myDB, SQLString, TQ17);
 		
 		File TQ18 = new File("./results/TQ18.xml");
 		SQLString = "SELECT * " +
