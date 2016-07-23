@@ -1,6 +1,8 @@
 package qEng;
 
 import java.io.*;
+import java.net.URL;
+import java.nio.file.FileVisitor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -280,10 +282,7 @@ public class InternalH2 implements InternalDB {
 		}
 		return rsRef;
 	}
-	
 
-	
-	
 	// TODO: Uncomment ref.deleteOnExit() to enable temp file cleanup on the JVM close.
 	@Override
 	public File quickXMLFile() {
@@ -348,5 +347,40 @@ public class InternalH2 implements InternalDB {
 		
 		return RegisterUncompiledUDF(Alias, Imports, Code);
 	}
+	
+	@Override
+	public IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath)
+	{
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 
+		Connection iconn;
+		try {
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+			
+			String UDFString = "CREATE ALIAS " + Alias + " FOR " +
+							   "\"" + classpath + "\"";
+			
+			stmt.execute(UDFString);
+			iconn.close();
+			rt = IDBReturnEnum.SUCCESS;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return rt;
+	}
+	
+	//TODO: finish adding support for classes outside the classpath, which we may not want to do for security reasons.
+	@Override
+	public IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath, String directory)
+	{
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		return rt;
+	
+	}
+	
+	
+
+	
 }

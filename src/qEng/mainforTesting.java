@@ -1,6 +1,8 @@
 package qEng;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -50,6 +52,7 @@ public class mainforTesting {
 		//creates an .xls file through the JDBC driver. I'm just showing off the full SQL support for files.
 		//createReqSheet();
 		//createCCSheet();
+		//printclasspath();
 
 		//This is how our TiQi front end would create an instance of the internal database system for use
 		InternalDB myDB = new InternalH2();
@@ -122,10 +125,6 @@ public class mainforTesting {
 		measureCostArbitrary(myDB, SQLString, TQ999);
 */	
 
-		
-
-		
-		
 //		xlSQLTest();
 	}
 	
@@ -327,10 +326,8 @@ public class mainforTesting {
 			stmt.execute(sql);
 			for(int i = 0; i<ClassNameTableData.TableData.length; i++)
 			{
-				
 				sql = "INSERT INTO \"codeclasses.codeclass\" VALUES (" + ClassNameTableData.TableData[i] + ");";
-				stmt.execute(sql);  
-
+				stmt.execute(sql);
 			}
 
 			sql = "select count(*) from \"codeclasses.codeclass\"";
@@ -760,5 +757,14 @@ public class mainforTesting {
 	//String ArbSQL1 = "DROP TABLE "+ TMTableNameTC1 +" IF EXISTS; CREATE TABLE "+ TMTableNameTC1 +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 	//myDB.arbitrarySQL(ArbSQL1);
 	
+	public static void printclasspath(){
+	  ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+      URL[] urls = ((URLClassLoader)cl).getURLs();
+
+      for(URL url: urls){
+      	System.out.println(url.getFile());
+      }
+	}
 	
 }
