@@ -14,8 +14,9 @@ import testDataObjects.RequirementsTableData;
 
 public class RStoXLSWriter {
 
+	//TODO: redo with apache POI
+	
 	public static void RStoXLSWrite(ResultSet rs, File output){
-		
 		
 		//TODO: switch to batch statements for better performance though this is only for testing purposes
 		try {
@@ -24,7 +25,7 @@ public class RStoXLSWriter {
 			
 			String colsSQL = "";
 			for(int i = 1; i <= colCount; i++){
-			colsSQL = colsSQL + "\""+ md.getColumnLabel(i) + i + "\" " + md.getColumnTypeName(i);
+			colsSQL = colsSQL + "\""+ md.getSchemaName(i) + "." + md.getColumnLabel(i) + "\" " + md.getColumnTypeName(i);
 				if(i < colCount){ colsSQL = colsSQL + ", ";}
 			}
 			
