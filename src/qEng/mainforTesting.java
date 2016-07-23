@@ -142,8 +142,10 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 		printRowCount(myDB, CCTableName5k);
 		int temp = rowCount(myDB, CCTableName5k);
 		
+		dropTQTables(myDB, 2000);
+
 		
-		System.out.println(temp);
+				
 		// with predicate reduced rows
 
 /*
@@ -156,6 +158,15 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 //		xlSQLTest();
 	}
 	
+	private static void dropTQTables(InternalDB myDB,int k) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i<k; i++){
+			File TQ12 = new File("./results/TQ12.xml");
+			String ArbSQL = "DROP TABLE TQ" + i + " IF EXISTS;"; 
+			myDB.arbitrarySQL(ArbSQL);
+		}
+	}
+
 	private static void printRowCount(InternalDB myDB, String tableName) {
 		System.out.println("# of rows of table " + tableName + ": " + rowCount(myDB, CCTableName5k));
 	}
@@ -207,24 +218,24 @@ measureCostArbitrary(myDB, SQLString, TQ125);
 
 		// create TMTC1 in memory
 		File TQ10 = new File("./results/TQ10.xml");
-		ArbSQL = "DROP TABLE TMTableNameTC11 IF EXISTS; Create table TMTableNameTC11 AS Select + " + 
-				TMTableNameTC1 + ".*" +
-				"FROM " + TMTableNameTC1 + ";";
+		ArbSQL = "DROP TABLE TMTableNameT IF EXISTS; Create table TMTableNameT AS Select + " + 
+				TMTableName5k + ".*" +
+				"FROM " + TMTableName5k + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ10);
 		
 		
 		// create ReqTC1 in memory
 		File TQ11 = new File("./results/TQ11.xml");
-		ArbSQL = "DROP TABLE REQTableNameTC11 IF EXISTS; Create table REQTableNameTC11 AS Select + " + 
+		ArbSQL = "DROP TABLE REQTableNameT IF EXISTS; Create table REQTableNameT AS Select + " + 
 				REQTableNameTC1 + ".*" +
 				"FROM " + REQTableNameTC1 + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ11);
 				
 		// create CCTableNameTC1 in memory
 		File TQ12 = new File("./results/TQ12.xml");
-		ArbSQL = "DROP TABLE CCTableNameTC11 IF EXISTS; Create table CCTableNameTC11 AS Select + " + 
-				CCTableNameTC1 + ".*" +
-				"FROM " + CCTableNameTC1 + ";";
+		ArbSQL = "DROP TABLE CCTableNameTC11 IF EXISTS; Create table CCTableNameT AS Select + " + 
+				CCTableName5k + ".*" +
+				"FROM " + CCTableName5k + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ12);
 
 	}
