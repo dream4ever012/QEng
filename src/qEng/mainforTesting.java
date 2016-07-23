@@ -119,6 +119,24 @@ public class mainforTesting {
 				"ON TMTableNameT" + ".ClassName= " + "CCTableNameT.ClassName;";
 		measureCostToRS(myDB, SQLString, TQ19);
 		
+		File TQ20 = new File("./results/TQ20.xml");
+		SQLString = "SELECT " + REQTableNameTC1 + ".*, " + CCTableName5k + ".*" + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"INNER JOIN " + TMTableName5k + " " +
+				"ON " + TMTableName5k + ".ID = " + REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + CCTableName5k + " " +
+				"ON " + CCTableName5k + ".ClassName = " + TMTableName5k + ".ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ20);
+		
+		File TQ21 = new File("./results/TQ21.xml");
+		SQLString = "SELECT REQTableNameT.*, " + "CCTableNameT.*" + " " +
+				"FROM REQTableNameT" + " " +
+				"INNER JOIN TMTableNameT" + " " +
+				"ON TMTableNameT.ID = REQTableNameT.ID" + " " +
+				"INNER JOIN CCTableNameT" + " " +
+				"ON CCTableNameT.ClassName = TMTableNameT.ClassName;";
+		measureCostArbitrary(myDB, SQLString, TQ21);
+		
 //		xlSQLTest();
 	}
 	
@@ -202,6 +220,7 @@ public class mainforTesting {
 				"FROM " + CCTableName5k + ";";
 		measureCostArbitrary(myDB, ArbSQL, TQ12);
 
+		
 	}
 	// compare the cost by millisecond with QueryToXML
 	private static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
