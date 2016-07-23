@@ -9,6 +9,7 @@ import org.junit.Test;
 import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.*;
+import CreateTablesForTesting.CreateTablesInMemory;;
 
 public class InMemoryNY8Test {
 	
@@ -46,7 +47,9 @@ public class InMemoryNY8Test {
 		
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-		myDB.arbitrarySQL(ArbSQL);		
+		myDB.arbitrarySQL(ArbSQL);
+		
+		CreateTablesInMemory.createTablesInMemory(myDB);
 	}
 
 	
@@ -94,35 +97,6 @@ public class InMemoryNY8Test {
 				"ON CCTableNameT.ClassName = TMTableNameT.ClassName;";
 		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ21);
 
-	}
-	
-	@Test
-	private static void createTablesInMemory(InternalDB myDB){
-		String ArbSQL = null; 
-
-		// create TMTC1 in memory
-		File TQ10 = new File("./results/TQ10.xml");
-		ArbSQL = "DROP TABLE TMTableNameT IF EXISTS; Create table TMTableNameT AS Select + " + 
-				TMTableName5k + ".*" +
-				"FROM " + TMTableName5k + ";";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ10);
-		
-		
-		// create ReqTC1 in memory
-		File TQ11 = new File("./results/TQ11.xml");
-		ArbSQL = "DROP TABLE REQTableNameT IF EXISTS; Create table REQTableNameT AS Select + " + 
-				REQTableNameTC1 + ".*" +
-				"FROM " + REQTableNameTC1 + ";";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ11);
-				
-		// create CCTableNameTC1 in memory
-		File TQ12 = new File("./results/TQ12.xml");
-		ArbSQL = "DROP TABLE CCTableNameT IF EXISTS; Create table CCTableNameT AS Select + " + 
-				CCTableName5k + ".*" +
-				"FROM " + CCTableName5k + ";";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, ArbSQL, TQ12);
-
-	
 	}
 	
 
