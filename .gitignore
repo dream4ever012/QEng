@@ -60,3 +60,8 @@ xlsql.log
 Data/test.trace.db
 xlsql.log
 xlsql.log
+Data/TestCaseDataBases/SimpleQueryTests.mv.db
+Data/TestCaseDataBases/SimpleQueryTests.trace.db
+results/SimpleQueryTests/TripleJoin.xml
+results/SimpleQueryTests/CCandTM.xml
+results/SimpleQueryTests/REQandTM.xml

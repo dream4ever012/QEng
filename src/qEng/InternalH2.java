@@ -53,7 +53,6 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	//Specialized constructor to create the database at a different location
@@ -166,7 +165,6 @@ public class InternalH2 implements InternalDB {
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			
 			stmt.execute(SQLString);
 			iconn.close();
 		} catch (SQLException e) {
