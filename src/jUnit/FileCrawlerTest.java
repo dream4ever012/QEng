@@ -16,8 +16,10 @@ public class FileCrawlerTest {
 
 	@Test
 	public void test() {
-		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File(".//UDFStuff/src_csdr/src/java"));
-
+		
+		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File("./UDFStuff/src_csdr/src/java"));
+		
+		System.out.println(CassandraClasses.size());
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		try {
 
@@ -43,19 +45,18 @@ public class FileCrawlerTest {
 				stm.execute(sql);
 			}
 
-			sql = "select count(*) from \"demo.xlsqly8\"";
+			sql = "select count(*) from \"Cassandra.classes\"";
 
 			ResultSet rs = stm.executeQuery(sql);
 
-
 			while (rs.next()) {
-				System.out.println("Sheet xlsqly8 has " + rs.getString(1)
+				System.out.println("Sheet Cassandra.classes has " + rs.getString(1)
 				+ " rows.");
 			}
 
 			con.close();
 		} catch (Exception e) {
-			System.out.println("Are you sure this is WinXP and Java 1.4.2 ..? ");
+			System.out.println("Are you sure this is WindowsXP and Java 1.4.2 ..? or higher");
 			e.printStackTrace();
 		}
 	}

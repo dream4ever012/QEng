@@ -142,7 +142,6 @@ public class InternalH2 implements InternalDB {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			
 			ResultSet rs = stmt.executeQuery(SQLString);
 			rt = toXML(rs, resultLocation);
 			rs.close();
