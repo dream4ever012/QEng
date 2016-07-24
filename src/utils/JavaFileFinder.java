@@ -6,35 +6,21 @@ public class JavaFileFinder {
 
 	private static ArrayList<File> FileSet; 
 
-
 	public static ArrayList<File> GetFiles(File directory){
-
 		FileSet = new ArrayList<File>();
-
-		if(directory.isDirectory()){
-			//System.out.println(directory);
-			for(File i : directory.listFiles())
-			{
-				GetFiles(i,FileSet);
-			}
-		}else{
-			FileSet.add(directory);
-		}		
+		GetFilesHelper(directory);
 		return FileSet;
 	}
 
-
-	public static void GetFiles(File directory, ArrayList<File> list){
+	private static void GetFilesHelper(File directory){
 
 		if(directory.isDirectory()){
-			//System.out.println(directory);
 			for(File i : directory.listFiles())
 			{
-				GetFiles(i,FileSet);
+				GetFilesHelper(i);
 			}
 		}else{
 			FileSet.add(directory);
 		}
 	}
-
 }
