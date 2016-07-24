@@ -17,7 +17,7 @@ public class FileCrawlerTest {
 	@Test
 	public void test() {
 		
-		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File("./UDFStuff/src_csdr/src/java"));
+		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File("./UDFStuff/src_csdr/src/java"),".java");
 		
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		try {
