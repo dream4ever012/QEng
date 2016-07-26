@@ -5,7 +5,7 @@ import qEng.InternalH2;
 
 public class AskWise implements QueryManager{
 	InternalDB DB;
-	private String IH2DBURL = "jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private String IH2DBURL = "jdbc:h2:./Data/AskWiseTesting/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	
 	//read CSV trace matrix
 	//String ArbSQL = ;
@@ -14,6 +14,9 @@ public class AskWise implements QueryManager{
 	public AskWise(){
 		DB = new InternalH2(IH2DBURL); // H2 for default 	
 	}
+	
+	
+	
 	
 	@Override
 	public File queryToXml(String SQL) {
@@ -30,8 +33,8 @@ public class AskWise implements QueryManager{
 	
 	@Override
 	public boolean importCSVAsTable(String file, String tableName){
-		String command = "DROP TABLE "+ tableName +" IF EXISTS; CREATE TABLE "+ tableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
-		//String command = "DROP TABLE "+ tableName +" IF EXISTS; CREATE TABLE "+ tableName +" AS SELECT * FROM CSVREAD('" + file + "');";
+		//String command = "DROP TABLE "+ tableName +" IF EXISTS; CREATE TABLE "+ tableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
+		String command = "DROP TABLE "+ tableName +" IF EXISTS; CREATE TABLE "+ tableName +" AS SELECT * FROM CSVREAD('" + file + "');";
 		return DB.arbitrarySQL(command);
 	}
 }

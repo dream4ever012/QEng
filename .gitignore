@@ -65,3 +65,5 @@ Data/TestCaseDataBases/SimpleQueryTests.trace.db
 results/SimpleQueryTests/TripleJoin.xml
 results/SimpleQueryTests/CCandTM.xml
 results/SimpleQueryTests/REQandTM.xml
+Data/AskWiseTesting/AW.mv.db
+Data/AskWiseTesting/AW.trace.db.old
