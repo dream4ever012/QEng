@@ -156,9 +156,9 @@ public class InternalH2 implements InternalDB {
 	}
 
 	@Override
-	public void arbitrarySQL(String SQLString)
+	public boolean arbitrarySQL(String SQLString)
 	{
-		
+		boolean rt = false;
 		Connection iconn;
 		try {
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
@@ -166,10 +166,12 @@ public class InternalH2 implements InternalDB {
 
 			stmt.execute(SQLString);
 			iconn.close();
+			rt = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
+		return rt;
 	}
 	
 	//TODO: check if fref is a directory and generate the intermediate directories to place the result in a the path then create a UUID for the temporary file.

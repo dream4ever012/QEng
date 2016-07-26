@@ -68,7 +68,7 @@ public class mainforTesting {
 
 
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
-/*
+
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL);
 		
@@ -77,7 +77,7 @@ public class mainforTesting {
 			
 		String ArbSQL3 = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
 		myDB.arbitrarySQL(ArbSQL3);
-*/
+		/**/
 		/* MUST RUN
 		 * create In-memory table
 		 */
@@ -87,17 +87,33 @@ public class mainforTesting {
 		/*
 		 * create In-memory table
 		 */
+		//The following is going to be the execution of the test queries provided to me by Caleb
+
+		String SQLString = null;
 		
 		// TMTableNameT
 		// REQTableNameT
 		// CCTableNameT
 		File TQ16 = new File("./results/TQ16.xml");
-		String SQLString = "SELECT * " +
+		SQLString = "SELECT * " +
 				"FROM " + REQTableNameTC1 + " " +
 				"INNER JOIN " + TMTableName5k + " " +
 				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		measureCostToRS(myDB, SQLString, TQ16);
 
+		File TQ121 = new File("./results/TQ121.xml");
+		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM " + CCTableName5k + " " +
+				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		measureCostArbitrary(myDB, SQLString, TQ121);
+
+		File TQ1211 = new File("./results/TQ1211.xml");
+		SQLString =  //"DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
+				"SELECT * " +
+				"FROM TQ121;";
+		measureCostArbitrary(myDB, SQLString, TQ1211);
+		getMetaData(myDB, SQLString, TQ1211);
 		
 //		xlSQLTest();
 	}

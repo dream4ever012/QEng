@@ -1,0 +1,476 @@
+2016-07-26 16:41:53 database: opening C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW (build 192)
+2016-07-26 16:41:54 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 16:41:54 lock: 1 exclusive write lock added for SYS
+2016-07-26 16:41:54 lock: 1 exclusive write lock unlock SYS
+2016-07-26 16:41:54 database: opened C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 16:41:54 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 16:41:54 lock: 1 exclusive write lock added for SYS
+2016-07-26 16:41:54 lock: 1 exclusive write lock unlock SYS
+2016-07-26 16:41:54 database: connecting session #3 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 16:41:54 jdbc[3]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 16:41:54 lock: 3 exclusive write lock requesting for SYS
+2016-07-26 16:41:54 lock: 3 exclusive write lock added for SYS
+2016-07-26 16:41:54 jdbc[3]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 16:41:54 lock: 3 exclusive write lock unlock SYS
+2016-07-26 16:41:54 jdbc[3]: 
+/**/Connection conn0 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 16:41:54 database: connecting session #4 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 16:41:54 jdbc[4]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 16:41:54 jdbc[4]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 16:41:54 jdbc[4]: 
+/**/Connection conn1 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 16:41:54 jdbc[4]: 
+/**/Statement stat0 = conn1.createStatement();
+2016-07-26 16:41:54 jdbc[4]: 
+/**/ResultSet rs0 = stat0.executeQuery("SELECT * FROM \"RequirementsTC1.ReqSheet\" INNER JOIN CC_REQ_TM5k ON CC_REQ_TM5k.ID= \"RequirementsTC1.ReqSheet\".ID;");
+2016-07-26 16:41:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "RequirementsTC1.ReqSheet" not found; SQL statement:
+SELECT * FROM "RequirementsTC1.ReqSheet" INNER JOIN CC_REQ_TM5k ON CC_REQ_TM5k.ID= "RequirementsTC1.ReqSheet".ID; [42102-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTableOrView(Parser.java:5388)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1257)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1896)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2044)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1890)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1711)
+	at org.h2.command.Parser.parseSelect(Parser.java:1699)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at qEng.InternalH2.QueryToXML(InternalH2.java:145)
+	at optimizer.DefaultQuery.ExecuteQuery(DefaultQuery.java:14)
+	at optimizer.AskWise.queryToXml(AskWise.java:18)
+	at jUnit.AskWiseTest.testAskWise(AskWiseTest.java:19)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+2016-07-26 16:41:54 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW from shutdown hook
+2016-07-26 16:41:54 database: disconnecting session #3
+2016-07-26 16:41:54 database: disconnected session #3
+2016-07-26 16:41:54 database: disconnecting session #4
+2016-07-26 16:41:54 database: disconnected session #4
+2016-07-26 16:41:54 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 16:41:54 database: closed
+2016-07-26 17:18:54 database: opening C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW (build 192)
+2016-07-26 17:18:54 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:18:54 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:18:54 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:18:54 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:18:54 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:18:54 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:18:54 database: opened C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:18:54 database: connecting session #3 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:18:54 jdbc[3]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:18:54 jdbc[3]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:18:54 jdbc[3]: 
+/**/Connection conn0 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:18:54 database: connecting session #4 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:18:54 jdbc[4]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:18:54 jdbc[4]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:18:54 jdbc[4]: 
+/**/Connection conn1 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:18:54 jdbc[4]: 
+/**/Statement stat0 = conn1.createStatement();
+2016-07-26 17:18:54 jdbc[4]: 
+/**/stat0.executeUpdate("DROP TABLE \"codeclass5k.codeclass\" IF EXISTS;CREATE LINKED TABLE \"codeclass5k.codeclass\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"codeclass5k.codeclass\"');");
+2016-07-26 17:18:54 jdbc[4]: 
+/*SQL */DROP TABLE \"codeclass5k.codeclass\" IF EXISTS;
+2016-07-26 17:19:02 lock: 4 exclusive write lock requesting for SYS
+2016-07-26 17:19:02 lock: 4 exclusive write lock added for SYS
+2016-07-26 17:19:02 jdbc[4]: 
+/*SQL t:7442*/CREATE LINKED TABLE \"codeclass5k.codeclass\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"codeclass5k.codeclass\"');
+2016-07-26 17:19:02 lock: 4 exclusive write lock unlock SYS
+2016-07-26 17:19:02 jdbc[4]: 
+/**/conn1.close();
+2016-07-26 17:19:02 database: disconnecting session #4
+2016-07-26 17:19:02 database: disconnected session #4
+2016-07-26 17:19:02 database: connecting session #5 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:19:02 jdbc[5]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:19:02 jdbc[5]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:19:02 jdbc[5]: 
+/**/Connection conn2 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:19:02 jdbc[5]: 
+/**/Statement stat1 = conn2.createStatement();
+2016-07-26 17:19:02 jdbc[5]: 
+/**/stat1.executeUpdate("DROP TABLE \"RequirementsTC1.ReqSheet\" IF EXISTS;CREATE LINKED TABLE \"RequirementsTC1.ReqSheet\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"RequirementsTC1.ReqSheet\"');");
+2016-07-26 17:19:02 jdbc[5]: 
+/*SQL */DROP TABLE \"RequirementsTC1.ReqSheet\" IF EXISTS;
+2016-07-26 17:19:02 lock: 5 exclusive write lock requesting for SYS
+2016-07-26 17:19:02 lock: 5 exclusive write lock added for SYS
+2016-07-26 17:19:02 jdbc[5]: 
+/*SQL t:7*/CREATE LINKED TABLE \"RequirementsTC1.ReqSheet\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"RequirementsTC1.ReqSheet\"');
+2016-07-26 17:19:02 lock: 5 exclusive write lock unlock SYS
+2016-07-26 17:19:02 jdbc[5]: 
+/**/conn2.close();
+2016-07-26 17:19:02 database: disconnecting session #5
+2016-07-26 17:19:02 database: disconnected session #5
+2016-07-26 17:19:02 database: connecting session #6 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:19:02 jdbc[6]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:19:02 jdbc[6]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:19:02 jdbc[6]: 
+/**/Connection conn3 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:19:02 jdbc[6]: 
+/**/Statement stat2 = conn3.createStatement();
+2016-07-26 17:19:02 jdbc[6]: 
+/**/stat2.execute("DROP TABLE CC-REQ-TM5k IF EXISTS; CREATE TABLE CC-REQ-TM5k AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');");
+2016-07-26 17:19:02 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE CC-[*]REQ-TM5K IF EXISTS; CREATE TABLE CC-REQ-TM5K AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv'); "; SQL statement:
+DROP TABLE CC-REQ-TM5k IF EXISTS; CREATE TABLE CC-REQ-TM5k AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv'); [42000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:191)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:530)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at qEng.InternalH2.arbitrarySQL(InternalH2.java:167)
+	at optimizer.AskWise.importCSVAsTable(AskWise.java:34)
+	at jUnit.AskWiseTest.init(AskWiseTest.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+2016-07-26 17:19:02 database: connecting session #7 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:19:02 jdbc[7]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:19:02 jdbc[7]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:19:02 jdbc[7]: 
+/**/Connection conn4 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:19:02 database: connecting session #8 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:19:02 jdbc[8]: 
+/*SQL t:1*/SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:19:02 jdbc[8]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:19:02 jdbc[8]: 
+/**/Connection conn5 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:19:02 jdbc[8]: 
+/**/Statement stat3 = conn5.createStatement();
+2016-07-26 17:19:02 jdbc[8]: 
+/**/ResultSet rs1 = stat3.executeQuery("SELECT * FROM \"RequirementsTC1.ReqSheet\" INNER JOIN CC-REQ-TM5k ON CC-REQ-TM5k.ID= \"RequirementsTC1.ReqSheet\".ID;");
+2016-07-26 17:19:02 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Table "CC" not found; SQL statement:
+SELECT * FROM "RequirementsTC1.ReqSheet" INNER JOIN CC-REQ-TM5k ON CC-REQ-TM5k.ID= "RequirementsTC1.ReqSheet".ID; [42102-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTableOrView(Parser.java:5388)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1257)
+	at org.h2.command.Parser.readJoin(Parser.java:1549)
+	at org.h2.command.Parser.parseJoinTableFilter(Parser.java:1941)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1897)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2044)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1890)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1711)
+	at org.h2.command.Parser.parseSelect(Parser.java:1699)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at qEng.InternalH2.QueryToXML(InternalH2.java:145)
+	at optimizer.DefaultQuery.ExecuteQuery(DefaultQuery.java:14)
+	at optimizer.AskWise.queryToXml(AskWise.java:22)
+	at jUnit.AskWiseTest.testAskWise(AskWiseTest.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+2016-07-26 17:19:02 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW from shutdown hook
+2016-07-26 17:19:02 database: disconnecting session #3
+2016-07-26 17:19:02 database: disconnected session #3
+2016-07-26 17:19:02 database: disconnecting session #6
+2016-07-26 17:19:02 database: disconnected session #6
+2016-07-26 17:19:02 database: disconnecting session #7
+2016-07-26 17:19:02 database: disconnected session #7
+2016-07-26 17:19:02 database: disconnecting session #8
+2016-07-26 17:19:02 database: disconnected session #8
+2016-07-26 17:19:02 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:19:02 database: closed
+2016-07-26 17:24:16 database: opening C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW (build 192)
+2016-07-26 17:24:16 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:24:16 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:24:16 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:24:16 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:24:16 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:24:16 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock added for SYS
+2016-07-26 17:24:23 lock: 1 exclusive write lock unlock SYS
+2016-07-26 17:24:23 database: opened C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 database: connecting session #3 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[3]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[3]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[3]: 
+/**/Connection conn0 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 database: connecting session #4 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[4]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[4]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[4]: 
+/**/Connection conn1 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 jdbc[4]: 
+/**/Statement stat0 = conn1.createStatement();
+2016-07-26 17:24:23 jdbc[4]: 
+/**/stat0.executeUpdate("DROP TABLE \"codeclass5k.codeclass\" IF EXISTS;CREATE LINKED TABLE \"codeclass5k.codeclass\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"codeclass5k.codeclass\"');");
+2016-07-26 17:24:23 lock: 4 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 4 exclusive write lock added for SYS
+2016-07-26 17:24:23 jdbc[4]: 
+/*SQL t:4*/DROP TABLE \"codeclass5k.codeclass\" IF EXISTS;
+2016-07-26 17:24:23 lock: 4 exclusive write lock unlock SYS
+2016-07-26 17:24:23 lock: 4 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 4 exclusive write lock added for SYS
+2016-07-26 17:24:23 jdbc[4]: 
+/*SQL t:11*/CREATE LINKED TABLE \"codeclass5k.codeclass\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"codeclass5k.codeclass\"');
+2016-07-26 17:24:23 lock: 4 exclusive write lock unlock SYS
+2016-07-26 17:24:23 jdbc[4]: 
+/**/conn1.close();
+2016-07-26 17:24:23 database: disconnecting session #4
+2016-07-26 17:24:23 database: disconnected session #4
+2016-07-26 17:24:23 database: connecting session #5 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[5]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[5]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[5]: 
+/**/Connection conn2 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 jdbc[5]: 
+/**/Statement stat1 = conn2.createStatement();
+2016-07-26 17:24:23 jdbc[5]: 
+/**/stat1.executeUpdate("DROP TABLE \"RequirementsTC1.ReqSheet\" IF EXISTS;CREATE LINKED TABLE \"RequirementsTC1.ReqSheet\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"RequirementsTC1.ReqSheet\"');");
+2016-07-26 17:24:23 lock: 5 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 5 exclusive write lock added for SYS
+2016-07-26 17:24:23 jdbc[5]: 
+/*SQL t:2*/DROP TABLE \"RequirementsTC1.ReqSheet\" IF EXISTS;
+2016-07-26 17:24:23 lock: 5 exclusive write lock unlock SYS
+2016-07-26 17:24:23 lock: 5 exclusive write lock requesting for SYS
+2016-07-26 17:24:23 lock: 5 exclusive write lock added for SYS
+2016-07-26 17:24:23 jdbc[5]: 
+/*SQL t:7*/CREATE LINKED TABLE \"RequirementsTC1.ReqSheet\"('com.nilostep.xlsql.jdbc.xlDriver','jdbc:nilostep:excel:./SecondData/','null','null','\"RequirementsTC1.ReqSheet\"');
+2016-07-26 17:24:23 lock: 5 exclusive write lock unlock SYS
+2016-07-26 17:24:23 jdbc[5]: 
+/**/conn2.close();
+2016-07-26 17:24:23 database: disconnecting session #5
+2016-07-26 17:24:23 database: disconnected session #5
+2016-07-26 17:24:23 database: connecting session #6 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[6]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[6]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[6]: 
+/**/Connection conn3 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 jdbc[6]: 
+/**/Statement stat2 = conn3.createStatement();
+2016-07-26 17:24:23 jdbc[6]: 
+/**/stat2.execute("DROP TABLE CC-REQ-TM5k IF EXISTS; CREATE TABLE CC-REQ-TM5k AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');");
+2016-07-26 17:24:23 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE CC-[*]REQ-TM5K IF EXISTS; CREATE TABLE CC-REQ-TM5K AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv'); "; SQL statement:
+DROP TABLE CC-REQ-TM5k IF EXISTS; CREATE TABLE CC-REQ-TM5k AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv'); [42000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:191)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:530)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at qEng.InternalH2.arbitrarySQL(InternalH2.java:167)
+	at optimizer.AskWise.importCSVAsTable(AskWise.java:35)
+	at jUnit.AskWiseTest.init(AskWiseTest.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+2016-07-26 17:24:23 database: connecting session #7 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[7]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[7]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[7]: 
+/**/Connection conn4 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 database: connecting session #8 to C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 jdbc[8]: 
+/*SQL */SET TRACE_LEVEL_FILE 3;
+2016-07-26 17:24:23 jdbc[8]: 
+/*SQL */SET TRACE_MAX_FILE_SIZE 20;
+2016-07-26 17:24:23 jdbc[8]: 
+/**/Connection conn5 = DriverManager.getConnection("jdbc:h2:./Data/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20", "SYS", "");
+2016-07-26 17:24:23 jdbc[8]: 
+/**/Statement stat3 = conn5.createStatement();
+2016-07-26 17:24:23 jdbc[8]: 
+/**/ResultSet rs1 = stat3.executeQuery("SELECT * FROM \"RequirementsTC1.ReqSheet\" INNER JOIN CC-REQ-TM5k ON CC-REQ-TM5k.ID= \"RequirementsTC1.ReqSheet\".ID;");
+2016-07-26 17:24:23 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Table "CC" not found; SQL statement:
+SELECT * FROM "RequirementsTC1.ReqSheet" INNER JOIN CC-REQ-TM5k ON CC-REQ-TM5k.ID= "RequirementsTC1.ReqSheet".ID; [42102-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTableOrView(Parser.java:5388)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1257)
+	at org.h2.command.Parser.readJoin(Parser.java:1549)
+	at org.h2.command.Parser.parseJoinTableFilter(Parser.java:1941)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1897)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2044)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1890)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1711)
+	at org.h2.command.Parser.parseSelect(Parser.java:1699)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at qEng.InternalH2.QueryToXML(InternalH2.java:145)
+	at optimizer.DefaultQuery.ExecuteQuery(DefaultQuery.java:14)
+	at optimizer.AskWise.queryToXml(AskWise.java:22)
+	at jUnit.AskWiseTest.testAskWise(AskWiseTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+2016-07-26 17:24:23 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW from shutdown hook
+2016-07-26 17:24:23 database: disconnecting session #3
+2016-07-26 17:24:23 database: disconnected session #3
+2016-07-26 17:24:23 database: disconnecting session #6
+2016-07-26 17:24:23 database: disconnected session #6
+2016-07-26 17:24:23 database: disconnecting session #7
+2016-07-26 17:24:23 database: disconnected session #7
+2016-07-26 17:24:23 database: disconnecting session #8
+2016-07-26 17:24:23 database: disconnected session #8
+2016-07-26 17:24:23 database: closing C:/Users/Hyungsik/Documents/GitHub/QEng/Data/AW
+2016-07-26 17:24:23 database: closed

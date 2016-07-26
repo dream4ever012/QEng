@@ -43,7 +43,7 @@ public interface InternalDB {
 	//ForTesting/Future use
 	public void PopulateLocalTable();
 	public void CreateLocalTable();
-	void arbitrarySQL(String SQL);
+	public boolean arbitrarySQL(String SQL);
 
 	IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath);
 
