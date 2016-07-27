@@ -4,7 +4,7 @@ import java.io.File;
 
 import qEng.InternalDB;
 
-public class BushyJoinWithMinJoinCardinality implements Query{
+public class BJMinJoinSkpng implements Query {
 
 	@Override
 	public File ExecuteQuery(String SQL, InternalDB internalDBImpl) {

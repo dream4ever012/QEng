@@ -20,7 +20,7 @@ import utils.ResultSetUtils;
 
 public class OracleComparisons {
 
-	private static final String DriverType = ":thin:";
+	private static final String DriverType = ":oci8:";
 	private static final String Host = "@//rasinsrv06.cstcis.cti.depaul.edu";
 	private static final String Port = ":1521";
 	private static final String User = "Tiqi";
