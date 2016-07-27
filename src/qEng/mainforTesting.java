@@ -94,7 +94,7 @@ public class mainforTesting {
 		// TMTableNameT
 		// REQTableNameT
 		// CCTableNameT
-		
+
 		
 		File TQ1612 = new File("./results/TQ1612.xml");
 		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " +

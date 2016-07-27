@@ -7,21 +7,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import oracle.jdbc.pool.OracleDataSource;
 import qEng.InternalDB;
 import qEng.InternalH2;
+import utils.RStoXLSWriter;
 import utils.ResultSetUtils;
 
 public class OracleComparisons {
 
 	private static final String DriverType = ":thin:";
-	private static final String Host = "@rasinsrv06.cstcis.cti.depual.edu";
+	private static final String Host = "@//rasinsrv06.cstcis.cti.depaul.edu";
 	private static final String Port = ":1521";
 	private static final String User = "Tiqi";
-	private static final String Pass = "tiqi123";
+	private static final String Pass = "Tiqi123";
 	private static final String SID = ":oracle12c";
 	private static final String protocol = "jdbc:oracle";
 
@@ -39,7 +42,8 @@ public class OracleComparisons {
 	@Before
 	public void init(){
 		try {
-			DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
+			//DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
+			Class.forName("oracle.jdbc.OracleDriver").newInstance();
 		/*	if(new File("./Data/TestCaseDataBases/H2forOracleTests.mv.db").delete())
 			{
 				System.out.println("Old Database Deleted");
@@ -59,30 +63,39 @@ public class OracleComparisons {
 			String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 			myDB.arbitrarySQL(ArbSQL);*/
 
-
-			String URL = protocol + DriverType + Host + Port + SID; 
 			
-			Connection conn = DriverManager.getConnection(URL,User,Pass);
-			
+			String URL = protocol + DriverType + Host + Port + SID;
 			System.out.println(URL);
+			
+			OracleDataSource ods = new OracleDataSource(); 
+			ods.setURL(URL); 
+			ods.setUser(User); 
+			ods.setPassword(Pass); 
+			Connection conn = ods.getConnection();
 
-		/*	ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k),
+			//Connection conn = DriverManager.getConnection(URL, User, Pass);
+			
+			
+
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k),
 					URL, 
 					User,
 					Pass,
-					TMTableName5k);*/
+					TMTableName5k);
 
-			/*ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k),
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k),
 					URL,
 					User,
 					Pass,
 					CCTableName5k);
-*/
-		/*	ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1),
+
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1),
 					URL,
 					User,
 					Pass,
-					REQTableNameTC1);*/
+					REQTableNameTC1);
+			
+			conn.close();
 			
 			//Persistent tables for H2
 			//ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM "+ TMTableName5k ), IH2DBURL, "sys", "", TMTableName5k);
@@ -94,12 +107,38 @@ public class OracleComparisons {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+/*
+		String URL = protocol + DriverType + Host + Port + SID;
+		Connection conn;
+		try {
+			conn = DriverManager.getConnection(URL,User,Pass);
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + REQTableNameTC1 + ";");
+			RStoXLSWriter.RStoXLSWrite(rs, new File("./SecondData/OracleTest.xls"));
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+*/	
+		
 	}
 
 }
