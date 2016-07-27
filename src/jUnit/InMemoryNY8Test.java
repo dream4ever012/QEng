@@ -18,7 +18,7 @@ public class InMemoryNY8Test {
 	
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
-	private static final String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/SimpleQueryTests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private static final String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/InMemoryNY8Tests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static final String ResultsURL = "./Results/InMemoryNY8Tests/";
 
 	private static final String REQTableNameTC1 = "\"RequirementsTC1.ReqSheet\"";
