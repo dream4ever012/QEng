@@ -21,7 +21,7 @@ public class InternalH2 implements InternalDB {
 	// I keep this connection until the close() method is called when TiQi is exiting.
 	// This is a sanity check because the connection will close when the program exits anyway
 	private		Connection h2conn; 
-	private		String IH2DBURL = "jdbc:h2:./Data/test;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private		String IH2DBURL = "jdbc:h2:./Data/test;CACHE_SIZE=131072"; //TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20;
 	private		String IH2PASS = "";
 	private		String IH2USER = "sys";
 	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.

@@ -94,13 +94,29 @@ public class mainforTesting {
 		// TMTableNameT
 		// REQTableNameT
 		// CCTableNameT
+		
+		
+		File TQ1612 = new File("./results/TQ1612.xml");
+		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " +
+				"FROM " + REQTableNameTC1 + ", " + TMTableName5k + " " +
+				"WHERE " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		measureCostToRS(myDB, SQLString, TQ1612);
+		myDB.QueryToXML(SQLString, TQ1612);
+		
 		File TQ16 = new File("./results/TQ16.xml");
-		SQLString = "SELECT * " +
+		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " + //COUNT(*) " +
 				"FROM " + REQTableNameTC1 + " " +
 				"INNER JOIN " + TMTableName5k + " " +
 				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		measureCostToRS(myDB, SQLString, TQ16);
-
+		myDB.QueryToXML(SQLString, TQ16);
+		
+		File TQ20 = new File("./results/TQ20.xml");
+		SQLString =  "SELECT * FROM INFORMATION_SCHEMA.SETTINGS WHERE NAME = 'info.CACHE_MAX_SIZE';";
+		measureCostArbitrary(myDB, SQLString, TQ20);
+		myDB.QueryToXML(SQLString, TQ20);
+		
+				
 		File TQ121 = new File("./results/TQ121.xml");
 		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
 				"SELECT * " +
