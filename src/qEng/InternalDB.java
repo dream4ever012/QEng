@@ -46,7 +46,7 @@ public interface InternalDB {
 	public boolean arbitrarySQL(String SQL);
 
 	IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath);
-
+	
 	IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath, String directory);
 
 	

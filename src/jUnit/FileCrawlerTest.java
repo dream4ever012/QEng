@@ -19,6 +19,8 @@ public class FileCrawlerTest {
 		
 		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File("./UDFStuff/src_csdr/src/java"),".java");
 		
+		
+		
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		try {
 
@@ -40,7 +42,7 @@ public class FileCrawlerTest {
 
 			//dont do this do batch instead
 			for (File i : CassandraClasses) {
-				sql = "INSERT INTO \"Cassandra.classes\" VALUES ('"+ i.getAbsolutePath() +"');";
+				sql = "INSERT INTO \"Cassandra.classes\" VALUES ('"+ i.getPath() +"');";//i.getAbsolutePath() +"');";
 				stm.execute(sql);
 			}
 

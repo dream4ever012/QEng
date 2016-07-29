@@ -14,6 +14,7 @@
 	<classpathentry kind="lib" path="FileAccessDependencies/jconfig/jmxri.jar"/>
 	<classpathentry kind="lib" path="FileAccessDependencies/commons/commons-logging.jar"/>
 	<classpathentry kind="lib" path="EMBEDDED DBMS/h2-1.4.192.jar" sourcepath="EMBEDDED DBMS/h2-1.4.192-sources.jar"/>
+	<classpathentry kind="lib" path="UDFStuff/ComputeMetrics.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

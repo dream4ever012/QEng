@@ -27,7 +27,7 @@ public class InternalH2 implements InternalDB {
 	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.
 	private		Boolean debugMode = false;
 	private 	File TEMPDIR 	= new File("./temp/");
-
+	
 
 	public InternalH2()
 	{
@@ -359,7 +359,7 @@ public class InternalH2 implements InternalDB {
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 			
-			String UDFString = "CREATE ALIAS " + Alias + " FOR " +
+			String UDFString = "CREATE ALIAS IF NOT EXISTS " + Alias + " FOR " +
 							   "\"" + classpath + "\"";
 			
 			stmt.execute(UDFString);

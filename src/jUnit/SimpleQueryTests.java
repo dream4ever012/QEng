@@ -27,7 +27,7 @@ public class SimpleQueryTests {
 	@Before
 	public void init()
 	{
-		
+
 		if(new File("./Data/TestCaseDataBases/SimpleQueryTests.mv.db").delete())
 		{
 			System.out.println("Old Database Deleted");
@@ -38,15 +38,15 @@ public class SimpleQueryTests {
 		}		
 		new File(ResultsURL).mkdirs();
 		myDB = new InternalH2(IH2DBURL);
-		
+
 		//create relevant table links
 		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
 		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
-		
+
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myDB.arbitrarySQL(ArbSQL);
-		
+
 	}
 
 	@Test
@@ -65,16 +65,16 @@ public class SimpleQueryTests {
 	public void SimpleJoin2()
 	{
 		//Retrieving an xml representation of the tracematrix joined with the codeclass table
-				File SimpleJoin2 = new File(ResultsURL + "CCandTM.xml");
+		File SimpleJoin2 = new File(ResultsURL + "CCandTM.xml");
 
-				SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
-						"FROM " + CCTableName + " " +
-						"INNER JOIN " + TMTableName + " " +
-						"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
+		SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
+				"FROM " + CCTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
 
-				myDB.QueryToXML(SQLString, SimpleJoin2);
+		myDB.QueryToXML(SQLString, SimpleJoin2);
 	}
-	
+
 	@Test
 	public void TripleJoin()
 	{
@@ -89,6 +89,43 @@ public class SimpleQueryTests {
 		File TripleJoin = new File(ResultsURL + "TripleJoin.xml");
 
 		myDB.QueryToXML(SQLString, TripleJoin);
-	
+
+	}
+
+	@Test
+	public void AllThree()
+	{
+		//Retrieving an xml representation of the tracematrix joined with the requirements table
+		File SimpleJoin = new File("./results/REQandTM.xml");
+
+		SQLString = "SELECT " + TMTableName + ".ClassName, " + REQTableName + ".* " + 
+				"FROM " + TMTableName + " " + 
+				"INNER JOIN " + REQTableName + " " +
+				"ON "+ TMTableName + ".ID = "+ REQTableName + ".ID;";
+
+		myDB.QueryToXML(SQLString, SimpleJoin);
+
+		//Retrieving an xml representation of the tracematrix joined with the codeclass table
+		File SimpleJoin2 = new File("./results/CCandTM.xml");
+
+		SQLString = "SELECT " + CCTableName + ".*, " + TMTableName + ".ID " +
+				"FROM " + CCTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ClassName = " + CCTableName + ".ClassName;";
+
+		myDB.QueryToXML(SQLString, SimpleJoin2);
+
+		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
+		SQLString = "SELECT " + REQTableName + ".*, " + CCTableName + ".*" + " " +
+				"FROM " + REQTableName + " " +
+				"INNER JOIN " + TMTableName + " " +
+				"ON " + TMTableName + ".ID = " + REQTableName + ".ID" + " " +
+				"INNER JOIN " + CCTableName + " " +
+				"ON " + CCTableName + ".ClassName = " + TMTableName + ".ClassName;";
+
+		File TripleJoin = new File("./results/TripleJoin.xml");
+
+		myDB.QueryToXML(SQLString, TripleJoin);
+
 	}
 }
