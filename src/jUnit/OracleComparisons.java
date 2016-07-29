@@ -64,7 +64,7 @@ public class OracleComparisons {
 			myDB.arbitrarySQL(ArbSQL);*/
 
 			
-			String URL = protocol + DriverType + Host + Port + SID;
+			String URL = "jdbc:oracle:thin:@rasinsrv06.cstcis.cti.depaul.edu:1521/oracle12c";// protocol + DriverType + Host + Port + SID;
 			System.out.println(URL);
 /*
 			OracleDataSource ods = new OracleDataSource(); 
@@ -122,7 +122,7 @@ public class OracleComparisons {
 	@Test
 	public void test() {
 		
-/*
+
 		String URL = protocol + DriverType + Host + Port + SID;
 		Connection conn;
 		try {
@@ -137,7 +137,7 @@ public class OracleComparisons {
 			e.printStackTrace();
 		}
 		
-*/	
+	
 		
 	}
 
