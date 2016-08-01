@@ -77,7 +77,7 @@ public class OracleComparisons {
 			
 	
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k),
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k + ";"),
 					URL, 
 					User,
 					Pass,
