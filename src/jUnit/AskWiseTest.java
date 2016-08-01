@@ -7,10 +7,10 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
-import CreateTablesForTesting.CreateTablesInMemory;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.InternalH2;
+import utils.CreateTablesInMemory;
 
 public class AskWiseTest {
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 

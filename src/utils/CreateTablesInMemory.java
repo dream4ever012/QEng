@@ -1,9 +1,8 @@
-package CreateTablesForTesting;
+package utils;
 
 import java.io.File;
 
 import qEng.InternalDB;
-import utils.MeasureCostArbitrary;
 
 public class CreateTablesInMemory {
 	

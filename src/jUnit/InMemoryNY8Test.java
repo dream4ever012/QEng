@@ -8,8 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import qEng.InternalDB;
 import qEng.InternalH2;
-import utils.*;
-import CreateTablesForTesting.CreateTablesInMemory;;
+import utils.*;;
 
 public class InMemoryNY8Test {
 	

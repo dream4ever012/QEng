@@ -37,7 +37,7 @@ public class OracleComparisons {
 	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
 	private static final String TMTableName5k = "CC_REQ_TM5k";
 
-	private InternalDB myDB;
+	private InternalDB myDB = new InternalH2(IH2DBURL);
 
 	@Before
 	public void init(){
@@ -61,11 +61,11 @@ public class OracleComparisons {
 
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-			myDB.arbitrarySQL(ArbSQL);*/
-
+			myDB.arbitrarySQL(ArbSQL);
+*/
 			
 			String URL = "jdbc:oracle:thin:@rasinsrv06.cstcis.cti.depaul.edu:1521/oracle12c";// protocol + DriverType + Host + Port + SID;
-			System.out.println(URL);
+			// System.out.println(URL);
 /*
 			OracleDataSource ods = new OracleDataSource(); 
 			ods.setURL(URL); 
@@ -75,7 +75,7 @@ public class OracleComparisons {
 */
 			Connection conn = DriverManager.getConnection(URL, User, Pass);
 			
-			
+	
 
 			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k),
 					URL, 
@@ -83,13 +83,13 @@ public class OracleComparisons {
 					Pass,
 					TMTableName5k);
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k),
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k + ";"),
 					URL,
 					User,
 					Pass,
 					CCTableName5k);
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1),
+			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1 + ";"),
 					URL,
 					User,
 					Pass,
