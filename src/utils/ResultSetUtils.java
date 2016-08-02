@@ -62,11 +62,8 @@ public class ResultSetUtils{
 				for(int k = 1; k <= colCount; k++){
 					ct = md.getColumnType(k);
 					if(ct == java.sql.Types.VARCHAR || ct == java.sql.Types.DATE || ct == java.sql.Types.LONGVARCHAR || ct == java.sql.Types.LONGNVARCHAR){
-						if(ct == java.sql.Types.DATE){
-							rowValsSQL = rowValsSQL + "TO_Date('" + rs.getString(k) + "')"; 
-						}else {
+						
 						rowValsSQL = rowValsSQL+ "\'" + rs.getString(k) + "\'";
-						}
 					} else {
 						rowValsSQL = rowValsSQL + rs.getString(k);
 					}
