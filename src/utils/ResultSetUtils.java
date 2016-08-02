@@ -21,7 +21,13 @@ public class ResultSetUtils{
 
 			String colsSQL = "";
 			for(int i = 1; i <= colCount; i++){
-				colsSQL = colsSQL + "\""+ md.getSchemaName(i) + "." + md.getColumnLabel(i) + "\" " + md.getColumnTypeName(i);
+				if (md.getColumnType(i) == java.sql.Types.VARCHAR){
+					colsSQL = colsSQL + "" + md.getColumnLabel(i) + " " + md.getColumnTypeName(i) + "(2048) "; //+ md.getSchemaName(i) + "." +
+					//colsSQL = colsSQL + "\"" + md.getColumnLabel(i) + "\" " + md.getColumnTypeName(i) + "(2048) "; //+ md.getSchemaName(i) + "." +
+				}
+				else{
+					colsSQL = colsSQL + ""+  md.getColumnLabel(i) + " " + md.getColumnTypeName(i);
+				}
 				if(i < colCount){ colsSQL = colsSQL + ", ";}
 			}
 
@@ -31,7 +37,7 @@ public class ResultSetUtils{
 			Connection con = DriverManager.getConnection(URL,User,Pass);
 			Statement stmt = con.createStatement();
 
-			String sql = "DROP TABLE " + TableName + " IF EXISTS;"
+			String sql = "DROP TABLE " + TableName + "; "
 					+ "CREATE TABLE " + TableName + " ("+colsSQL+");";
 
 			stmt.execute(sql);
