@@ -12,7 +12,7 @@ import qEng.InternalDB;
 
 public class ResultSetUtils{
 
-	public static void RStoTable(ResultSet rs, String URL, String User,String Pass,String TableName)
+	public static void RStoOracleTable(ResultSet rs, String URL, String User,String Pass,String TableName)
 	{
 		try {
 			ResultSetMetaData md = rs.getMetaData();
@@ -20,15 +20,19 @@ public class ResultSetUtils{
 			int colCount = md.getColumnCount();
 
 			String colsSQL = "";
+			String colNamesSQL = "";
 			for(int i = 1; i <= colCount; i++){
 				if (md.getColumnType(i) == java.sql.Types.VARCHAR){
-					colsSQL = colsSQL + "" + md.getColumnLabel(i) + " " + md.getColumnTypeName(i) + "(2048) "; //+ md.getSchemaName(i) + "." +
+					colsSQL = colsSQL + "" + md.getColumnLabel(i) + " " + md.getColumnTypeName(i) + "(2048)"; //+ md.getSchemaName(i) + "." +
 					//colsSQL = colsSQL + "\"" + md.getColumnLabel(i) + "\" " + md.getColumnTypeName(i) + "(2048) "; //+ md.getSchemaName(i) + "." +
+					colNamesSQL = colNamesSQL +md.getColumnLabel(i);
 				}
 				else{
 					colsSQL = colsSQL + ""+  md.getColumnLabel(i) + " " + md.getColumnTypeName(i);
+					colNamesSQL = colNamesSQL +md.getColumnLabel(i);
 				}
-				if(i < colCount){ colsSQL = colsSQL + ", ";}
+
+				if(i < colCount){ colsSQL = colsSQL + ", "; colNamesSQL = colNamesSQL + ", ";}
 			}
 
 			System.out.println(colsSQL);
@@ -37,10 +41,19 @@ public class ResultSetUtils{
 			Connection con = DriverManager.getConnection(URL,User,Pass);
 			Statement stmt = con.createStatement();
 
-			String sql = "DROP TABLE " + TableName + "; "
-					+ "CREATE TABLE " + TableName + " ("+colsSQL+");";
-
+			String sql = "BEGIN EXECUTE IMMEDIATE 'DROP TABLE "+ TableName+"'; EXCEPTION WHEN OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF; END;";
+			
 			stmt.execute(sql);
+			
+			sql =  "CREATE TABLE " + TableName + " ("+colsSQL+")";
+
+		
+				
+			stmt.execute(sql);
+			
+			System.out.println(sql);
+			//stmt.execute(sql);
+
 
 			String rowValsSQL;
 			int ct;
@@ -49,24 +62,29 @@ public class ResultSetUtils{
 				for(int k = 1; k <= colCount; k++){
 					ct = md.getColumnType(k);
 					if(ct == java.sql.Types.VARCHAR || ct == java.sql.Types.DATE || ct == java.sql.Types.LONGVARCHAR || ct == java.sql.Types.LONGNVARCHAR){
+						if(ct == java.sql.Types.DATE){
+							rowValsSQL = rowValsSQL + "TO_Date('" + rs.getString(k) + "')"; 
+						}else {
 						rowValsSQL = rowValsSQL+ "\'" + rs.getString(k) + "\'";
+						}
 					} else {
 						rowValsSQL = rowValsSQL + rs.getString(k);
 					}
 					if(k < colCount){ rowValsSQL = rowValsSQL + ", ";}
 				}
-				sql = "Insert INTO " + TableName + " VALUES (" +rowValsSQL + ");";
+				sql = "Insert INTO " + TableName + " ("+ colNamesSQL +") VALUES (" +rowValsSQL + ")";
+				
+				
 				System.out.println(sql);
 				stmt.execute(sql);
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	
+
 	public static void getMetaData(InternalDB myDB, String SQLString, File TQ)
 	{
 		ResultSet rs = null;

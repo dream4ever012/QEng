@@ -37,14 +37,14 @@ public class OracleComparisons {
 	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
 	private static final String TMTableName5k = "CC_REQ_TM5k";
 
-	private InternalDB myDB = new InternalH2(IH2DBURL);
-
+	private InternalDB myDB;
 	@Before
 	public void init(){
+		
 		try {
 			//DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
 			Class.forName("oracle.jdbc.OracleDriver").newInstance();
-		/*	if(new File("./Data/TestCaseDataBases/H2forOracleTests.mv.db").delete())
+			if(new File("./Data/TestCaseDataBases/H2forOracleTests.mv.db").delete())
 			{
 				System.out.println("Old Database Deleted");
 			}
@@ -62,7 +62,7 @@ public class OracleComparisons {
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 			myDB.arbitrarySQL(ArbSQL);
-*/
+
 			
 			String URL = "jdbc:oracle:thin:@rasinsrv06.cstcis.cti.depaul.edu:1521/oracle12c";// protocol + DriverType + Host + Port + SID;
 			// System.out.println(URL);
@@ -77,19 +77,19 @@ public class OracleComparisons {
 			
 	
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k + ";"),
+			ResultSetUtils.RStoOracleTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k + ";"),
 					URL, 
 					User,
 					Pass,
 					TMTableName5k);
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k + ";"),
+			ResultSetUtils.RStoOracleTable(myDB.QueryToRS("SELECT * FROM " + CCTableName5k + ";"),
 					URL,
 					User,
 					Pass,
 					CCTableName5k);
 
-			ResultSetUtils.RStoTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1 + ";"),
+			ResultSetUtils.RStoOracleTable(myDB.QueryToRS("SELECT * FROM " + REQTableNameTC1 + ";"),
 					URL,
 					User,
 					Pass,
@@ -129,7 +129,7 @@ public class OracleComparisons {
 			conn = DriverManager.getConnection(URL,User,Pass);
 			Statement stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("SELECT * FROM " + REQTableNameTC1 + ";");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + REQTableNameTC1);
 			RStoXLSWriter.RStoXLSWrite(rs, new File("./SecondData/OracleTest.xls"));
 			conn.close();
 		} catch (SQLException e) {

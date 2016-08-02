@@ -25,7 +25,19 @@ public class RStoXLSWriter {
 			
 			String colsSQL = "";
 			for(int i = 1; i <= colCount; i++){
-			colsSQL = colsSQL + "\""+ md.getSchemaName(i) + "." + md.getColumnLabel(i) + "\" " + md.getColumnTypeName(i);
+			//	if(md.getSchemaName(i) != ""){
+			//colsSQL = colsSQL + "\""+ md.getSchemaName(i) + "." + md.getColumnLabel(i) + "\" ";
+			//	} else
+			//	{
+					colsSQL = colsSQL + "\""+ md.getColumnLabel(i) + "\" ";
+			//	}
+				 if(md.getColumnTypeName(i) == "VARCHAR2")
+				 {
+					 colsSQL = colsSQL + "VARCHAR";
+				 }
+				 else{
+					 colsSQL = colsSQL + md.getColumnName(i);
+				 }
 				if(i < colCount){ colsSQL = colsSQL + ", ";}
 			}
 			

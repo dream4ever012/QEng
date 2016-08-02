@@ -1,9 +1,0 @@
-2016-08-01 12:02:12 jdbc[4]: exception
-org.h2.jdbc.JdbcSQLException: Table "CC_REQ_TM5K" not found; SQL statement:
-SELECT * FROM CC_REQ_TM5k [42102-192]
-2016-08-01 12:03:02 jdbc[6]: exception
-org.h2.jdbc.JdbcSQLException: Table "codeclass5k.codeclass" not found; SQL statement:
-SELECT * FROM "codeclass5k.codeclass" [42102-192]
-2016-08-01 12:03:53 jdbc[6]: exception
-org.h2.jdbc.JdbcSQLException: Table "codeclass5k.codeclass" not found; SQL statement:
-SELECT * FROM "codeclass5k.codeclass"; [42102-192]
