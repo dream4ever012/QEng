@@ -104,10 +104,10 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, TQ1612);
 		
 		File TQ16 = new File("./results/TQ16.xml");
-		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " + //COUNT(*) " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		SQLString = "SELECT " + CCTableName5k + ".CreatedOn " +// DATECREATED " + //COUNT(*) " +
+				"FROM " + CCTableName5k + ";"; // +
+				//"INNER JOIN " + TMTableName5k + " " +
+				//"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		TimerUtils.measureCostToRS(myDB, SQLString, TQ16);
 		myDB.QueryToXML(SQLString, TQ16);
 		
