@@ -285,7 +285,7 @@ public class InternalH2 implements InternalDB {
 	}
 
 	// TODO: Uncomment ref.deleteOnExit() to enable temp file cleanup on the JVM close.
-	@Override
+/*	@Override
 	public File quickXMLFile() {
 		// TODO Auto-generated method stub
 		try {
@@ -299,7 +299,6 @@ public class InternalH2 implements InternalDB {
 		return null;		
 		
 	}
-
 	@Override
 	public IDBReturnEnum FileFree(File ref) {
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
@@ -309,7 +308,7 @@ public class InternalH2 implements InternalDB {
 		}
 		return rt;
 	}
-
+*/
 	@Override
 	public IDBReturnEnum RegisterUncompiledUDF(String Alias, String Imports, String Code) {
 		// TODO Auto-generated method stub

@@ -15,18 +15,22 @@ import org.junit.Test;
 import oracle.jdbc.pool.OracleDataSource;
 import qEng.InternalDB;
 import qEng.InternalH2;
+import utils.CreateTablesInMemory;
+import utils.MeasureCostToRS;
 import utils.RStoXLSWriter;
 import utils.ResultSetUtils;
+import utils.TimerUtils;
 
 public class OracleComparisons {
 
+	private static final String protocol = "jdbc:oracle";
 	private static final String DriverType = ":thin:";
 	private static final String Host = "@rasinsrv06.cstcis.cti.depaul.edu";
 	private static final String Port = ":1521";
+	private static final String SID = "/oracle12c";
+	private static final String URL = protocol + DriverType + Host + Port + SID;
 	private static final String User = "Tiqi";
 	private static final String Pass = "Tiqi123";
-	private static final String SID = "/oracle12c";
-	private static final String protocol = "jdbc:oracle";
 
 	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
 	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
@@ -62,9 +66,9 @@ public class OracleComparisons {
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 			myDB.arbitrarySQL(ArbSQL);
-
 			
-			String URL = "jdbc:oracle:thin:@rasinsrv06.cstcis.cti.depaul.edu:1521/oracle12c";// protocol + DriverType + Host + Port + SID;
+			CreateTablesInMemory.createTablesInMemory(myDB);
+
 			// System.out.println(URL);
 /*
 			OracleDataSource ods = new OracleDataSource(); 
@@ -76,7 +80,7 @@ public class OracleComparisons {
 			Connection conn = DriverManager.getConnection(URL, User, Pass);
 			
 	
-
+/*
 			ResultSetUtils.RStoOracleTable(myDB.QueryToRS("SELECT * FROM " + TMTableName5k + ";"),
 					URL, 
 					User,
@@ -94,7 +98,7 @@ public class OracleComparisons {
 					User,
 					Pass,
 					REQTableNameTC1);
-			
+*/		
 			conn.close();
 			
 			//Persistent tables for H2
@@ -121,24 +125,29 @@ public class OracleComparisons {
 
 	@Test
 	public void test() {
+		String SQLString;
 		
-
-		String URL = protocol + DriverType + Host + Port + SID;
-		Connection conn;
-		try {
-			conn = DriverManager.getConnection(URL,User,Pass);
-			Statement stmt = conn.createStatement();
-			
-			ResultSet rs = stmt.executeQuery("SELECT * FROM " + REQTableNameTC1);
-			RStoXLSWriter.RStoXLSWrite(rs, new File("./SecondData/OracleTest.xls"));
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		File TQ21 = new File("./results/TQ21.xml");
+		SQLString = "SELECT COUNT(*)" + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"WHERE " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID";
+		MeasureCostToRS.measureCostToRSOrcle(SQLString, TQ21);
+		
+		File TQ22 = new File("./results/TQ22.xml");
+		SQLString = "SELECT COUNT(*)" + " " +
+				"FROM " + TMTableName5k + " " +
+				"WHERE " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID";
+		MeasureCostToRS.measureCostToRSOrcle(SQLString, TQ22);
 		
 	
-		
+/*
+		File TQ23 = new File("./results/TQ23.xml");
+		SQLString = "SELECT " + REQTableNameTC1 + " " +
+				"FROM " + REQTableNameTC1 + " " +
+				"WHERE " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		TimerUtils.measureCostToRS(myDB, SQLString, TQ23);
+		myDB.QueryToXML(SQLString, TQ23);
+*/	
 	}
 
 }
