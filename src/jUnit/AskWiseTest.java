@@ -1,56 +1,68 @@
 package jUnit;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
-import qEng.InternalH2;
-import utils.CreateTablesInMemory;
+import qEng.InternalDB;
 
 public class AskWiseTest {
-	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
-	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
-	private static final String REQTableNameTC1 ="\"RequirementsTC1.ReqSheet\"";
-	private static final String CCTableName5k = "\"codeclass5k.codeclass\"";
+
+	private static QueryManager myAW;
+	public static Boolean setupIsDone = false;
+	public static InternalDB myDB;
+	String SQLString;
+
+	private static final String H2PROTO = "jdbc:h2:";
+	private static final String IH2FP = "./Data/AskWiseTesting/";
+	private static final String IH2DBName = "AW";
+	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private static String IH2DBURL;;
+	private static final String ResultsURL = "./Results/POIxlsTest/";
 	
-	//You used hyphens here instead of underscores that you used in all the other examples, hyphens are illegal in table names
-	private static final String TMTableName5k = "CC_REQ_TM5k";
-	private static final String TMPath5k = "./Data/CC-REQ-TM5k.csv";
-	private QueryManager myAW;
-	
+	//TODO: create specialized constructor for askwise(InternalDB) and askwise(String URL, User, Pass) etc.
+	//TODO: crate a generalized method for importing.
+	//TODO: pass IH2DBURL to the askwise constructor.
 	@Before
 	public void init()
 	{
 		
-		if(new File("./Data/AskWiseTesting/AW.mv.db").delete())
+		if(!setupIsDone){
+			IH2DBURL = H2PROTO + IH2FP + IH2DBName + TRACELEVEL;
+		//if(new File("./Data/TestCaseDataBases/POITests.mv.db").delete())
+		if(new File(IH2FP + IH2DBName + ".mv.db").delete())
 		{
 			System.out.println("Old Database Deleted");
 		}
-		if(new File("./Data/AskWiseTesting/AW.trace.db").delete())
+		if(new File(IH2FP + IH2DBName + ".trace.db").delete())
 		{
 			System.out.println("Old Trace Deleted");
 		}		
-		myAW = new AskWise();
+		new File(ResultsURL).mkdirs();
+		//myDB = new InternalH2(IH2DBURL);
 		
-		//create relevant table links
-		myAW.createLink(XLDriver, XLURLBase, null,null, CCTableName5k);
-		myAW.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
+		myDB.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
+		myDB.ImportSheet(SD.CCSheetFP,SD.CCTableName);
 		
 		//read CSV trace matrix
-		myAW.importCSVAsTable(TMPath5k, TMTableName5k);
+		String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		myDB.arbitrarySQL(ArbSQL);
+		
+		myAW = new AskWise();
+		setupIsDone = true;
+		}
 	}
 	
 	@Test
 	public void testAskWise() {
 		String SQL = "SELECT * " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+				"FROM " + SD.REQTableNameTC1 + " " +
+				"INNER JOIN " + SD.TMTableName5k + " " +
+				"ON " + SD.TMTableName5k + ".ID= " + SD.REQTableNameTC1 + ".ID;";
 		
 		myAW.queryToXml(SQL);
 		

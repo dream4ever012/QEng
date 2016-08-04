@@ -8,11 +8,10 @@ import org.junit.Test;
 import ResourceStrings.SD;
 import qEng.InternalDB;
 import qEng.InternalH2;
-import utils.*;;
+import utils.MeasureCostToRS;
 
+public class LargeTimWithMockData {
 
-//TODO: setup the timer to return an integer of milliseconds for the operation.
-public class InMemoryNY8Test {
 	
 
 	public static Boolean setupIsDone = false;
@@ -73,55 +72,18 @@ public class InMemoryNY8Test {
 		setupIsDone = true;
 		}
 	}
+		
+		@Test
+		public void JoinMockData() {
+			File TQ1 = new File(ResultsURL + "TQ1.xml");
 
+			SQLString = "SELECT " + SD.CC10kTableName + ".classname " + // REQTableName + ".* " + 
+					"FROM " + SD.CC10kTableName + ";";// " " + 
+					//"INNER JOIN " + SD.REQTableName + " " +
+					//"ON "+ SD.TMTableName + ".ID = "+ SD.REQTableName + ".ID;";
+			
+			// myDB.QueryToXML(SQLString, TQ1);
+			MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ1);
+		}
 	
-	@Test
-	public void test() {
-		
-		File TQ17 = new File("./results/TQ17.xml");
-		SQLString = "SELECT * " +
-				"FROM REQTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT" + ".ID= " + "REQTableNameT.ID;";
-		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ17);
-		//measureCostToRS(myDB, SQLString, TQ17);
-		
-		File TQ18 = new File("./results/TQ18.xml");
-		SQLString = "SELECT * " +
-				"FROM " + SD.CCTableName5k + " " +
-				"INNER JOIN " + SD.TMTableName5k + " " +
-				"ON " + SD.TMTableName5k + ".ClassName= " + SD.CCTableName5k + ".ClassName;";
-		//new MeasureCostToRS(myDB, SQLString, TQ18);
-		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ18);
-
-		File TQ19 = new File("./results/TQ19.xml");
-		SQLString = "SELECT * " +
-				"FROM CCTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT" + ".ClassName= " + "CCTableNameT.ClassName;";
-		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ19);
-		
-		File TQ20 = new File("./results/TQ20.xml");
-		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
-				"FROM " + SD.REQTableNameTC1 + " " +
-				"INNER JOIN " + SD.TMTableName5k + " " +
-				"ON " + SD.TMTableName5k + ".ID = " + SD.REQTableNameTC1 + ".ID" + " " +
-				"INNER JOIN " + SD.CCTableName5k + " " +
-				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName5k + ".ClassName;";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ20);
-		
-		File TQ21 = new File("./results/TQ21.xml");
-		SQLString = "SELECT REQTableNameT.*, " + "CCTableNameT.*" + " " +
-				"FROM REQTableNameT" + " " +
-				"INNER JOIN TMTableNameT" + " " +
-				"ON TMTableNameT.ID = REQTableNameT.ID" + " " +
-				"INNER JOIN CCTableNameT" + " " +
-				"ON CCTableNameT.ClassName = TMTableNameT.ClassName;";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ21);
-
 	}
-	
-
-}
-
-
