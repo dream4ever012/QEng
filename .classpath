@@ -15,6 +15,9 @@
 	<classpathentry kind="lib" path="EMBEDDED DBMS/h2-1.4.192.jar" sourcepath="EMBEDDED DBMS/h2-1.4.192-sources.jar"/>
 	<classpathentry kind="lib" path="UDFStuff/ComputeMetrics.jar"/>
 	<classpathentry kind="lib" path="Data/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="POI/poi-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="POI/poi-ooxml-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="POI/poi-ooxml-schemas-3.14-20160307.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

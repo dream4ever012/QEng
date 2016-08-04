@@ -68,3 +68,4 @@ results/SimpleQueryTests/REQandTM.xml
 Data/AskWiseTesting/AW.mv.db
 Data/AskWiseTesting/AW.trace.db.old
 Data/TestCaseDataBases/H2forOracleTests.mv.db
+Data/test.trace.db.old
