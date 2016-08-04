@@ -60,7 +60,7 @@ public class InMemoryNY8Test {
 				"FROM REQTableNameT" + " " +
 				"INNER JOIN TMTableNameT" + " " +
 				"ON TMTableNameT" + ".ID= " + "REQTableNameT.ID;";
-		new MeasureCostToRS(myDB, SQLString, TQ17);
+		MeasureCostToRS.measureCostToRS(myDB, SQLString, TQ17);
 		//measureCostToRS(myDB, SQLString, TQ17);
 		
 		File TQ18 = new File("./results/TQ18.xml");

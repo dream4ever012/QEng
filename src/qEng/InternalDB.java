@@ -37,8 +37,8 @@ public interface InternalDB {
 	
 	public IDBReturnEnum close();
 	
-	public File quickXMLFile();
-	public IDBReturnEnum FileFree(File ref);
+	// public File quickXMLFile();
+	// public IDBReturnEnum FileFree(File ref);
 	
 	//ForTesting/Future use
 	public void PopulateLocalTable();

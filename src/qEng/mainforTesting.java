@@ -96,6 +96,24 @@ public class mainforTesting {
 		// REQTableNameT
 		// CCTableNameT
 		
+		
+		// w/ reduced rows only ==> reducing column ==> both
+		File TQ125 = new File("./results/TQ125.xml");
+		SQLString =  //"DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
+				"SELECT COUNT(*) " +
+				"FROM " + CCTableName5k + " " +
+				"INNER JOIN " + TMTableName5k + " " + 
+				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
+				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
+		TimerUtils.measureCostArbitrary(myDB, SQLString, TQ125);
+		myDB.QueryToXML(SQLString, TQ125);
+				
+//		xlSQLTest();
+	}
+	
+/*
+ * 
+
 		File TQ1612 = new File("./results/TQ1612.xml");
 		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " +
 				"FROM " + REQTableNameTC1 + ", " + TMTableName5k + " " +
@@ -104,10 +122,10 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, TQ1612);
 		
 		File TQ16 = new File("./results/TQ16.xml");
-		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " + //COUNT(*) " +
-				"FROM " + REQTableNameTC1 + " " +
-				"INNER JOIN " + TMTableName5k + " " +
-				"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
+		SQLString = "SELECT " + CCTableName5k + ".CreatedOn " +// DATECREATED " + //COUNT(*) " +
+				"FROM " + CCTableName5k + ";"; // +
+				//"INNER JOIN " + TMTableName5k + " " +
+				//"ON " + TMTableName5k + ".ID= " + REQTableNameTC1 + ".ID;";
 		TimerUtils.measureCostToRS(myDB, SQLString, TQ16);
 		myDB.QueryToXML(SQLString, TQ16);
 		
@@ -130,11 +148,7 @@ public class mainforTesting {
 				"FROM TQ121;";
 		TimerUtils.measureCostArbitrary(myDB, SQLString, TQ1211);
 		ResultSetUtils.getMetaData(myDB, SQLString, TQ1211);
-		
-//		xlSQLTest();
-	}
-	
-/*
+
 		// w/ reduced rows only ==> reducing column ==> both
 		File TQ125 = new File("./results/TQ125.xml");
 		SQLString =  "DROP TABLE TQ125 IF EXISTS; CREATE TEMPORARY TABLE TQ125 AS " + 
