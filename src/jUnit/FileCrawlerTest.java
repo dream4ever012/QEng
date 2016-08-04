@@ -1,7 +1,10 @@
 package jUnit;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,7 +12,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-//TODO: SWITCH TO POI!!!
 public class FileCrawlerTest {
 
 	@Test
@@ -17,13 +19,14 @@ public class FileCrawlerTest {
 		
 		ArrayList<File> CassandraClasses = utils.JavaFileFinder.GetFiles(new File("./UDFStuff/src_csdr/src/java"),".java");
 		
+		
+		
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
 		try {
 
 			String driver = "com.nilostep.xlsql.jdbc.xlDriver";
 			// holding d so I could confirm in debug mode that I have the right driver
-			//Driver d = (Driver) Class.forName(driver).newInstance();
-			Class.forName(driver).newInstance();
+			Driver d = (Driver) Class.forName(driver).newInstance();
 			//System.out.println("Driver was successfully loaded.");
 			String protocol = "jdbc:nilostep:excel";
 			//String database = System.getProperty("user.dir");

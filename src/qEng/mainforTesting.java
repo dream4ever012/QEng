@@ -1,6 +1,22 @@
-/*package qEng;
+package qEng;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ListIterator;
+
+import testDataObjects.RequirementsRowData;
+import testDataObjects.RequirementsTableData;
+import utils.CEU;
+import utils.RStoXLSWriter;
+import utils.ResultSetUtils;
 import utils.TimerUtils;
 
 //import java.sql.Connection;
@@ -12,12 +28,13 @@ import utils.TimerUtils;
 
 //TODO: add XLSX support to the driver
 //TODO: discover use syntax for .csv , xml etc. the xlSQL_Y8 is a framework for adding files to a HSQLDB in memory.
-//TODO: migrate all useful code or tests from this file and then delete it.
+//TODO: 
 public class mainforTesting {
 
 	// excel file URL until I can make them dynamic jdbc:nilostep:excel:[FullPathToTheDirectoryContainingTheExcelFiles]
 
-	
+	private static final String XLDriver = "com.nilostep.xlsql.jdbc.xlDriver"; // 
+	private static final String XLURLBase = "jdbc:nilostep:excel:./SecondData/"; //
 
 //	private static final String REQTableName = "\"Requirements.ReqSheet\"";
 //	private static final String CCTableName = "\"codeclasses.codeclass\"";	
@@ -66,16 +83,16 @@ public class mainforTesting {
 			
 		String ArbSQL3 = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
 		myDB.arbitrarySQL(ArbSQL3);
-		
-		 MUST RUN
+		/**/
+		/* MUST RUN
 		 * create In-memory table
-		 
+		 */
 		// createTablesInMemory(myDB);
 		// dropTQTables(myDB,2000);
 		// TO-DO: probably drop tables?
-		
+		/*
 		 * create In-memory table
-		 
+		 */
 		//The following is going to be the execution of the test queries provided to me by Caleb
 
 		String SQLString = null;
@@ -99,7 +116,7 @@ public class mainforTesting {
 //		xlSQLTest();
 	}
 	
-
+/*
  * 
 
 		File TQ1612 = new File("./results/TQ1612.xml");
@@ -426,7 +443,7 @@ public class mainforTesting {
 	
 	
 	
-
+*/
 	
 	
 	// run query with the memory
@@ -436,4 +453,3 @@ public class mainforTesting {
 	
 
 }
-*/

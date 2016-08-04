@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -26,9 +27,7 @@ public class MeasureCostToRS {
 	{	
 		long m1, m2;
 		m1 = System.currentTimeMillis();
-		
-		//ResultSet rsRef = myDB.QueryToRS(SQLString);
-		 myDB.QueryToRS(SQLString);
+		ResultSet rsRef = myDB.QueryToRS(SQLString);
 		m2 = System.currentTimeMillis();
 		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
 	}
@@ -40,8 +39,7 @@ public class MeasureCostToRS {
 			Statement stmt = conn.createStatement();
 			long m1, m2;
 			m1 = System.currentTimeMillis();
-			//ResultSet rsRef = stmt.executeQuery(SQLString);
-			stmt.executeQuery(SQLString);
+			ResultSet rsRef = stmt.executeQuery(SQLString);
 			m2 = System.currentTimeMillis();
 			System.out.println(TQ.getName() + " cost: " + (m2 - m1));
 			// RStoXLSWriter.RStoXLSWrite(rsRef, new File("./SecondData/OracleTest.xls"));
