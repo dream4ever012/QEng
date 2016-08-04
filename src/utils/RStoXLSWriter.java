@@ -7,11 +7,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ListIterator;
 
-import testDataObjects.RequirementsRowData;
-import testDataObjects.RequirementsTableData;
 
+@Deprecated
 public class RStoXLSWriter {
 
 	//TODO: redo with apache POI

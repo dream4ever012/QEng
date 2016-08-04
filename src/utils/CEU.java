@@ -39,12 +39,13 @@ public class CEU {
 	}
 	
 	public static long getScanCost(InternalDB myDB, String tableName){
-		ResultSet rsRef =  null;
+		//ResultSet rsRef =  null;
 		
 		String SQLString = "SELECT * " +
 				"FROM " + tableName + ";";
 		long m1 = System.currentTimeMillis();
-		rsRef = myDB.QueryToRS(SQLString);
+		//rsRef = myDB.QueryToRS(SQLString);
+		myDB.QueryToRS(SQLString);
 		long m2 = System.currentTimeMillis();
 		
 		return m2-m1;

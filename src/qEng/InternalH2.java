@@ -1,8 +1,6 @@
 package qEng;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.file.FileVisitor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import oracle.jdbc.rowset.OracleWebRowSet;
-import utils.POI.SheetReader;
 
 public class InternalH2 implements InternalDB {
 
@@ -30,6 +27,7 @@ public class InternalH2 implements InternalDB {
 	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.
 	private		Boolean debugMode = false;
 	private 	File TEMPDIR 	= new File("./temp/");
+	//TODO: create auto optimization branches in the h2 code.
 	private 	int optLevel = 1;
 
 	public InternalH2()
