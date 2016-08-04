@@ -69,3 +69,15 @@ Data/AskWiseTesting/AW.mv.db
 Data/AskWiseTesting/AW.trace.db.old
 Data/TestCaseDataBases/H2forOracleTests.mv.db
 Data/test.trace.db.old
+Data/AskWiseTesting/AW.trace.db
+Data/Cassandra.xls
+Data/TestCaseDataBases/InMemoryNY8Tests.mv.db
+Data/TestCaseDataBases/InMemoryNY8Tests.trace.db
+Data/TestCaseDataBases/MedFleetMockdataTests.mv.db
+*.db
+results/CCandTM.xml
+results/REQandTM.xml
+results/TripleJoin.xml
+xlsql.log.1
+xlsql_config.xml
+*.old
