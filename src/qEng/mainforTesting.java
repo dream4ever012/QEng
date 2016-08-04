@@ -46,6 +46,9 @@ public class mainforTesting {
 	private static final String TMTableNameTC1 = "CC_REQ_TMTC1";
 	private static final String TMTableNameTC2 = "CC_REQ_TMTC2";
 	private static final String TMTableName5k = "CC_REQ_TM5k";
+	
+	
+	
 
 	//TODO: fix resource with CreateLink when using y8SQL, so far most of our problems are in Y8
 	//TODO: fix issue with Y8 where it closes the database if two instances of Y8 are pointing to different folders on the same machine
@@ -67,6 +70,8 @@ public class mainforTesting {
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableNameTC);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName5k);
 //		myDB.createLink(XLDriver, XLURLBase, null,null, REQTableNameTC1);
+
+
 		
 		//This is an example of an arbirary SQL command that reads the trace matrix info from a .csv file
 
