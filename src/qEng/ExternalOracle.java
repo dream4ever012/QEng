@@ -1,6 +1,8 @@
 package qEng;
 
 import java.io.*;
+import java.net.URL;
+import java.nio.file.FileVisitor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import oracle.jdbc.rowset.OracleWebRowSet;
+import java.sql.Connection;
 
 
 public abstract class ExternalOracle implements InternalDB{
@@ -25,7 +28,7 @@ public abstract class ExternalOracle implements InternalDB{
 	private static final String Pass = "Tiqi123";
 	private static final String SID = "/oracle12c";
 	private static final String protocol = "jdbc:oracle";
-	//private static Connection conn;
+	private static Connection conn;
 	
 	static String URL_TIQI = protocol + DriverType + Host + Port + SID;
 	

@@ -1,4 +1,4 @@
-/*package TableEngines;
+package TableEngines;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -42,10 +42,10 @@ public class TestXLSTableEngine implements TableEngine{
 	    private volatile Session lockExclusiveSession;
 	    private HashSet<Session> lockSharedSessions = New.hashSet();
 
-	    *//**
+	    /**
 	     * The queue of sessions waiting to lock the table. It is a FIFO queue to
 	     * prevent starvation, since Java's synchronized locking is biased.
-	     *//*
+	     */
 	    private final ArrayDeque<Session> waitingSessions = new ArrayDeque<Session>();
 	   // private final Trace traceLock;
 	    private final ArrayList<Index> indexes = New.arrayList();
@@ -71,7 +71,7 @@ public class TestXLSTableEngine implements TableEngine{
 	  		
 	  		private void regTableConst(CreateTableData data)
 	  		{
-	  			nextAnalyze = database.getSettings().analyzeAuto;
+	  	/*		nextAnalyze = database.getSettings().analyzeAuto;
 	  	        this.isHidden = data.isHidden;
 	  	        for (Column col : getColumns()) {
 	  	            if (DataType.isLargeObject(col.getType())) {
@@ -91,7 +91,7 @@ public class TestXLSTableEngine implements TableEngine{
 	  	        }
 	  	        indexes.add(scanIndex);
 	  	       // traceLock = database.getTrace(Trace.LOCK);
-	  		}
+*/	  		}
 	    
 	    
 		
@@ -318,4 +318,4 @@ public class TestXLSTableEngine implements TableEngine{
 		
 		return new TestXLSTable(data);
 	}
-}*/
+}

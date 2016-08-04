@@ -1,13 +1,15 @@
 package utils;
 
 import java.io.File;
+import java.sql.ResultSet;
+
 import qEng.InternalDB;
 
 public class MeasureCostArbitrary {
 	public static void measureCostArbitrary(InternalDB myDB, String ArbSQL, File TQ)
 	{	
 		long m1, m2;
-		//ResultSet rsRef = null;
+		ResultSet rsRef = null;
 		m1 = System.currentTimeMillis();
 		myDB.arbitrarySQL(ArbSQL);
 		m2 = System.currentTimeMillis();
