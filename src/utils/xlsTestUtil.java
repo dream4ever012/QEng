@@ -1,13 +1,10 @@
 package utils;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
+//TODO: remove or switch to POI
+@Deprecated
 public class xlsTestUtil {
 
+/*	@Deprecated
 	private static void xlSQLTest() {
 
 		//not great but this is the template for Y8 Connections until I can address some issues in Y8
@@ -43,5 +40,5 @@ public class xlsTestUtil {
 	            e.printStackTrace();
 	        }
 	}
-	
+	*/
 }

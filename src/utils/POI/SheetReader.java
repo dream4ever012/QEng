@@ -134,7 +134,7 @@ public class SheetReader {
 				
 				for(colCursor = ColumnStart;colCursor <= ColumnEnd; colCursor++)
 				{
-					int offset = colCursor-ColumnStart;
+					//int offset = colCursor-ColumnStart;
 					Cell c = r.getCell(colCursor, Row.RETURN_BLANK_AS_NULL);
 					rowVals[colCursor-ColumnStart] = c.getStringCellValue();
 				}
