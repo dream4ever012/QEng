@@ -13,7 +13,7 @@ import oracle.jdbc.rowset.OracleWebRowSet;
 import java.sql.Connection;
 
 
-public class ExternalOracle implements InternalDB{
+public abstract class ExternalOracle implements InternalDB{
 	//TODO: Make SINGLETON
 
 	// this is a Sentinel connection to keep the database from being closed

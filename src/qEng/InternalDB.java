@@ -49,5 +49,8 @@ public interface InternalDB {
 	
 	IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath, String directory);
 
+	IDBReturnEnum ImportSheet(String FilePath, String SheetName, String TableName);
+	IDBReturnEnum ImportSheet(String FilePath, String SheetName);
+
 	
 }

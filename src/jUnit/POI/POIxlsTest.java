@@ -15,7 +15,7 @@ public class POIxlsTest {
 
 	
 
-	
+		public static Boolean setupIsDone = false;
 		public static InternalDB myDB;
 		String SQLString;
 
@@ -26,14 +26,16 @@ public class POIxlsTest {
 		//private static final String REQTableName = "\"Requirements.ReqSheet\"";
 		//private static final String CCTableName = "\"codeclasses.codeclass\"";
 		private static final String REQTableName = "ReqSheet";
+		private static final String REQSheetFP = "./SecondData/Requirements.xls";
 		private static final String CCTableName = "codeclass";
+		private static final String CCSheetFP = "./SecondData/codeclasses.xls";
 		private static final String TMTableName = "CC_REQ_TM";
 
-		private static final String ResultsURL = "./Results/SimpleQueryTests/";
+		private static final String ResultsURL = "./Results/POIxlsTest/";
 		@Before
 		public void init()
 		{
-
+			if(!setupIsDone){
 			if(new File("./Data/TestCaseDataBases/POITests.mv.db").delete())
 			{
 				System.out.println("Old Database Deleted");
@@ -44,32 +46,15 @@ public class POIxlsTest {
 			}		
 			new File(ResultsURL).mkdirs();
 			myDB = new InternalH2(IH2DBURL);
-
-			//create relevant table links
-			//myDB.createLink(XLDriver, XLURLBase, null,null, CCTableName);
-			//myDB.createLink(XLDriver, XLURLBase, null,null, REQTableName);
 			
-			String FilePath = "./SecondData/codeclasses.xls";
-			String SheetName = "codeclass";
-			String FilePath2 = "./SecondData/Requirements.xls";
-			String SheetName2 = "ReqSheet";
-			
-			
-			//String ReqSheetAdd = "DROP TABLE "+ REQTableName +" IF EXISTS; CREATE TABLE "+ REQTableName +" AS SELECT * FROM SHEETREAD(\""+ FilePath2+"\",\""+SheetName2 +"\");";
-
-			//String CCSheetAdd = "DROP TABLE "+ CCTableName +" IF EXISTS; CREATE TABLE "+ CCTableName +" AS SELECT * FROM SHEETREAD(" + FilePath + ","+SheetName +");";
-			
-			String ReqSheetAdd = "DROP TABLE "+ REQTableName +" IF EXISTS; CREATE TABLE "+ REQTableName +" AS SELECT * FROM SHEETREAD('./SecondData/Requirements.xls','ReqSheet');";
-
-			String CCSheetAdd = "DROP TABLE "+ CCTableName +" IF EXISTS; CREATE TABLE "+ CCTableName +" AS SELECT * FROM SHEETREAD('./SecondData/codeclasses.xls','codeclass');";
-					
-			myDB.arbitrarySQL(ReqSheetAdd);
-			myDB.arbitrarySQL(CCSheetAdd);
+			myDB.ImportSheet(REQSheetFP,REQTableName);
+			myDB.ImportSheet(CCSheetFP,CCTableName);
 			
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ TMTableName +" IF EXISTS; CREATE TABLE "+ TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 			myDB.arbitrarySQL(ArbSQL);
-
+			setupIsDone = true;
+			}
 		}
 		
 		@Test

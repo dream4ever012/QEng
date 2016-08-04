@@ -388,11 +388,62 @@ public class InternalH2 implements InternalDB {
 		return rt;
 	}
 
-	//TODO: figure out why this is called multiple times.
+	//TODO: figure out why this is called multiple times. Possibbly closed, It seems @before methods were running before each test case.
 	private void RegisterTools()
 	{
 		System.out.println("Registertools called");
 		//RegisterCompiledUDF("SHEETREAD", "utils.POI.SheetReader.SheetRead");
 		RegisterCompiledUDF("SHEETREAD", "utils.POI.SheetReader.SheetRead");
 	}
+	
+	@Override
+	public IDBReturnEnum ImportSheet(String FilePath, String SheetName) {
+
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+
+			try {
+
+			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+SheetName +"');";
+
+			stmt.execute(TLSQL);
+			iconn.close();
+
+			rt = IDBReturnEnum.SUCCESS;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
+	}
+	
+	@Override
+	public IDBReturnEnum ImportSheet(String FilePath, String SheetName, String TableName) {
+
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+
+			try {
+
+			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+SheetName +"');";//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
+			stmt.execute(TLSQL);
+			iconn.close();
+
+			rt = IDBReturnEnum.SUCCESS;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
+	}
+	
+	
+	
+	
 }
