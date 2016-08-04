@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import oracle.jdbc.rowset.OracleWebRowSet;
+import utils.POI.SheetReader;
 
 public class InternalH2 implements InternalDB {
 
@@ -20,14 +21,16 @@ public class InternalH2 implements InternalDB {
 	// so to avoid constant closure and reopening of the DB during TiQi's session
 	// I keep this connection until the close() method is called when TiQi is exiting.
 	// This is a sanity check because the connection will close when the program exits anyway
+
 	private		Connection h2conn; 
 	private		String IH2DBURL = "jdbc:h2:./Data/test;CACHE_SIZE=131072"; //TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20;
 	private		String IH2PASS = "";
 	private		String IH2USER = "sys";
+
 	//I'm going to setup a debugMode flag in a lot of these methods to do some debug functionality.
 	private		Boolean debugMode = false;
 	private 	File TEMPDIR 	= new File("./temp/");
-	
+	private 	int optLevel = 1;
 
 	public InternalH2()
 	{
@@ -37,8 +40,8 @@ public class InternalH2 implements InternalDB {
 			Class.forName("org.h2.Driver").newInstance();
 			//Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
 			h2conn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
-			
 			//setup temp directory for storing session queries.
+			
 			TEMPDIR.mkdirs();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
@@ -52,6 +55,9 @@ public class InternalH2 implements InternalDB {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally
+		{
+			RegisterTools();
 		}
 	}
 
@@ -64,6 +70,7 @@ public class InternalH2 implements InternalDB {
 			Class.forName("org.h2.Driver").newInstance();
 			h2conn = DriverManager.getConnection(DBURL,"sys","");
 
+			
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,6 +86,7 @@ public class InternalH2 implements InternalDB {
 		} finally {
 			//update the URL so the program can find it.
 			IH2DBURL = DBURL;
+			RegisterTools();
 		}
 	}
 
@@ -88,6 +96,7 @@ public class InternalH2 implements InternalDB {
 			Class.forName("org.h2.Driver").newInstance();
 			h2conn = DriverManager.getConnection(DBURL,USER,PASS);
 
+		
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,6 +112,7 @@ public class InternalH2 implements InternalDB {
 		} finally {
 			//update the URL so the program can find it.
 			IH2DBURL = DBURL;
+			RegisterTools();
 		}
 	}
 
@@ -111,9 +121,9 @@ public class InternalH2 implements InternalDB {
 	{
 		//TODO: add enum return statements, IDK what it returns yet
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
-		
+
 		if(url == null || tablename == null){return rt;}
-		
+
 		try {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
@@ -122,9 +132,9 @@ public class InternalH2 implements InternalDB {
 			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
 			stmt.executeUpdate(TLSQL);
 			iconn.close();
-			
+
 			rt = IDBReturnEnum.SUCCESS;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,10 +145,11 @@ public class InternalH2 implements InternalDB {
 
 	@Override
 	public IDBReturnEnum QueryToXML(String SQLString,File resultLocation) {
-		
+
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		if(SQLString == null || resultLocation == null){return rt;}
 		try {
+
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
@@ -151,7 +162,6 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return rt;
 	}
 
@@ -173,24 +183,24 @@ public class InternalH2 implements InternalDB {
 		}
 		return rt;
 	}
-	
+
 	//TODO: check if fref is a directory and generate the intermediate directories to place the result in a the path then create a UUID for the temporary file.
 	//TODO: add an additional toXML file that takes either a writer or an output stream instead of a file for in memory only XML operations if needed.
 	//TODO: create additional Enums for result reference is null and ResultSet is null.
 	public IDBReturnEnum toXML(ResultSet rs, File fref) {
-	//new File("./results/").mkdirs();
-	//File f = new File("./results/"+ fref.getPath() + ".xml");
+		//new File("./results/").mkdirs();
+		//File f = new File("./results/"+ fref.getPath() + ".xml");
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		if(fref == null || rs == null){return rt;}
-		
+
 		FileOutputStream fos;
 		try {
-			
+
 			fos = new FileOutputStream(fref);
 			OracleWebRowSet set = new OracleWebRowSet();
 			set.writeXml(rs, fos);
 			set.close();
-			
+
 			rt = IDBReturnEnum.SUCCESS;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -199,7 +209,6 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return rt;
 	}
 
@@ -211,7 +220,6 @@ public class InternalH2 implements InternalDB {
 	@Override
 	public void CreateLocalTable() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -244,11 +252,13 @@ public class InternalH2 implements InternalDB {
 
 	@Override
 	public IDBReturnEnum createLink(String jdbc_driver, String url, String tablename) {
-	IDBReturnEnum rt = IDBReturnEnum.FAIL;
-		
+
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+
 		if(url == null || tablename == null){return rt;}
-		
+
 		try {
+
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
@@ -256,9 +266,9 @@ public class InternalH2 implements InternalDB {
 			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
 			stmt.executeUpdate(TLSQL);
 			iconn.close();
-			
+
 			rt = IDBReturnEnum.SUCCESS;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -297,15 +307,14 @@ public class InternalH2 implements InternalDB {
 			e.printStackTrace();
 		}
 		return null;		
-		
 	}
 
 	@Override
 	public IDBReturnEnum FileFree(File ref) {
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		if(ref!=null){
-		ref.delete();
-		rt = IDBReturnEnum.SUCCESS;
+			ref.delete();
+			rt = IDBReturnEnum.SUCCESS;
 		}
 		return rt;
 	}
@@ -318,13 +327,13 @@ public class InternalH2 implements InternalDB {
 		try {
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
-			
+
 			String UDFString = "CREATE ALIAS " + Alias + " AS $$ " +
-								Imports 
-								+ "\n@CODE\n" +
-								Code 
-								+ " $$;";
-			
+					Imports 
+					+ "\n@CODE\n" +
+					Code 
+					+ " $$;";
+
 			stmt.execute(UDFString);
 			iconn.close();
 			rt = IDBReturnEnum.SUCCESS;
@@ -345,10 +354,10 @@ public class InternalH2 implements InternalDB {
 		System.out.println(Imports);
 		String Code = tmp[2];
 		System.out.println(Code);
-		
+
 		return RegisterUncompiledUDF(Alias, Imports, Code);
 	}
-	
+
 	@Override
 	public IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath)
 	{
@@ -358,10 +367,10 @@ public class InternalH2 implements InternalDB {
 		try {
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
-			
+
 			String UDFString = "CREATE ALIAS IF NOT EXISTS " + Alias + " FOR " +
-							   "\"" + classpath + "\"";
-			
+					"\"" + classpath + "\"";
+
 			stmt.execute(UDFString);
 			iconn.close();
 			rt = IDBReturnEnum.SUCCESS;
@@ -371,17 +380,20 @@ public class InternalH2 implements InternalDB {
 		}		
 		return rt;
 	}
-	
+
 	//TODO: finish adding support for classes outside the classpath, which we may not want to do for security reasons.
 	@Override
 	public IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath, String directory)
 	{
 		IDBReturnEnum rt = IDBReturnEnum.FAIL;
 		return rt;
-	
 	}
-	
-	
 
-	
+	//TODO: figure out why this is called multiple times.
+	private void RegisterTools()
+	{
+		System.out.println("Registertools called");
+		//RegisterCompiledUDF("SHEETREAD", "utils.POI.SheetReader.SheetRead");
+		RegisterCompiledUDF("SHEETREAD", "utils.POI.SheetReader.SheetRead");
+	}
 }
