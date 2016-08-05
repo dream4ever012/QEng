@@ -18,6 +18,8 @@ public class SD {
 	public static final String G70TableName = "G";
 	public static final String G_UC8kFP = "./SecondData/GaaUC.xls";
 	public static final String G_UC8kTableName = "GaaUC";
+	public static final String UC10kFP = "./SecondData/UC.xls";
+	public static final String UC10kTableName = "UC";
 	public static final String UC_UCS15kFP = "./SecondData/UCaaUCS.xls";
 	public static final String UC_UCS15kTableName = "UCaaUCS";
 	public static final String UCS20kFP = "./SecondData/UCS.xls";
@@ -39,12 +41,13 @@ public class SD {
 	public static final String CP10kTableName = "CP";
 	public static final String CP_SCP12kFP = "./SecondData/CPaaSCP.xls";
 	public static final String CP_SCP12kTableName = "CPaaSCP";
+	public static final String SCP15kFP = "./SecondData/SCP.xls";
+	public static final String SCP15kTableName = "SCP";
 	
 	public static final String REQSheetTC1FP = "./SecondData/RequirementsTC1.xls";
 	public static final String REQTableNameTC1 = "ReqSheet";
 	public static final String TMSheet5kFP = "./Data/CC-REQ-TM5k.csv";
 	public static final String TMTableName5k = "CC_REQ_TM5k";
-
 	public static final String CCSheet5kFP = "./SecondData/codeclass5k.xls";
 	public static final String CCTableName5k = "codeclass";
 	
@@ -55,6 +58,9 @@ public class SD {
 	public static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	public static String IH2DBURL;
 	public static final String ResultsURL = "./Results/POIxlsTest/";
+	
+	
+	
 	
 
 }

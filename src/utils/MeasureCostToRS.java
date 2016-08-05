@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import optimizer.QueryManager;
 import qEng.InternalDB;
 
 public class MeasureCostToRS {
@@ -28,9 +29,22 @@ public class MeasureCostToRS {
 		m1 = System.currentTimeMillis();
 		
 		//ResultSet rsRef = myDB.QueryToRS(SQLString);
-		 myDB.QueryToRS(SQLString);
+		myDB.QueryToRS(SQLString);
 		m2 = System.currentTimeMillis();
 		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
+	}
+	
+	public static long measureCostToRS(QueryManager myAW, String SQLString, File TQ)
+	{	
+		long m1, m2;
+		m1 = System.currentTimeMillis();
+		
+		//ResultSet rsRef = myDB.QueryToRS(SQLString);
+		myAW.arbitrarySQL(SQLString);
+		//.QueryToRS(SQLString);
+		m2 = System.currentTimeMillis();
+		System.out.println(TQ.getName() + " cost: " + (m2 - m1));
+		return m2-m1;
 	}
 	
 	public static void measureCostToRSOrcle(String SQLString, File TQ)

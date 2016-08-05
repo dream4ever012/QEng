@@ -4,20 +4,22 @@ import java.io.File;
 
 import org.junit.Before;
 import ResourceStrings.SD;
+import optimizer.AskWise;
+import optimizer.QueryManager;
 import qEng.InternalDB;
 import qEng.InternalH2;
 
 public class MedFleetMockdataTest {
 	public static Boolean setupIsDone = false;
-	public static InternalDB myDB;
+	public static QueryManager myAW;
 	String SQLString;
 
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "POITests";
+	private static final String IH2DBName = "MedFleetMockdata";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
-	private static final String ResultsURL = "./Results/POIxlsTest/";
+	private static final String ResultsURL = "./Results/MedFleetMockdata/";
 	
 	//TODO: Add the timing wrapper for each case
 	
@@ -37,17 +39,17 @@ public class MedFleetMockdataTest {
 			System.out.println("Old Trace Deleted");
 		}		
 		new File(ResultsURL).mkdirs();
-		myDB = new InternalH2(IH2DBURL);
+		myAW = new AskWise();
 		
-		myDB.ImportSheet(SD.REQSheetFP,SD.REQTableName);
-		myDB.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+		myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
+		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
 		
 		
 
 		
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-		myDB.arbitrarySQL(ArbSQL);
+		myAW.arbitrarySQL(ArbSQL);
 		setupIsDone = true;
 		}
 	}

@@ -1,5 +1,7 @@
 package jUnit;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 
 import org.junit.Before;
@@ -9,20 +11,21 @@ import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.InternalDB;
+import qEng.InternalH2;
+import utils.TimerUtils;
 
 public class AskWiseTest {
 
 	private static QueryManager myAW;
 	public static Boolean setupIsDone = false;
-	public static InternalDB myDB;
 	String SQLString;
 
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/AskWiseTesting/";
 	private static final String IH2DBName = "AW";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
-	private static String IH2DBURL;;
-	private static final String ResultsURL = "./Results/POIxlsTest/";
+	private static String IH2DBURL;
+	private static final String ResultsURL = "./Results/AskWiseTesting/";
 	
 	//TODO: create specialized constructor for askwise(InternalDB) and askwise(String URL, User, Pass) etc.
 	//TODO: crate a generalized method for importing.
@@ -44,29 +47,31 @@ public class AskWiseTest {
 		}		
 		new File(ResultsURL).mkdirs();
 		//myDB = new InternalH2(IH2DBURL);
+		myAW = new AskWise();
 		
-		myDB.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
-		myDB.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+		myAW.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
+		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+		
 		
 		//read CSV trace matrix
-		String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-		myDB.arbitrarySQL(ArbSQL);
+		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		myAW.arbitrarySQL(ArbSQL);
 		
-		myAW = new AskWise();
+
 		setupIsDone = true;
 		}
 	}
 	
 	@Test
 	public void testAskWise() {
-		String SQL = "SELECT * " +
+		String ArbSQL = "SELECT * " +
 				"FROM " + SD.REQTableNameTC1 + " " +
 				"INNER JOIN " + SD.TMTableName5k + " " +
 				"ON " + SD.TMTableName5k + ".ID= " + SD.REQTableNameTC1 + ".ID;";
 		
-		myAW.queryToXml(SQL);
-		
-		//See here you created a new ask wize that had no links to execute the SQL on. Negating the init.
-		//new AskWise().queryToXml(SQL);
+		File TQ2 = new File("./results/TQ2.xml");
+		myAW.queryToXml(ArbSQL);
+		long temp = TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2);
+		assertTrue("failure " + TQ2.getName().toString() , temp >= 10.0);
 	}
 }

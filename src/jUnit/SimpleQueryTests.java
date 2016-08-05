@@ -1,27 +1,32 @@
 package jUnit;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import ResourceStrings.SD;
+import optimizer.AskWise;
+import optimizer.QueryManager;
 import qEng.InternalDB;
 import qEng.InternalH2;
+import utils.MeasureCostArbitrary;
 
 public class SimpleQueryTests {
 
 
 	public static Boolean setupIsDone = false;
-	public static InternalDB myDB;
+	public static QueryManager myAW;
 	String SQLString;
 
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "POITests";
+	private static final String IH2DBName = "SimpleQueryTests";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
-	private static final String ResultsURL = "./Results/POIxlsTest/";
+	private static final String ResultsURL = "./Results/SimpleQueryTests/";
 	
 	@Before
 	public void init()
@@ -39,14 +44,14 @@ public class SimpleQueryTests {
 			System.out.println("Old Trace Deleted");
 		}		
 		new File(ResultsURL).mkdirs();
-		myDB = new InternalH2(IH2DBURL);
+		myAW = new AskWise();
 		
-		myDB.ImportSheet(SD.REQSheetFP,SD.REQTableName);
-		myDB.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+		myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
+		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
 		
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-		myDB.arbitrarySQL(ArbSQL);
+		myAW.arbitrarySQL(ArbSQL);
 		setupIsDone = true;
 		}
 	}
@@ -59,8 +64,9 @@ public class SimpleQueryTests {
 				"FROM " + SD.TMTableName + " " + 
 				"INNER JOIN " + SD.REQTableName + " " +
 				"ON "+ SD.TMTableName + ".ID = "+ SD.REQTableName + ".ID;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin);
+		assertTrue("failure " + SimpleJoin.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin) >= 5.0);
+		//myAW.QueryToXML(SQLString, SimpleJoin);
 	}
 
 	@Test
@@ -73,8 +79,9 @@ public class SimpleQueryTests {
 				"FROM " + SD.CCTableName + " " +
 				"INNER JOIN " + SD.TMTableName + " " +
 				"ON " + SD.TMTableName + ".ClassName = " + SD.CCTableName + ".ClassName;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin2);
+		assertTrue("failure " + SimpleJoin2.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin2) >= 5.0);
+		//myAW.QueryToXML(SQLString, SimpleJoin2);
 	}
 
 	@Test
@@ -89,8 +96,9 @@ public class SimpleQueryTests {
 				"ON " + SD.CCTableName + ".ClassName = " + SD.TMTableName + ".ClassName;";
 
 		File TripleJoin = new File(ResultsURL + "TripleJoin.xml");
-
-		myDB.QueryToXML(SQLString, TripleJoin);
+		assertTrue("failure " + TripleJoin.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TripleJoin) >= 5.0);
+		//myAW.QueryToXML(SQLString, TripleJoin);
 
 	}
 
@@ -104,8 +112,9 @@ public class SimpleQueryTests {
 				"FROM " + SD.TMTableName + " " + 
 				"INNER JOIN " + SD.REQTableName + " " +
 				"ON "+ SD.TMTableName + ".ID = "+ SD.REQTableName + ".ID;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin);
+		assertTrue("failure " + SimpleJoin.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin) >= 5.0);
+		//myAW.QueryToXML(SQLString, SimpleJoin);
 
 		//Retrieving an xml representation of the tracematrix joined with the codeclass table
 		File SimpleJoin2 = new File("./results/CCandTM.xml");
@@ -114,8 +123,9 @@ public class SimpleQueryTests {
 				"FROM " + SD.CCTableName + " " +
 				"INNER JOIN " + SD.TMTableName + " " +
 				"ON " + SD.TMTableName + ".ClassName = " + SD.CCTableName + ".ClassName;";
-
-		myDB.QueryToXML(SQLString, SimpleJoin2);
+		assertTrue("failure " + SimpleJoin2.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin2) >= 5.0);
+		//myAW.QueryToXML(SQLString, SimpleJoin2);
 
 		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
 		SQLString = "SELECT " + SD.REQTableName + ".*, " + SD.CCTableName + ".*" + " " +
@@ -126,8 +136,9 @@ public class SimpleQueryTests {
 				"ON " + SD.CCTableName + ".ClassName = " + SD.TMTableName + ".ClassName;";
 
 		File TripleJoin = new File("./results/TripleJoin.xml");
-
-		myDB.QueryToXML(SQLString, TripleJoin);
+		assertTrue("failure " + TripleJoin.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TripleJoin) >= 5.0);
+		//myAW.QueryToXML(SQLString, TripleJoin);
 
 	}
 }

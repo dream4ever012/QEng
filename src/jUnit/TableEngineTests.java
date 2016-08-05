@@ -21,10 +21,10 @@ public class TableEngineTests {
 
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "POITests";
+	private static final String IH2DBName = "TableEngineTests";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
-	private static final String ResultsURL = "./Results/POIxlsTest/";
+	private static final String ResultsURL = "./Results/TableEngineTests/";
 	
 	@Before
 	public void init()

@@ -1,6 +1,9 @@
 package optimizer;
 
 import java.io.File;
+import java.sql.ResultSet;
+
+import qEng.IDBReturnEnum;
 
 public interface QueryManager {
 	// what our entry point is?
@@ -10,6 +13,15 @@ public interface QueryManager {
 
 	boolean importCSVAsTable(String file, String tableName);
 	
+	boolean arbitrarySQL(String SQLString);
+	
+	IDBReturnEnum ImportSheet(String FilePath, String SheetName);
+
+	public ResultSet QueryToRS(String sQLString);
+	
+	public long measureCostArbitrary(QueryManager myAW, String ArbSQL, File TQ);
+	
+	public IDBReturnEnum QueryToXML(String SQLString, File FileRef); 	  		
 }
 
 /*
