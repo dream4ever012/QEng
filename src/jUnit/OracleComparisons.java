@@ -9,28 +9,19 @@ import java.sql.SQLException;
 import org.junit.Before;
 import org.junit.Test;
 
+import ResourceStrings.OS;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.InternalDB;
 import qEng.InternalH2;
+import utils.CreateInOracleTable;
 import utils.CreateTablesInMemory;
 import utils.MeasureCostArbitrary;
 import utils.MeasureCostToRS;
 import utils.ResultSetUtils;
 
 public class OracleComparisons {
-
-	private static final String protocol = "jdbc:oracle";
-	private static final String DriverType = ":thin:";
-	private static final String Host = "@rasinsrv06.cstcis.cti.depaul.edu";
-	private static final String Port = ":1521";
-	private static final String SID = "/oracle12c";
-	private static final String URL = protocol + DriverType + Host + Port + SID;
-	private static final String User = "Tiqi";
-	private static final String Pass = "Tiqi123";
-
-
 
 	// private InternalDB myDB;
 	public static QueryManager myAW;
@@ -80,27 +71,16 @@ public class OracleComparisons {
 //			ods.setPassword(Pass); 
 //			Connection conn = ods.getConnection();
 
-			Connection conn = DriverManager.getConnection(URL, User, Pass);
+			Connection conn = DriverManager.getConnection(OS.URL, OS.User, OS.Pass);
 
+			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.REQTableName);
+			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
 
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM " + SD.TMTableName5k + ";"),
-					URL, 
-					User,
-					Pass,
-					SD.TMTableName5k);
+			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.TMTableName5k);
+			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
 
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM " + SD.CCTableName5k + ";"),
-					URL,
-					User,
-					Pass,
-					SD.CCTableName5k);
-
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM " + SD.REQTableNameTC1 + ";"),
-					URL,
-					User,
-					Pass,
-					SD.REQTableNameTC1);
-
+			// MedFleet mockdataset
+			CreateInOracleTable.createInOracleTableMF(myAW);
 		
 				conn.close();
 				setupIsDone = true;

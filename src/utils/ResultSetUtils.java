@@ -8,6 +8,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import ResourceStrings.SD;
+import optimizer.QueryManager;
 import qEng.InternalDB;
 
 public class ResultSetUtils{
@@ -76,6 +78,14 @@ public class ResultSetUtils{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static void CreateOracleTable(QueryManager myAW, String URL, String User, String Pass, String TableName){
+		RStoOracleTable(myAW.QueryToRS("SELECT * FROM " + TableName + ";"),
+				URL, 
+				User,
+				Pass,
+				SD.TMTableName5k);
 	}
 
 
