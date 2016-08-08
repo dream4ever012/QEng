@@ -1,4 +1,4 @@
-/*package qEng;
+package qEng;
 
 import java.io.File;
 import utils.TimerUtils;
@@ -67,14 +67,14 @@ public class mainforTesting {
 		String ArbSQL3 = "DROP TABLE "+ TMTableName5k +" IF EXISTS; CREATE TABLE "+ TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM5k.csv');";
 		myDB.arbitrarySQL(ArbSQL3);
 		
-		 MUST RUN
-		 * create In-memory table
+		//MUST RUN
+		// * create In-memory table
 		 
 		// createTablesInMemory(myDB);
 		// dropTQTables(myDB,2000);
 		// TO-DO: probably drop tables?
 		
-		 * create In-memory table
+		// * create In-memory table
 		 
 		//The following is going to be the execution of the test queries provided to me by Caleb
 
@@ -100,8 +100,8 @@ public class mainforTesting {
 	}
 	
 
- * 
-
+ 
+/*
 		File TQ1612 = new File("./results/TQ1612.xml");
 		SQLString = "SELECT COUNT(" + REQTableNameTC1 + ".ID) " +
 				"FROM " + REQTableNameTC1 + ", " + TMTableName5k + " " +
@@ -123,12 +123,12 @@ public class mainforTesting {
 		myDB.QueryToXML(SQLString, TQ20);
 		
 				
-		File TQ121 = new File("./results/TQ121.xml");
+		File TQ1212 = new File("./results/TQ1212.xml");
 		SQLString =  "DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
 				"SELECT * " +
 				"FROM " + CCTableName5k + " " +
 				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		TimerUtils.measureCostArbitrary(myDB, SQLString, TQ121);
+		TimerUtils.measureCostArbitrary(myDB, SQLString, TQ1212);
 
 		File TQ1211 = new File("./results/TQ1211.xml");
 		SQLString =  //"DROP TABLE TQ121 IF EXISTS; CREATE TABLE TQ121 AS " + //TEMPORARY
@@ -145,7 +145,7 @@ public class mainforTesting {
 				"INNER JOIN " + TMTableName5k + " " + 
 				"ON " + TMTableName5k + ".ClassName = " + CCTableName5k+ ".ClassName;";// +
 				//"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
-		measureCostArbitrary(myDB, SQLString, TQ125);
+		TimerUtils.measureCostArbitrary(myDB, SQLString, TQ125);
 		// spits out error: duplicate column
 
 		
@@ -424,7 +424,7 @@ public class mainforTesting {
 	measureCostToRS(myDB, SQLString, TQ67);
 	myDB.QueryToXML(SQLString, TQ67);
 	
-	
+*/	
 	
 
 	
@@ -436,4 +436,3 @@ public class mainforTesting {
 	
 
 }
-*/

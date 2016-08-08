@@ -71,7 +71,11 @@ public class AskWiseTest {
 		
 		File TQ2 = new File("./results/TQ2.xml");
 		myAW.queryToXml(ArbSQL);
-		long temp = TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2);
-		assertTrue("failure " + TQ2.getName().toString() , temp >= 10.0);
+		assertTrue("failure " + TQ2.getName().toString() , TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2) >= 10.0);
+		
+		File TQ3 = new File("./results/TQ3.xml");
+		ArbSQL = "DROP TABLE "+ SD.R70TableName +" IF EXISTS; CREATE TABLE " 
+			+ SD.R70TableName +" AS SELECT * FROM " + SD.R70TableName + ";";
+		myAW.measureCostArbitrary(myAW, ArbSQL, TQ3);
 	}
 }
