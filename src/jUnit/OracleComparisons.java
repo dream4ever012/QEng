@@ -13,6 +13,7 @@ import ResourceStrings.OS;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
+import qEng.ExternalOracle;
 import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.CreateInOracleTable;
@@ -25,6 +26,7 @@ public class OracleComparisons {
 
 	// private InternalDB myDB;
 	public static QueryManager myAW;
+	public static QueryManager myOAW;
 	private boolean setupIsDone = false;
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
@@ -50,18 +52,31 @@ public class OracleComparisons {
 				System.out.println("Old Trace Deleted");
 			}		
 			new File(ResultsURL).mkdirs();
-			myAW = new AskWise(OS.URL, OS.User, OS.Pass);
 			
+			//myAW = new AskWise(OS.URL, OS.User, OS.Pass);
+			
+			myOAW = new AskWise(new ExternalOracle());
+			myAW = new AskWise(new InternalH2(IH2DBURL));
 			try {
 
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 			myAW.arbitrarySQL(ArbSQL);
 			
-			CreateTablesInMemory.createTablesInMemory(myAW);
+			//CreateTablesInMemory.createTablesInMemory(myAW);
 			
-			setupIsDone = false;
+			myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
+			myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
 			
+			System.out.println("Sheets imported");
+			
+			
+			//TODO: output all three tables to xml to see why CC5k is starting on PCL 4999 and inf looping on it.
+			myAW.queryToXml();
+			
+			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.TMTableName5k ), OS.URL, OS.User, OS.Pass, SD.TMTableName5k);
+			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.CCTableName5k), OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
+			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.REQTableNameTC1), OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
 
 			// System.out.println(URL);
 
@@ -73,14 +88,8 @@ public class OracleComparisons {
 
 			conn = DriverManager.getConnection(OS.URL, OS.User, OS.Pass);
 			
-			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.REQTableName);
-			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
-
-			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.TMTableName5k);
-			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
-
 			// MedFleet mockdataset
-			CreateInOracleTable.createInOracleTableMF(myAW);
+			//CreateInOracleTable.createInOracleTableMF(myAW);
 		
 				conn.close();
 				setupIsDone = true;
@@ -112,7 +121,7 @@ public class OracleComparisons {
 				"ON " + SD.TMTableName5k + ".ClassName= " + SD.CCTableName5k + ".ClassName;";
 		//new MeasureCostToRS(myDB, SQLString, TQ18);
 		assertTrue("failure " + TQ18.getName().toString() , 
-				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ18) >= 10.0);
+				MeasureCostArbitrary.measureCostArbitrary(myOAW, SQLString, TQ18) >= 10.0);
 /*	
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT *" + " " +

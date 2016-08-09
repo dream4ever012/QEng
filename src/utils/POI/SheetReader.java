@@ -24,7 +24,7 @@ import org.h2.tools.SimpleResultSet;
 
 public class SheetReader {
 
-	public static Boolean debug = false;
+	public static Boolean debug = true;
 
 	public static ResultSet SheetRead(Connection conn, String FilePath,String SheetName)
 	{
@@ -103,7 +103,6 @@ public class SheetReader {
 						ColumnTypes.add(Types.VARCHAR);
 					}
 				}
-
 				break;
 			}
 

@@ -11,6 +11,7 @@ import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.MeasureCostArbitrary;
 
+//TODO: consider moving sentinel connection out of InternalH2 and into QueryManager. It would allow AW to close it's database and switch to a new one.
 public class AskWise implements QueryManager{
 	InternalDB DB;
 	private String IH2DBURL = "jdbc:h2:./Data/AskWiseTesting/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
@@ -29,9 +30,10 @@ public class AskWise implements QueryManager{
 		this.DB = DB;
 	}
 	
+	//TODO: add parser for url to get protocol to map to concrete impls
 	public AskWise(String URL, String User, String Pass){
 		//Connection setup
-		DB = new InternalH2(IH2DBURL);
+		DB = new InternalH2(IH2DBURL,User,Pass);
 		try {
 			conn = DriverManager.getConnection(URL,User,Pass);
 			stmt = conn.createStatement();
@@ -42,9 +44,9 @@ public class AskWise implements QueryManager{
 	}
 	
 	// getter
-	public Connection getConn(){
+	/*public Connection getConn(){
 		return conn;
-	}
+	}*/
 	
 	@Override
 	public File queryToXml(String SQL) {
@@ -53,11 +55,8 @@ public class AskWise implements QueryManager{
 		return head.ExecuteQuery(SQL, DB);
 	}
 	
-	
-
 	@Override
 	public void createLink(String jdbc_driver,String url, String user, String pass , String tablename) {
-		// TODO Auto-generated method stub
 		DB.createLink(jdbc_driver, url, user, pass, tablename);
 	}
 	
@@ -84,13 +83,11 @@ public class AskWise implements QueryManager{
 		
 	}
 
-	// TO-DO: Not sure if this would be the right way
+	// TODO: Not sure if this would be the right way
 	@Override
 	public long measureCostArbitrary(QueryManager myAW, String ArbSQL, File TQ) {
 		return MeasureCostArbitrary.measureCostArbitrary(myAW, ArbSQL, TQ);
 	}
-
-
 
 	@Override
 	public IDBReturnEnum QueryToXML(String SQLString, File FileRef) {
@@ -100,6 +97,5 @@ public class AskWise implements QueryManager{
 	@Override
 	public void RegisterCompiledUDF(String Alias, String classpath) {
 		DB.RegisterCompiledUDF(Alias, classpath);
-		
 	}
 }

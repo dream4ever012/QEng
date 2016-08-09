@@ -41,8 +41,8 @@ public interface InternalDB {
 	// public IDBReturnEnum FileFree(File ref);
 	
 	//ForTesting/Future use
-	public void PopulateLocalTable();
-	public void CreateLocalTable();
+	//public void PopulateLocalTable();
+	//public void CreateLocalTable();
 	public boolean arbitrarySQL(String SQL);
 
 	IDBReturnEnum RegisterCompiledUDF(String Alias, String classpath);

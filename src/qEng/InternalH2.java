@@ -211,16 +211,6 @@ public class InternalH2 implements InternalDB {
 	}
 
 	@Override
-	public void PopulateLocalTable() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void CreateLocalTable() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public IDBReturnEnum close() {
 		//not closed properly if the specific SQL exception isn't seen.
 		//would close regardless when the JVM stops
@@ -404,7 +394,7 @@ public class InternalH2 implements InternalDB {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+SheetName +"');";
+			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+ SheetName +"');";
 
 			stmt.execute(TLSQL);
 			iconn.close();

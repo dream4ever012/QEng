@@ -55,7 +55,6 @@ public class AskWiseTest {
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		myAW.arbitrarySQL(ArbSQL);
 		
-
 		setupIsDone = true;
 		}
 	}

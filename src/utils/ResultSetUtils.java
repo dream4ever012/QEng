@@ -37,7 +37,7 @@ public class ResultSetUtils{
 				if(i < colCount){ colsSQL = colsSQL + ", "; colNamesSQL = colNamesSQL + ", ";}
 			}
 
-			// System.out.println(colsSQL);
+			 System.out.println(colsSQL);
 
 			//Connection setup
 			Connection con = DriverManager.getConnection(URL,User,Pass);
@@ -71,7 +71,7 @@ public class ResultSetUtils{
 					if(k < colCount){ rowValsSQL = rowValsSQL + ", ";}
 				}
 				sql = "Insert INTO " + TableName + " ("+ colNamesSQL +") VALUES (" +rowValsSQL + ")";
-				// System.out.println(sql);
+				 System.out.println(sql);
 				stmt.execute(sql);
 			}
 		} catch (SQLException e) {
@@ -85,7 +85,7 @@ public class ResultSetUtils{
 				URL, 
 				User,
 				Pass,
-				SD.TMTableName5k);
+				TableName);
 	}
 
 
