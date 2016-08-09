@@ -32,6 +32,7 @@ public class OracleComparisons {
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
 	private static final String ResultsURL = "./Results/OracleComparisons/";
+	private static Connection conn;
 
 	@Before
 	public void init()
@@ -49,10 +50,9 @@ public class OracleComparisons {
 				System.out.println("Old Trace Deleted");
 			}		
 			new File(ResultsURL).mkdirs();
-			myAW = new AskWise();
+			myAW = new AskWise(OS.URL, OS.User, OS.Pass);
+			
 			try {
-
-
 
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
@@ -71,8 +71,8 @@ public class OracleComparisons {
 //			ods.setPassword(Pass); 
 //			Connection conn = ods.getConnection();
 
-			Connection conn = DriverManager.getConnection(OS.URL, OS.User, OS.Pass);
-
+			conn = DriverManager.getConnection(OS.URL, OS.User, OS.Pass);
+			
 			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.REQTableName);
 			ResultSetUtils.CreateOracleTable(myAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
 

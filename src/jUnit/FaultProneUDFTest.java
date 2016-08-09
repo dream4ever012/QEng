@@ -6,8 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ResourceStrings.SD;
+import optimizer.AskWise;
+import optimizer.QueryManager;
 import qEng.InternalDB;
 import qEng.InternalH2;
+import utils.CreateTablesInMemory;
 import utils.MeasureCostArbitrary;
 
 
@@ -25,7 +28,7 @@ public class FaultProneUDFTest {
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
 	
-	private InternalDB myDB;
+	private QueryManager myAW;
 	
 	private static final String ResultsURLBase = "./Results/";
 	private static final String ResultsURL = ResultsURLBase + IH2DBName+ "/";
@@ -47,16 +50,17 @@ public class FaultProneUDFTest {
 			System.out.println("Old Trace Deleted");
 		}		
 		new File(ResultsURL).mkdirs();
-		myDB = new InternalH2(IH2DBURL);
+		myAW = new AskWise();
 		
 
-			myDB.ImportSheet(SD.REQSheetFP,SD.REQTableName);
-			myDB.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+			myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
+			myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
+			CreateTablesInMemory.createTablesInMemory(myAW);
 
 			/* */
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('"+ SD.TMSheet5kFP +"');";
-			myDB.arbitrarySQL(ArbSQL);
+			myAW.arbitrarySQL(ArbSQL);
 			setupIsDone = true;
 		}
 	}
@@ -64,8 +68,8 @@ public class FaultProneUDFTest {
 	@Test
 	public void test()
 	{	
-
-		myDB.RegisterCompiledUDF("FAULTPRONE", "src.UDF.isFaultProne");
+		// TO-DO: register tables
+		myAW.RegisterCompiledUDF("FAULTPRONE", "src.UDF.isFaultProne");
 		/*
 		File TQ1212 = new File("./results/TQ1212.xml");
 		SQLString =
@@ -104,8 +108,8 @@ public class FaultProneUDFTest {
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
 				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
-		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQudfWhere);
-		myDB.QueryToXML(SQLString, TQudfWhere);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQudfWhere);
+		myAW.QueryToXML(SQLString, TQudfWhere);
 
 
 

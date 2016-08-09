@@ -18,8 +18,6 @@ public class AskWiseTest {
 
 	private static QueryManager myAW;
 	public static Boolean setupIsDone = false;
-	String SQLString;
-
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/AskWiseTesting/";
 	private static final String IH2DBName = "AW";
@@ -29,7 +27,7 @@ public class AskWiseTest {
 	
 	//TODO: create specialized constructor for askwise(InternalDB) and askwise(String URL, User, Pass) etc.
 	//TODO: crate a generalized method for importing.
-	//TODO: pass IH2DBURL to the askwise constructor.
+	//TODO: pass IH2DBURL to the askwise constructor. 
 	@Before
 	public void init()
 	{
@@ -51,7 +49,7 @@ public class AskWiseTest {
 		
 		myAW.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
-		
+		myAW.ImportSheet(SD.R70FP,SD.R70TableName);
 		
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
@@ -74,8 +72,7 @@ public class AskWiseTest {
 		assertTrue("failure " + TQ2.getName().toString() , TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2) >= 10.0);
 		
 		File TQ3 = new File("./results/TQ3.xml");
-		ArbSQL = "DROP TABLE "+ SD.R70TableName +" IF EXISTS; CREATE TABLE " 
-			+ SD.R70TableName +" AS SELECT * FROM " + SD.R70TableName + ";";
-		myAW.measureCostArbitrary(myAW, ArbSQL, TQ3);
+		ArbSQL = "SELECT * FROM " + SD.R70TableName + ";";
+		assertTrue("failure " + TQ3.getName().toString() , TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ3) <= 10.0);
 	}
 }

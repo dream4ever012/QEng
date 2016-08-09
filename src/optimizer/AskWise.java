@@ -1,6 +1,10 @@
 package optimizer;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import qEng.IDBReturnEnum;
 import qEng.InternalDB;
@@ -10,7 +14,8 @@ import utils.MeasureCostArbitrary;
 public class AskWise implements QueryManager{
 	InternalDB DB;
 	private String IH2DBURL = "jdbc:h2:./Data/AskWiseTesting/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
-	
+	private static Connection conn;
+	private static Statement stmt;	
 	
 	//read CSV trace matrix
 	//String ArbSQL = ;
@@ -20,7 +25,26 @@ public class AskWise implements QueryManager{
 		DB = new InternalH2(IH2DBURL); // H2 for default 	
 	}
 	
+	public AskWise(InternalDB DB){
+		this.DB = DB;
+	}
 	
+	public AskWise(String URL, String User, String Pass){
+		//Connection setup
+		DB = new InternalH2(IH2DBURL);
+		try {
+			conn = DriverManager.getConnection(URL,User,Pass);
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	// getter
+	public Connection getConn(){
+		return conn;
+	}
 	
 	@Override
 	public File queryToXml(String SQL) {
@@ -71,5 +95,11 @@ public class AskWise implements QueryManager{
 	@Override
 	public IDBReturnEnum QueryToXML(String SQLString, File FileRef) {
 		return DB.QueryToXML(SQLString, FileRef);
+	}
+
+	@Override
+	public void RegisterCompiledUDF(String Alias, String classpath) {
+		DB.RegisterCompiledUDF(Alias, classpath);
+		
 	}
 }

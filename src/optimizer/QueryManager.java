@@ -21,7 +21,9 @@ public interface QueryManager {
 	
 	public long measureCostArbitrary(QueryManager myAW, String ArbSQL, File TQ);
 	
-	public IDBReturnEnum QueryToXML(String SQLString, File FileRef); 	  		
+	public IDBReturnEnum QueryToXML(String SQLString, File FileRef);
+
+	public void RegisterCompiledUDF(String Alias, String classpath); 	  		
 }
 
 /*

@@ -31,7 +31,7 @@ public class CreateTablesInMemory {
 	myAW.ImportSheet(SD.CP_SCP12kFP,SD.CP_SCP12kTableName);
 	myAW.ImportSheet(SD.SCP15kFP,SD.SCP15kTableName);
 	myAW.ImportSheet(SD.UC10kFP, SD.UC10kTableName);		
-	
+/*	
 	// create TMTC1 in memory
 	File TQ1 = new File("./results/TQ1.xml");
 	CreateInMemoryTableMethod.createInMemoryTable(myAW, SD.TMTableName5k, TQ1);
@@ -119,7 +119,7 @@ public class CreateTablesInMemory {
 	// create CCTableName in memory
 	File TQ22 = new File("./results/TQ22.xml");
 	CreateInMemoryTableMethod.createInMemoryTable(myAW, SD.CCTableName, TQ22);
-	
+*/
 	}
 }
 
