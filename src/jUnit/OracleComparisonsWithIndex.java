@@ -36,7 +36,7 @@ public class OracleComparisonsWithIndex {
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
 	private static final String ResultsURL = "./Results/OracleComparisonsWithIndex/";
-	private static Connection conn;
+
 
 	@Before
 	public void init()
