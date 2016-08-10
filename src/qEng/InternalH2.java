@@ -28,7 +28,7 @@ public class InternalH2 implements InternalDB {
 	private		Boolean debugMode = false;
 	private 	File TEMPDIR 	= new File("./temp/");
 	//TODO: create auto optimization branches in the h2 code.
-	private 	int optLevel = 1;
+	private 	int optLevel = 0;
 
 	public InternalH2()
 	{
@@ -130,7 +130,12 @@ public class InternalH2 implements InternalDB {
 			//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
 			stmt.executeUpdate(TLSQL);
 			iconn.close();
-
+			
+			if(optLevel > 0){
+				gatherStats(tablename);
+				
+			}
+			
 			rt = IDBReturnEnum.SUCCESS;
 
 		} catch (SQLException e) {
@@ -255,6 +260,13 @@ public class InternalH2 implements InternalDB {
 			stmt.executeUpdate(TLSQL);
 			iconn.close();
 
+			if(optLevel > 0)
+			{
+				gatherStats(tablename);
+			
+				
+			}
+			
 			rt = IDBReturnEnum.SUCCESS;
 
 		} catch (SQLException e) {
@@ -399,13 +411,20 @@ public class InternalH2 implements InternalDB {
 			stmt.execute(TLSQL);
 			iconn.close();
 
+			
+			if(optLevel > 0){
+				gatherStats(SheetName);
+			}
+			
 			rt = IDBReturnEnum.SUCCESS;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+			
 		return rt;
+		
 	}
 	
 	@Override
@@ -421,6 +440,11 @@ public class InternalH2 implements InternalDB {
 			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+SheetName +"');";//String TLSQL = "CREATE LINKED TABLE DEMO1 ("
 			stmt.execute(TLSQL);
 			iconn.close();
+			
+			if(optLevel > 0)
+			{
+				gatherStats(SheetName);
+			}
 
 			rt = IDBReturnEnum.SUCCESS;
 
@@ -431,7 +455,24 @@ public class InternalH2 implements InternalDB {
 		return rt;
 	}
 	
-	
+	private void gatherStats(String TableName) throws SQLException
+	{
+		
+		Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+		Statement stmt = iconn.createStatement();
+
+		String SQL = "SELECT * FROM \"" + TableName + "\";";
+		
+		
+		for(int i = 0; i < 10; i++)
+		{
+			System.out.println("GatheringStats");
+			stmt.execute(SQL);
+			
+		}
+		iconn.close();
+		
+	}
 	
 	
 }

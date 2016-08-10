@@ -2,11 +2,12 @@ package ResourceStrings;
 
 public class SD {
 	
-	public static final String REQTableName = "ReqSheet";
+	public static final String REQTableName = "\"ReqSheet\"";
 	public static final String REQSheetFP = "./SecondData/Requirements.xls";
-	public static final String CCTableName = "codeclass";
+	public static final String CCTableName = "\"codeclass\"";
 	public static final String CCSheetFP = "./SecondData/codeclasses.xls";
-	public static final String TMTableName = "CC_REQ_TM";
+	public static final String TMTableName = "\"CC_REQ_TM\"";
+	public static final String TMFilePath = "./Data/CC-REQ-TM.csv";
 	
 	public static final String CC10kFP = "./SecondData/CC.xls";
 	public static final String CC10kTableName = "CC";
@@ -58,8 +59,8 @@ public class SD {
 	public static final String IH2FP = "./Data/TestCaseDataBases/";
 	public static final String IH2DBName = "POITests";
 	public static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
-	public static String IH2DBURL;
-	public static final String ResultsURL = "./Results/POIxlsTest/";
+	//public static String IH2DBURL;
+	//public static final String ResultsURL = "./Results/POIxlsTest/";
 	
 	
 	
