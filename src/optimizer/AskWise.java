@@ -19,6 +19,7 @@ import utils.DataModel.TableNode;
 
 //TODO: consider moving sentinel connection out of InternalH2 and into QueryManager. It would allow AW to close it's database and switch to a new one.
 public class AskWise implements QueryManager{
+	
 	InternalDB DB;
 	private String IH2DBURL = "jdbc:h2:./Data/AskWiseTesting/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static Connection conn;
@@ -142,6 +143,8 @@ public class AskWise implements QueryManager{
 		return rt;
 	}
 
+	
+	//TODO: Redo this method to pass all of the args to DB and have create index handle it internal to the InternalDB IMPL.
 	@Override
 	public void RegisterTM(String TMTableName, String TableOneTableName, String TableOneColName,
 						   String TableTwoTableName, String TableTwoColName) {
