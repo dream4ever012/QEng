@@ -24,7 +24,7 @@ import utils.MeasureCostArbitrary;
 import utils.MeasureCostToRS;
 import utils.ResultSetUtils;
 
-public class OracleComparisons {
+public class OracleComparisonsWithIndex {
 
 	// private InternalDB myDB;
 	public static QueryManager myAW;
@@ -32,10 +32,10 @@ public class OracleComparisons {
 	private boolean setupIsDone = false;
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "OracleComparisons";
+	private static final String IH2DBName = "OracleComparisonsWithIndex";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
-	private static final String ResultsURL = "./Results/OracleComparisons/";
+	private static final String ResultsURL = "./Results/OracleComparisonsWithIndex/";
 	private static Connection conn;
 
 	@Before
@@ -60,7 +60,7 @@ public class OracleComparisons {
 		myOAW = new AskWise(new ExternalOracle());
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 /*
-		//read CSV trace matrix
+		read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('" + SD.TMSheet5kFP + "');";
 		myAW.arbitrarySQL(ArbSQL);
 		*/
@@ -69,6 +69,8 @@ public class OracleComparisons {
 		myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
 		myAW.ImportSheet(SD.TMSheet4kFP, SD.TMTableName4k);
 		myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
+		
+		myAW.RegisterTM(SD.TMTableName4k, SD.CCTableName5k, "ClassName" , SD.REQTableNameTC1, "ID");
 		
 		System.out.println("Sheets imported");
 		
@@ -138,7 +140,7 @@ public class OracleComparisons {
 		SQLString = "SELECT * " +
 				"FROM " + SD.CCTableName5k + " " +
 				"INNER JOIN " + SD.TMTableName4k + " " +
-				"ON " + SD.TMTableName4k + ".ClassName= " + SD.CCTableName5k + ".ClassName;";
+				"ON " + SD.TMTableName4k + ".ClassName = " + SD.CCTableName5k + ".ClassName;";
 		assertTrue("failure " + TQ19.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ19) >= 10.0);
 /*	

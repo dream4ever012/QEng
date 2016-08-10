@@ -19,7 +19,7 @@ public class POIxlsTest {
 
 	
 	public static QueryManager myAW;
-	public static QueryManager myOAW;
+	
 	private boolean setupIsDone = false;
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";

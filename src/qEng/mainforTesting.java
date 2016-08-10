@@ -1,6 +1,7 @@
 package qEng;
 
 import java.io.File;
+import java.sql.DriverManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,43 +28,32 @@ import utils.TimerUtils;
 
 public class mainforTesting {
 
-	public static void main(String[] args)
-	{
-
-		Stuff s = new Stuff();
-		s.init();
-		s.TripleJoin();
-
-
-
-	}
-}
-
-class Stuff	{
-
-
-	public QueryManager myAW;
-	public QueryManager myOAW;
-	private boolean setupIsDone = false;
+	public static QueryManager myAW;
+	private static boolean setupIsDone = false;
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "OracleComparisons";
+	private static final String IH2DBName = "TraceTest";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 
 	public InternalDB myDB;
-	private String SQLString;
-	private String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/POITests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private static String SQLString;
+	//private String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/POITests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
+	private static String IH2DBURL;
 
+	private static final String ResultsURL = "./Results/TraceTest/";
 
-	private static final String ResultsURL = "./Results/POIxlsTest/";
-
-	public Stuff()
+	public static void main(String[] args)
 	{
+		
+		try {
+			Class.forName("org.h2.Driver").newInstance();
+			Class.forName("org.h2.Driver");
+			
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	}
-
-	public void init()
-	{
 		if(!setupIsDone){
 			IH2DBURL = H2PROTO + IH2FP + IH2DBName + TRACELEVEL;
 			if(new File(IH2FP + IH2DBName + ".mv.db").delete())
@@ -86,26 +76,26 @@ class Stuff	{
 			String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
 			myAW.arbitrarySQL(ArbSQL);
 			setupIsDone = true;
+			
+			
+			//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
+/*			SQLString = "SELECT " + SD.REQTableName + ".*, " + SD.CCTableName + ".*" + " " +
+					"FROM " + SD.REQTableName + " " +
+					"INNER JOIN " + SD.TMTableName + " " +
+					"ON " + SD.TMTableName + ".ID = " + SD.REQTableName + ".ID" + " " +
+					"INNER JOIN " + SD.CCTableName + " " +
+					"ON " + SD.CCTableName + ".ClassName = " + SD.TMTableName + ".ClassName;";
+
+			File TripleJoin = new File(ResultsURL + "TraceTripleJoin.xml");
+
+			//myDB.QueryToXML(SQLString, TripleJoin);
+			MeasureCostToRS.measureCostToRS(myAW, SQLString, TripleJoin);
+
+			*/
+			
 		}
 	}
 
-
-	public void TripleJoin()
-	{
-		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
-		SQLString = "SELECT " + SD.REQTableName + ".*, " + SD.CCTableName + ".*" + " " +
-				"FROM " + SD.REQTableName + " " +
-				"INNER JOIN " + SD.TMTableName + " " +
-				"ON " + SD.TMTableName + ".ID = " + SD.REQTableName + ".ID" + " " +
-				"INNER JOIN " + SD.CCTableName + " " +
-				"ON " + SD.CCTableName + ".ClassName = " + SD.TMTableName + ".ClassName;";
-
-		File TripleJoin = new File(ResultsURL + "TripleJoin.xml");
-
-		//myDB.QueryToXML(SQLString, TripleJoin);
-		MeasureCostToRS.measureCostToRS(myAW, SQLString, TripleJoin);
-
-	}
 
 }
 

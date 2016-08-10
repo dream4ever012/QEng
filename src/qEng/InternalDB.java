@@ -52,5 +52,7 @@ public interface InternalDB {
 	IDBReturnEnum ImportSheet(String FilePath, String SheetName, String TableName);
 	IDBReturnEnum ImportSheet(String FilePath, String SheetName);
 
+	public void CreateIndex(String tMTableName, String tableOneColName);
+
 	
 }

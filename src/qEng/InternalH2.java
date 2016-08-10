@@ -35,21 +35,13 @@ public class InternalH2 implements InternalDB {
 		//TODO:Consider setting Page Size to tune performance, default is 2kb and it needs to be set on DB creation.
 		try {
 			//Register the JDBC driver for internal communication and create a sentinel connection
-			Class.forName("org.h2.Driver").newInstance();
+			//Class.forName("org.h2.Driver").newInstance();
+			org.h2.Driver.load();
 			//Class.forName("com.nilostep.xlsql.jdbc.xlDriver").newInstance();
 			h2conn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			//setup temp directory for storing session queries.
 			
 			TEMPDIR.mkdirs();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,14 +53,19 @@ public class InternalH2 implements InternalDB {
 
 	//Specialized constructor to create the database at a different location
 	//TODO: convert to throws instead of try/catch and handle the exceptions in the containing class
-	public InternalH2(String DBURL)
+	public InternalH2(String DBURL) 
 	{
 		try {
 			//Register the JDBC driver for internal communication and create a sentinel connection
+			//Class.forName("org.h2.Driver").newInstance();
+			//DriverManager.registerDriver(org.h2.Driver.load());
 			Class.forName("org.h2.Driver").newInstance();
 			h2conn = DriverManager.getConnection(DBURL,"sys","");
 
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,9 +73,6 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -91,19 +85,11 @@ public class InternalH2 implements InternalDB {
 	public InternalH2(String DBURL, String USER, String PASS) {
 		try {
 			//Register the JDBC driver for internal communication and create a sentinel connection
-			Class.forName("org.h2.Driver").newInstance();
+			//Class.forName("org.h2.Driver").newInstance();
+			org.h2.Driver.load();
 			h2conn = DriverManager.getConnection(DBURL,USER,PASS);
 
 		
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -406,7 +392,7 @@ public class InternalH2 implements InternalDB {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			String TLSQL = "DROP TABLE \""+ SheetName +"\" IF EXISTS; CREATE TABLE \""+ SheetName +"\" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+ SheetName +"');";
+			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+ SheetName +"');";
 
 			stmt.execute(TLSQL);
 			iconn.close();
@@ -472,6 +458,29 @@ public class InternalH2 implements InternalDB {
 		}
 		iconn.close();
 		
+	}
+
+	@Override
+	public void CreateIndex(String TableName, String ColName) {
+		//boolean rt = false;
+		Connection iconn;
+		try {
+			
+			String SQLString =  "CREATE HASH INDEX ON " + TableName + "(" +ColName+ ");"; 
+			
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+
+			
+			
+			stmt.execute(SQLString);
+			iconn.close();
+			//rt = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return rt;
 	}
 	
 	

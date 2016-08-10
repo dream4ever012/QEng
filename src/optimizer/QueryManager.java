@@ -26,6 +26,8 @@ public interface QueryManager {
 	public void RegisterCompiledUDF(String Alias, String classpath); 
 	
 	public IDBReturnEnum toXML(ResultSet rs, File fref);
+
+	void RegisterTM(String TMTableName, String TableOneTableName, String TableOneColName, String TableTwoTableName, String TableTwoColName);
 }
 
 /*

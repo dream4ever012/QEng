@@ -341,4 +341,10 @@ public class ExternalOracle implements InternalDB{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void CreateIndex(String tMTableName, String tableOneColName) {
+		// TODO Auto-generated method stub
+		
+	}
 }
