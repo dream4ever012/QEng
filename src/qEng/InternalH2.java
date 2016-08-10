@@ -394,7 +394,7 @@ public class InternalH2 implements InternalDB {
 			Connection iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 
-			String TLSQL = "DROP TABLE "+ SheetName +" IF EXISTS; CREATE TABLE "+ SheetName +" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+ SheetName +"');";
+			String TLSQL = "DROP TABLE \""+ SheetName +"\" IF EXISTS; CREATE TABLE \""+ SheetName +"\" AS SELECT * FROM SHEETREAD('"+ FilePath+"','"+ SheetName +"');";
 
 			stmt.execute(TLSQL);
 			iconn.close();

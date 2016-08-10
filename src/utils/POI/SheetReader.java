@@ -24,7 +24,7 @@ import org.h2.tools.SimpleResultSet;
 
 public class SheetReader {
 
-	public static Boolean debug = true;
+	public static Boolean debug = false;
 
 	public static ResultSet SheetRead(Connection conn, String FilePath,String SheetName)
 	{
@@ -51,7 +51,7 @@ public class SheetReader {
 
 			//Finding column names
 			//TODO: don't forget to set row start to the first row after column names
-			for(rowCursor = rowStart;rowCursor<rowEnd;rowCursor++)
+			for(rowCursor = rowStart;rowCursor<=rowEnd;rowCursor++)
 			{
 
 				if(rowCursor > rowEnd){System.out.println("Something went wrong"); break;}
@@ -120,14 +120,14 @@ public class SheetReader {
 					return rs;
 				}
 			}
-
-			Object[] rowVals = new Object[Math.max(1+ColumnEnd - ColumnStart,0)];
-			for(rowCursor = rowStart; rowCursor < rowEnd; rowCursor++)
+			
+			for(rowCursor = rowStart; rowCursor <= rowEnd; rowCursor++)
 			{
+				Object[] rowVals = new Object[Math.max(1+ColumnEnd - ColumnStart,0)];
 				r = sheet.getRow(rowCursor);
 				
 				if(r == null){
-					//Early out for blank rows
+					System.out.println("Row is null");//Early out for blank rows
 					continue;
 				}
 				

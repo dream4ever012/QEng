@@ -23,7 +23,9 @@ public interface QueryManager {
 	
 	public IDBReturnEnum QueryToXML(String SQLString, File FileRef);
 
-	public void RegisterCompiledUDF(String Alias, String classpath); 	  		
+	public void RegisterCompiledUDF(String Alias, String classpath); 
+	
+	public IDBReturnEnum toXML(ResultSet rs, File fref);
 }
 
 /*

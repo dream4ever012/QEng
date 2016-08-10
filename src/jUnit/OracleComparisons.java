@@ -6,6 +6,8 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,34 +53,50 @@ public class OracleComparisons {
 			{
 				System.out.println("Old Trace Deleted");
 			}		
-			new File(ResultsURL).mkdirs();
-			
-			//myAW = new AskWise(OS.URL, OS.User, OS.Pass);
-			
-			myOAW = new AskWise(new ExternalOracle());
-			myAW = new AskWise(new InternalH2(IH2DBURL));
-			try {
+		new File(ResultsURL).mkdirs();
+		
+		//myAW = new AskWise(OS.URL, OS.User, OS.Pass);
+		
+		myOAW = new AskWise(new ExternalOracle());
+		myAW = new AskWise(new InternalH2(IH2DBURL));
+/*
+		//read CSV trace matrix
+		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('" + SD.TMSheet5kFP + "');";
+		myAW.arbitrarySQL(ArbSQL);
+		*/
+		//CreateTablesInMemory.createTablesInMemory(myAW);
+		
+		myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
+		myAW.ImportSheet(SD.TMSheet4kFP, SD.TMTableName4k);
+		myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
+		
+		System.out.println("Sheets imported");
+		
+/*		
+		String SQLString;
+		SQLString = "SELECT * FROM " + SD.TMTableName5k + ";";
+		File TQ1 = new File("./results/TQ1.xml");
+		myAW.QueryToXML(SQLString, TQ1);
+		
+		SQLString = "SELECT * FROM " + SD.CCTableName5k + ";";
+		File TQ2 = new File("./results/TQ2.xml");
+		myAW.QueryToXML(SQLString, TQ2);
+		
+		SQLString = "SELECT * FROM " + SD.REQTableNameTC1 + ";";
+		File TQ3 = new File("./results/TQ3.xml");
+		myAW.QueryToXML(SQLString, TQ3);
+*/		
 
-			//read CSV trace matrix
-			String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
-			myAW.arbitrarySQL(ArbSQL);
-			
-			//CreateTablesInMemory.createTablesInMemory(myAW);
-			
-			myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
-			myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
-			
-			System.out.println("Sheets imported");
-			
-			
-			//TODO: output all three tables to xml to see why CC5k is starting on PCL 4999 and inf looping on it.
-			myAW.queryToXml();
-			
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.TMTableName5k ), OS.URL, OS.User, OS.Pass, SD.TMTableName5k);
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.CCTableName5k), OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
-			ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM "+ SD.REQTableNameTC1), OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
-
-			// System.out.println(URL);
+		
+/*
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.CCTableName5k+"\""),
+										OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+  SD.TMTableName4k+"\"" ),
+										OS.URL, OS.User, OS.Pass, SD.TMTableName4k);
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.REQTableNameTC1+"\""), 
+										OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
+*/
+		// System.out.println(URL);
 
 //			OracleDataSource ods = new OracleDataSource(); 
 //			ods.setURL(URL); 
@@ -86,17 +104,11 @@ public class OracleComparisons {
 //			ods.setPassword(Pass); 
 //			Connection conn = ods.getConnection();
 
-			conn = DriverManager.getConnection(OS.URL, OS.User, OS.Pass);
-			
-			// MedFleet mockdataset
-			//CreateInOracleTable.createInOracleTableMF(myAW);
-		
-				conn.close();
-				setupIsDone = true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		// MedFleet mockdataset
+		//CreateInOracleTable.createInOracleTableMF(myAW);
+	
+		setupIsDone = true;
+
 			
 		}
 			//Persistent tables for H2
@@ -116,12 +128,19 @@ public class OracleComparisons {
 		
 		File TQ18 = new File("./results/TQ18.xml");
 		SQLString = "SELECT * " +
-				"FROM " + SD.CCTableName5k + " " +
-				"INNER JOIN " + SD.TMTableName5k + " " +
-				"ON " + SD.TMTableName5k + ".ClassName= " + SD.CCTableName5k + ".ClassName;";
-		//new MeasureCostToRS(myDB, SQLString, TQ18);
+				"FROM " + SD.CCTableName5k + " " + //", " + SD.TMTableName4k;
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.TMTableName4k + ".ClassName= " + SD.CCTableName5k + ".ClassName";
 		assertTrue("failure " + TQ18.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myOAW, SQLString, TQ18) >= 10.0);
+		
+		File TQ19 = new File("./results/TQ19.xml");
+		SQLString = "SELECT * " +
+				"FROM \"" + SD.CCTableName5k + "\" " +
+				"INNER JOIN \"" + SD.TMTableName4k + "\" " +
+				"ON \"" + SD.TMTableName4k + "\".ClassName= \"" + SD.CCTableName5k + "\".ClassName;";
+		assertTrue("failure " + TQ19.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ19) >= 10.0);
 /*	
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT *" + " " +

@@ -71,7 +71,7 @@ public class ResultSetUtils{
 					if(k < colCount){ rowValsSQL = rowValsSQL + ", ";}
 				}
 				sql = "Insert INTO " + TableName + " ("+ colNamesSQL +") VALUES (" +rowValsSQL + ")";
-				 System.out.println(sql);
+				System.out.println(sql);
 				stmt.execute(sql);
 			}
 		} catch (SQLException e) {

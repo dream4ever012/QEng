@@ -1,11 +1,14 @@
 package optimizer;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import oracle.jdbc.rowset.OracleWebRowSet;
 import qEng.IDBReturnEnum;
 import qEng.InternalDB;
 import qEng.InternalH2;
@@ -97,5 +100,30 @@ public class AskWise implements QueryManager{
 	@Override
 	public void RegisterCompiledUDF(String Alias, String classpath) {
 		DB.RegisterCompiledUDF(Alias, classpath);
+	}
+
+	public IDBReturnEnum toXML(ResultSet rs, File fref) {
+		//new File("./results/").mkdirs();
+		//File f = new File("./results/"+ fref.getPath() + ".xml");
+		IDBReturnEnum rt = IDBReturnEnum.FAIL;
+		if(fref == null || rs == null){return rt;}
+
+		FileOutputStream fos;
+		try {
+
+			fos = new FileOutputStream(fref);
+			OracleWebRowSet set = new OracleWebRowSet();
+			set.writeXml(rs, fos);
+			set.close();
+
+			rt = IDBReturnEnum.SUCCESS;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
 	}
 }
