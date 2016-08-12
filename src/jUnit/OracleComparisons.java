@@ -125,15 +125,8 @@ public class OracleComparisons {
 	public void test() {
 		String SQLString;
 
-		
-		File TQ18 = new File("./results/TQ18.xml");
-		SQLString = "SELECT * " +
-				"FROM " + SD.CCTableName5k + " " + //", " + SD.TMTableName4k;
-				"INNER JOIN " + SD.TMTableName4k + " " +
-				"ON " + SD.TMTableName4k + ".ClassName= " + SD.CCTableName5k + ".ClassName";
-		assertTrue("failure " + TQ18.getName().toString() , 
-				MeasureCostArbitrary.measureCostArbitrary(myOAW, SQLString, TQ18) >= 10.0);
-		
+/*	
+				
 		File TQ19 = new File("./results/TQ19.xml");
 		SQLString = "SELECT * " +
 				"FROM " + SD.CCTableName5k + " " +
@@ -141,6 +134,49 @@ public class OracleComparisons {
 				"ON " + SD.TMTableName4k + ".ClassName= " + SD.CCTableName5k + ".ClassName;";
 		assertTrue("failure " + TQ19.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ19) >= 10.0);
+*/		
+/*		File TQ20 = new File("./results/TQ20.xml");		
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.REQTableNameTC1 + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + SD.CCTableName5k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName;";		
+		assertTrue("failure " + TQ20.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ20) >= 10.0);
+				
+		File TQ18 = new File("./results/TQ18.xml");
+		SQLString = "SELECT * " +
+				"FROM " + SD.CCTableName5k + " " + //", " + SD.TMTableName4k;
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.TMTableName4k + ".ClassName= " + SD.CCTableName5k + ".ClassName";
+		assertTrue("failure " + TQ18.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myOAW, SQLString, TQ18) >= 10.0);	
+			
+		File TQ25 = new File("./results/TQ25.xml");
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.CCTableName5k + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName" + " " +
+				"INNER JOIN " + SD.REQTableNameTC1 + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID;";
+		assertTrue("failure " + TQ25.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ25) >= 10.0);
+*/
+
+		File TQ21 = new File("./results/TQ21.xml");
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.REQTableNameTC1 + " " +
+				"INNER JOIN " + SD.CCTableName5k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName" + " " +
+				"INNER JOIN " + SD.TMTableName4k	 + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID;";
+		assertTrue("failure " + TQ21.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ21) >= 10.0);
+		
+		
+
+
 /*	
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT *" + " " +

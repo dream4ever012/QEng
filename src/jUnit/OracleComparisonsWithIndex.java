@@ -69,8 +69,12 @@ public class OracleComparisonsWithIndex {
 		myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
 		myAW.ImportSheet(SD.TMSheet4kFP, SD.TMTableName4k);
 		myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
-		
+
+		long m1, m2;
+		m1 = System.currentTimeMillis();
 		myAW.RegisterTM(SD.TMTableName4k, SD.CCTableName5k, "ClassName" , SD.REQTableNameTC1, "ID");
+		m2 = System.currentTimeMillis();
+		System.out.println( SD.TMTableName4k+" cost: " + (m2 - m1));
 		
 		System.out.println("Sheets imported");
 		
@@ -127,7 +131,7 @@ public class OracleComparisonsWithIndex {
 	public void test() {
 		String SQLString;
 
-		
+/*		
 		File TQ18 = new File("./results/TQ18.xml");
 		SQLString = "SELECT * " +
 				"FROM " + SD.CCTableName5k + " " + //", " + SD.TMTableName4k;
@@ -143,6 +147,62 @@ public class OracleComparisonsWithIndex {
 				"ON " + SD.TMTableName4k + ".ClassName = " + SD.CCTableName5k + ".ClassName;";
 		assertTrue("failure " + TQ19.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ19) >= 10.0);
+
+		File TQ20 = new File("./results/TQ20.xml");		
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.REQTableNameTC1 + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + SD.CCTableName5k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName;";		
+		assertTrue("failure " + TQ20.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ20) >= 10.0);
+		File TQ21 = new File("./results/TQ21.xml");
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.REQTableNameTC1 + " " +
+				"INNER JOIN " + SD.CCTableName5k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName" + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID;";
+		assertTrue("failure " + TQ21.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ21) >= 10.0);
+		File TQ22 = new File("./results/TQ22.xml");
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.CCTableName5k + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName" + " " +
+				"INNER JOIN " + SD.REQTableNameTC1 + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID;";
+		assertTrue("failure " + TQ22.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ22) >= 10.0);
+
+*/
+		
+		File TQ23 = new File("./results/TQ23.xml");
+		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
+				"FROM " + SD.CCTableName5k + " " +
+				"INNER JOIN " + SD.REQTableNameTC1 + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID" + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName;";
+		assertTrue("failure " + TQ23.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ23) >= 10.0);
+
+		File TQ24 = new File("./results/TQ24.xml");
+		SQLString = "SELECT " + SD.CCTableName5k + ".*, " + SD.REQTableNameTC1 + ".*" + " " +
+				"FROM " + SD.CCTableName5k + " " +
+				"INNER JOIN " + SD.TMTableName4k + " " +
+				"ON " + SD.CCTableName5k + ".ClassName = " + SD.TMTableName4k + ".ClassName" + " " +
+				"INNER JOIN " + SD.REQTableNameTC1 + " " +
+				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID";
+		assertTrue("failure " + TQ24.getName().toString() , 
+				MeasureCostArbitrary.measureCostArbitrary(myOAW, SQLString, TQ24) >= 10.0);
+
+
+		
+//		String ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('" + SD.TMSheet5kFP + "');";
+//		myAW.arbitrarySQL(ArbSQL);
+
 /*	
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT *" + " " +
