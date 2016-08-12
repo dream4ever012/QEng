@@ -1,10 +1,6 @@
 package jUnit.POI;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
-import java.sql.Connection;
-
 import org.junit.Before;
 import org.junit.Test;
 

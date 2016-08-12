@@ -10,7 +10,6 @@ import org.junit.Test;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
-import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.TimerUtils;
 
@@ -45,7 +44,7 @@ public class AskWiseTest {
 		}		
 		new File(ResultsURL).mkdirs();
 		//myDB = new InternalH2(IH2DBURL);
-		myAW = new AskWise();
+		myAW = new AskWise(new InternalH2(IH2DBURL));
 		
 		myAW.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);

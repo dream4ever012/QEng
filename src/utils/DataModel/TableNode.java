@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class TableNode implements DataNode{
 
+	//TODO: convert from ArrayLists to Arrays or vectors.
+	//TODO: consider making a Column Object that has the ColumnName and the meta data about the column.
 	boolean TM;
 	ArrayList<String> ColumnNames;
 	ArrayList<DataNode> Joinable;

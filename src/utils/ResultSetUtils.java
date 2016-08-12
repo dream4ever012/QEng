@@ -8,7 +8,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import ResourceStrings.SD;
 import optimizer.QueryManager;
 import qEng.InternalDB;
 

@@ -1,8 +1,6 @@
 package utils.DataModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import qEng.InternalDB;
 
 public class DataGraph implements DataModel {

@@ -781,7 +781,7 @@ public class Trace {
       }
   }
   public void methodExitEvent (MethodExitEvent event) {
-	  MethodExitEvent e = event;
+	//  MethodExitEvent e = event;
       ThreadReference thr = event.thread ();
       Method meth = event.method ();
       String calledMethodClassname = meth.declaringType ().name ();
@@ -1030,11 +1030,11 @@ public class Trace {
               );
   }
   public static String wrapperToString (ObjectReference obj) {
-      Object xObject;
+      //Object xObject;
       if (obj == null) return "null";
       ReferenceType cz = (ReferenceType) obj.type ();
-      String fqn = cz.name ();
-      String className = fqn.substring (10);
+      //String fqn = cz.name ();
+      //String className = fqn.substring (10);
       Field field = cz.fieldByName ("value");
       return obj.getValue (field).toString ();
   }
@@ -1471,7 +1471,7 @@ public class Trace {
   private boolean arrayValueHasChanged (ArrayReference oldArray, ArrayReference newArray) {
       if (oldArray.length () != newArray.length ())
           return true;
-      int len = oldArray.length ();
+     // int len = oldArray.length ();
       if (!arrays.containsKey (newArray)) {
           return true;
       }
@@ -1899,7 +1899,7 @@ public class Trace {
   private static boolean processFrame (int frameNum, StackFrame frame, PrintWriter out, Set<ObjectReference> visited) {
       Location location = frame.location ();
       ReferenceType type = location.declaringType ();
-      Method method = location.method ();
+    //  Method method = location.method ();
       if (Format.matchesExcludePrefix (type.name ()))
           return false;
 

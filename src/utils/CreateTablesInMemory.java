@@ -1,7 +1,5 @@
 package utils;
 
-import java.io.File;
-
 import ResourceStrings.SD;
 import optimizer.QueryManager;
 

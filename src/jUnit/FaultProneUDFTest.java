@@ -8,7 +8,6 @@ import org.junit.Test;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
-import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.CreateTablesInMemory;
 import utils.MeasureCostArbitrary;
@@ -50,7 +49,7 @@ public class FaultProneUDFTest {
 			System.out.println("Old Trace Deleted");
 		}		
 		new File(ResultsURL).mkdirs();
-		myAW = new AskWise();
+		myAW = new AskWise(new InternalH2(IH2DBURL));
 		
 
 			myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);

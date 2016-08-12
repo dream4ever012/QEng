@@ -2,12 +2,8 @@ package optimizer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import oracle.jdbc.rowset.OracleWebRowSet;
 import qEng.IDBReturnEnum;
 import qEng.InternalDB;
@@ -22,7 +18,6 @@ public class AskWise implements QueryManager{
 	
 	InternalDB DB;
 	private String IH2DBURL = "jdbc:h2:./Data/AskWiseTesting/AW;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
-	private static Connection conn;
 	private boolean IDBCutoff = false;
 	
 	private DataModel DM;
@@ -45,12 +40,6 @@ public class AskWise implements QueryManager{
 		//Connection setup
 		DB = new InternalH2(IH2DBURL,User,Pass);
 		DM = new DataGraph();
-		try {
-			conn = DriverManager.getConnection(URL,User,Pass);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	// getter
@@ -58,11 +47,32 @@ public class AskWise implements QueryManager{
 		return conn;
 	}*/
 
+	//TODO: Call the QueryFactory
 	@Override
 	public File queryToXml(String SQL) {
 		// TODO Auto-generated method stub
-		Query head = new DefaultQuery();
-		return head.ExecuteQuery(SQL, DB);
+		//Query head = new DefaultQuery();
+		
+		
+		Query Result = QueryFactory.ResolveQuery(SQL,this);
+		
+		
+		return Result.ToXML();
+		//return head.ExecuteQuery(SQL, DB);
+		
+	}
+	
+	//TODO: Make useful maybe not use varargs but did this to teach caleb about varargs methods
+	@Override
+	public boolean NewTempTable(String TableName, String... columns)
+	{
+		
+		//for(Object i : vars)
+		//{
+			
+		//}
+		
+		return true;
 	}
 
 	@Override

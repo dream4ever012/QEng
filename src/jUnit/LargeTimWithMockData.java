@@ -9,10 +9,8 @@ import org.junit.Test;
 
 import ResourceStrings.SD;
 import optimizer.AskWise;
-import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.MeasureCostArbitrary;
-import utils.MeasureCostToRS;
 
 public class LargeTimWithMockData {
 
@@ -46,7 +44,7 @@ public class LargeTimWithMockData {
 		}		
 		new File(ResultsURL).mkdirs();
 		//myDB = new InternalH2(IH2DBURL);
-		myAW = new AskWise();
+		myAW = new AskWise(new InternalH2(IH2DBURL));
 		
 		myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);

@@ -48,7 +48,7 @@ public class SD {
 	public static final String REQSheetTC1FP = "./SecondData/RequirementsTC1.xls";
 	public static final String REQTableNameTC1 = "ReqSheet";
 	public static final String TMSheet5kFP = "./Data/CC-REQ-TM5k.csv";
-	public static final String TMTableName5k = "CC-REQ-TM5k";
+	public static final String TMTableName5k = "CC_REQ_TM5k";
 	public static final String TMSheet4kFP = "./SecondData/CCaaREQaaTM4k.xls";
 	public static final String TMTableName4k = "CCaaREQaaTM4k";
 	public static final String CCSheet5kFP = "./SecondData/codeclass5k.xls";

@@ -10,7 +10,6 @@ import org.junit.Test;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
-import qEng.InternalDB;
 import qEng.InternalH2;
 import utils.*;;
 
@@ -47,7 +46,7 @@ public class InMemoryNY8Test {
 		}		
 		new File(ResultsURL).mkdirs();
 		//myDB = new InternalH2(IH2DBURL);
-		myAW = new AskWise();
+		myAW = new AskWise(new InternalH2(IH2DBURL));
 		
 		myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);

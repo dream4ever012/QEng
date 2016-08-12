@@ -1,6 +1,8 @@
 package tracer;
 
+@SuppressWarnings("unused")
 public class TraceTestExample {
+	
     public static void main(String[] args) {
         X x = new X(1);
         zzz = 42;
@@ -57,7 +59,7 @@ public class TraceTestExample {
         public X (int i) {intVal = i; }
         public int f (int x) {
             TraceTestExample.lastX = this;
-            int z = 33;
+			int z = 33;
             float ff = 65;
             b[0][1] = 2;
             b[1][0] = 2;

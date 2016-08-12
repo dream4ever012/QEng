@@ -7,6 +7,10 @@ import qEng.InternalDB;
 public interface Query {
 	
 	public File ExecuteQuery(String SQL, InternalDB internalDBImpl);
+
+	public File ToXML();
+
+	public File ToRS();
 	
 	
 

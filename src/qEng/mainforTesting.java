@@ -1,16 +1,9 @@
 package qEng;
 
 import java.io.File;
-import java.sql.DriverManager;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
-import utils.MeasureCostToRS;
-import utils.TimerUtils;
 
 //import java.sql.Connection;
 //import java.sql.Driver;
@@ -36,7 +29,7 @@ public class mainforTesting {
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 
 	public InternalDB myDB;
-	private static String SQLString;
+	//private static String SQLString;
 	//private String IH2DBURL = "jdbc:h2:./Data/TestCaseDataBases/POITests;TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
 
