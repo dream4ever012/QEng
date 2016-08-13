@@ -151,6 +151,8 @@ public class QueryObjectFactory {
 			
 			//TODO: complete the rest of this method. keeping in mind join may be in where clause.
 			//TODO: do without join recog first.
+			//TODO: do check's in where for UDF's
+			//TODO: create Where Objects.
 			if(tokens[i].compareToIgnoreCase("WHERE")==0)
 			{
 				System.out.println("WHERE FOUND");
