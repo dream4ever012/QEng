@@ -58,7 +58,7 @@ public class SelectObjectTest1 {
 */
 
 	@Test
-	public void ProposedParse()
+	public void ProposedQuickParse()
 	{
 
 		//what if we only parsed predicates and columns and did the rest based off the datamodel?
@@ -73,7 +73,7 @@ public class SelectObjectTest1 {
 		SelectObject TestProposed = new SelectObject();
 		TestProposed.AddResultCols(SD.REQTableName,SD.CCTableName);
 		
-		System.out.println("Proposed Parse \n" + TestProposed.GetSQL() + "\n\n");
+		//System.out.println("Proposed Parse \n" + TestProposed.GetSQL() + "\n\n");
 		
 		//then things are rebuilt as needed.
 		System.out.println("Actual Parse \n" + QueryObjectFactory.GetSQLObject(SQLString).GetSQL() + "\n\n\n");
@@ -108,9 +108,25 @@ public class SelectObjectTest1 {
 		QueryStatusObject myQueryStats = QueryObjectFactory.GetSQLObject(SQLString);
 
 		System.out.println(myQueryStats.GetSQL());
-
-
+		//QueryObjectFactory.FullParseSplitting(SQLString);
+	}
 	
+	
+	//TODO: set it up to schedule the UDF after the other predicate is applied.
+	@Test
+	public void FullParseTest()
+	{
+		String SQLString = "SELECT " + SD.CCTableName5k + ".codeclass, " + SD.TMTableName5k + ".* " + 
+				"FROM " + SD.CCTableName5k + " " +
+				"INNER JOIN " + SD.TMTableName5k + " " + 
+				"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb' " + 
+				"ORDER BY "+ SD.CCTableName5k + ".codeclass;";
+		
+		
+		//QueryObjectFactory.FullParseSplitting(SQLString);
+		QueryObjectFactory.FullParseTokenize(SQLString);
+		
 	}
 
 }

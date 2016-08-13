@@ -20,9 +20,15 @@ public interface QueryStatusObject {
 
 	String GetSQL();
 
-	boolean AddResultCols(String... Columns);
-	boolean AddInvolvedTables(String...Tables);
-	boolean AddJoinConditions(String...Conditions);
-	boolean AddPredicates(String...Preds);
+	public void AddResultCols(String... Columns);
+	public void AddInvolvedTables(String...Tables);
+	public void AddJoinConditions(String...Conditions);
+	public void AddPredicates(String...Preds);
+
+	public void AddOrdering(String...Ordering);
+
+	public void AddGrouping(String... Grouping);
+
+	void AddJoins(JoinObj... Joins);
 	
 }

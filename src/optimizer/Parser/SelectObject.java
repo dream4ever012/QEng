@@ -1,20 +1,28 @@
 package optimizer.Parser;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class SelectObject implements QueryStatusObject {
 
 
 	ArrayList<String> SelectCols;
-	ArrayList<String> InvolvedTables;
+	//ArrayList<String> InvolvedTables;
 	ArrayList<String> Predicates;
 	ArrayList<String> JoinConditions;
-	
+	ArrayList<String> Ordering;
+	ArrayList<String> Grouping;
+	ArrayList<JoinObj> Joins;
+	Set<String> InvolvedTables;
 
 	public SelectObject()
 	{
 		SelectCols = new ArrayList<String>();
-		InvolvedTables = new ArrayList<String>();
+		//InvolvedTables = new ArrayList<String>();
+		Joins = new ArrayList<JoinObj>();
+		InvolvedTables = new TreeSet<String>();
 		Predicates = new ArrayList<String>();
 		JoinConditions = new ArrayList<String>();
 	}
@@ -22,17 +30,21 @@ public class SelectObject implements QueryStatusObject {
 	public SelectObject(String...ResultColumns) {
 
 		SelectCols = new ArrayList<String>();
-		InvolvedTables = new ArrayList<String>();
+		//InvolvedTables = new ArrayList<String>();
+		Joins = new ArrayList<JoinObj>();
+		InvolvedTables = new TreeSet<String>();
 		Predicates = new ArrayList<String>();
 		JoinConditions = new ArrayList<String>();
 		AddResultCols(ResultColumns);
-		
+
 		for(String i : ResultColumns)
 		{
 			//String Table = i.split("\\.")[0];
 			//System.out.println("Table " + Table + " added");
 			//InvolvedTables.add(Table);
-			InvolvedTables.add(i.split("\\.")[0]);
+			if(i!= "*"){
+				InvolvedTables.add(i.split("\\.")[0]);
+			}
 		}
 
 	}
@@ -56,23 +68,30 @@ public class SelectObject implements QueryStatusObject {
 			} else { SQL = SQL + "\n";}
 		}
 
+		//TODO: rewrite this to return just the first table from Involved tables so the string returned can be used by a default query object.
 		if(InvolvedTables.size()>0){
 			SQL = SQL + "FROM ";
+			Iterator<String> i = InvolvedTables.iterator();
 
-			for(int i = 0; i<InvolvedTables.size();i++)
+			while(i.hasNext()){
+				SQL = SQL + i.next();	
+				if(i.hasNext()){SQL = SQL + ",";} else {SQL = SQL + "\n";}
+			}
+
+			/*	for(int i = 0; i<InvolvedTables.size();i++)
 			{
-				SQL = SQL + InvolvedTables.get(i);
+				SQL = SQL + ;
 				if(i!=InvolvedTables.size()-1)
 				{
 					SQL = SQL + ",";
 				} else { SQL = SQL + "\n";}
-			}
+			}*/
 		}
-		
+
 		if(JoinConditions.size()>0){
 			for(int i = 0; i<JoinConditions.size();i++)
 			{
-				SQL = SQL + "JOIN " + JoinConditions.get(i) + "\n";
+				SQL = SQL + JoinConditions.get(i) + "\n";
 			}
 		}
 		if(Predicates.size()>0){
@@ -91,50 +110,92 @@ public class SelectObject implements QueryStatusObject {
 	}
 
 	@Override
-	public boolean AddResultCols(String... Columns) {
+	public void AddResultCols(String... Columns) {
 
 		for(String i: Columns)
 		{
-			SelectCols.add(i);
+			if(i!=null && !i.equals("")){
+				SelectCols.add(i);
+				if(!i.equals("*") && !i.equalsIgnoreCase("COUNT(*)")){
+					InvolvedTables.add(i.split("\\.")[0]);
+				}
+			}
 		}
 
-		return true;
+
 	}
 
 	@Override
-	public boolean AddInvolvedTables(String... Tables) {
+	public void AddInvolvedTables(String... Tables) {
 
 
 		for(String i: Tables)
 		{
-			InvolvedTables.add(i);
+			if(i!=null && !i.equals("")){
+				InvolvedTables.add(i);
+			}
 		}
-
-		return true;
 	}
 
 	@Override
-	public boolean AddJoinConditions(String... Conditions) {
+	public void AddJoinConditions(String... Conditions) {
 
 
 		for(String i: Conditions)
 		{
-			JoinConditions.add(i);
+			if(i!=null && !i.equals("")){
+				JoinConditions.add(i);
+			}
 		}
-
-		return true;
 	}
 
 	@Override
-	public boolean AddPredicates(String... Preds) {
+	public void AddPredicates(String... Preds) {
 
 
 		for(String i: Preds)
 		{
-			Predicates.add(i);
+			if(i!=null && !i.equals("")){
+				Predicates.add(i);
+			}
 		}
-
-		return true;
 	}
 
+	@Override
+	public void AddOrdering(String...Ordering)
+	{
+
+		for(String i: Ordering)
+		{
+			if(i!=null && !i.equals("")){
+				this.Ordering.add(i);
+			}
+		}
+	}
+
+	@Override
+	public void AddGrouping(String...Grouping)
+	{
+
+		for(String i: Grouping)
+		{
+			if(i!=null && !i.equals("")){
+				this.Grouping.add(i);
+			}
+		}
+
+	}
+
+	@Override
+	public void AddJoins(JoinObj...Joins){
+
+		for(JoinObj i : Joins){
+			if(i!=null){
+				this.Joins.add(i);
+				this.JoinConditions.add(i.getSQL());
+			}
+		}
+
+	}
 }
+
