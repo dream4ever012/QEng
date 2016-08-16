@@ -31,6 +31,9 @@ public interface QueryManager {
 
 	//TODO: figure out what needs to be passed here.
 	boolean NewTempTable(String TableName, String... Columns);
+	
+	//TODO: remove after testing is done. ONLY for test cases
+	File queryToXmlH2(String SQL);
 }
 
 /*

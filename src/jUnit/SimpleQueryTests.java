@@ -117,7 +117,7 @@ public class SimpleQueryTests {
 				"INNER JOIN " + SD.REQTableName + " " +
 				"ON "+ SD.TMTableName + ".ID = "+ SD.REQTableName + ".ID;";
 		assertTrue("failure " + SimpleJoin.getName().toString() , 
-				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin) >= 5.0);
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin) >= 3.0);
 		//myAW.QueryToXML(SQLString, SimpleJoin);
 
 		//Retrieving an xml representation of the tracematrix joined with the codeclass table
@@ -128,7 +128,7 @@ public class SimpleQueryTests {
 				"INNER JOIN " + SD.TMTableName + " " +
 				"ON " + SD.TMTableName + ".ClassName = " + SD.CCTableName + ".ClassName;";
 		assertTrue("failure " + SimpleJoin2.getName().toString() , 
-				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin2) >= 5.0);
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SimpleJoin2) >= 3.0);
 		//myAW.QueryToXML(SQLString, SimpleJoin2);
 
 		//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
@@ -141,7 +141,7 @@ public class SimpleQueryTests {
 
 		File TripleJoin = new File("./results/TripleJoin.xml");
 		assertTrue("failure " + TripleJoin.getName().toString() , 
-				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TripleJoin) >= 5.0);
+				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TripleJoin) >= 3.0);
 		//myAW.QueryToXML(SQLString, TripleJoin);
 
 	}

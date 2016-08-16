@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import optimizer.QuryImpls.DefaultQuery;
 import oracle.jdbc.rowset.OracleWebRowSet;
 import qEng.IDBReturnEnum;
 import qEng.InternalDB;
@@ -55,10 +57,20 @@ public class AskWise implements QueryManager{
 		
 		
 		Query Result = QueryFactory.ResolveQuery(SQL,this);
-		
+
 		
 		return Result.ToXML();
 		//return head.ExecuteQuery(SQL, DB);
+		
+	}
+	
+	
+	// for test cases ONLY
+	@Override
+	public File queryToXmlH2(String SQL) {
+		// TODO Auto-generated method stub
+		Query head = new DefaultQuery();
+		return head.ExecuteQuery(SQL, DB);
 		
 	}
 	

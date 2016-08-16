@@ -1,8 +1,12 @@
 package jUnit;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 
 import org.junit.Before;
+import org.junit.Test;
+
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
@@ -51,5 +55,10 @@ public class MedFleetMockdataTest {
 		myAW.arbitrarySQL(ArbSQL);
 		setupIsDone = true;
 		}
+	}
+	
+	@Test
+	public void test(){
+		fail("Not yet implemented");
 	}
 }

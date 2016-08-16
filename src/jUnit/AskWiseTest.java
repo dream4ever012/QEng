@@ -66,8 +66,8 @@ public class AskWiseTest {
 				"ON " + SD.TMTableName5k + ".ID= " + SD.REQTableNameTC1 + ".ID;";
 		
 		File TQ2 = new File("./results/TQ2.xml");
-		myAW.queryToXml(ArbSQL);
-		assertTrue("failure " + TQ2.getName().toString() , TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2) >= 10.0);
+		myAW.queryToXmlH2(ArbSQL);
+		assertTrue("failure " + TQ2.getName().toString() , TimerUtils.measureCostArbitrary(myAW, ArbSQL, TQ2) >= 5.0);
 		
 		File TQ3 = new File("./results/TQ3.xml");
 		ArbSQL = "SELECT * FROM " + SD.R70TableName + ";";

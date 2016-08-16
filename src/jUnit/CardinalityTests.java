@@ -65,7 +65,7 @@ public static QueryManager myAW;
 					"INNER JOIN " + SD.REQTableName + " " +
 					"ON "+ SD.TMTableName + ".ID = "+ SD.REQTableName + ".ID;";
 
-			myDB.QueryToXML(SQLString, SimpleJoin);
+			myAW.QueryToXML(SQLString, SimpleJoin);
 			
 			//MeasureCostToRS.measureCostToRS(myAW, SQLString, SimpleJoin);
 		}
@@ -81,7 +81,7 @@ public static QueryManager myAW;
 					"INNER JOIN " + SD.TMTableName + " " +
 					"ON " + SD.TMTableName + ".ClassName = " + SD.CCTableName + ".ClassName;";
 
-			myDB.QueryToXML(SQLString, SimpleJoin2);
+			myAW.QueryToXML(SQLString, SimpleJoin2);
 		//	MeasureCostToRS.measureCostToRS(myAW, SQLString, SimpleJoin2);
 		}
 
@@ -98,7 +98,7 @@ public static QueryManager myAW;
 
 			File TripleJoin = new File(ResultsURL + "CARDINALITY3.xml");
 
-			myDB.QueryToXML(SQLString, TripleJoin);
+			myAW.QueryToXML(SQLString, TripleJoin);
 			//MeasureCostToRS.measureCostToRS(myAW, SQLString, TripleJoin);
 
 		}

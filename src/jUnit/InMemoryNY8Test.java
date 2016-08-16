@@ -71,6 +71,7 @@ public class InMemoryNY8Test {
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
 		myAW.ImportSheet(SD.SCP15kFP,SD.SCP15kTableName);
 		myAW.ImportSheet(SD.UC10kFP, SD.UC10kTableName);
+		myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
 
 		
 		/* */
@@ -78,6 +79,8 @@ public class InMemoryNY8Test {
 		
 		//read CSV trace matrix
 		String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
+		myAW.arbitrarySQL(ArbSQL);
+		ArbSQL = "DROP TABLE "+ SD.TMTableName5k +" IF EXISTS; CREATE TABLE "+ SD.TMTableName5k +" AS SELECT * FROM CSVREAD('" + SD.TMSheet5kFP + "');";
 		myAW.arbitrarySQL(ArbSQL);
 		setupIsDone = true;
 		}
