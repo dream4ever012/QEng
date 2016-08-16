@@ -79,7 +79,7 @@ public class ResultSetUtils{
 		}
 	}
 	
-	public static void CreateOracleTable(QueryManager myAW, String URL, String User, String Pass, String TableName){
+	public static void CreateOracleTable(QueryManager myAW, QueryManager myOAW, String URL, String User, String Pass, String TableName){
 		RStoOracleTable(myAW.QueryToRS("SELECT * FROM " + TableName + ";"),
 				URL, 
 				User,
