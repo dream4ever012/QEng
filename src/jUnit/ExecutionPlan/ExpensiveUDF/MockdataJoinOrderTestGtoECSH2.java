@@ -109,7 +109,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		// OptJoinFSP.xml cost: 1006 1175 848 943
 		// OptJoinFSP(myAW);
 		// different order
-		// OptJoinFSP1.xml cost: 862 724 792 609
+		// OptJoinFSP1.xml cost: 862 724 792 609 644	
 		OptJoinFSP1(myAW);
 	}
 
