@@ -73,6 +73,14 @@ public class MockdataJoinOrderTestGtoECS {
 	public void test() {
 		
 		// CompW5k1.xml cost: 19816
+		JoinGtoECS(myAW);
+		// JoinGtoECSHalf(myAW);
+		
+
+
+	}
+	
+	private static void JoinGtoECS(QueryManager myAW){
 		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
 		String SQLString =
 				"SELECT * " +
@@ -96,6 +104,34 @@ public class MockdataJoinOrderTestGtoECS {
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
 		myAW.QueryToXML(SQLString, JoinGtoECS);
 
+	}
+	
+	private static void JoinGtoECSHalf(QueryManager myAW){
+		File JoinGtoECSHalf = new File("./results/JoinGtoECSHalf.xml"); 
+		String SQLString =
+
+			"SELECT COUNT(*) " +
+			"FROM " + SD.G70TableName + " " +
+			"INNER JOIN " + SD.G_UC8kTableName + " " + 
+			"ON " + SD.G_UC8kTableName + ".GOALID = " + SD.G70TableName + ".GOALID " +
+			"INNER JOIN " + SD.UC10kTableName + " " + 
+			"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+			"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+			"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+			"INNER JOIN " + SD.UCS20kTableName + " " + 
+			"ON " + SD.UC_UCS15kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID;"; //" +
+/*			"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+			"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+			"INNER JOIN " + SD.EC10kTableName + " " + 
+			"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+			"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+			"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+			"INNER JOIN " + SD.ECS30kTableName + " " + 
+			"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID = " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID;";
+*/
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECSHalf);
+		myAW.QueryToXML(SQLString, JoinGtoECSHalf);
+		
 	}
 
 }
