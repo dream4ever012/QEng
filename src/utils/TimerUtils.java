@@ -2,10 +2,25 @@ package utils;
 
 import java.io.File;
 
+import ResourceStrings.SD;
 import optimizer.QueryManager;
 import qEng.InternalDB;
 
 public class TimerUtils {
+	
+	public static void RegisterTM(QueryManager myAW, String TMTableName, String TableOneTableName, String TableOneColName,
+					   String TableTwoTableName, String TableTwoColName){
+		long m1, m2;
+		m1 = System.currentTimeMillis();
+		myAW.RegisterTM(TMTableName, TableOneTableName, TableOneColName,
+				   TableTwoTableName, TableTwoColName);
+		m2 = System.currentTimeMillis();
+		System.out.println( TMTableName + " cost: " + (m2 - m1));		
+	}
+	
+	//public void RegisterTM(String TMTableName, String TableOneTableName, String TableOneColName,
+	//		   String TableTwoTableName, String TableTwoColName)
+	
 	public static void measureCostToXml(InternalDB myDB, String SQLString, File TQ)
 	{	
 		long m1, m2;

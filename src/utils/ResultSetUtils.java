@@ -35,6 +35,7 @@ public class ResultSetUtils{
 
 				if(i < colCount){ colsSQL = colsSQL + ", "; colNamesSQL = colNamesSQL + ", ";}
 			}
+			
 
 			 System.out.println(colsSQL);
 
