@@ -139,14 +139,8 @@ public class ExpensiveUDFTestH2 {
 		// CostOfPred.xml cost: 77 44 63 76 35
 		// CC_REQ_TM5k cost: 174 191 191 277 231
 		// UDFLaterWTEMP.xml cost: 3269 4575 3593 2524 3165
-		// UDFLaterWTEMP(myAW);
+		UDFLaterWTEMP(myAW);
 		//UDFLater(myAW);	
-		
-		
-		
-		
-		
-		
 	}
 	
 	// CreatedBy predicated pre-executed
@@ -208,7 +202,8 @@ public class ExpensiveUDFTestH2 {
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + "CCPredicateTEMP" + ".CREATEDBY = 'Caleb'" + " AND " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;";
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLaterWTEMP);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLaterWTEMP);
+		myAW.QueryToXML(SQLString, UDFLaterWTEMP);
 	}
 	
 	private static void UDFFirst(QueryManager myAW){

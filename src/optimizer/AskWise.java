@@ -71,7 +71,6 @@ public class AskWise implements QueryManager{
 		// TODO Auto-generated method stub
 		Query head = new DefaultQuery();
 		return head.ExecuteQuery(SQL, DB);
-		
 	}
 	
 	//TODO: Make useful maybe not use varargs but did this to teach caleb about varargs methods
