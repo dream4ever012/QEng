@@ -34,6 +34,8 @@ public interface QueryManager {
 	
 	//TODO: remove after testing is done. ONLY for test cases
 	File queryToXmlH2(String SQL);
+	
+	public void WriteCSV(String FilePath, String SQLString);
 
 }
 

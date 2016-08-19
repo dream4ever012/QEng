@@ -49,31 +49,16 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		new File(ResultsURL).mkdirs();
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		myOAW = new AskWise(new ExternalOracle());
-		
+		// create tablelink
 		CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
+		// create link for 
 		CreateTablesInMemory.registerTMGtoECS(myAW);
-		
-		
-
-/*		File equalizer = new File("./results/equalizer.xml");
-		SQLString =
-				"SELECT * " +
-				"FROM " + "CCPredicateTEMP" + ";";
-				//"INNER JOIN " + SD.TMTableName5k + " " + 
-				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, equalizer);
-*/		
-		
-		
-		
-
-
 		setupIsDone = true;
 		}
 	}
 	@Test
 	public void test() {
+			
 		// findings: join cost explode as the number of join operation is increased.
 		// skip join (oracles does) + pruning
 		///////////////// H2 ///////////////////////////
@@ -110,9 +95,9 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		// OptJoinFSP(myAW);
 		// different order
 		// OptJoinFSP1.xml cost: 862 724 792 609 644	
-		OptJoinFSP1(myAW);
+		// OptJoinFSP1(myAW);
 	}
-
+	
 	private static void OptJoinFSP1(QueryManager myAW){
 		File OptJoinFSP1 = new File("./results/OptJoinFSP1.xml"); 
 		String SQLString =

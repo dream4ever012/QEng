@@ -482,4 +482,19 @@ public class InternalH2 implements InternalDB {
 	}
 	
 	
+	public void WriteCSV(String FilePath, String SQLString){
+		Connection iconn;
+		String SQLStringCSV =  "CALL CSVWRITE('" + FilePath + "', '" + SQLString + "')"; 
+		try {
+			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+			Statement stmt = iconn.createStatement();
+			stmt.execute(SQLStringCSV);
+			iconn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	
 }

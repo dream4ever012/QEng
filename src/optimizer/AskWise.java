@@ -180,4 +180,9 @@ public class AskWise implements QueryManager{
 		//DM.addJoinCols(TMTableName, TableTwoColName, TableTwoTableName, TableTwoColName);
 			
 	}
+
+	@Override
+	public void WriteCSV(String FilePath, String SQLString) {
+		DB.WriteCSV(FilePath, SQLString);		
+	}
 }

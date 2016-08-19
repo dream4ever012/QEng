@@ -347,4 +347,10 @@ public class ExternalOracle implements InternalDB{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void WriteCSV(String FilePath, String SQLString) {
+		// TODO Auto-generated method stub
+		
+	}
 }

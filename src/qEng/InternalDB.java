@@ -54,5 +54,5 @@ public interface InternalDB {
 
 	public void CreateIndex(String tMTableName, String tableOneColName);
 
-	
+	public void WriteCSV(String FilePath, String SQLString);
 }
