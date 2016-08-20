@@ -65,6 +65,8 @@ public class WriteCSVTest {
 		// CSVWriter.xml cost: 17 works!
 		myAW.WriteCSV("./result/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
 		
+		
+		
 		//read CSV trace matrix
 		//String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		//myAW.arbitrarySQL(ArbSQL);

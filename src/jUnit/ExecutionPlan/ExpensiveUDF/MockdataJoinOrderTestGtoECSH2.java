@@ -58,7 +58,6 @@ public class MockdataJoinOrderTestGtoECSH2 {
 	}
 	@Test
 	public void test() {
-			
 		// findings: join cost explode as the number of join operation is increased.
 		// skip join (oracles does) + pruning
 		///////////////// H2 ///////////////////////////
@@ -85,19 +84,23 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		// OPTIMAL ORDER OF JOIN
 		// 1) GOALID(70) <=	USECASEID(10k) <= USECASESTEPID(20k)
 		
-		// OptJoinFP.xml cost: 272 364 289 429 354
+		// (G) - (TM_G-UC) - (TM_UC-UCS)		
+		// 1) OptJoinFP.xml cost: 272 364 289 429 354
 		//OptJoinFP(myAW);
+		
+		// (G) - (TM_UCS-EC) - (TM_EC-ECS)
 		// OptJoinSP.xml cost: 3792 3778 3811 3470 4036
 		// OptJoinSP(myAW);
-		
-		// OptJoinFP join SP
+
+		// OptJoinFP join SP 		// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
 		// OptJoinFSP.xml cost: 1006 1175 848 943
 		// OptJoinFSP(myAW);
-		// different order
+		// different order 		// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
 		// OptJoinFSP1.xml cost: 862 724 792 609 644	
 		// OptJoinFSP1(myAW);
 	}
-	
+
+	// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
 	private static void OptJoinFSP1(QueryManager myAW){
 		File OptJoinFSP1 = new File("./results/OptJoinFSP1.xml"); 
 		String SQLString =
@@ -115,6 +118,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		//myAW.QueryToXML(SQLString, OptJoinFSP);
 	}
 
+	// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
 	private static void OptJoinFSP(QueryManager myAW){
 		File OptJoinFSP = new File("./results/OptJoinFSP.xml"); 
 		String SQLString =
@@ -132,8 +136,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, OptJoinFSP);
 		//myAW.QueryToXML(SQLString, OptJoinFSP);
 	}
-
-	
+	// (G) - (TM_UCS-EC) - (TM_EC-ECS)
 	private static void OptJoinSP(QueryManager myAW){
 		File OptJoinSP = new File("./results/OptJoinSP.xml"); 
 		String SQLString =
@@ -147,6 +150,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		//myAW.QueryToXML(SQLString, OptJoinSP);
 	}
 	
+	// (G) - (TM_G-UC) - (TM_UC-UCS)
 	private static void OptJoinFP(QueryManager myAW){
 		File OptJoinFP = new File("./results/OptJoinFP.xml"); 
 		String SQLString =
@@ -162,6 +166,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		//myAW.QueryToXML(SQLString, OptJoinFP);
 	}
 	
+	// JOIN G to ECS
 	private static void JoinGtoECS(QueryManager myAW){
 		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
 		String SQLString =
@@ -187,6 +192,7 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		//myAW.QueryToXML(SQLString, JoinGtoECS);
 	}
 	
+	// JOIN G to ECS with different order
 	private static void JoinGtoECSDiffJoinOrder(QueryManager myAW){
 		File JoinGtoECSDiffJoinOrder = new File("./results/JoinGtoECSDiffJoinOrder.xml"); 
 		String SQLString =

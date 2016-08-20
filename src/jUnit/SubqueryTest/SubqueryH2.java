@@ -53,6 +53,16 @@ public class SubqueryH2 {
 		ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
 		myAW.arbitrarySQL(ArbSQL);
 		
+		File Subquery = new File("./results/Subquery.xml");
+		SQLString =
+				"DROP TABLE T1 IF EXISTS;" + " " +
+				"CREATE TABLE T1 (ID VARCHAR2(10) PRIMARY KEY, VAL NUMBER);" + " " +
+				"INSERT INTO T1 VALUES('A', 100);" + " " +
+				"INSERT INTO T1 VALUES('B', 100);" + " " +
+				"INSERT INTO T1 VALUES('C', 100);" + " " +
+				"INSERT INTO T1 VALUES('D', 100);" + " " +
+				"INSERT INTO T1 VALUES('E', 100)";		
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, Subquery);
 		
 		
 		}
@@ -73,8 +83,8 @@ public class SubqueryH2 {
 		SQLString =
 				"SELECT T1.* " +
 				"FROM " + "(SELECT * FROM " + SD.CCTableName5k + ") AS " + "T1" + ";";
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, Subquery1);
-
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, Subquery1);	
+		
 	}
 
 }
