@@ -76,10 +76,13 @@ public class MainCreatingOracleTable {
 			setupIsDone = true;
 			
 
-			
-			CreateTablesInMemory.createTablesInMemory(myAW);
-			
-			/*ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC10kTableName);
+			myAW.ImportSheet(SD.G70FP, SD.G70TableName);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.G70TableName);
+
+			//myAW.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
+			//ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
+			// CreateTablesInMemory.createTablesInMemory(myAW);
+						/*ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC10kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_UCS16kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_SCP12kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.G70TableName);
@@ -87,7 +90,7 @@ public class MainCreatingOracleTable {
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);*//*
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC_UCS15kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UCS20kTableName);*/
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UCS_EC16kTableName);
+/*			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UCS_EC16kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.EC10kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.EC_ECS24kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.ECS30kTableName);
@@ -98,7 +101,7 @@ public class MainCreatingOracleTable {
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.SCP15kTableName);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);*/
 
 			//Retrieving an xml representation of the join of the three tables CodeClass , TM and Requirements
 /*			SQLString = "SELECT " + SD.REQTableName + ".*, " + SD.CCTableName + ".*" + " " +

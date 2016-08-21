@@ -63,7 +63,7 @@ public class WriteCSVTest {
 	public void test() {
 		
 		// CSVWriter.xml cost: 17 works!
-		myAW.WriteCSV("./result/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
+		myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
 		
 		
 		

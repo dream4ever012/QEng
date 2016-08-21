@@ -184,6 +184,6 @@ public class AskWise implements QueryManager{
 	@Override
 	public void WriteCSV(String FilePath, String SQLString) {
 		DB.WriteCSV(FilePath, SQLString);
-		System.out.println("Created FilePath");
+		System.out.println("Created " + FilePath);
 	}
 }

@@ -7,7 +7,7 @@ import optimizer.QueryManager;
 public class CreateInOracleTable {
 	
 	public static void createInOracleTableMF(QueryManager myAW, QueryManager myOAW){
-		// MedFleet mockdataset
+/*		// MedFleet mockdataset
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC10kTableName);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_UCS16kTableName);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_SCP12kTableName);
@@ -27,6 +27,10 @@ public class CreateInOracleTable {
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.SCP15kTableName);
-		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);	}
+		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);	
+		
+*/		
+		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.G70TableName);
+	}
 
 }

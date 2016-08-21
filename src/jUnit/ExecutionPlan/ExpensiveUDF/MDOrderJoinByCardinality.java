@@ -53,6 +53,13 @@ public class MDOrderJoinByCardinality {
 		CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
 		// create link for 
 		CreateTablesInMemory.registerTMGtoECS(myAW);
+		
+		myAW.ImportSheet(SD.CCSheet5kFP, SD.CCTableName5k);
+		myAW.ImportSheet(SD.TMSheet4kFP, SD.TMTableName4k);
+		myAW.ImportSheet(SD.REQSheetTC1FP, SD.REQTableNameTC1);
+		
+		myAW.RegisterTM(SD.TMTableName4k, SD.CCTableName5k, "ClassName" , SD.REQTableNameTC1, "ID");
+		
 		setupIsDone = true;
 		}
 	}
@@ -69,15 +76,12 @@ public class MDOrderJoinByCardinality {
 				"SELECT * " +  
 				"FROM " + SD.G_UC8kTableName + " " +
 				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
-				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.G_UC8kTableName + ".USECASEID ";
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
-		myAW.WriteCSV("./result/OrderJoinByCard/TM_G_UC_UCS.csv", SQLString);
+				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC_UCS15kTableName + ".USECASEID ";
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
+		myAW.WriteCSV("./results/OrderJoinByCard/TM_G_UC_UCS.csv", SQLString);
 		//myAW.QueryToXML(SQLString, JoinGtoECS);
 	}
-	
-	
-
-	
+		
 	// JOIN G to ECS
 	private static void JoinGtoECS(QueryManager myAW){	
 		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
