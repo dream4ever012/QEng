@@ -105,5 +105,20 @@ public class CreateTablesInMemory {
 		myAW.RegisterTM(SD.EC_ECS24kTableName, SD.EC10kTableName, "EXCEPTIONCASEID", SD.ECS30kTableName, "EXCEPTIONCASESTEPID");
 		System.out.println("Index created: RQtoECS");
 	}
+	
+	public static void createTablesInMemoryUCStoECS(QueryManager myAW){
+		myAW.ImportSheet(SD.UCS20kFP, SD.UCS20kTableName);
+		myAW.ImportSheet(SD.UCS_EC16kFP, SD.UCS_EC16kTableName);
+		myAW.ImportSheet(SD.EC10kFP, SD.EC10kTableName);
+		myAW.ImportSheet(SD.EC_ECS24kFP, SD.EC_ECS24kTableName);
+		myAW.ImportSheet(SD.ECS30kFP, SD.ECS30kTableName);
+		System.out.println("Table created: UCStoECS");
+	}
+	
+	public static void registerTMUCStoECS(QueryManager myAW){
+		myAW.RegisterTM(SD.UCS_EC16kTableName, SD.UCS20kTableName, "USECASESTEPID", SD.EC10kTableName, "EXCEPTIONCASEID");
+		myAW.RegisterTM(SD.EC_ECS24kTableName, SD.EC10kTableName, "EXCEPTIONCASEID", SD.ECS30kTableName, "EXCEPTIONCASESTEPID");
+		System.out.println("Index created: UCStoECS");
+	}
 }
 

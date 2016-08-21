@@ -101,6 +101,12 @@ public class AskWise implements QueryManager{
 		return DB.arbitrarySQL(command);
 		}else {return true;}
 	}
+	
+	@Override
+	public void WriteCSV(String FilePath, String SQLString) {
+		DB.WriteCSV(FilePath, SQLString);
+		System.out.println("Created " + FilePath);
+	}
 
 	@Override
 	public boolean arbitrarySQL(String SQLString) {
@@ -181,9 +187,5 @@ public class AskWise implements QueryManager{
 			
 	}
 
-	@Override
-	public void WriteCSV(String FilePath, String SQLString) {
-		DB.WriteCSV(FilePath, SQLString);
-		System.out.println("Created " + FilePath);
-	}
+
 }

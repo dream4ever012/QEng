@@ -56,7 +56,29 @@ public class WriteCSVTest {
 				"INSERT INTO T1 VALUES('D', 100);" + " " +
 				"INSERT INTO T1 VALUES('E', 100)";		
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CSVWriter);
-		setupIsDone = true;
+/*		
+		File CSVWriterT2 = new File("./results/CSVWriterT2.xml");
+		SQLString =
+				"DROP TABLE T2 IF EXISTS;" + " " +
+				"CREATE TABLE T2 (ID VARCHAR2(10), VAL NUMBER);" + " " +
+				"INSERT INTO T2 VALUES('A', 100);" + " " +
+				"INSERT INTO T2 VALUES('A', 100);" + " " +
+				"INSERT INTO T2 VALUES('A', 100);" + " " +
+				"INSERT INTO T2 VALUES('A', 100);" + " " +
+				"INSERT INTO T2 VALUES('A', 100);" + " " +
+				"INSERT INTO T2 VALUES('B', 100);" + " " +
+				"INSERT INTO T2 VALUES('B', 100);" + " " +
+				"INSERT INTO T2 VALUES('C', 100);" + " " +
+				"INSERT INTO T2 VALUES('C', 100);" + " " +
+				"INSERT INTO T2 VALUES('C', 100);" + " " +
+				"INSERT INTO T2 VALUES('D', 100);" + " " +
+				"INSERT INTO T2 VALUES('D', 100);" + " " +
+				"INSERT INTO T2 VALUES('D', 100);" + " " +
+				"INSERT INTO T2 VALUES('D', 100);" + " " +
+				"INSERT INTO T2 VALUES('E', 100)";		
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CSVWriterT2);
+		
+	*/	setupIsDone = true;
 		}
 	}
 	@Test
@@ -64,7 +86,7 @@ public class WriteCSVTest {
 		
 		// CSVWriter.xml cost: 17 works!
 		myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
-		
+		//myAW.WriteCSV("./results/WriteCSVTest/T2.csv", "SELECT * FROM T2;");		
 		
 		
 		//read CSV trace matrix
