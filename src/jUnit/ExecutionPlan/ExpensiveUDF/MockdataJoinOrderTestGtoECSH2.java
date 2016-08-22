@@ -98,6 +98,10 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		// different order 		// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
 		// OptJoinFSP1.xml cost: 862 724 792 609 644	
 		// OptJoinFSP1(myAW);
+		
+		JoinUCSaaECjoinECaaECS(myAW);
+		//JoinGaaUCjoinUCaaUCS(myAW);
+		//JoinUCaaUCSjoinUCSaaEC(myAW);
 	}
 
 	// G - (TM_G-UC) - (TM_UC-UCS) - (TM_UCS-EC)
@@ -280,6 +284,44 @@ public class MockdataJoinOrderTestGtoECSH2 {
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECSHalf);
 		//myAW.QueryToXML(SQLString, JoinGtoECSHalf);
 		//myAW.QueryToXML(SQLString, JoinGtoECSHalf);
+	}
+	
+	private static void JoinUCSaaECjoinECaaECS(QueryManager myAW){
+		File JoinUCSaaECjoinECaaECS = new File("./results/JoinUCSaaECjoinECaaECS.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)" + " " + 
+				"FROM " + SD.UCS_EC16kTableName + " " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID";// +
+/*		assertTrue("failure " + JoinUCSaaECjoinECaaECS.getName().toString() , 
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCSaaECjoinECaaECS) >= 30.0);
+*/		
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCSaaECjoinECaaECS);
+		myAW.QueryToXML(SQLString, JoinUCSaaECjoinECaaECS);
+	}
+	
+	private static void JoinGaaUCjoinUCaaUCS(QueryManager myAW){
+		File JoinGaaUCjoinUCaaUCS = new File("./results/JoinGaaUCjoinUCaaUCS.xml"); 
+		String SQLString =
+			"SELECT COUNT(*)" + " " + 
+			"FROM " + SD.G_UC8kTableName + " " +
+			"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+			"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC_UCS15kTableName + ".USECASEID ";
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGaaUCjoinUCaaUCS);
+		myAW.QueryToXML(SQLString, JoinGaaUCjoinUCaaUCS);
+	}
+	
+	private static void JoinUCaaUCSjoinUCSaaEC(QueryManager myAW){
+		File JoinUCaaUCSjoinUCSaaEC = new File("./results/JoinUCaaUCSjoinUCSaaEC.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)" + " " + 
+				"FROM " + SD.UC_UCS15kTableName + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID ";
+
+		//System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCaaUCSjoinUCSaaEC);
+		myAW.QueryToXML(SQLString, JoinUCaaUCSjoinUCSaaEC);
 	}
 
 

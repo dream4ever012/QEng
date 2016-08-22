@@ -57,7 +57,35 @@ public class JoinCardTestUCStoECS {
 	}
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		// join cardinality: 362219
+		//JoinGtoECS.xml cost: 5026 6677
+		JoinUCStoECS(myAW);
+	}
+	
+	// JOIN G to ECS
+	private static void JoinUCStoECS(QueryManager myAW){
+		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)" + " " + 
+				"FROM " + SD.UCS20kTableName + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC10kTableName + " " + 
+				"ON " + SD.EC10kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.ECS30kTableName + " " + 
+				"ON " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID = " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID";
+/*		
+		"INNER JOIN " + SD.G_UC8kTableName + " " + 
+		"ON " + SD.G_UC8kTableName + ".GOALID = " + SD.G70TableName + ".GOALID " +
+		"INNER JOIN " + SD.UC10kTableName + " " + 
+		"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+		"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+		"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+*/		
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
+		//myAW.QueryToXML(SQLString, JoinGtoECS);
 	}
 	
 	// JOIN G to ECS
