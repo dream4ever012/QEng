@@ -66,9 +66,6 @@ public class MDOrderJoinByCardinality {
 
 	@Test
 	public void test() {
-		
-		
-			
 		JoinUCSaaECjoinECaaECS(myAW);
 		JoinGaaUCjoinUCaaUCS(myAW);
 		JoinUCaaUCSjoinUCSaaEC(myAW);

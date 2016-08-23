@@ -35,8 +35,9 @@ def vectorTup(col_val_table, col_val_TM):
                 tmp = tmp + 1
                 if (hold == len_TM):
                     break
-        temp_tup = j, tmp
-        NDV_tup_cnt.append(temp_tup)
+        #temp_tup = j, tmp
+        temp_tup = tmp
+        NDV_tup_cnt.append(tmp)
         tmp = 0
     return NDV_tup_cnt
 
@@ -45,24 +46,132 @@ def createVecTup(TableName, col_num_T, TMName, col_num_TM):
     col_val_TM = csvRNS(TMName, col_num_TM)
     return vectorTup(col_val_T, col_val_TM)
 
-def SumOfVecMulp(TableName, col_num_T, TMName1, col_num_TM1,
-                 TMName2, col_num_TM2):
-    VTres1 = createVecTup(TableName, col_num_T, TMName1, col_num_TM1)
-    VTres2 = createVecTup(TableName, col_num_T, TMName2, col_num_TM2)
-    length = len(VTres1)
+
+
+def SumOfVecMulp(TableName, TMName_left, TMName_right):
+    VTres_left_under = createVecTup(TableName, 0, TMName_left, 1)
+    VTres_right_upper = createVecTup(TableName, 0, TMName_right, 0)
+    length = len(VTres_left_under)
     sum_total = 0
     temp = 0
     for i in range(0,length):
-        temp = VTres1[i][1] * VTres2[i][1]
+        #temp = VTres1[i][1] * VTres2[i][1]
+        temp = VTres_left_under[i] * VTres_right_upper[i]
         sum_total = sum_total + temp
     return sum_total
 
-result = createVecTup('UC.csv', 0, 'GaaUC.csv',1)
+#result = createVecTup('UC.csv', 0, 'GaaUC.csv',1)
 
-print SumOfVecMulp('UC.csv', 0, 'GaaUC.csv',1, 'UCaaUCS.csv', 0)
-print SumOfVecMulp('UCS.csv', 0, 'UCaaUCS.csv',1, 'UCSaaEC.csv', 0)
-#print SumOfVecMulp('EC.csv', 0, 'UCSaaEC.csv',1, 'ECaaECS.csv', 1)
+#print SumOfVecMulp('UC.csv', 'GaaUC.csv', 'UCaaUCS.csv')
+#print SumOfVecMulp('UCS.csv', 'UCaaUCS.csv', 'UCSaaEC.csv')
+#print SumOfVecMulp('EC.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
+#
 
+def card_est(TableName_mid, TableName_left, TableName_right, TMName_left, TMName_right):
+    SVM_UCS_EC_ECS = SumOfVecMulp(TableName_mid, TMName_left, TMName_right)
+    VTres_left_upper = createVecTup(TableName_left, 0, TMName_left, 0)
+    VTres_right_under = createVecTup(TableName_right, 0, TMName_right, 1)
+    len_left_upper = len(VTres_left_upper)
+    len_right_under = len(VTres_right_under)
+    sum_left_upper = sum(VTres_left_upper)
+    sum_right_under = sum(VTres_right_under)
+    card_left_upper_est = []
+    card_right_under_est = []
+    for i in range(0,len_left_upper):
+        card_left_upper_est.append(SVM_UCS_EC_ECS*float(VTres_left_upper[i])/sum_left_upper)
+    for i in range(0,len_right_under):
+        card_right_under_est.append(SVM_UCS_EC_ECS*float(VTres_right_under[i])/sum_right_under)
+    return SVM_UCS_EC_ECS, card_left_upper_est, card_right_under_est
+
+def comparePerf_abs (TableName_mid, TableName_left, TableName_right,
+                 TMName_left, TMName_right, TableName_joinRes):
+    SVM_UCS_EC_ECS, card_upper_est, card_under_est = card_est(TableName_mid, TableName_left, TableName_right, TMName_left, TMName_right)
+    card_upper_act = createVecTup(TableName_left, 0, TableName_joinRes, 0)
+    card_under_act = createVecTup(TableName_right, 0, TableName_joinRes, 1)
+    upper = len(card_upper_act)
+    under = len(card_under_act)
+
+    print 'max(card_upper_act)',max(card_upper_act)
+    
+    print 'min(card_upper_act)', min(card_upper_act)
+    print 'max(card_upper_est)',max(card_upper_est)
+    print 'min(card_upper_est)', min(card_upper_est)
+
+    print 'max(card_under_act)',max(card_under_act)
+    print 'min(card_under_act)', min(card_under_act)
+    print 'max(card_under_est)',max(card_under_est)
+    print 'min(card_under_est)', min(card_under_est)
+
+    err_sum_upper = 0
+    for i in range(0,upper):
+        err_sum_upper = err_sum_upper + abs(card_upper_act[i] - card_upper_est[i])
+        #err_sum_upper = err_sum_upper + (card_upper_act[i] - card_upper_est[i])
+    err_std_upper = float(err_sum_upper)/(max(len(card_upper_act),1))
+    
+    err_sum_under = 0
+    for i in range(0,under):
+        err_sum_under = err_sum_under + abs(card_under_act[i] - card_under_est[i])
+        #err_sum_under = err_sum_under + (card_under_act[i] - card_under_est[i])
+    err_std_under = float(err_sum_under)/(max(len(card_under_act),1))
+
+    print '(avg_abs_diff_upper, avg_abs_diff_under)'
+    #print '(avg_diff_upper, avg_diff_under)'
+    return err_std_upper, err_std_under
+
+def comparePerf_diff (TableName_mid, TableName_left, TableName_right,
+                 TMName_left, TMName_right, TableName_joinRes):
+    SVM_UCS_EC_ECS, card_upper_est, card_under_est = card_est(TableName_mid, TableName_left, TableName_right, TMName_left, TMName_right)
+    card_upper_act = createVecTup(TableName_left, 0, TableName_joinRes, 0)
+    card_under_act = createVecTup(TableName_right, 0, TableName_joinRes, 1)
+    upper = len(card_upper_act)
+    under = len(card_under_act)
+
+    print 'max(card_upper_act)',max(card_upper_act)
+    print 'min(card_upper_act)', min(card_upper_act)
+    print 'max(card_upper_est)',max(card_upper_est)
+    print 'min(card_upper_est)', min(card_upper_est)
+
+    print 'max(card_under_act)',max(card_under_act)
+    print 'min(card_under_act)', min(card_under_act)
+    print 'max(card_under_est)',max(card_under_est)
+    print 'min(card_under_est)', min(card_under_est)
+
+    err_sum_upper = 0
+    for i in range(0,upper):
+        #err_sum_upper = err_sum_upper + abs(card_upper_act[i] - card_upper_est[i])
+        err_sum_upper = err_sum_upper + (card_upper_act[i] - card_upper_est[i])
+    err_std_upper = float(err_sum_upper)/(max(len(card_upper_act),1))
+    
+    err_sum_under = 0
+    for i in range(0,under):
+        #err_sum_under = err_sum_under + abs(card_under_act[i] - card_under_est[i])
+        err_sum_under = err_sum_under + (card_under_act[i] - card_under_est[i])
+    err_std_under = float(err_sum_under)/(max(len(card_under_act),1))
+
+    #print '(avg_abs_diff_upper, avg_abs_diff_under)'
+    print '(avg_diff_upper, avg_diff_under)'
+    return err_std_upper, err_std_under
+#    avg_card_upper_est = float(sum(res_left_mid_right[1])) / max(len(res_left_mid_right[1]), 1)
+#    avg_card_under_est = float(sum(res_left_mid_right[2])) / max(len(res_left_mid_right[2]), 1)
+#    avg_card_upper_act = float(sum(card_upper)) / max(len(card_upper), 1)
+#    avg_card_under_act = float(sum(card_under)) / max(len(card_under), 1)
+
+
+print comparePerf_abs('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv', 'UCSaaECS.csv')
+print comparePerf_diff('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv', 'UCSaaECS.csv')
+
+       # 'EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv'
+#print (TableName_mid, TableName_left, TableName_right, TMName_left, TMName_right)
+
+    
+#VM_UCS_EC_ECS, card_left_upper_est, card_right_under_est = card_est('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
+
+#res_UCS_EC_ECS = card_est('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
+#card_upper = createVecTup('UCS.csv', 0, 'UCSaaECS.csv', 0)
+#card_under = createVecTup('ECS.csv', 0, 'UCSaaECS.csv', 1)
+
+#print len(card_upper) == len(res_UCS_EC_ECS[1])
+#print len(card_under) == len(res_UCS_EC_ECS[2])
 
 #VTres_EC_UCS_EC = createVecTup('EC.csv', 0, 'UCSaaEC.csv', 1)
 #VTres_EC_EC_ECS = createVecTup('EC.csv', 0, 'ECaaECS.csv', 1)

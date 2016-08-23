@@ -8,6 +8,7 @@ import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.InternalH2;
+import utils.CreateTablesInMemory;
 import utils.MeasureCostArbitrary;
 
 public class WriteCSVTest {
@@ -78,21 +79,43 @@ public class WriteCSVTest {
 				"INSERT INTO T2 VALUES('E', 100)";		
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CSVWriterT2);
 		
-	*/	setupIsDone = true;
+	*/	
+		// create tablelink
+		CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
+		// create link for 
+		CreateTablesInMemory.registerTMGtoECS(myAW);
+		setupIsDone = true;
 		}
 	}
 	@Test
 	public void test() {
 		
 		// CSVWriter.xml cost: 17 works!
-		myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
+		//myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
 		//myAW.WriteCSV("./results/WriteCSVTest/T2.csv", "SELECT * FROM T2;");		
-		
+		JoinUCSaaECjoinECaaECS(myAW);
 		
 		//read CSV trace matrix
 		//String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		//myAW.arbitrarySQL(ArbSQL);
 
+	}
+	
+	private static void JoinUCSaaECjoinECaaECS(QueryManager myAW){
+		File JoinUCSaaECjoinECaaECS = new File("./results/JoinUCSaaECjoinECaaECS.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)" + " " +
+/*				"SELECT " + SD.UCS_EC16kTableName + ".USECASESTEPID" + ", " +
+							SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " +
+*/				"FROM " + SD.UCS_EC16kTableName + " " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID";// +
+/*		assertTrue("failure " + JoinUCSaaECjoinECaaECS.getName().toString() , 
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCSaaECjoinECaaECS) >= 30.0);
+*/		
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCSaaECjoinECaaECS);
+		myAW.QueryToXML(SQLString, JoinUCSaaECjoinECaaECS);
+		//myAW.WriteCSV("./ThirdData/UCSaaECS.csv", SQLString);
 	}
 
 }
