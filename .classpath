@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="JVMTrace/Jama-1.0.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="stdlib"/>
+	<classpathentry kind="lib" path="src/utils/POI/Jampack-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
