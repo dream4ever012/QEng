@@ -93,12 +93,28 @@ public class WriteCSVTest {
 		// CSVWriter.xml cost: 17 works!
 		//myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
 		//myAW.WriteCSV("./results/WriteCSVTest/T2.csv", "SELECT * FROM T2;");		
-		JoinUCSaaECjoinECaaECS(myAW);
+		//JoinUCSaaECjoinECaaECS(myAW);
+		JoinUCtoECSWPred(myAW);
 		
 		//read CSV trace matrix
 		//String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		//myAW.arbitrarySQL(ArbSQL);
 
+	}
+	// JOIN G to ECS
+	private static void JoinUCtoECSWPred(QueryManager myAW){	
+		File JoinUCtoECSWPred = new File("./results/JoinUCtoECSWPred.xml"); 
+		String SQLString =
+				"SELECT " + SD.UC_UCS15kTableName + ".USECASEID" + ", " +
+						SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " +
+				"FROM " + SD.UC_UCS15kTableName + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID";
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCtoECSWPred);
+		//myAW.QueryToXML(SQLString, JoinGtoECS);
+		myAW.WriteCSV("./ThirdData/UCaaECS.csv", SQLString);
 	}
 	
 	private static void JoinUCSaaECjoinECaaECS(QueryManager myAW){
