@@ -47,7 +47,7 @@ public class WriteCSVTest {
 		
 		//CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
 		//CreateTablesInMemory.registerTMGtoECS(myAW);
-		File CSVWriter = new File("./results/CSVWriter.xml");
+/*		File CSVWriter = new File("./results/CSVWriter.xml");
 		SQLString =
 				"DROP TABLE T1 IF EXISTS;" + " " +
 				"CREATE TABLE T1 (ID VARCHAR2(10) PRIMARY KEY, VAL NUMBER);" + " " +
@@ -56,7 +56,7 @@ public class WriteCSVTest {
 				"INSERT INTO T1 VALUES('C', 100);" + " " +
 				"INSERT INTO T1 VALUES('D', 100);" + " " +
 				"INSERT INTO T1 VALUES('E', 100)";		
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CSVWriter);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CSVWriter);*/
 /*		
 		File CSVWriterT2 = new File("./results/CSVWriterT2.xml");
 		SQLString =
@@ -94,27 +94,158 @@ public class WriteCSVTest {
 		//myAW.WriteCSV("./results/WriteCSVTest/T1.csv", "SELECT * FROM T1;");
 		//myAW.WriteCSV("./results/WriteCSVTest/T2.csv", "SELECT * FROM T2;");		
 		//JoinUCSaaECjoinECaaECS(myAW);
-		JoinUCtoECSWPred(myAW);
+		//JoinUCtoECSWPred(myAW); // card 73322
+		
+		
 		
 		//read CSV trace matrix
 		//String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('./Data/CC-REQ-TM.csv');";
 		//myAW.arbitrarySQL(ArbSQL);
-
+		
+		//JoinG_UCS(myAW); // card 12715 
+		
+		//JoinUC_ECS(myAW); // 12623
+		//JoinG_EC(myAW); // 10153
+		JoinUC_ECS(myAW); // 
 	}
+	
+	// TODO:  JOIN UC to ECS to write a CSV
+	private static void JoinUC_ECS(QueryManager myAW){	
+		File JoinUC_ECS = new File("./results/JoinUC_ECS.xml"); 
+		String SQLString =
+				"SELECT COUNT (*)" + " " +
+				"FROM (" +
+				"SELECT " + SD.UC_UCS15kTableName + ".USECASEID" + ", " +  SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " +
+				"FROM " + SD.UC_UCS15kTableName + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID" + " " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				") " + "AS UCaaECS";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUC_ECS);
+		myAW.QueryToXML(SQLString, JoinUC_ECS);
+		//myAW.WriteCSV("./ThirdData/UCaaECS.csv", SQLString);
+	}
+
+	
+	// JOIN G to EC to write a CSV
+	private static void JoinG_EC(QueryManager myAW){	
+		File JoinG_EC = new File("./results/JoinG_EC.xml"); 
+		String SQLString =
+				//"SELECT COUNT (*)" + " " +
+				//"FROM (" +
+				"SELECT " + SD.G_UC8kTableName + ".GOALID" + ", " +  SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				"FROM " + SD.G_UC8kTableName + " " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.G_UC8kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID";
+				//") " + "AS GaaEC";
+		/*		
+		"INNER JOIN " + SD.UC10kTableName + " " + 
+		"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+		"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+		"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+		"INNER JOIN " + SD.UCS20kTableName + " " + 
+		"ON " + SD.UC_UCS15kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+		"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+		"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+		"INNER JOIN " + SD.EC10kTableName + " " + 
+		"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+		"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+		"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+		"INNER JOIN " + SD.ECS30kTableName + " " + 
+		"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID = " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID";
+*/		
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinG_EC);
+		//myAW.QueryToXML(SQLString, JoinG_EC);
+		myAW.WriteCSV("./ThirdData/GaaEC.csv", SQLString);
+	}
+	
+	// TODO:  JOIN UC to EC to write a CSV
+	private static void JoinUC_EC(QueryManager myAW){	
+		File JoinUC_EC = new File("./results/JoinUC_EC.xml"); 
+		String SQLString =
+				//"SELECT COUNT (*)" + " " +
+				//"FROM (" +
+				"SELECT " + SD.UC_UCS15kTableName + ".USECASEID" + ", " +  SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				"FROM " + SD.UC_UCS15kTableName + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID";// + 
+				//") " + "AS UCaaEC";
+/*		
+				"INNER JOIN " + SD.UC10kTableName + " " + 
+				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UCS20kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC10kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.ECS30kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID = " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID";
+*/		
+		//System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUC_EC);
+		//myAW.QueryToXML(SQLString, JoinUC_EC);
+		//myAW.WriteCSV("./ThirdData/UCaaEC.csv", SQLString);
+	}
+	
+	// JOIN UC to ECS to write a CSV
+	private static void JoinG_UCS(QueryManager myAW){	
+		File JoinG_UCS = new File("./results/JoinG_UCS.xml"); 
+		String SQLString =
+				//"SELECT COUNT (*)" + " " +
+				//"FROM (" +
+				"SELECT " + SD.G_UC8kTableName + ".GOALID" + ", " +  SD.UC_UCS15kTableName + ".USECASEID" + " " +
+				"FROM " + SD.G_UC8kTableName + " " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC_UCS15kTableName + ".USECASEID";// + 
+				//") " + "AS GaaUCS";
+/*		
+				"INNER JOIN " + SD.UC10kTableName + " " + 
+				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UCS20kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC10kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.ECS30kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID = " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID";
+*/		
+		//System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinG_UCS);
+		//myAW.QueryToXML(SQLString, JoinG_UCS);
+		myAW.WriteCSV("./ThirdData/GaaUCS.csv", SQLString);
+	}
+	
 	// JOIN G to ECS
 	private static void JoinUCtoECSWPred(QueryManager myAW){	
 		File JoinUCtoECSWPred = new File("./results/JoinUCtoECSWPred.xml"); 
 		String SQLString =
-				"SELECT " + SD.UC_UCS15kTableName + ".USECASEID" + ", " +
+				"SELECT COUNT(*)" + " " +
+				"FROM (" + "SELECT " + SD.UC_UCS15kTableName + ".USECASEID" + ", " +
 						SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " +
 				"FROM " + SD.UC_UCS15kTableName + " " +
 				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
 				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID " +
 				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
-				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID";
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				") " + "AS UCaaECS";
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCtoECSWPred);
-		//myAW.QueryToXML(SQLString, JoinGtoECS);
-		myAW.WriteCSV("./ThirdData/UCaaECS.csv", SQLString);
+		myAW.QueryToXML(SQLString, JoinUCtoECSWPred);
+		//myAW.WriteCSV("./ThirdData/UCaaECS.csv", SQLString);
 	}
 	
 	private static void JoinUCSaaECjoinECaaECS(QueryManager myAW){
@@ -132,6 +263,32 @@ public class WriteCSVTest {
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCSaaECjoinECaaECS);
 		myAW.QueryToXML(SQLString, JoinUCSaaECjoinECaaECS);
 		//myAW.WriteCSV("./ThirdData/UCSaaECS.csv", SQLString);
+	}
+	
+	// TODO:  JOIN G to ECS to write a CSV
+	private static void JoinGtoECS1(QueryManager myAW){	
+		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
+		String SQLString =
+				"SELECT DISTINCT " + SD.G70TableName + ".GOALID" + " " + 
+				"FROM " + SD.G70TableName + " " +
+				"INNER JOIN " + SD.G_UC8kTableName + " " + 
+				"ON " + SD.G_UC8kTableName + ".GOALID = " + SD.G70TableName + ".GOALID " +
+				"INNER JOIN " + SD.UC10kTableName + " " + 
+				"ON " + SD.G_UC8kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.UC10kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UCS20kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UCS20kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC10kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.EC10kTableName + ".EXCEPTIONCASEID " +
+				"INNER JOIN " + SD.ECS30kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID = " + SD.ECS30kTableName + ".EXCEPTIONCASESTEPID";
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
+		//myAW.QueryToXML(SQLString, JoinGtoECS);
 	}
 
 }
