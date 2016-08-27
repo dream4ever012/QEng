@@ -140,8 +140,10 @@ def comparePerf_std (TableName_mid, TableName_left, TableName_right,
 #print comparePerf_std('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv', 'UCSaaECS.csv')
 #print comparePerf_diff('EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv', 'UCSaaECS.csv')
 
-print comparePerf_std('UCS.csv', 'UC.csv', 'ECS.csv', 'UCaaUCS.csv', 'UCSaaECS.csv', 'UCaaECS.csv')
+#print comparePerf_std('UCS.csv', 'UC.csv', 'ECS.csv', 'UCaaUCS.csv', 'UCSaaECS.csv', 'UCaaECS.csv')
 #print comparePerf_diff('UCS.csv', 'UC.csv', 'ECS.csv', 'UCaaUCS.csv', 'UCSaaECS.csv', 'UCaaECS.csv')
+
+
 
        # 'EC.csv', 'UCS.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv'
 #print (TableName_mid, TableName_left, TableName_right, TMName_left, TMName_right)

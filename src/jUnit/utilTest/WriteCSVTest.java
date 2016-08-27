@@ -103,13 +103,34 @@ public class WriteCSVTest {
 		//myAW.arbitrarySQL(ArbSQL);
 		
 		//JoinG_UCS(myAW); // card 12715 
-		
+		// JoinUCS_ECS(myAW); // 362219
 		//JoinUC_ECS(myAW); // 12623
 		//JoinG_EC(myAW); // 10153
-		JoinUC_ECS(myAW); // 
+		//JoinUC_ECS(myAW); // 292995
+		
+		JoinGtoECS(myAW);
+		
 	}
 	
-	// TODO:  JOIN UC to ECS to write a CSV
+	// TODO:  JOIN UCS to ECS to write a CSV
+	private static void JoinUCS_ECS(QueryManager myAW){	
+		File JoinUCS_ECS = new File("./results/JoinUCS_ECS.xml"); 
+		String SQLString =
+				"SELECT COUNT (*)" + " " +
+				"FROM (" +
+				"SELECT " + SD.UCS_EC16kTableName + ".USECASESTEPID" + ", " +  SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " +
+				"FROM " + SD.UCS_EC16kTableName + " " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				") " + "AS UCSaaECS";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUCS_ECS);
+		//myAW.QueryToXML(SQLString, JoinUCS_ECS);
+		myAW.WriteCSV("./ThirdData/UCSaaECS.csv", SQLString);
+	}
+
+	
+	// JOIN UC to ECS to write a CSV
 	private static void JoinUC_ECS(QueryManager myAW){	
 		File JoinUC_ECS = new File("./results/JoinUC_ECS.xml"); 
 		String SQLString =
@@ -264,6 +285,27 @@ public class WriteCSVTest {
 		myAW.QueryToXML(SQLString, JoinUCSaaECjoinECaaECS);
 		//myAW.WriteCSV("./ThirdData/UCSaaECS.csv", SQLString);
 	}
+
+	// JOIN G to ECS to write a CSV
+	private static void JoinGtoECS(QueryManager myAW){	
+		File JoinGtoECS = new File("./results/JoinGtoECS.xml"); 
+		String SQLString =
+				"SELECT COUNT (*)" + " " +
+				"FROM (" +
+				"SELECT " + SD.G_UC8kTableName + ".GOALID" + ", " + SD.EC_ECS24kTableName + ".EXCEPTIONCASESTEPID" + " " + 
+				"FROM " + SD.G_UC8kTableName + " " +
+				"INNER JOIN " + SD.UC_UCS15kTableName + " " + 
+				"ON " + SD.UC_UCS15kTableName + ".USECASEID = " + SD.G_UC8kTableName + ".USECASEID " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.UC_UCS15kTableName + ".USECASESTEPID " +
+				"INNER JOIN " + SD.EC_ECS24kTableName + " " + 
+				"ON " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID = " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				") " + "AS GaaECS";
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinGtoECS);
+		myAW.QueryToXML(SQLString, JoinGtoECS);
+		//myAW.WriteCSV("./ThirdData/GaaECS.csv", SQLString);
+	}
+
 	
 	// TODO:  JOIN G to ECS to write a CSV
 	private static void JoinGtoECS1(QueryManager myAW){	
