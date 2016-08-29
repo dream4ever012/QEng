@@ -15,6 +15,8 @@ public class SD {
 	public static final String CC_UCS16kTableName = "CCaaUCS";
 	public static final String CC_SCP12kFP = "./SecondData/CCaaSCP.xls";
 	public static final String CC_SCP12kTableName = "CCaaSCP";
+	public static final String SCP_CC12kFP = "./SecondData/CCaaSCP.xls";
+	public static final String SCP_CC12kTableName = "CCaaSCP";
 	public static final String G70FP = "./SecondData/G.xls";
 	public static final String G70TableName = "G";
 	public static final String G_UC8kFP = "./SecondData/GaaUC.xls";
@@ -44,6 +46,20 @@ public class SD {
 	public static final String CP_SCP12kTableName = "CPaaSCP";
 	public static final String SCP15kFP = "./SecondData/SCP.xls";
 	public static final String SCP15kTableName = "SCP";
+	
+	// G_ECS complete join sets
+	public static final String G_UCS12kFP = "./SecondData/GaaUCS.xls";
+	public static final String G_UCS12kTableName = "GaaUCS";
+	public static final String UC_EC12kFP = "./SecondData/UCaaEC.xls";
+	public static final String UC_EC12kTableName = "UCaaEC";	
+	public static final String UCS_ECS65kFP = "./SecondData/UCSaaECS.xls";
+	public static final String UCS_ECS65kTableName = "UCSaaECS";
+	public static final String G_EC10kFP = "./SecondData/GaaEC.xls";
+	public static final String G_EC10kTableName = "GaaEC";
+	public static final String UC_ECS65kFP = "./SecondData/UCaaECS.xls";
+	public static final String UC_ECS65kTableName = "UCaaECS";
+	public static final String G_ECS65kFP = "./SecondData/GaaECS.xls";
+	public static final String G_ECS65kTableName = "GaaECS";	
 	
 	public static final String REQSheetTC1FP = "./SecondData/RequirementsTC1.xls";
 	public static final String REQTableNameTC1 = "ReqSheet";

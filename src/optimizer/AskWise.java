@@ -184,7 +184,12 @@ public class AskWise implements QueryManager{
 	
 		//DM.addJoinCols(TMTableName, TableOneColName, TableOneTableName, TableOneColName);
 		//DM.addJoinCols(TMTableName, TableTwoColName, TableTwoTableName, TableTwoColName);
-			
+	}
+
+	@Override
+	public void RegisterTMONLY(String TMTableName, String TableOneColName, String TableTwoColName) {
+		DB.CreateIndex(TMTableName, TableOneColName);
+		DB.CreateIndex(TMTableName, TableTwoColName);	
 	}
 
 
