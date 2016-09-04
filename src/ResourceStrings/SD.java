@@ -13,10 +13,10 @@ public class SD {
 	public static final String CC10kTableName = "CC";
 	public static final String CC_UCS16kFP = "./SecondData/CCaaUCS.xls";
 	public static final String CC_UCS16kTableName = "CCaaUCS";
-	public static final String CC_SCP12kFP = "./SecondData/CCaaSCP.xls";
-	public static final String CC_SCP12kTableName = "CCaaSCP";
-	public static final String SCP_CC12kFP = "./SecondData/CCaaSCP.xls";
-	public static final String SCP_CC12kTableName = "CCaaSCP";
+	public static final String CC_SCP12kFP = "./SecondData/SCPaaCC.xls";
+	public static final String CC_SCP12kTableName = "SCPaaCC";
+	public static final String SCP_CC12kFP = "./SecondData/SCPaaCC.xls";
+	public static final String SCP_CC12kTableName = "SCPaaCC";
 	public static final String G70FP = "./SecondData/G.xls";
 	public static final String G70TableName = "G";
 	public static final String G_UC8kFP = "./SecondData/GaaUC.xls";
