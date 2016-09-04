@@ -85,6 +85,21 @@ def cardComp(TableName_left, TableName_mid, TableName_right, TMName_left, TMName
     print 'SVM_ACTUAL', 'SVM_EST'
     return SVM_ACTUAL, SVM_EST
 
+def card_est_interimIsBoth(TableName_left, TableName_mid, TableName_right, v_TM_left_upper, v_TM_left_lower, v_TM_right_upper, v_TM_right_lower):
+    VTres_left_lower = v_TM_left_lower
+    VTres_right_upper =  v_TM_right_upper
+    SVM_LEFT_MID_RIGHT = sum(np.multiply(VTres_left_lower,VTres_right_upper))
+    VTres_left_upper = v_TM_left_upper
+    VTres_right_lower = v_TM_right_lower
+    len_left_upper = len(VTres_left_upper)
+    len_right_lower = len(VTres_right_lower)
+    sum_left_upper = sum(VTres_left_upper)
+    sum_right_lower = sum(VTres_right_lower)
+    card_left_upper_est = []
+    card_right_lower_est = []
+    card_left_upper_est = np.multiply(VTres_left_upper, float(SVM_LEFT_MID_RIGHT)/sum_left_upper)
+    card_right_lower_est = np.multiply(VTres_right_lower, float(SVM_LEFT_MID_RIGHT)/sum_right_lower)
+    return SVM_LEFT_MID_RIGHT, card_left_upper_est.tolist(), card_right_lower_est.tolist()
 
 def card_est_interimIsRight(TableName_left, TableName_mid, TableName_right, TMName_left, v_TM_right_upper, v_TM_right_lower):
     VTres_left_lower = createVecTup(TableName_mid, 0, TMName_left, 1)
@@ -122,12 +137,41 @@ def card_est_interimIsLeft(TableName_left, TableName_mid, TableName_right, v_TM_
     card_right_lower_est = np.multiply(VTres_right_lower, float(SVM_LEFT_MID_RIGHT)/sum_right_lower)
     return SVM_LEFT_MID_RIGHT, card_left_upper_est.tolist(), card_right_lower_est.tolist()
 
+## R-ECS chain
+#SVM_R_SCP_ACT, card_upper_R_SCP_est, card_lower_R_SCP_est = card_est('RQ.csv', 'CP.csv', 'SCP.csv', 'RQaaCP.csv', 'CPaaSCP.csv')
+SVM_CP_CC_ACT, card_upper_CP_CC_est, card_lower_CP_CC_est = card_est('CP.csv', 'SCP.csv', 'CC.csv', 'CPaaSCP.csv', 'SCPaaCC.csv')
+#SVM_SCP_UCS_ACT, card_upper_SCP_UCS_est, card_lower_SCP_UCS_est = card_est('SCP.csv', 'CC.csv', 'UCS.csv', 'SCPaaCC.csv', 'CCaaUCS.csv')
+#SVM_CC_EC_ACT, card_upper_CC_EC_est, card_lower_CC_EC_est = card_est('CC.csv', 'UCS.csv', 'EC.csv', 'CCaaUCS.csv', 'UCSaaEC.csv')
+#SVM_UCS_ECS_ACT, card_upper_UCS_ECS_est, card_lower_UCS_ECS_est = card_est('UCS.csv', 'EC.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
+
+SVM_R__CP_CC_EST, card_upper_R__CP_CC_est, card_lower_R__CP_CC_est = card_est_interimIsRight('RQ.csv', 'CP.csv', 'CC.csv', 'RQaaCP.csv', card_upper_CP_CC_est, card_lower_CP_CC_est)
+SVM_R__CP_CC___UCS_EST, card_upper_R__CP_CC___UCS_est, card_lower_R__CP_CC___UCS_est = card_est_interimIsLeft('RQ.csv', 'CC.csv', 'UCS.csv', card_upper_R__CP_CC_est, card_lower_R__CP_CC_est, 'CCaaUCS.csv')
+SVM_CC_EC_ACT, card_upper_CC_EC_est, card_lower_CC_EC_est = card_est('CC.csv', 'UCS.csv', 'EC.csv', 'CCaaUCS.csv', 'UCSaaEC.csv')
+
+SVM_R__CP_CC___UCS____EC_EST, card_upper_R__CP_CC___UCS____EC_est, card_lower_R__CP_CC___UCS____EC_est = card_est_interimIsBoth('RQ.csv', 'CC.csv', 'EC.csv', card_upper_R__CP_CC_est, card_lower_R__CP_CC_est, card_upper_CC_EC_est, card_lower_CC_EC_est)
+SVM_CC_EC__ECS_EST, card_upper_CC_EC__ECS_est, card_lower_CC_EC__ECS_est = card_est_interimIsLeft('CC.csv', 'EC.csv', 'ECS.csv', card_upper_CC_EC_est, card_lower_CC_EC_est, 'ECaaECS.csv')
 
 
+
+#SVM_R__CP_CC_EST
+#7672.3341360124696
+#JoinRtoCC(myAW); // 7552
+
+#SVM_R__CP_CC___UCS_EST
+#123888.6020187767
+#JoinRtoUCS(myAW); // 121301
+
+
+
+#SVM_R_SCP_ACT, SVM_CP_CC_ACT, SVM_SCP_UCS_ACT, SVM_CC_EC_ACT, SVM_UCS_ECS_ACT
+#(9760, 9467, 192526, 12875, 362219)
+#### SVM_CP_CC_ACT cheapest join
+
+## G-ECS chain
 #SVM_EST, card_upper_est, card_lower_est = card_est(TableName_left, TableName_mid, TableName_right, TMName_left, TMName_right)
-SVM_G_UCS_ACT, card_upper_G_UCS_est, card_lower_G_UCS_est = card_est('G.csv', 'UC.csv', 'UCS.csv', 'GaaUC.csv', 'UCaaUCS.csv')
-SVM_UC_EC_ACT, card_upper_UC_EC_est, card_lower_UC_EC_est = card_est('UC.csv', 'UCS.csv', 'EC.csv', 'UCaaUCS.csv', 'UCSaaEC.csv')
-SVM_UCS_ECS_ACT, card_upper_UCS_ECS_est, card_lower_UCS_ECS_est = card_est('UCS.csv', 'EC.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
+#SVM_G_UCS_ACT, card_upper_G_UCS_est, card_lower_G_UCS_est = card_est('G.csv', 'UC.csv', 'UCS.csv', 'GaaUC.csv', 'UCaaUCS.csv')
+#SVM_UC_EC_ACT, card_upper_UC_EC_est, card_lower_UC_EC_est = card_est('UC.csv', 'UCS.csv', 'EC.csv', 'UCaaUCS.csv', 'UCSaaEC.csv')
+#SVM_UCS_ECS_ACT, card_upper_UCS_ECS_est, card_lower_UCS_ECS_est = card_est('UCS.csv', 'EC.csv', 'ECS.csv', 'UCSaaEC.csv', 'ECaaECS.csv')
 
 #>>> SVM_G_UCS_ACT
 #12715
@@ -137,8 +181,8 @@ SVM_UCS_ECS_ACT, card_upper_UCS_ECS_est, card_lower_UCS_ECS_est = card_est('UCS.
 #362219
 #witnin the 10 percent range
 
-SVM_G__UC_EC_EST, card_upper_G__UC_EC_est, card_lower_G__UC_EC_est = card_est_interimIsRight('G.csv', 'UC.csv', 'EC.csv', 'GaaUC.csv', card_upper_UC_EC_est, card_lower_UC_EC_est)
-SVM_G_EC__ECS_EST, card_upper_G_EC__ECS_est, card_lower_G_EC__ECS_est = card_est_interimIsLeft('G.csv', 'EC.csv', 'ECS.csv', card_upper_G__UC_EC_est, card_lower_G__UC_EC_est, 'ECaaECS.csv')
+#SVM_G__UC_EC_EST, card_upper_G__UC_EC_est, card_lower_G__UC_EC_est = card_est_interimIsRight('G.csv', 'UC.csv', 'EC.csv', 'GaaUC.csv', card_upper_UC_EC_est, card_lower_UC_EC_est)
+#SVM_G_EC__ECS_EST, card_upper_G_EC__ECS_est, card_lower_G_EC__ECS_est = card_est_interimIsLeft('G.csv', 'EC.csv', 'ECS.csv', card_upper_G__UC_EC_est, card_lower_G__UC_EC_est, 'ECaaECS.csv')
 
 #SVM_UC_EC__ECS_EST, card_upper_UC_EC__ECS_est, card_lower_UC_EC__ECS_est = card_est_interimIsLeft('UC.csv', 'EC.csv', 'ECS.csv', card_upper_UC_EC_est, card_lower_UC_EC_est, 'ECaaECS.csv')
 

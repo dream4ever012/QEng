@@ -70,6 +70,33 @@ public class SD {
 	public static final String CCSheet5kFP = "./SecondData/codeclass5k.xls";
 	public static final String CCTableName5k = "codeclass";
 	
+	// R_ECS complete join sets
+	public static final String R_SCP10kFP = "./SecondData/RaaSCP.xls";
+	public static final String R_SCP10kTableName = "RaaSCP";
+	public static final String CP_CC9kFP = "./SecondData/CPaaCC.xls";
+	public static final String CP_CC9kTableName = "CPaaCC";
+	public static final String SCP_UCS192kFP = "./SecondData/SCPaaUCS.xls";
+	public static final String SCP_UCS192kTableName = "SCPaaUCS";
+	public static final String CC_EC12kFP = "./SecondData/CCaaEC.xls";
+	public static final String CC_EC12kTableName = "CCaaEC";
+	public static final String R_CC8kFP = "./SecondData/RaaCC.xls";
+	public static final String R_CC8kTableName = "RaaCC";
+	public static final String CP_UCS143kFP = "./SecondData/CPaaUCS.xls";
+	public static final String CP_UCS143kTableName = "CPaaUCS";	
+	public static final String SCP_EC52kFP = "./SecondData/SCPaaEC.xls";
+	public static final String SCP_EC52kTableName = "SCPaaEC";	
+	public static final String CC_ECS285kFP = "./SecondData/CCaaECS.xls";
+	public static final String CC_ECS285kTableName = "CCaaECS";
+	public static final String R_UCS66kFP = "./SecondData/RaaUCS.xls";
+	public static final String R_UCS66kTableName = "RaaUCS";
+	public static final String CP_EC52kFP = "./SecondData/CPaaEC.xls";
+	public static final String CP_EC52kTableName = "CPaaEC";
+	public static final String SCP_ECS66kFP = "./SecondData/SCPaaECS.xls";
+	public static final String SCP_ECS66kTableName = "SCPaaECS";
+	public static final String R_EC52kFP = "./SecondData/RaaEC.xls";
+	public static final String R_EC52kTableName = "RaaEC";
+	public static final String CP_ECS1049kFP = "./SecondData/CPaaECS.xls";
+	public static final String CP_ECS1049kTableName = "CPaaECS";
 	
 	public static final String H2PROTO = "jdbc:h2:";
 	public static final String IH2FP = "./Data/TestCaseDataBases/";

@@ -467,7 +467,7 @@ public class InternalH2 implements InternalDB {
 		try {
 			
 			String SQLString =  "CREATE HASH INDEX ON " + TableName + "(" +ColName+ ");"; 
-			
+			// System.out.println(SQLString); ///////////////////////////////////
 			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
 			Statement stmt = iconn.createStatement();
 			

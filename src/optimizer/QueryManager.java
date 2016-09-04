@@ -28,8 +28,6 @@ public interface QueryManager {
 	public IDBReturnEnum toXML(ResultSet rs, File fref);
 
 	void RegisterTM(String TMTableName, String TableOneTableName, String TableOneColName, String TableTwoTableName, String TableTwoColName);
-	
-	void RegisterTMONLY(String TMTableName, String TableOneColName, String TableTwoColName);
 
 	//TODO: figure out what needs to be passed here.
 	boolean NewTempTable(String TableName, String... Columns);
