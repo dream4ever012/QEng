@@ -6,12 +6,14 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
+import ResourceStrings.OS;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.ExternalOracle;
 import qEng.InternalH2;
 import utils.MeasureCostArbitrary;
+import utils.ResultSetUtils;
 
 public class OracleComparisons {
 
@@ -78,14 +80,14 @@ public class OracleComparisons {
 
 		
 /*
-		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.CCTableName5k+"\""),
-										OS.URL, OS.User, OS.Pass, SD.CCTableName5k);
-		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+  SD.TMTableName4k+"\"" ),
-										OS.URL, OS.User, OS.Pass, SD.TMTableName4k);
-		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.REQTableNameTC1+"\""), 
-										OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
-*/
-		// System.out.println(URL);
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.RQ_CP7kTableName+"\""),
+										OS.URL, OS.User, OS.Pass, SD.RQ_CP7kTableName);
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+  SD.CP10kTableName+"\"" ),
+										OS.URL, OS.User, OS.Pass, SD.CP10kTableName);
+		ResultSetUtils.RStoOracleTable(myAW.QueryToRS("SELECT * FROM \""+ SD.CP_SCP12kTableName+"\""), 
+										OS.URL, OS.User, OS.Pass, SD.CP_SCP12kTableName);
+
+*/		// System.out.println(URL);
 
 //			OracleDataSource ods = new OracleDataSource(); 
 //			ods.setURL(URL); 
@@ -152,7 +154,7 @@ public class OracleComparisons {
 		assertTrue("failure " + TQ25.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ25) >= 10.0);
 */
-
+/*
 		File TQ21 = new File("./results/TQ21.xml");
 		SQLString = "SELECT " + SD.REQTableNameTC1 + ".*, " + SD.CCTableName5k + ".*" + " " +
 				"FROM " + SD.REQTableNameTC1 + " " +
@@ -162,7 +164,7 @@ public class OracleComparisons {
 				"ON " + SD.TMTableName4k + ".ID = " + SD.REQTableNameTC1 + ".ID;";
 		assertTrue("failure " + TQ21.getName().toString() , 
 				MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQ21) >= 10.0);
-		
+*/		
 		
 
 
