@@ -129,6 +129,7 @@ public class MainCreatingOracleTable {
 			MeasureCostToRS.measureCostToRS(myAW, SQLString, TripleJoin);
 
 			*/
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_SCP12kTableName);
 			
 		}
 	}
