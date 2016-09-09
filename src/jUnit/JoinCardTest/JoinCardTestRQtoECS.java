@@ -51,7 +51,7 @@ public class JoinCardTestRQtoECS {
 		// create tablelink
 //		CreateTablesInMemory.createTablesInMemoryRQtoECS(myAW);
 //		CreateTablesInMemory.createTablesInMemoryRQtoECSJS(myAW);
-		// create link for 
+//		// create link for 
 //		CreateTablesInMemory.registerTMRQtoECS(myAW);
 //		CreateTablesInMemory.registerTMRQtoECSJS(myAW);
 		setupIsDone = true;
@@ -95,13 +95,26 @@ public class JoinCardTestRQtoECS {
 		//JoinRtoECS(myOAW); // JoinRtoECS.xml cost: 751
 		//JoinR_ECS_OR(myOAW);
 		//JoinR_ECS_OR_ord(myOAW); // JoinR_ECS_OR_ord.xml cost:  430 450 440 425 450
-		JoinR_ECS_OR(myOAW); // JoinR_ECS_OR.xml cost:            540 450 469 447 460 // /*+ORDERED */ 3686 1187 537 540 981
+		//JoinR_ECS_OR(myOAW); // JoinR_ECS_OR.xml cost:            540 450 469 447 460 // /*+ORDERED */ 3686 1187 537 540 981
 																					  // 954 484 988 1067 989 514 /*+ORDERED */
 																					  // 643 520 628 604 590 867
-		////test(myAW);	// 45 56		// /*+ORDERED */ 64 50
+		
+		// test(myOAW); //  440 463 514 490 466 458 459 443 524 455 w/ +ORDERED
+		// test(myOAW);	//  513 472 474 453 456 465 445 446 461
+		
+		// OAW
+		//JoinR_ECS_OR_ord_woOrd(myOAW); // 889 787 744 773 760 // 653 777 692
+		//JoinR_ECS_OR_ord(myOAW);  //    744 684 708 765 799 // 704 667 690 682 695
+		
+		//JoinR_ECS_OR_ord_woOrd(myAW);
+		//JoinR_ECS_OR_ord(myAW); //32167
+		
+		//JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
+		JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533
+		
 	}
-	private static void test(QueryManager myAW){
-		File test = new File("./results/test.xml"); 
+	private static void JoinSCP_ECS_OR_ord(QueryManager myAW){
+		File JoinSCP_ECS_OR_ord = new File("./results/JoinSCP_ECS_OR_ord.xml"); 
 //		String SQLString =
 //				"SELECT /*+ORDERED */ * " + 
 //				"FROM RQaaCP, CPaaSCP, SCPaaCC, CCaaUCS, UCSaaEC, ECaaECS" + " " +
@@ -111,8 +124,60 @@ public class JoinCardTestRQtoECS {
 //				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
 //				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
 		String SQLString = 
-				"SELECT * " + // /*+ORDERED */ 
-				"FROM ECaaECS";
+				"SELECT /*+ORDERED */ * " + //    
+				"FROM SCPaaCC" + " " +
+				"INNER JOIN CCaaUCS ON CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " +
+				"INNER JOIN UCSaaEC ON UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " +
+				"INNER JOIN ECaaECS ON ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		System.out.println(SQLString);
+		assertTrue("failure " + JoinSCP_ECS_OR_ord.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSCP_ECS_OR_ord) >= 10.0);
+		//myAW.QueryToXML(SQLString, JoinSCP_ECS_OR_ord);
+	}
+	private static void JoinSCP_ECS_OR(QueryManager myAW){
+		File JoinSCP_ECS_OR = new File("./results/JoinSCP_ECS_OR.xml"); 
+//		String SQLString =
+//				"SELECT /*+ORDERED */ * " + 
+//				"FROM RQaaCP, CPaaSCP, SCPaaCC, CCaaUCS, UCSaaEC, ECaaECS" + " " +
+//				"WHERE CPaaSCP.COMPONENTID = RQaaCP.COMPONENTID" + " " +
+//				    "AND SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
+//				    "AND CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " + 
+//				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
+//				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		String SQLString = 
+				"SELECT  * " + // /*+ORDERED */   
+				"FROM SCPaaCC" + " " +
+				"INNER JOIN CCaaUCS ON CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " +
+				"INNER JOIN UCSaaEC ON UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " +
+				"INNER JOIN ECaaECS ON ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		System.out.println(SQLString);
+		assertTrue("failure " + JoinSCP_ECS_OR.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSCP_ECS_OR) >= 10.0);
+		//myAW.QueryToXML(SQLString, JoinR_ECS_OR);
+	}
+
+	
+	private static void test(QueryManager myAW){
+		File test = new File("./results/test.xml"); 
+		String SQLString =
+				"SELECT  * " + // /*+ORDERED */
+				"FROM RQaaCP, CPaaSCP, SCPaaCC, CCaaUCS, UCSaaEC, ECaaECS" + " " +
+				"WHERE CPaaSCP.COMPONENTID = RQaaCP.COMPONENTID" + " " +
+				    "AND SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
+				    "AND CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " + 
+				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
+				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+//		String SQLString = 
+//				"SELECT  * " + //   /*+ORDERED */
+//				"FROM CPaaSCP" + " " +
+//				"INNER JOIN SCPaaCC ON SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
+//				"INNER JOIN RQaaCP ON RQaaCP.COMPONENTID = CPaaSCP.COMPONENTID" + " " +
+//				"INNER JOIN CCaaUCS ON CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " +
+//				"INNER JOIN UCSaaEC ON UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " +
+//				"INNER JOIN ECaaECS ON ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+//		String SQLString = 
+//				"SELECT * " + // /*+ORDERED */ 
+//				"FROM ECaaECS";
 		System.out.println(SQLString);
 		assertTrue("failure " + test.getName().toString() , 
 					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, test) >= 10.0);
@@ -130,7 +195,7 @@ public class JoinCardTestRQtoECS {
 //				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
 //				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
 		String SQLString = 
-				"SELECT  * " + //   /*+ORDERED */
+				"SELECT /*+ORDERED */ * " + //   
 				"FROM CPaaSCP" + " " +
 				"INNER JOIN SCPaaCC ON SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
 				"INNER JOIN RQaaCP ON RQaaCP.COMPONENTID = CPaaSCP.COMPONENTID" + " " +
@@ -148,6 +213,29 @@ public class JoinCardTestRQtoECS {
 		assertTrue("failure " + JoinR_ECS_OR.getName().toString() , 
 					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_ECS_OR) >= 10.0);
 		//myAW.QueryToXML(SQLString, JoinR_ECS_OR);
+	}
+	
+	private static void JoinR_ECS_OR_ord_woOrd(QueryManager myAW){
+		File JoinR_ECS_OR_ord = new File("./results/JoinR_ECS_OR_ord.xml"); 
+		String SQLString =
+//				SELECT /*+ORDERED */ *
+//				FROM SCPaaCC, CPaaSCP, RQaaCP, UCSaaEC, CCaaUCS, ECaaECS
+//				WHERE SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID
+//				    AND RQaaCP.COMPONENTID = CPaaSCP.COMPONENTID
+//				    AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID
+//				    AND CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME 
+//				    AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID;
+				"SELECT * " + 
+				"FROM SCPaaCC, CPaaSCP, RQaaCP, CCaaUCS, UCSaaEC, ECaaECS" + " " +
+				"WHERE  SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
+				    "AND CPaaSCP.COMPONENTID = RQaaCP.COMPONENTID" + " " +
+				    "AND CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " + 
+				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
+				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		System.out.println(SQLString);
+		assertTrue("failure " + JoinR_ECS_OR_ord.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_ECS_OR_ord) >= 10.0);
+		//myAW.QueryToXML(SQLString, JoinR_ECS_OR_ord);
 	}
 	
 	private static void JoinR_ECS_OR_ord(QueryManager myAW){
