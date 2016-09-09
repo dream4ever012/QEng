@@ -110,7 +110,7 @@ public class JoinCardTestRQtoECS {
 		//JoinR_ECS_OR_ord(myAW); //32167
 		
 		//JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
-		JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533
+		JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533 568
 		
 	}
 	private static void JoinSCP_ECS_OR_ord(QueryManager myAW){
