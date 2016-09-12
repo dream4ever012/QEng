@@ -1,5 +1,7 @@
 package jUnit.utilTest;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,9 +144,11 @@ public class WriteCSVTest {
 		JoinSCPtoECS(myAW); // 1048576
 		
 */	
-/*		JoinRtoEC(myAW); // 51844
-		JoinCPtoECS(myAW); // 1048576
+		//JoinRtoEC(myAW); // 51844
+	/*			JoinCPtoECS(myAW); // 1048576
 */		
+		// TODO: has to check why RtoEC and R_CC_EC does not agree with each other
+		JoinR_CC_EC(myAW);
 		
 	}
 	
@@ -159,6 +163,22 @@ public class WriteCSVTest {
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinCPtoECS);
 		myAW.WriteCSV("./ThirdData/CPaaECS.csv", SQLString);
 		//myAW.QueryToXML(SQLString, JoinCPtoECS);
+	}
+	
+	private static void JoinR_CC_EC(QueryManager myAW){
+		File JoinR_CC_EC = new File("./results/JoinR_CC_EC.xml"); 
+		String SQLString =
+//				"SELECT COUNT (*) " +
+				"SELECT " + SD.R_CC8kTableName + ".ID" + ", " + 
+							SD.CC_EC12kTableName + ".EXCEPTIONCASEID" + " " +
+				"FROM " + SD.R_CC8kTableName + " " +
+				"INNER JOIN " + SD.CC_EC12kTableName + " " + 
+				"ON " + SD.CC_EC12kTableName + ".CLASSNAME = " + SD.R_CC8kTableName + ".CLASSNAME"; 
+		System.out.println(SQLString);
+		assertTrue("failure " + JoinR_CC_EC.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_CC_EC) >= 10.0);
+		//myAW.QueryToXML(SQLString, JoinR_CC_EC);
+		myAW.WriteCSV("./ThirdData/RaaEC1.csv", SQLString);
 	}
 	
 	private static void JoinRtoEC(QueryManager myAW){	

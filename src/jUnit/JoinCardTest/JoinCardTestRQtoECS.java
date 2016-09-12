@@ -49,11 +49,11 @@ public class JoinCardTestRQtoECS {
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		myOAW = new AskWise(new ExternalOracle());
 		// create tablelink
-//		CreateTablesInMemory.createTablesInMemoryRQtoECS(myAW);
-//		CreateTablesInMemory.createTablesInMemoryRQtoECSJS(myAW);
-//		// create link for 
-//		CreateTablesInMemory.registerTMRQtoECS(myAW);
-//		CreateTablesInMemory.registerTMRQtoECSJS(myAW);
+		CreateTablesInMemory.createTablesInMemoryRQtoECS(myAW);
+		CreateTablesInMemory.createTablesInMemoryRQtoECSJS(myAW);
+		// create link for 
+		CreateTablesInMemory.registerTMRQtoECS(myAW);
+		CreateTablesInMemory.registerTMRQtoECSJS(myAW);
 		setupIsDone = true;
 		}
 	}
@@ -84,7 +84,7 @@ public class JoinCardTestRQtoECS {
 		// JoinCC_EC(myAW); // card 12876
 		
 		// JoinR_CC_EC.xml cost: 921
-		// JoinR_CC_EC(myAW); // card 96909
+		JoinR_CC_EC(myAW); // card 96909
 		
 		// JoinR_EC__ECS.xml cost: 450
 		// JoinR_EC__ECS(myAW);
