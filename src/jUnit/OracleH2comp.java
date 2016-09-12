@@ -107,7 +107,7 @@ public class OracleH2comp {
 		
 		JoinUCaaUCSjoinUCSaaEC(myAW); // card 9760
 		JoinUCaaUCSjoinUCSaaEC(myOAW);
-		
+
 		
 	}
 

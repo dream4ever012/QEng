@@ -126,6 +126,7 @@ public class CreateTablesInMemory {
 		myAW.ImportSheet(SD.CP_CC9kFP, SD.CP_CC9kTableName);
 		myAW.ImportSheet(SD.SCP_UCS192kFP, SD.SCP_UCS192kTableName);
 		myAW.ImportSheet(SD.CC_EC12kFP, SD.CC_EC12kTableName);
+		myAW.ImportSheet(SD.UCS_ECS65kFP, SD.UCS_ECS65kTableName);
 		myAW.ImportSheet(SD.R_CC8kFP, SD.R_CC8kTableName);
 		myAW.ImportSheet(SD.CP_UCS143kFP, SD.CP_UCS143kTableName);
 		myAW.ImportSheet(SD.SCP_EC52kFP, SD.SCP_EC52kTableName);
@@ -153,6 +154,7 @@ public class CreateTablesInMemory {
 		myAW.RegisterTM(SD.CP_CC9kTableName, SD.CP10kTableName, "COMPONENTID", SD.CC10kTableName, "CLASSNAME");
 		myAW.RegisterTM(SD.SCP_UCS192kTableName, SD.SCP15kTableName, "SUBCOMPONENTID", SD.UCS20kTableName, "USECASESTEPID");
 		myAW.RegisterTM(SD.CC_EC12kTableName, SD.CC10kTableName, "CLASSNAME", SD.EC10kTableName, "EXCEPTIONCASEID");
+		myAW.RegisterTM(SD.UCS_ECS65kTableName, SD.UCS20kTableName, "USECASESTEPID", SD.ECS30kTableName, "EXCEPTIONCASESTEPID");
 		myAW.RegisterTM(SD.R_CC8kTableName, SD.R70TableName, "ID", SD.CC10kTableName, "CLASSNAME");
 		myAW.RegisterTM(SD.CP_UCS143kTableName, SD.CP10kTableName, "COMPONENTID", SD.UCS20kTableName, "USECASESTEPID");
 		myAW.RegisterTM(SD.SCP_EC52kTableName, SD.SCP15kTableName, "SUBCOMPONENTID", SD.EC10kTableName, "EXCEPTIONCASEID");

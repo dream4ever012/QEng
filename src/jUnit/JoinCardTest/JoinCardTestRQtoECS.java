@@ -62,16 +62,28 @@ public class JoinCardTestRQtoECS {
 
 		// 1) (R-SCP)-CC -CP)-CC: ORACLE OPTIMAL PATH 2000 (=160+214+1147+479)
 		// JoinRtoSCP.xml cost: 160
-		// JoinRtoSCP(myAW); // card 9760		
+		// JoinRtoSCP(myAW); // card 9760
+// H2 Oracle comparison		
+//		JoinRtoSCP(myAW);	// 147
+//		JoinRtoSCP(myOAW);	// 411
 
 		//JoinR_SCP__CC.xml cost: 214
 		//JoinR_SCP__CC(myAW); // card 7551
+		
+//		JoinR_SCP__CC(myAW);
+//		JoinR_SCP__CC(myOAW);
 	
 		// JoinR_CC__UCS.xml cost: 1147
 		// JoinR_CC__UCS(myAW); //121300
 		
+/*		JoinR_CC__UCS(myAW);
+		JoinR_CC__UCS(myOAW);*/
+		
 		// JoinR_UCS__EC.xml cost: 479
 		// JoinR_UCS__EC(myAW); // 51844
+		
+//		JoinR_UCS__EC(myAW);
+//		JoinR_UCS__EC(myAW);
 		
 		// 2) ((R-(CP-CC))-(CC-EC))-ECS) 1453 (= 173+128+231+921)
 		//JoinCP_CC.xml cost: 173
@@ -84,7 +96,7 @@ public class JoinCardTestRQtoECS {
 		// JoinCC_EC(myAW); // card 12876
 		
 		// JoinR_CC_EC.xml cost: 921
-		JoinR_CC_EC(myAW); // card 96909
+		// JoinR_CC_EC(myAW); // card 96909
 		
 		// JoinR_EC__ECS.xml cost: 450
 		// JoinR_EC__ECS(myAW);
@@ -109,8 +121,14 @@ public class JoinCardTestRQtoECS {
 		//JoinR_ECS_OR_ord_woOrd(myAW);
 		//JoinR_ECS_OR_ord(myAW); //32167
 		
-		//JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
-		JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533 568
+		JoinSCP_ECS_OR(myAW);
+		JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
+		
+		JoinSCP_ECS_opt(myAW);
+		JoinSCP_ECS_opt(myOAW);
+		
+		//JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533 568
+		
 		
 	}
 	private static void JoinSCP_ECS_OR_ord(QueryManager myAW){
@@ -156,6 +174,27 @@ public class JoinCardTestRQtoECS {
 		//myAW.QueryToXML(SQLString, JoinR_ECS_OR);
 	}
 
+	private static void JoinSCP_ECS_opt(QueryManager myAW){
+		File JoinSCP_ECS_opt = new File("./results/JoinSCP_ECS_opt.xml"); 
+//		String SQLString =
+//				"SELECT /*+ORDERED */ * " + 
+//				"FROM RQaaCP, CPaaSCP, SCPaaCC, CCaaUCS, UCSaaEC, ECaaECS" + " " +
+//				"WHERE CPaaSCP.COMPONENTID = RQaaCP.COMPONENTID" + " " +
+//				    "AND SCPaaCC.SUBCOMPONENTID = CPaaSCP.SUBCOMPONENTID" + " " +
+//				    "AND CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " + 
+//				    "AND UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " + 
+//				    "AND ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		String SQLString = 
+				"SELECT  * " + // /*+ORDERED */   
+				"FROM CCaaUCS" + " " +
+				"INNER JOIN UCSaaEC ON UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID" + " " +
+				"INNER JOIN SCPaaCC ON CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME" + " " +
+				"INNER JOIN ECaaECS ON ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+		System.out.println(SQLString);
+		assertTrue("failure " + JoinSCP_ECS_opt.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSCP_ECS_opt) >= 10.0);
+		//myAW.QueryToXML(SQLString, JoinSCP_ECS_opt);
+	}
 	
 	private static void test(QueryManager myAW){
 		File test = new File("./results/test.xml"); 
