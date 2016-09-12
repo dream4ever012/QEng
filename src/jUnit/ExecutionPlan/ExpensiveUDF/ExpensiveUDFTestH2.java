@@ -202,8 +202,8 @@ public class ExpensiveUDFTestH2 {
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + "CCPredicateTEMP" + ".CREATEDBY = 'Caleb'" + " AND " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;";
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLaterWTEMP);
-		myAW.QueryToXML(SQLString, UDFLaterWTEMP);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLaterWTEMP);
+		//myAW.QueryToXML(SQLString, UDFLaterWTEMP);
 	}
 	
 	private static void UDFFirst(QueryManager myAW){
