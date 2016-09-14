@@ -1,8 +1,14 @@
 package jUnit.JoinCardTest;
 
 import static org.junit.Assert.*;
+import org.h2.util.Profiler;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +50,9 @@ public class JoinCardTestRQtoECS {
 		if(new File(IH2FP + IH2DBName + ".trace.db").delete())
 		{
 			System.out.println("Old Trace Deleted");
-		}		
+		}
+		
+		
 		new File(ResultsURL).mkdirs();
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		myOAW = new AskWise(new ExternalOracle());
@@ -121,16 +129,59 @@ public class JoinCardTestRQtoECS {
 		//JoinR_ECS_OR_ord_woOrd(myAW);
 		//JoinR_ECS_OR_ord(myAW); //32167
 		
-		JoinSCP_ECS_OR(myAW);
-		JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
+//		JoinSCP_ECS_OR(myAW);
+//		JoinSCP_ECS_OR(myOAW); // 674 524 676 541 572
 		
-		JoinSCP_ECS_opt(myAW);
-		JoinSCP_ECS_opt(myOAW);
+//		JoinSCP_ECS_opt(myAW);
+//		JoinSCP_ECS_opt(myOAW);
 		
 		//JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533 568
 		
+		JoinR_ECS_ORH2COMP(myAW); // 35146 36561
+		//JoinR_ECS_ORH2COMP(myOAW); // 721
 		
 	}
+	
+	private static void JoinR_ECS_ORH2COMP(QueryManager myAW){
+		File JoinR_ECS_ORH2COMP = new File("./results/JoinR_ECS_ORH2COMP.xml"); 
+
+		String SQLString =
+				"SELECT * " + //    
+				"FROM  RQAACP  " + " " +
+				"INNER JOIN SCPAACC ON CPAASCP.SUBCOMPONENTID = SCPAACC.SUBCOMPONENTID" + " " +
+				"INNER JOIN CPAASCP ON CPAASCP.COMPONENTID = RQAACP.COMPONENTID" + " " +
+				"INNER JOIN UCSaaEC ON UCSaaEC.USECASESTEPID = CCaaUCS.USECASESTEPID  " +				
+				"INNER JOIN CCaaUCS ON CCaaUCS.CLASSNAME = SCPaaCC.CLASSNAME " +
+				"INNER JOIN ECaaECS ON ECaaECS.EXCEPTIONCASEID = UCSaaEC.EXCEPTIONCASEID";
+				
+		assertTrue("failure " + JoinR_ECS_ORH2COMP.getName().toString() , 
+					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_ECS_ORH2COMP) >= 10.0);
+//		myAW.QueryToXML(SQLString, JoinR_ECS_ORH2COMP);
+		System.out.println(SQLString);
+//		String IH2DBURL = H2PROTO + IH2FP + IH2DBName + ";TRACE_LEVEL_FILE=2"; 
+//		String IH2PASS = "";
+//		String IH2USER = "sys";
+//		
+//		Connection iconn;
+//		try {
+//			iconn = DriverManager.getConnection(IH2DBURL,IH2USER,IH2PASS);
+//			Statement stmt = iconn.createStatement();
+//			Profiler prof = new Profiler();
+//			prof.startCollecting();
+//			ResultSet rs = stmt.executeQuery(SQLString);
+//			prof.stopCollecting();
+//			System.out.println(prof.getTop(10));
+//			rs.close();
+//			iconn.close();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+		
+	}
+
+	
 	private static void JoinSCP_ECS_OR_ord(QueryManager myAW){
 		File JoinSCP_ECS_OR_ord = new File("./results/JoinSCP_ECS_OR_ord.xml"); 
 //		String SQLString =
