@@ -98,23 +98,25 @@ public class SummerReportTestCases {
 		//ExpenUDFFirstUDF0_2(myAW); // 4885 6130 6579 9543 5430 ==> 6513
 		
 		// step1: create table
-		//ExpenUDFLaterUDF1_1.xml cost: 3843
+		//ExpenUDFLaterUDF1_1.xml cost: 2949 4464 1950 2659
 		ExpenUDFLaterUDF1_1(myAW);
 		//step2: hashing
-		//ExpenUDFLaterUDF1_2.xml cost: 3549
+		//ExpenUDFLaterUDF1_2.xml cost: 2897 3060 2970 2873
 		ExpenUDFLaterUDF1_2(myAW);
 		// step3: UDF column join w/ CC-SCP 
-		//ExpenUDFLaterUDF1_3.xml cost: 670 join
+		//ExpenUDFLaterUDF1_3.xml cost: 663 613 568 512
 		ExpenUDFLaterUDF1_3(myAW);
 		// step 4 hashing
-		// ExpenUDFLaterUDF1_3_1.xml cost: 3659
+		// ExpenUDFLaterUDF1_3_1.xml cost: 4366 3681 3872 3695
 		ExpenUDFLaterUDF1_3_1(myAW);
 		// step 5 hashing
-		// ExpenUDFLaterUDF1_4.xml cost: 85
+		// ExpenUDFLaterUDF1_4.xml cost: 183 77 68 75
 		ExpenUDFLaterUDF1_4(myAW);
 		// step6: join UDF column with the interim join table
-		// ExpenUDFLaterUDF1_5.xml cost: 2195
+		// ExpenUDFLaterUDF1_5.xml cost: 2126 2124 1998 2226
 		ExpenUDFLaterUDF1_5(myAW);
+		// drop tables
+		// ExpenUDFLaterUDF1_6.xml cost: 71 64 70 66
 		ExpenUDFLaterUDF1_6(myAW);
 		
 	}
@@ -421,7 +423,9 @@ public class SummerReportTestCases {
 	private static void ExpenUDFLaterUDF1_6(QueryManager myAW){
 		File ExpenUDFLaterUDF1_6 = new File("./results/ExpenUDFLaterUDF1_6.xml"); 
 		String SQLString =
-				"DROP TABLE TT1 IF EXISTS;";
+				"DROP TABLE TT1 IF EXISTS;" +
+				"DROP TABLE TT2 IF EXISTS;" +
+				"DROP TABLE TT3 IF EXISTS;";
 		System.out.println(SQLString);
 		assertTrue("failure " + ExpenUDFLaterUDF1_6.getName().toString() ,
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, ExpenUDFLaterUDF1_6) >= 5.0);
