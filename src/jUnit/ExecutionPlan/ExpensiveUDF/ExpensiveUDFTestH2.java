@@ -79,6 +79,7 @@ public class ExpensiveUDFTestH2 {
 				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
 				"WHERE " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';"; // "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " +
 		myAW.arbitrarySQL(SQLString);
+		System.out.println(SQLString);
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, PredicateTEMP);
 
 		// CC_REQ_TM5k cost: 174 191 191 277 231
@@ -97,15 +98,6 @@ public class ExpensiveUDFTestH2 {
 		
 		
 		
-		
-/*		
-		long m1, m2;
-		m1 = System.currentTimeMillis();
-		myAW.RegisterTM(SD.TMTableName5k, "CCPredicateTEMP" , "ClassName" , SD.REQTableName, "ID");
-		m2 = System.currentTimeMillis();
-		System.out.println( SD.TMTableName5k+" cost: " + (m2 - m1));
-		
-*/		
 //		CreateTablesInMemory.createTablesInMemory(myAW);
 
 
@@ -120,13 +112,17 @@ public class ExpensiveUDFTestH2 {
 		myAW.RegisterCompiledUDF("FAULTPRONE", "src.UDF.isFaultProne");
 		
 		// benefit of postponing UDF
-		//UDFonly1(myAW); // UDFonly1.xml cost: 2290 4630 2602 4601 3501 2637
-		//UDFonly2(myAW); // UDFonly2.xml cost: 6227 5217 7672 4714 5030 4031 6109
+		//UDFonly1(myAW); // UDFonly1.xml cost: 2290 4630 2602 4601 3501 2637 3220
+		//SELECT FAULTPRONE(CCPredicateTEMP.CLASSES) FROM CCPredicateTEMP;
+		UDFonly2(myAW); // UDFonly2.xml cost: 6227 5217 7672 4714 5030 4031 6109
+		
+		//UDFonly1_1(myAW); //2500
+		//UDFonly2_1(myAW); //5000
 		
 		
 		// UDFFirst: UDF AND predicate; UDFLater: predicate AND UDF
 		// UDFFirst(myAW);	// UDFFirst.xml cost: 3265 3710 4894 2681 3061 3660 2898 2786 3004 4305 4289
-		// UDFLater(myAW);		// UDFLater.xml cost: 2780 2868 3389 2871 4359 2846 2945 3986 2835 3399 2587
+		// UDFLater(myAW);	// UDFLater.xml cost: 2780 2868 3389 2871 4359 2846 2945 3986 2835 3399 2587
 		
 		
 		///////2nd experiment
@@ -139,8 +135,98 @@ public class ExpensiveUDFTestH2 {
 		// CostOfPred.xml cost: 77 44 63 76 35
 		// CC_REQ_TM5k cost: 174 191 191 277 231
 		// UDFLaterWTEMP.xml cost: 3269 4575 3593 2524 3165
-		UDFLaterWTEMP(myAW);
-		//UDFLater(myAW);	
+		// UDFLaterWTEMP(myAW); // 3572 4785 3422 4624 4944
+		// UDFLater(myAW);	 
+		// UDFFirst(myAW); // 4619 3187 4119 3465 4125
+		
+		//CompW5k1(myAW); // 3943 3929 3098
+		//CompW5k2(myAW); // 4975 4899 3928
+		
+
+	}
+	
+	// Created By 'Caleb' first and then UDF
+	private static void UDFonly1(QueryManager myAW){
+		File UDFonly1 = new File("./results/UDFonly1.xml");
+		String SQLString =
+				"SELECT " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) " +
+				"FROM " + "CCPredicateTEMP" + ";";
+				//"INNER JOIN " + SD.TMTableName5k + " " + 
+				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly1);
+		//myAW.QueryToXML(SQLString, UDFonly1);
+	}
+	
+	private static void UDFonly1_2(QueryManager myAW){
+		File UDFonly1_2 = new File("./results/UDFonly1_2.xml");
+		String SQLString =
+				"SELECT " + "COUNT(*) " +
+				"FROM " + "CCPredicateTEMP" + ";";
+				//"INNER JOIN " + SD.TMTableName5k + " " + 
+				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly1_2);
+		//myAW.QueryToXML(SQLString, UDFonly1_2);
+	}
+	
+	
+	// Created By 'Caleb' first and then UDF
+	private static void UDFonly1_1(QueryManager myAW){
+		File UDFonly1_1 = new File("./results/UDFonly1_1.xml");
+		String SQLString =
+				"SELECT " + "COUNT(FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES)) " +
+				"FROM " + "CCPredicateTEMP" + ";";
+				//"INNER JOIN " + SD.TMTableName5k + " " + 
+				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly1_1);
+		myAW.QueryToXML(SQLString, UDFonly1_1);
+	}
+	
+	// UDF and then created by 'Caleb'
+	private static void UDFonly2(QueryManager myAW){
+		File UDFonly2 = new File("./results/UDFonly2.xml");
+		String SQLString =
+			"SELECT " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) " +
+			"FROM " + SD.CCTableName5k + ";";
+			//"INNER JOIN " + SD.TMTableName5k + " " + 
+			//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+			//"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly2);
+		//myAW.QueryToXML(SQLString, UDFonly2);
+	}
+	
+
+	private static void UDFonly2_2(QueryManager myAW){
+		File UDFonly2_2 = new File("./results/UDFonly2_2.xml");
+		String SQLString =
+			"SELECT " + "COUNT(*) " +
+			"FROM " + SD.CCTableName5k + ";";
+			//"INNER JOIN " + SD.TMTableName5k + " " + 
+			//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+			//"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly2_2);
+		//myAW.QueryToXML(SQLString, UDFonly2_2);
+	}
+	
+	// UDF and then created by 'Caleb'
+	private static void UDFonly2_1(QueryManager myAW){
+		File UDFonly2_1 = new File("./results/UDFonly2_1.xml");
+		String SQLString =
+			"SELECT " + "COUNT(FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1) " +
+			"FROM " + SD.CCTableName5k + ";";
+			//"INNER JOIN " + SD.TMTableName5k + " " + 
+			//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+			//"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly2_1);
+		myAW.QueryToXML(SQLString, UDFonly2_1);
 	}
 	
 	// CreatedBy predicated pre-executed
@@ -152,6 +238,7 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ "CCPredicateTEMP" + ".CREATEDBY = 'Caleb'" + " AND "  
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CompW5k1);
 	}
 	
@@ -164,6 +251,7 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1;"; // 
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CompW5k2);
 	}
 	
@@ -177,6 +265,7 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1;"; //  
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CompWherePred1);
 	}
 
@@ -189,6 +278,7 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1" + " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';"; // 
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CompWherePred2);
 	}
 
@@ -202,6 +292,7 @@ public class ExpensiveUDFTestH2 {
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + "CCPredicateTEMP" + ".ClassName " +
 				"WHERE " + "CCPredicateTEMP" + ".CREATEDBY = 'Caleb'" + " AND " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;";
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLaterWTEMP);
 		//myAW.QueryToXML(SQLString, UDFLaterWTEMP);
 	}
@@ -214,6 +305,7 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
 				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFFirst);
 		myAW.QueryToXML(SQLString, UDFFirst);
 	}
@@ -226,33 +318,10 @@ public class ExpensiveUDFTestH2 {
 				//"INNER JOIN " + SD.TMTableName5k + " " + 
 				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
 				"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFLater);
 		myAW.QueryToXML(SQLString, UDFLater);
 	}
 	
-	// Created By 'Caleb' first and then UDF
-	private static void UDFonly1(QueryManager myAW){
-		File UDFonly1 = new File("./results/UDFonly1.xml");
-		String SQLString =
-				"SELECT " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) " +
-				"FROM " + "CCPredicateTEMP" + ";";
-				//"INNER JOIN " + SD.TMTableName5k + " " + 
-				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly1);
-		//myAW.QueryToXML(SQLString, UDFonly1);
-	}
-	
-	// UDF and then created by 'Caleb'
-	private static void UDFonly2(QueryManager myAW){
-		File UDFonly2 = new File("./results/UDFonly2.xml");
-		String SQLString =
-			"SELECT " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 " +
-			"FROM " + SD.CCTableName5k + ";";
-			//"INNER JOIN " + SD.TMTableName5k + " " + 
-			//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-			//"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, UDFonly2);
-		//myAW.QueryToXML(SQLString, UDFonly2);
-	}
+
 }
