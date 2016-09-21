@@ -80,16 +80,16 @@ public class SummerReportTestCases {
 //		POSTJoinWPrunS4(myAW);
 		
 //		// create table + running udf 
-//		// ExpenUDFFirstUDF1_1.xml cost: 8052 13321
+//		// ExpenUDFFirstUDF1_1.xml cost: 8052 13321 13130 9370 8607
 //		ExpenUDFFirstUDF1_1(myAW);
-//		// hasing: cost 153
-//		//ExpenUDFFirstUDF1_1_1.xml cost: 153 228
+//		// hasing: cost 153 
+//		//ExpenUDFFirstUDF1_1_1.xml cost: 153 228 231 170 115
 //		ExpenUDFFirstUDF1_1_1(myAW);
 //		// join with the other table 
-//		// ExpenUDFFirstUDF1_2.xml cost: 2306 2452
+//		// ExpenUDFFirstUDF1_2.xml cost: 2306 2452 4389 2725 2562
 //		ExpenUDFFirstUDF1_2(myAW);
 //		// drop table
-//		//ExpenUDFFirstUDF1_3.xml cost: 9 12
+//		//ExpenUDFFirstUDF1_3.xml cost: 9 12 11 9 8
 //		ExpenUDFFirstUDF1_3(myAW);
 		
 		// for 10k rows without predicate // estimated cost .85 ms/row agrees with other test result of .89ms/row
@@ -98,25 +98,25 @@ public class SummerReportTestCases {
 		//ExpenUDFFirstUDF0_2(myAW); // 4885 6130 6579 9543 5430 ==> 6513
 		
 		// step1: create table
-		//ExpenUDFLaterUDF1_1.xml cost: 2949 4464 1950 2659
+		//ExpenUDFLaterUDF1_1.xml cost: 2949 4464 1950 2659 4579
 		ExpenUDFLaterUDF1_1(myAW);
 		//step2: hashing
-		//ExpenUDFLaterUDF1_2.xml cost: 2897 3060 2970 2873
+		//ExpenUDFLaterUDF1_2.xml cost: 2897 3060 2970 2873 4412
 		ExpenUDFLaterUDF1_2(myAW);
 		// step3: UDF column join w/ CC-SCP 
-		//ExpenUDFLaterUDF1_3.xml cost: 663 613 568 512
+		//ExpenUDFLaterUDF1_3.xml cost: 663 613 568 512 841
 		ExpenUDFLaterUDF1_3(myAW);
 		// step 4 hashing
-		// ExpenUDFLaterUDF1_3_1.xml cost: 4366 3681 3872 3695
+		// ExpenUDFLaterUDF1_3_1.xml cost: 4366 3681 3872 3695 4839
 		ExpenUDFLaterUDF1_3_1(myAW);
 		// step 5 hashing
-		// ExpenUDFLaterUDF1_4.xml cost: 183 77 68 75
+		// ExpenUDFLaterUDF1_4.xml cost: 183 77 68 75 125
 		ExpenUDFLaterUDF1_4(myAW);
 		// step6: join UDF column with the interim join table
-		// ExpenUDFLaterUDF1_5.xml cost: 2126 2124 1998 2226
+		// ExpenUDFLaterUDF1_5.xml cost: 2126 2124 1998 2226 2791
 		ExpenUDFLaterUDF1_5(myAW);
 		// drop tables
-		// ExpenUDFLaterUDF1_6.xml cost: 71 64 70 66
+		// ExpenUDFLaterUDF1_6.xml cost: 71 64 70 66 94
 		ExpenUDFLaterUDF1_6(myAW);
 		
 	}
