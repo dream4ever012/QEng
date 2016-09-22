@@ -137,8 +137,10 @@ public class JoinCardTestRQtoECS {
 		
 		//JoinSCP_ECS_OR_ord(myOAW); //581 550 557 605 533 568
 		
-		JoinR_ECS_ORH2COMP(myAW); // 35146 36561
+		//JoinR_ECS_ORH2COMP(myAW); // 35146 36561
 		//JoinR_ECS_ORH2COMP(myOAW); // 721
+		
+		JoinR_EC(myAW);
 		
 	}
 	
@@ -443,6 +445,36 @@ public class JoinCardTestRQtoECS {
 		assertTrue("failure " + JoinR_UCS__EC.getName().toString() , 
 					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_UCS__EC) >= 10.0);
 		//myAW.QueryToXML(SQLString, JoinR_UCS__EC);
+	}
+	
+	private static void JoinR_EC(QueryManager myAW){
+		File JoinR_EC = new File("./results/JoinR_EC.xml"); 
+		String SQLString =
+				"SELECT COUNT (*) " +
+//				"SELECT " + SD.R_UCS66kTableName + ".ID" + ", " + 
+//							SD.UCS_EC16kTableName + ".EXCEPTIONCASEID" + " " +
+				"FROM " + SD.RQ_CP7kTableName + " " +
+				"INNER JOIN " + SD.CP_SCP12kTableName + " " + 
+				"ON " + SD.CP_SCP12kTableName + ".COMPONENTID = " + SD.RQ_CP7kTableName + ".COMPONENTID" + " " +
+				"INNER JOIN " + SD.SCP_CC12kTableName + " " + 
+				"ON " + SD.SCP_CC12kTableName + ".SUBCOMPONENTID = " + SD.CP_SCP12kTableName + ".SUBCOMPONENTID" + " " +
+				"INNER JOIN " + SD.CC_UCS16kTableName + " " + 
+				"ON " + SD.CC_UCS16kTableName + ".CLASSNAME = " + SD.SCP_CC12kTableName + ".CLASSNAME" + " " +
+				"INNER JOIN " + SD.UCS_EC16kTableName + " " + 
+				"ON " + SD.UCS_EC16kTableName + ".USECASESTEPID = " + SD.CC_UCS16kTableName + ".USECASESTEPID"; // + " " +
+//				"FROM " + SD.RQ_CP7kTableName + " " +
+//				"INNER JOIN " + SD.CP_SCP12kTableName + " " + 
+//				"ON " + SD.CP_SCP12kTableName + ".COMPONENTID = " + SD.RQ_CP7kTableName + ".COMPONENTID" + " " +
+//				"INNER JOIN " + SD.SCP_CC12kTableName+ " " + 
+//				"ON " + SD.CC_UCS16kTableName + ".CLASSNAME = " + SD.SCP_CC12kTableName + ".CLASSNAME" + " " +
+//				"INNER JOIN " + SD.CC_UCS16kTableName+ " " + 
+//				"ON " + SD.CC_UCS16kTableName + ".USECASESTEPID = " + SD.UCS_EC16kTableName + ".USECASESTEPID" + " " +
+//				"INNER JOIN " + SD.UCS_EC16kTableName+ " " + 
+//				"ON " + SD.UCS_EC16kTableName + ".EXCEPTIONCASEID = " + SD.EC_ECS24kTableName + ".EXCEPTIONCASEID"; 
+		System.out.println(SQLString);
+//		assertTrue("failure " + JoinR_EC.getName().toString() , 
+//					MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinR_EC) >= 10.0);
+		myAW.QueryToXML(SQLString, JoinR_EC);
 	}
 
 	

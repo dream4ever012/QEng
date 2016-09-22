@@ -113,6 +113,7 @@ public class CreateTablesInMemory {
 		myAW.ImportSheet(SD.CC10kFP, SD.CC10kTableName);
 		myAW.ImportSheet(SD.CC_UCS16kFP, SD.CC_UCS16kTableName); //	
 		myAW.ImportSheet(SD.CC_SCP12kFP,SD.CC_SCP12kTableName); //
+		myAW.ImportSheet(SD.SCP_CC12kFP,SD.SCP_CC12kTableName);
 		myAW.ImportSheet(SD.UCS20kFP, SD.UCS20kTableName);
 		myAW.ImportSheet(SD.UCS_EC16kFP, SD.UCS_EC16kTableName); // 
 		myAW.ImportSheet(SD.EC10kFP, SD.EC10kTableName);
