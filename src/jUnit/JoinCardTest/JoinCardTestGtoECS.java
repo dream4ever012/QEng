@@ -76,7 +76,7 @@ public class JoinCardTestGtoECS {
 		// JoinUCS_ECS(myAW); // JoinUCS_ECS.xml cost: 6233 5216 3638 4188 4049 )=> 4664.8
 		// JoinUC__UCS_ECS(myAW); // JoinUC__UCS_ECS.xml cost: 341 360 547 603 327 )=> 435.6
 		// JoinG__UC_ECS(myAW); // JoinUC__UCS_ECS.xml cost: 639 763 373 331 350 )=> 491.2
-		testing(myAW);
+		
 		System.out.println("Done");
 		
 	}

@@ -40,5 +40,29 @@ public class CreateTablesInMemoryDDS {
 		myAW.importCSVAsTable(DDS.UTaaUTL_FP, DDS.UTaaUTL);
 		myAW.importCSVAsTable(DDS.UTL_FP, DDS.UTL);
 	}
+	
+	public static void registerTMDDS(QueryManager myAW){
+		myAW.RegisterTM(DDS.ATaaUC, DDS.AT, "atid", DDS.UC, "ucid");
+		myAW.RegisterTM(DDS.UCaaGL, DDS.UC, "ucid", DDS.GL, "glid");
+		myAW.RegisterTM(DDS.GLaaPJT, DDS.GL, "glid", DDS.PJT, "pjtid");
+		myAW.RegisterTM(DDS.GLaaSRQ, DDS.GL, "glid", DDS.SRQ, "srqid");
+		myAW.RegisterTM(DDS.SRQaaSSRQ, DDS.SRQ, "srqid", DDS.SSRQ, "ssrqid");
 
+		myAW.RegisterTM(DDS.SSRQaaDRQ, DDS.SSRQ, "ssrqid", DDS.DRQ, "drqid");
+		myAW.RegisterTM(DDS.DRQaaEA, DDS.DRQ, "drqid", DDS.EA, "eaid");
+		myAW.RegisterTM(DDS.DRQaaCLS, DDS.DRQ, "drqid", DDS.CLS, "clsid");		
+		myAW.RegisterTM(DDS.EAaaCLS, DDS.EA, "eaid", DDS.CLS, "clsid");
+		myAW.RegisterTM(DDS.PJTaaPPL, DDS.PJT, "pjtid", DDS.PPL, "pplid");
+		
+		myAW.RegisterTM(DDS.PPLaaBGR, DDS.PPL, "pplid", DDS.BGR, "bgrid");
+		myAW.RegisterTM(DDS.BGRaaCLS, DDS.BGR, "bgrid", DDS.CLS, "clsid");
+		myAW.RegisterTM(DDS.CLSaaUT, DDS.CLS, "clsid", DDS.UT, "utid");
+		myAW.RegisterTM(DDS.UTaaUTL, DDS.UT, "utid", DDS.UTL, "utlid");
+		myAW.RegisterTM(DDS.HZDaaFLT, DDS.HZD, "hzdid", DDS.FLT, "fltid");
+		
+		myAW.RegisterTM(DDS.FLTaaSRQ, DDS.FLT, "fltid", DDS.SRQ, "srqid");
+		
+		
+		System.out.println("Index created: DDS");
+	}
 }

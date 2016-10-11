@@ -27,10 +27,10 @@ public class CreateInOracleTable {
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.REQTableNameTC1);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CCTableName);
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.SCP15kTableName);
-		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);	
-		
-		
+		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.UC10kTableName);			
 		ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.G70TableName);
 	}
+	
+	
 
 }
