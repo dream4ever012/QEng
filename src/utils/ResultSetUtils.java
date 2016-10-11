@@ -73,13 +73,14 @@ public class ResultSetUtils{
 				//TODO: make more rigid if necessary ' is not 
 				//Patient's health information should be available to those caring for the patient, and only those.
 				sql = "Insert INTO " + TableName + " ("+ colNamesSQL +") VALUES (" +rowValsSQL + ")";
-				System.out.println(sql);
+				//System.out.println(sql);
 				stmt.execute(sql);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Done");
 	}
 	
 	public static void CreateOracleTable(QueryManager myAW, QueryManager myOAW, String URL, String User, String Pass, String TableName){
