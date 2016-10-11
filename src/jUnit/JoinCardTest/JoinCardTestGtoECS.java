@@ -7,12 +7,14 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
+import ResourceStrings.DDS;
 import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.ExternalOracle;
 import qEng.InternalH2;
 import utils.CreateTablesInMemory;
+import utils.CreateTablesInMemoryDDS;
 import utils.MeasureCostArbitrary;
 
 public class JoinCardTestGtoECS {
@@ -49,11 +51,12 @@ public class JoinCardTestGtoECS {
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		myOAW = new AskWise(new ExternalOracle());
 		// create tablelink
-		CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
-		CreateTablesInMemory.createTablesInMemoryGtoECSCJS(myAW);
-		// create link for 
-		CreateTablesInMemory.registerTMGtoECS(myAW);
-		CreateTablesInMemory.registerTMGtoECSCJS(myAW);
+//		CreateTablesInMemory.createTablesInMemoryGtoECS(myAW);
+//		CreateTablesInMemory.createTablesInMemoryGtoECSCJS(myAW);
+//		// create link for 
+//		CreateTablesInMemory.registerTMGtoECS(myAW);
+//		CreateTablesInMemory.registerTMGtoECSCJS(myAW);
+		CreateTablesInMemoryDDS.createTablesInMemory(myAW);
 		setupIsDone = true;
 		}
 	}
@@ -73,8 +76,20 @@ public class JoinCardTestGtoECS {
 		// JoinUCS_ECS(myAW); // JoinUCS_ECS.xml cost: 6233 5216 3638 4188 4049 )=> 4664.8
 		// JoinUC__UCS_ECS(myAW); // JoinUC__UCS_ECS.xml cost: 341 360 547 603 327 )=> 435.6
 		// JoinG__UC_ECS(myAW); // JoinUC__UCS_ECS.xml cost: 639 763 373 331 350 )=> 491.2
+		testing(myAW);
+		System.out.println("Done");
 		
+	}
+	
+	private static void testing(QueryManager myAW){	
+		File testing = new File("./results/testing.xml"); 
+		String SQLString =
+				"SELECT *"  + " " +
+				"FROM " + DDS.AT;
 		
+		//System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinUC__UCS_ECS);
+		myAW.QueryToXML(SQLString, testing);
 	}
 	
 	// UC - (UCS-ECS)

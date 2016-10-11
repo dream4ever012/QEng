@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="POI/poi-ooxml-schemas-3.14-20160307.jar"/>
 	<classpathentry kind="lib" path="JVMTrace/tools.jar"/>
 	<classpathentry kind="lib" path="JVMTrace/Jama-1.0.3.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="stdlib"/>
 	<classpathentry kind="lib" path="src/utils/POI/Jampack-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>

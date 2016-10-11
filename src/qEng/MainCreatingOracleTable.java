@@ -75,7 +75,7 @@ public class MainCreatingOracleTable {
 			
 			//CreateTablesInMemory.createTablesInMemory(myAW);
 			
-			CreateCSVFromExcel.createCSVFromExcel(myAW);
+			//CreateCSVFromExcel.createCSVFromExcel(myAW);
 			
 			//read CSV trace matrix
 			String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
@@ -129,7 +129,7 @@ public class MainCreatingOracleTable {
 			MeasureCostToRS.measureCostToRS(myAW, SQLString, TripleJoin);
 
 			*/
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_SCP12kTableName);
+			//ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CC_SCP12kTableName);
 			
 		}
 	}
