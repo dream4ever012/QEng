@@ -81,12 +81,39 @@ public class DDS_initalTesting {
 		//JoinSRQtoPPLtoUTL.xml cost: 31393 31175 29130
 		//JoinSRQtoPPLtoUTL(myAW);
 		
-		//SRQaaUTwPredOnCLS1.xml cost: wo/ predicate 933 922
-		// 
-		SRQaaUTwPredOnCLS1(myAW); 
+		//SRQaaUTwPredOnCLS1.xml cost: 529 			wo/ predicate 933 922
+		// card: wo/ pred 315141; w/ pred 2363  7.498%
+		//SRQaaUTwPredOnCLS1(myAW); 
+		
+		
+		// SRQaaUTwPredOnCLS1.xml cost: 452 12883 //  1354 1325
+		// card: wo/pred 4795637; w/ pred 36902  7.694%
+		SRQaaUTLwPredOnCLS1(myAW);
 		
 		System.out.println("Done");
 		
+	}
+	
+	private static void SRQaaUTLwPredOnCLS1(QueryManager myAW){	
+		File SRQaaUTLwPredOnCLS1 = new File("./results/SRQaaUTLwPredOnCLS1.xml"); 
+		String SQLString =
+				"SELECT " + DDS.SRQaaSSRQ + ".srqid, " + DDS.UTaaUTL + ".utlid" + " " +
+				"FROM " + DDS.SRQaaSSRQ + " " + 
+				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
+				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
+				"INNER JOIN " + DDS.DRQaaCLS + " " +
+				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+				"INNER JOIN " + DDS.CLS +  " " +
+				"ON " + DDS.CLS + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
+				"INNER JOIN " + DDS.CLSaaUT + " " +
+				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.CLS + ".clsid" + " " + // ;
+				"INNER JOIN " + DDS.UTaaUTL+ " " + 
+				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid" + " " +
+				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
+
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTLwPredOnCLS1);
+		//myAW.QueryToXML(SQLString, SRQaaUTLwPredOnCLS1);
 	}
 	
 	private static void SRQaaUTwPredOnCLS1(QueryManager myAW){	
@@ -101,16 +128,14 @@ public class DDS_initalTesting {
 				"INNER JOIN " + DDS.CLS +  " " +
 				"ON " + DDS.CLS + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
 				"INNER JOIN " + DDS.CLSaaUT + " " +
-				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.CLS + ".clsid" + " " + // ;
-				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
-//				"INNER JOIN " + DDS.DRQaaCLS + " " +
-//				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.CLS + ".clsid"; // + " " + // ;
+				//"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
 //				"INNER JOIN " + DDS.CLSaaUT+ " " + 
 //				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid"; // + " " +
 
 		System.out.println(SQLString);
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTwPredOnCLS1);
-		//myAW.QueryToXML(SQLString, SRQaaUTwPredOnCLS1);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTwPredOnCLS1);
+		myAW.QueryToXML(SQLString, SRQaaUTwPredOnCLS1);
 	}
 	
 	private static void JoinBGR_UTL(QueryManager myAW){	
