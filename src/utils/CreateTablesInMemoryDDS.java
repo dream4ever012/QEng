@@ -45,6 +45,7 @@ public class CreateTablesInMemoryDDS {
 		myAW.importCSVAsTable(DDS.UTaaUTL_FP, DDS.UTaaUTL);
 		
 		myAW.importCSVAsTable(DDS.UTL_FP, DDS.UTL);
+		System.out.println("table created: DDS");
 	}
 	
 	public static void registerTMDDS(QueryManager myAW){
@@ -67,8 +68,29 @@ public class CreateTablesInMemoryDDS {
 		myAW.RegisterTM(DDS.HZDaaFLT, DDS.HZD, "hzdid", DDS.FLT, "fltid");
 		
 		myAW.RegisterTM(DDS.FLTaaSRQ, DDS.FLT, "fltid", DDS.SRQ, "srqid");
-		
-		
 		System.out.println("Index created: DDS");
 	}
+	
+	public static void createTablesInMemory_twoT(QueryManager myAW){
+		myAW.importCSVAsTable(DDS.SRQaaDRQ_FP, DDS.SRQaaDRQ);
+		myAW.importCSVAsTable(DDS.SSRQaaCLS_FP, DDS.SSRQaaCLS);
+		myAW.importCSVAsTable(DDS.DRQaaUT_FP, DDS.DRQaaUT);
+		myAW.importCSVAsTable(DDS.DRQaaBGR_FP, DDS.DRQaaBGR);
+		myAW.importCSVAsTable(DDS.CLSaaPPL_FP, DDS.CLSaaPPL);
+		
+		myAW.importCSVAsTable(DDS.CLSaaUTL_FP, DDS.CLSaaUTL);
+		System.out.println("table created: DDS_twoT");
+	}
+	
+	public static void registerTMDDS_twoT(QueryManager myAW){
+		myAW.RegisterTM(DDS.SRQaaDRQ, DDS.SRQ, "srqid", DDS.DRQ, "drid");
+		myAW.RegisterTM(DDS.SSRQaaCLS, DDS.SSRQ, "ssrqid", DDS.CLS, "clsid");
+		myAW.RegisterTM(DDS.DRQaaUT, DDS.DRQ, "drqid", DDS.UT, "utid");
+		myAW.RegisterTM(DDS.DRQaaBGR, DDS.DRQ, "drqid", DDS.BGR, "bgrid");
+		myAW.RegisterTM(DDS.CLSaaPPL, DDS.CLS, "clsid", DDS.PPL, "pplid");
+		
+		myAW.RegisterTM(DDS.CLSaaUTL, DDS.CLS, "clsid", DDS.UTL, "utlid");
+		System.out.println("Index created: DDS_twoT");
+	}
+	
 }

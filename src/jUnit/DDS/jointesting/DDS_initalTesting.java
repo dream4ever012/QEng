@@ -61,15 +61,80 @@ public class DDS_initalTesting {
 		// card: 7669
 		//JoinATtoPJT(myAW); // 706 606 636 642
 		
+		// card: 1258349
+		// 6435
+		// JoinSRQtoPPLtoUT(myAW);
+		
+		// card:  103760
+		// 973 730 738 745
+		//JoinSRQtoPPL(myAW);
+		
+		// card: 2393098
+		// 1800 1801 1841
+		// JoinCLS_UTL(myAW);
+		
+		// card: 4451239
+		// 8312
+		//JoinBGR_UTL(myAW);
+		
+		// card: 19,173,104
+		//JoinSRQtoPPLtoUTL.xml cost: 31393 31175 29130
 		JoinSRQtoPPLtoUTL(myAW);
+		
 		System.out.println("Done");
 		
 	}
 	
-	private static void JoinSRQtoPPLtoUTL(QueryManager myAW){	
-		File JoinATtoPJT = new File("./results/JoinATtoHZD.xml"); 
+	private static void JoinBGR_UTL(QueryManager myAW){	
+		File JoinBGR_UTL = new File("./results/JoinBGR_UTL.xml"); 
 		String SQLString =
-				"SELECT *"  + " " +
+				"SELECT COUNT(*)"  + " " +
+				"FROM " + DDS.BGRaaCLS + " " +
+				"INNER JOIN " + DDS.CLSaaUT + " " + 
+				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.BGRaaCLS + ".clsid" + " " +
+				"INNER JOIN " + DDS.UTaaUTL + " " + 
+				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid";
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinBGR_UTL);
+		//myAW.QueryToXML(SQLString, JoinBGR_UTL);
+	}
+	
+	private static void JoinCLS_UTL(QueryManager myAW){	
+		File JoinCLS_UTL = new File("./results/JoinCLS_UTL.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)"  + " " +
+				"FROM " + DDS.CLSaaUT + " " +
+				"INNER JOIN " + DDS.UTaaUTL + " " + 
+				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid";
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinCLS_UTL);
+		//myAW.QueryToXML(SQLString, JoinCLS_UTL);
+	}
+	
+	private static void JoinSRQtoPPL(QueryManager myAW){	
+		File JoinSRQtoPPL = new File("./results/JoinSRQtoPPL.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)"  + " " +
+				"FROM " + DDS.SRQaaSSRQ + " " +
+				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
+				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
+				"INNER JOIN " + DDS.DRQaaCLS + " " +
+				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+//				"INNER JOIN " + DDS.CLSaaUT+ " " + 
+//				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
+//				"INNER JOIN " + DDS.UTaaUTL + " " +  
+//				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid" + " " + 
+				"INNER JOIN " + DDS.BGRaaCLS + " " + 
+				"ON " + DDS.BGRaaCLS + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
+				"INNER JOIN " + DDS.PPLaaBGR + " " + 
+				"ON " + DDS.PPLaaBGR + ".bgrid = " + DDS.BGRaaCLS + ".bgrid"; 
+		//System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSRQtoPPL);
+		myAW.QueryToXML(SQLString, JoinSRQtoPPL);
+	}
+	
+	private static void JoinSRQtoPPLtoUT(QueryManager myAW){	
+		File JoinSRQtoPPLtoUT = new File("./results/JoinSRQtoPPLtoUT.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)"  + " " +
 				"FROM " + DDS.SRQaaSSRQ + " " +
 				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
 				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
@@ -77,15 +142,39 @@ public class DDS_initalTesting {
 				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
 				"INNER JOIN " + DDS.CLSaaUT+ " " + 
 				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
-				"INNER JOIN " + DDS.UTaaUTL + " " +  
-				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid" + " " + 
 				"INNER JOIN " + DDS.BGRaaCLS + " " + 
-				"ON " + DDS.BGRaaCLS + ".clsid = " + DDS.CLSaaUT + ".clsid"; // + " " +
-//				"INNER JOIN " + DDS.PPLaaBGR + " " + 
-//				"ON " + DDS.PPLaaBGR + ".bgrid = " + DDS.BGRaaCLS + ".bgrid"; 
+				"ON " + DDS.BGRaaCLS + ".clsid = " + DDS.CLSaaUT + ".clsid" + " " +
+				"INNER JOIN " + DDS.PPLaaBGR + " " + 
+				"ON " + DDS.PPLaaBGR + ".bgrid = " + DDS.BGRaaCLS + ".bgrid"; 
+//				"INNER JOIN " + DDS.UTaaUTL + " " +  
+//				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid" + " " + 
+
 		//System.out.println(SQLString);
-		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinATtoPJT);
-		myAW.QueryToXML(SQLString, JoinATtoPJT);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSRQtoPPLtoUT);
+		myAW.QueryToXML(SQLString, JoinSRQtoPPLtoUT);
+	}
+	
+	private static void JoinSRQtoPPLtoUTL(QueryManager myAW){	
+		File JoinSRQtoPPLtoUTL = new File("./results/JoinSRQtoPPLtoUTL.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)"  + " " +
+				"FROM " + DDS.SRQaaSSRQ + " " +
+				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
+				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
+				"INNER JOIN " + DDS.DRQaaCLS + " " +
+				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+				"INNER JOIN " + DDS.CLSaaUT+ " " + 
+				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
+				"INNER JOIN " + DDS.BGRaaCLS + " " + 
+				"ON " + DDS.BGRaaCLS + ".clsid = " + DDS.CLSaaUT + ".clsid" + " " +
+				"INNER JOIN " + DDS.PPLaaBGR + " " + 
+				"ON " + DDS.PPLaaBGR + ".bgrid = " + DDS.BGRaaCLS + ".bgrid" + " " +
+				"INNER JOIN " + DDS.UTaaUTL + " " +  
+				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid"; // + " " + 
+
+		//System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSRQtoPPLtoUTL);
+		//myAW.QueryToXML(SQLString, JoinSRQtoPPLtoUTL);
 	}
 	
 	private static void JoinATtoPJT(QueryManager myAW){	

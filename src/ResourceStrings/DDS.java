@@ -64,4 +64,23 @@ public class DDS {
 	public static final String UTaaUTL_FP = "./Data_DDS/UTaaUTL.csv";
 	public static final String UTL = "UTL";
 	public static final String UTL_FP = "./Data_DDS/UTL.csv";
+	// TM of two table join
+	public static final String SRQaaDRQ = "SRQaaDRQ";
+	public static final String SRQaaDRQ_FP = "./Data_DDS/SRQaaDRQ.csv";
+	public static final String SSRQaaCLS = "SSRQaaCLS";
+	public static final String SSRQaaCLS_FP = "./Data_DDS/SSRQaaCLS.csv";
+	public static final String DRQaaUT = "DRQaaUT";
+	public static final String DRQaaUT_FP = "./Data_DDS/DRQaaUT.csv";
+	public static final String DRQaaBGR = "DRQaaBGR";
+	public static final String DRQaaBGR_FP = "./Data_DDS/DRQaaBGR.csv";
+	public static final String CLSaaPPL = "CLSaaPPL";
+	public static final String CLSaaPPL_FP = "./Data_DDS/CLSaaPPL.csv";
+	public static final String CLSaaUTL = "CLSaaUTL";
+	public static final String CLSaaUTL_FP = "./Data_DDS/CLSaaUTL.csv";
+	public static final String SSRQaaEA = "SSRQaaEA";
+	public static final String SSRQaaEA_FP = "./Data_DDS/SSRQaaEA.csv";
+	public static final String CLSaaEA = "CLSaaEA";
+	public static final String CLSaaEA_FP = "./Data_DDS/CLSaaEA.csv";
+	
+	
 }
