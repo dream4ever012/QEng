@@ -74,16 +74,16 @@ public class DDS_initalTesting {
 		// JoinCLS_UTL(myAW);
 		
 		// card: 4451239
-		// 8312
+		// 8312 7768
 		//JoinBGR_UTL(myAW);
 		
 		// card: 19,173,104
 		//JoinSRQtoPPLtoUTL.xml cost: 31393 31175 29130
 		//JoinSRQtoPPLtoUTL(myAW);
 		
-		//SRQaaUTwPredOnCLS1.xml cost: 80972
-		// card: 582970 <= 78130000 (7.46%
-		SRQaaUTwPredOnCLS1(myAW);
+		//SRQaaUTwPredOnCLS1.xml cost: wo/ predicate 933 922
+		// 
+		SRQaaUTwPredOnCLS1(myAW); 
 		
 		System.out.println("Done");
 		
@@ -92,19 +92,25 @@ public class DDS_initalTesting {
 	private static void SRQaaUTwPredOnCLS1(QueryManager myAW){	
 		File SRQaaUTwPredOnCLS1 = new File("./results/SRQaaUTwPredOnCLS1.xml"); 
 		String SQLString =
-				"SELECT COUNT(*)"  + " " +
-				"FROM " + DDS.SRQaaSSRQ + "," + DDS.CLS + " " +
+				"SELECT COUNT(*) " + // "  + DDS.SRQaaSSRQ + ".srqid, " + DDS.SSRQaaDRQ + ".drqid" + " " +
+				"FROM " + DDS.SRQaaSSRQ + " " + //  "," + DDS.CLS + " " +
 				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
 				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
+				"INNER JOIN " + DDS.DRQaaCLS + " " +
+				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+				"INNER JOIN " + DDS.CLS +  " " +
+				"ON " + DDS.CLS + ".clsid = " + DDS.DRQaaCLS + ".clsid" + " " +
+				"INNER JOIN " + DDS.CLSaaUT + " " +
+				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.CLS + ".clsid" + " " + // ;
 				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
 //				"INNER JOIN " + DDS.DRQaaCLS + " " +
 //				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
 //				"INNER JOIN " + DDS.CLSaaUT+ " " + 
 //				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid"; // + " " +
 
-		//System.out.println(SQLString);
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTwPredOnCLS1);
-		myAW.QueryToXML(SQLString, SRQaaUTwPredOnCLS1);
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTwPredOnCLS1);
+		//myAW.QueryToXML(SQLString, SRQaaUTwPredOnCLS1);
 	}
 	
 	private static void JoinBGR_UTL(QueryManager myAW){	
