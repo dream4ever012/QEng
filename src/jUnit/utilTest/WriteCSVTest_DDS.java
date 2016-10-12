@@ -50,34 +50,35 @@ public class WriteCSVTest_DDS {
 		
 		// create in memory tables
 		CreateTablesInMemoryDDS.createTablesInMemory(myAW);
+		CreateTablesInMemoryDDS.createTablesInMemory_twoT(myAW);
 		// indexing
 		CreateTablesInMemoryDDS.registerTMDDS(myAW);
-		
+		CreateTablesInMemoryDDS.registerTMDDS_twoT(myAW);
 		setupIsDone = true;
 		}
 	}
 	@Test
 	public void test() {
 		
-		//card: 6010
-		SRQaaDRQ(myAW);
-		
-		//card: 21800
-		SSRQaaCLS(myAW);
-		
-		// card: 206270
-		DRQaaUT(myAW);
-		
-		// card: 31285
-		DRQaaBGR(myAW);
-		
-		// card: 52004
-		CLSaaPPL(myAW);
-		
-		// card: 2393098
-		CLSaaUTL(myAW);
-		
-		SSRQaaEA(myAW);
+//		//card: 6010
+//		SRQaaDRQ(myAW);
+//		
+//		//card: 21800
+//		SSRQaaCLS(myAW);
+//		
+//		// card: 206270
+//		DRQaaUT(myAW);
+//		
+//		// card: 31285
+//		DRQaaBGR(myAW);
+//		
+//		// card: 52004
+//		CLSaaPPL(myAW);
+//		
+//		// card: 2393098
+//		CLSaaUTL(myAW);
+//		
+//		SSRQaaEA(myAW);
 		CLSaaEA(myAW);
 		
 	}
@@ -93,7 +94,7 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid"; // + " " +
 		//System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaDRQ);
-		myAW.WriteCSV("./Data_DDS/SRQaaDRQ.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/SRQaaDRQ.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SRQaaDRQ);
 	}
 	
@@ -106,7 +107,7 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.DRQaaCLS +  ".drqid = " + DDS.SSRQaaDRQ + ".drqid";
 		//System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SSRQaaCLS);
-		myAW.WriteCSV("./Data_DDS/SSRQaaCLS.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/SSRQaaCLS.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SSRQaaCLS);
 	}
 	
@@ -118,8 +119,8 @@ public class WriteCSVTest_DDS {
 				"INNER JOIN " + DDS.DRQaaEA + " " +
 				"ON " + DDS.DRQaaEA +  ".drqid = " + DDS.SSRQaaDRQ + ".drqid";
 		//System.out.println(SQLString);
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SSRQaaEA);
-		myAW.WriteCSV("./Data_DDS/SSRQaaEA.csv", SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SSRQaaEA);
+		//myAW.WriteCSV("./Data_DDS/SSRQaaEA.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SSRQaaEA);
 	}
 	
@@ -131,7 +132,7 @@ public class WriteCSVTest_DDS {
 				"INNER JOIN " + DDS.DRQaaEA + " " +
 				"ON " + DDS.DRQaaEA +  ".drqid = " + DDS.DRQaaCLS + ".drqid";
 		//System.out.println(SQLString);
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaEA);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaEA);
 		myAW.WriteCSV("./Data_DDS/CLSaaEA.csv", SQLString);
 		//myAW.QueryToXML(SQLString, CLSaaEA);
 	}
@@ -145,7 +146,7 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.CLSaaUT +  ".clsid = " + DDS.DRQaaCLS + ".clsid";
 		//System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, DRQaaUT);
-		myAW.WriteCSV("./Data_DDS/DRQaaUT.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/DRQaaUT.csv", SQLString);
 		//myAW.QueryToXML(SQLString, DRQaaUT);
 	}
 	
@@ -158,7 +159,7 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.BGRaaCLS +  ".clsid = " + DDS.DRQaaCLS + ".clsid";
 		//System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, DRQaaBGR);
-		myAW.WriteCSV("./Data_DDS/DRQaaBGR.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/DRQaaBGR.csv", SQLString);
 		//myAW.QueryToXML(SQLString, DRQaaBGR);
 	}
 	
@@ -171,7 +172,7 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.PPLaaBGR +  ".bgrid = " + DDS.BGRaaCLS + ".bgrid";
 		//System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaPPL);
-		myAW.WriteCSV("./Data_DDS/CLSaaPPL.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/CLSaaPPL.csv", SQLString);
 		//myAW.QueryToXML(SQLString, CLSaaPPL);
 	}
 	
@@ -183,8 +184,8 @@ public class WriteCSVTest_DDS {
 				"INNER JOIN " + DDS.UTaaUTL + " " +
 				"ON " + DDS.UTaaUTL +  ".utid = " + DDS.CLSaaUT + ".utid";
 		//System.out.println(SQLString);
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaUTL);
-		myAW.WriteCSV("./Data_DDS/CLSaaUTL.csv", SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaUTL);
+		//myAW.WriteCSV("./Data_DDS/CLSaaUTL.csv", SQLString);
 		//myAW.QueryToXML(SQLString, CLSaaUTL);
 	}
 	

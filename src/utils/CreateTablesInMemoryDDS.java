@@ -79,17 +79,21 @@ public class CreateTablesInMemoryDDS {
 		myAW.importCSVAsTable(DDS.CLSaaPPL_FP, DDS.CLSaaPPL);
 		
 		myAW.importCSVAsTable(DDS.CLSaaUTL_FP, DDS.CLSaaUTL);
+		myAW.importCSVAsTable(DDS.SSRQaaEA_FP, DDS.SSRQaaEA);
+		myAW.importCSVAsTable(DDS.CLSaaEA_FP, DDS.CLSaaEA);
 		System.out.println("table created: DDS_twoT");
 	}
 	
 	public static void registerTMDDS_twoT(QueryManager myAW){
-		myAW.RegisterTM(DDS.SRQaaDRQ, DDS.SRQ, "srqid", DDS.DRQ, "drid");
+		myAW.RegisterTM(DDS.SRQaaDRQ, DDS.SRQ, "srqid", DDS.DRQ, "drqid");
 		myAW.RegisterTM(DDS.SSRQaaCLS, DDS.SSRQ, "ssrqid", DDS.CLS, "clsid");
 		myAW.RegisterTM(DDS.DRQaaUT, DDS.DRQ, "drqid", DDS.UT, "utid");
 		myAW.RegisterTM(DDS.DRQaaBGR, DDS.DRQ, "drqid", DDS.BGR, "bgrid");
 		myAW.RegisterTM(DDS.CLSaaPPL, DDS.CLS, "clsid", DDS.PPL, "pplid");
 		
 		myAW.RegisterTM(DDS.CLSaaUTL, DDS.CLS, "clsid", DDS.UTL, "utlid");
+		myAW.RegisterTM(DDS.SSRQaaEA, DDS.SSRQ, "ssrqid", DDS.EA, "eaid");
+		myAW.RegisterTM(DDS.CLSaaEA, DDS.CLS, "clsid", DDS.EA, "eaid");
 		System.out.println("Index created: DDS_twoT");
 	}
 	
