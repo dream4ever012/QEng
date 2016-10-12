@@ -48,12 +48,14 @@ public class WriteCSVTest_DDS {
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		myOAW = new AskWise(new ExternalOracle());
 		
-		// create in memory tables
-		CreateTablesInMemoryDDS.createTablesInMemory(myAW);
-		CreateTablesInMemoryDDS.createTablesInMemory_twoT(myAW);
-		// indexing
-		CreateTablesInMemoryDDS.registerTMDDS(myAW);
-		CreateTablesInMemoryDDS.registerTMDDS_twoT(myAW);
+//		// create in memory tables
+//		CreateTablesInMemoryDDS.createTablesInMemory(myAW);
+//		CreateTablesInMemoryDDS.createTablesInMemory_twoT(myAW);
+//		// indexing
+//		CreateTablesInMemoryDDS.registerTMDDS(myAW);
+//		CreateTablesInMemoryDDS.registerTMDDS_twoT(myAW);
+		
+		
 		setupIsDone = true;
 		}
 	}
@@ -78,9 +80,15 @@ public class WriteCSVTest_DDS {
 //		// card: 2393098
 //		CLSaaUTL(myAW);
 //		
+		// card: 469
 //		SSRQaaEA(myAW);
-		CLSaaEA(myAW);
 		
+//		// card: 
+//		CLSaaEA(myAW);
+		
+		// JoinSRQtoPPLtoUTL.xml cost: 142974
+		//JoinSRQtoPPLtoUTL(myAW);
+		JoinSRQtoPPLtoUTL(myOAW);
 	}
 	/*
 	 * two table joins
@@ -92,7 +100,7 @@ public class WriteCSVTest_DDS {
 				"FROM " + DDS.SRQaaSSRQ + " " +
 				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
 				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid"; // + " " +
-		//System.out.println(SQLString);
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaDRQ);
 		//myAW.WriteCSV("./Data_DDS/SRQaaDRQ.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SRQaaDRQ);
@@ -105,7 +113,7 @@ public class WriteCSVTest_DDS {
 				"FROM " + DDS.SSRQaaDRQ + " " +
 				"INNER JOIN " + DDS.DRQaaCLS + " " +
 				"ON " + DDS.DRQaaCLS +  ".drqid = " + DDS.SSRQaaDRQ + ".drqid";
-		//System.out.println(SQLString);
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SSRQaaCLS);
 		//myAW.WriteCSV("./Data_DDS/SSRQaaCLS.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SSRQaaCLS);
@@ -118,11 +126,13 @@ public class WriteCSVTest_DDS {
 				"FROM " + DDS.SSRQaaDRQ + " " +
 				"INNER JOIN " + DDS.DRQaaEA + " " +
 				"ON " + DDS.DRQaaEA +  ".drqid = " + DDS.SSRQaaDRQ + ".drqid";
-		//System.out.println(SQLString);
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SSRQaaEA);
 		//myAW.WriteCSV("./Data_DDS/SSRQaaEA.csv", SQLString);
 		//myAW.QueryToXML(SQLString, SSRQaaEA);
 	}
+	
+
 	
 	private static void CLSaaEA(QueryManager myAW){	
 		File CLSaaEA = new File("./results/CLSaaEA.xml"); 
@@ -131,7 +141,7 @@ public class WriteCSVTest_DDS {
 				"FROM " + DDS.DRQaaCLS + " " +
 				"INNER JOIN " + DDS.DRQaaEA + " " +
 				"ON " + DDS.DRQaaEA +  ".drqid = " + DDS.DRQaaCLS + ".drqid";
-		//System.out.println(SQLString);
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSaaEA);
 		myAW.WriteCSV("./Data_DDS/CLSaaEA.csv", SQLString);
 		//myAW.QueryToXML(SQLString, CLSaaEA);
@@ -224,9 +234,9 @@ public class WriteCSVTest_DDS {
 				"ON " + DDS.PPLaaBGR + ".bgrid = " + DDS.BGRaaCLS + ".bgrid" + " " +
 				"INNER JOIN " + DDS.UTaaUTL + " " +  
 				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid";
-		//System.out.println(SQLString);
+		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, JoinSRQtoPPLtoUTL);
-		myAW.WriteCSV("./Data_DDS/CPaaECS.csv", SQLString);
+		//myAW.WriteCSV("./Data_DDS/CPaaECS.csv", SQLString);
 		//myAW.QueryToXML(SQLString, JoinSRQtoPPLtoUTL);
 	}
 	

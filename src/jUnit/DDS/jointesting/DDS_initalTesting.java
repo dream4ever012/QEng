@@ -79,10 +79,32 @@ public class DDS_initalTesting {
 		
 		// card: 19,173,104
 		//JoinSRQtoPPLtoUTL.xml cost: 31393 31175 29130
-		JoinSRQtoPPLtoUTL(myAW);
+		//JoinSRQtoPPLtoUTL(myAW);
+		
+		//SRQaaUTwPredOnCLS1.xml cost: 80972
+		// card: 582970 <= 78130000 (7.46%
+		SRQaaUTwPredOnCLS1(myAW);
 		
 		System.out.println("Done");
 		
+	}
+	
+	private static void SRQaaUTwPredOnCLS1(QueryManager myAW){	
+		File SRQaaUTwPredOnCLS1 = new File("./results/SRQaaUTwPredOnCLS1.xml"); 
+		String SQLString =
+				"SELECT COUNT(*)"  + " " +
+				"FROM " + DDS.SRQaaSSRQ + "," + DDS.CLS + " " +
+				"INNER JOIN " + DDS.SSRQaaDRQ + " " + 
+				"ON " + DDS.SSRQaaDRQ + ".ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid" + " " +
+				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
+//				"INNER JOIN " + DDS.DRQaaCLS + " " +
+//				"ON " + DDS.DRQaaCLS + ".drqid = " + DDS.SSRQaaDRQ + ".drqid" + " " +
+//				"INNER JOIN " + DDS.CLSaaUT+ " " + 
+//				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.DRQaaCLS + ".clsid"; // + " " +
+
+		//System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTwPredOnCLS1);
+		myAW.QueryToXML(SQLString, SRQaaUTwPredOnCLS1);
 	}
 	
 	private static void JoinBGR_UTL(QueryManager myAW){	

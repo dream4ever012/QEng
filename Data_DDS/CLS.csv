@@ -1,4 +1,4 @@
-clsid,clsdesc,clsauthor,clsstartdate,clsversion,clsclasses
+clsid,clsdesc,CLSAUTHOR,clsstartdate,clsversion,clsclasses
 clsid1,Used for the majority of grant programs processed in CORe,Caleb36,6/4/2016,V0.0,.\UDFStuff\src_csdr\src\java\org\apache\cassandra\auth\AllowAllAuthenticator.java
 clsid2,Codes for child support services,Caleb2,5/5/2016,V1.1,.\UDFStuff\src_csdr\src\java\org\apache\cassandra\auth\AllowAllAuthorizer.java
 clsid3,Codes used by county agencies for reporting Shared Cost and AMSO for cost allocation by random moment sampling.,Caleb2,4/5/2016,V2.2,.\UDFStuff\src_csdr\src\java\org\apache\cassandra\auth\AllowAllInternodeAuthenticator.java
