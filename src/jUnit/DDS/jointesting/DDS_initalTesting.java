@@ -53,6 +53,7 @@ public class DDS_initalTesting {
 		CreateTablesInMemoryDDS.createTablesInMemory(myAW);
 		CreateTablesInMemoryDDS.registerTMDDS(myAW);
 		setupIsDone = true;
+		System.out.println("Setup Done");
 		}
 	}
 	@Test
@@ -86,13 +87,118 @@ public class DDS_initalTesting {
 		//SRQaaUTwPredOnCLS1(myAW); 
 		
 		
-		// SRQaaUTwPredOnCLS1.xml cost: 452 12883 //  1354 1325
+		// SRQaaUTwPredOnCLS1.xml cost: 452 12883 //  1354 1325 1381
 		// card: wo/pred 4795637; w/ pred 36902  7.694%
-		SRQaaUTLwPredOnCLS1(myAW);
+		//SRQaaUTLwPredOnCLS1(myAW);
+		
+		CLSpred1(myAW);
+		CLSpred2(myAW);
+		CLSpred2_1(myAW);
+		CLSpred3(myAW);
+		CLSpred3_1(myAW);
+		CLSpred4(myAW);
+		CLSpred4_1(myAW);
+		CLSpred5(myAW);
+		
 		
 		System.out.println("Done");
 		
 	}
+	
+
+	
+	private static void CLSpred1(QueryManager myAW){	
+		File CLSpred = new File("./results/CLSpred.xml"); 
+		String SQLString =
+				"DROP TABLE TT1 IF EXISTS; CREATE TABLE TT1 AS " +
+				"SELECT " + DDS.CLS + ".clsid " +
+				"FROM " + DDS.CLS + " " + 
+				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred);
+		//myAW.QueryToXML(SQLString, CLSpred);
+	}
+	
+	private static void CLSpred2(QueryManager myAW){	
+		File CLSpred2 = new File("./results/CLSpred2.xml"); 
+		String SQLString =
+				"DROP TABLE TT2 IF EXISTS; CREATE TABLE TT2 AS " +
+				"SELECT " + DDS.CLSaaUT + ".clsid " +
+				"FROM " + DDS.CLSaaUT + " " +
+				"INNER JOIN TT1 " +
+				"ON TT1.clsid = " + DDS.CLSaaUT + ".clsid";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred2);
+		//myAW.QueryToXML(SQLString, CLSpred2);
+	}
+	
+	private static void CLSpred2_1(QueryManager myAW){
+		File CLSpred2_1 = new File("./results/CLSpred2_1.xml"); 
+		String SQLString =
+				"CREATE HASH INDEX ON TT2 (clsid)";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred2_1);
+		//myAW.QueryToXML(SQLString, CLSpred2_1);
+	}
+	
+	private static void CLSpred3(QueryManager myAW){	
+		File CLSpred3 = new File("./results/CLSpred3.xml"); 
+		String SQLString =
+				"DROP TABLE TT3 IF EXISTS; CREATE TABLE TT3 AS " +
+				"SELECT " + DDS.DRQaaCLS + ".drqid " +
+				"FROM " + DDS.DRQaaCLS + " " +
+				"INNER JOIN TT2 " +
+				"ON TT2.clsid = " + DDS.DRQaaCLS + ".clsid";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred3);
+		//myAW.QueryToXML(SQLString, CLSpred3);
+	}
+	
+	private static void CLSpred3_1(QueryManager myAW){
+		File CLSpred3_1 = new File("./results/CLSpred3_1.xml"); 
+		String SQLString =
+				"CREATE HASH INDEX ON TT3 (drqid)";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred3_1);
+		//myAW.QueryToXML(SQLString, CLSpred3_1);
+	}
+	
+	private static void CLSpred4(QueryManager myAW){	
+		File CLSpred4 = new File("./results/CLSpred4.xml"); 
+		String SQLString =
+				"DROP TABLE TT4 IF EXISTS; CREATE TABLE TT4 AS " +
+				"SELECT " + DDS.SSRQaaDRQ + ".ssrqid " +
+				"FROM " + DDS.SSRQaaDRQ + " " +
+				"INNER JOIN TT3 " +
+				"ON TT3.drqid = " + DDS.SSRQaaDRQ + ".drqid";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred4);
+		//myAW.QueryToXML(SQLString, CLSpred4);
+	}
+	
+	private static void CLSpred4_1(QueryManager myAW){
+		File CLSpred4_1 = new File("./results/CLSpred4_1.xml"); 
+		String SQLString =
+				"CREATE HASH INDEX ON TT4 (ssrqid)";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred4_1);
+		//myAW.QueryToXML(SQLString, CLSpred4_1);
+	}
+	
+	private static void CLSpred5(QueryManager myAW){	
+		File CLSpred5 = new File("./results/CLSpred5.xml"); 
+		String SQLString =
+				"SELECT " + DDS.SRQaaSSRQ + ".srqid " +
+				"FROM " + DDS.SRQaaSSRQ + " " +
+				"INNER JOIN TT4 " +
+				"ON TT4.ssrqid = " + DDS.SRQaaSSRQ + ".ssrqid";
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, CLSpred5);
+		//myAW.QueryToXML(SQLString, CLSpred5);
+	}
+	
+	
+	
 	
 	private static void SRQaaUTLwPredOnCLS1(QueryManager myAW){	
 		File SRQaaUTLwPredOnCLS1 = new File("./results/SRQaaUTLwPredOnCLS1.xml"); 
