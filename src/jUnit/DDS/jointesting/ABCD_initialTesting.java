@@ -51,11 +51,11 @@ public class ABCD_initialTesting {
 		myAW = new AskWise(new InternalH2(IH2DBURL));
 		// myOAW = new AskWise(new ExternalOracle());
 		// create tablelink
-//		CreateTablesInMemoryABCD.createTablesInMemoryABCD(myAW);
+		CreateTablesInMemoryABCD.createTablesInMemoryABCD(myAW);
 //		CreateTablesInMemoryABCD.registerTMABCD(myAW);
 		
-		CreateTablesInMemoryABCD.createTablesInMemoryABCD2(myAW);
-		//CreateTablesInMemoryABCD.registerTMABCD2(myAW);
+//		CreateTablesInMemoryABCD.createTablesInMemoryABCD2(myAW);
+//		CreateTablesInMemoryABCD.registerTMABCD2(myAW);
 		setupIsDone = true;
 		System.out.println("Setup Done");
 		}
@@ -75,19 +75,25 @@ public class ABCD_initialTesting {
 		
 		// AaaBaaC.xml cost: 111 110 90 90 130 // avg. 106.2
 		// card 12240
-		//AaaBaaC(myAW);                       // TOTAL 315
+		// WO/ Ind: 4860
+		// AaaBaaC(myAW);                       // TOTAL 315
 		
 		// AaBaCaaD.xml cost: 260 212 174 182 216 // avg. 208.8
 		// card: 49408
+		// WO/ Ind: 9846
 		//AaBaCaaD(myAW);
 		
 		//BaaCaaD.xml cost: 120 104 110 172 160 // avg. 133.2
 		// card 24844
-		// BaaCaaD(myAW);                          // TOTAL 454.2
+		// WO/ Ind: 4977
+		//BaaCaaD(myAW);                          // TOTAL 454.2
 		
 		// AaaBaCaD.xml cost: 380 260 276 249 440 // avg. 321
-		//AaaBaCaD(myAW);
-		 
+		// WO/ Ind: 
+		AaaBaCaD(myAW);
+
+		
+		
 		//TOTAL: 1313.2; WOiDx
 		//AaaBaaC2.xml cost: 215 224 279 272 262 // 250.4
 		// WO/ind: 23311
@@ -98,11 +104,11 @@ public class ABCD_initialTesting {
 		
 		//TOTAL: 1549.2
 		//BaaCaaD2.xml cost: 230 240 288 163 307// 245.6
-		// WO/ind: 
+		// WO/ind: 18981
 		//BaaCaaD2(myAW);
 		//AaaBaCaD2.xml cost: 1267 1565 1300 1367 1019//1303.6
-		// WO/ind: 
-		AaaBaCaD2(myAW);
+		// WO/ind: 73779
+		//AaaBaCaD2(myAW);
 
 		
 		System.out.println("Done");
@@ -197,8 +203,8 @@ public class ABCD_initialTesting {
 				"INNER JOIN " + ABCD.BaaC + " " + 
 				"ON " + ABCD.BaaC + ".BID = " + ABCD.AaaB + ".BID"; 
 		System.out.println(SQLString);
-		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC);
-		myAW.WriteCSV("./Data_ABCD/AaaBaaC.csv", SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC.csv", SQLString);
 		//myAW.QueryToXML(SQLString, AaaBaaC);
 	}
 	
