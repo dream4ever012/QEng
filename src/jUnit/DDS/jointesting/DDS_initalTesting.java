@@ -7,7 +7,6 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 import ResourceStrings.DDS;
-import ResourceStrings.SD;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.ExternalOracle;
@@ -20,7 +19,7 @@ public class DDS_initalTesting {
 	public static Boolean setupIsDone = false;
 	private static final String H2PROTO = "jdbc:h2:";
 	private static final String IH2FP = "./Data/TestCaseDataBases/";
-	private static final String IH2DBName = "JoinCardTestGtoECS";
+	private static final String IH2DBName = "DDS_initalTesting";
 	private static final String TRACELEVEL = ";TRACE_LEVEL_FILE=3;TRACE_MAX_FILE_SIZE=20";
 	private static String IH2DBURL;
 	private String SQLString;
