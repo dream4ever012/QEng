@@ -90,6 +90,7 @@ public class DDS_initalTesting {
 		// SRQaaUTwPredOnCLS1.xml cost: 452 12883 //  1354 1325 1381
 		// card: wo/pred 4795637; w/ pred 36902  7.694%
 		//SRQaaUTLwPredOnCLS1(myAW);
+		SRQaaUTLwPredOnCLS1(myAW);
 		
 		CLSpred1(myAW);
 		CLSpred2(myAW);
@@ -99,7 +100,22 @@ public class DDS_initalTesting {
 		CLSpred4(myAW);
 		CLSpred4_1(myAW);
 		CLSpred5(myAW);
-		
+//		DROP TABLE TT1 IF EXISTS; CREATE TABLE TT1 AS SELECT CLS.clsid FROM CLS WHERE CLS.CLSAUTHOR = 'Caleb3'
+//				CLSpred.xml cost: 34
+//				DROP TABLE TT2 IF EXISTS; CREATE TABLE TT2 AS SELECT CLSaaUT.clsid FROM CLSaaUT INNER JOIN TT1 ON TT1.clsid = CLSaaUT.clsid
+//				CLSpred2.xml cost: 16
+//				CREATE HASH INDEX ON TT2 (clsid)
+//				CLSpred2_1.xml cost: 3
+//				DROP TABLE TT3 IF EXISTS; CREATE TABLE TT3 AS SELECT DRQaaCLS.drqid FROM DRQaaCLS INNER JOIN TT2 ON TT2.clsid = DRQaaCLS.clsid
+//				CLSpred3.xml cost: 19
+//				CREATE HASH INDEX ON TT3 (drqid)
+//				CLSpred3_1.xml cost: 4
+//				DROP TABLE TT4 IF EXISTS; CREATE TABLE TT4 AS SELECT SSRQaaDRQ.ssrqid FROM SSRQaaDRQ INNER JOIN TT3 ON TT3.drqid = SSRQaaDRQ.drqid
+//				CLSpred4.xml cost: 16
+//				CREATE HASH INDEX ON TT4 (ssrqid)
+//				CLSpred4_1.xml cost: 6
+//				SELECT SRQaaSSRQ.srqid FROM SRQaaSSRQ INNER JOIN TT4 ON TT4.ssrqid = SRQaaSSRQ.ssrqid
+//				CLSpred5.xml cost: 23
 		
 		System.out.println("Done");
 		
@@ -214,8 +230,8 @@ public class DDS_initalTesting {
 				"INNER JOIN " + DDS.CLSaaUT + " " +
 				"ON " + DDS.CLSaaUT + ".clsid = " + DDS.CLS + ".clsid" + " " + // ;
 				"INNER JOIN " + DDS.UTaaUTL+ " " + 
-				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid" + " " +
-				"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
+				"ON " + DDS.UTaaUTL + ".utid = " + DDS.CLSaaUT + ".utid";// + " " +
+				//"WHERE " + DDS.CLS + ".CLSAUTHOR = 'Caleb3'";
 
 		System.out.println(SQLString);
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, SRQaaUTLwPredOnCLS1);
