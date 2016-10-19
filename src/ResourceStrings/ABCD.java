@@ -51,5 +51,22 @@ public class ABCD {
 	public static final String CaaD3 = "CaaD3";
 	public static final String CaaD3_FP = "./Data_ABCD/CaaD3.csv";
 	
-
+	public static final String A3k = "A3k";
+	public static final String A3k_FP = "./Data_ABCD/A3k.csv";
+	public static final String B3k = "B3k";
+	public static final String B3k_FP = "./Data_ABCD/B3k.csv";
+	public static final String C1_5k = "C1_5k";
+	public static final String C1_5k_FP = "./Data_ABCD/C1_5k.csv";
+	public static final String D1_5k = "D1_5k";
+	public static final String D1_5k_FP = "./Data_ABCD/D1_5k.csv";
+	public static final String AaaB4 = "AaaB4";
+	public static final String AaaB4_FP = "./Data_ABCD/AaaB4.csv";
+	public static final String BaaC4 = "BaaC4";
+	public static final String BaaC4_FP = "./Data_ABCD/BaaC4.csv";
+	public static final String CaaD4 = "CaaD4";
+	public static final String CaaD4_FP = "./Data_ABCD/CaaD4.csv";
+	public static final String AaaBaaC4 = "AaaBaaC4";
+	public static final String AaaBaaC4_FP = "./Data_ABCD/AaaBaaC4.csv";
+	public static final String BaaCaaD4 = "BaaCaaD4";
+	public static final String BaaCaaD4_FP = "./Data_ABCD/BaaCaaD4.csv";
 }
