@@ -32,13 +32,24 @@ public class ABCD {
 	
 	public static final String AaaB2 = "AaaB2";
 	public static final String AaaB2_FP = "./Data_ABCD/AaaB2.csv";
-	public static final String BaaC2 = "BaaC";
+	public static final String BaaC2 = "BaaC2";
 	public static final String BaaC2_FP = "./Data_ABCD/BaaC2.csv";
-	public static final String CaaD2 = "CaaD";
+	public static final String CaaD2 = "CaaD2";
 	public static final String CaaD2_FP = "./Data_ABCD/CaaD2.csv";
 	public static final String AaaBaaC2 = "AaaBaaC2";
 	public static final String AaaBaaC2_FP = "./Data_ABCD/AaaBaaC2.csv";
-	public static final String BaaCaaD2 = "BaaCaaD";
+	public static final String BaaCaaD2 = "BaaCaaD2";
 	public static final String BaaCaaD2_FP = "./Data_ABCD/BaaCaaD2.csv";
+	public static final String AaaBaaC3 = "AaaBaaC3";
+	public static final String AaaBaaC3_FP = "./Data_ABCD/AaaBaaC3.csv";
+	public static final String BaaCaaD3 = "BaaCaaD3";
+	public static final String BaaCaaD3_FP = "./Data_ABCD/BaaCaaD3.csv";
+	public static final String AaaB3 = "AaaB3";
+	public static final String AaaB3_FP = "./Data_ABCD/AaaB3.csv";
+	public static final String BaaC3 = "BaaC3";
+	public static final String BaaC3_FP = "./Data_ABCD/BaaC3.csv";
+	public static final String CaaD3 = "CaaD3";
+	public static final String CaaD3_FP = "./Data_ABCD/CaaD3.csv";
+	
 
 }
