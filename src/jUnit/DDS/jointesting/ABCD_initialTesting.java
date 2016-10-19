@@ -117,7 +117,9 @@ public class ABCD_initialTesting {
 		//AaaBaaC3(myAW);
 		//BaaCaaD3(myAW);
 		
-		AaBaCaaD3(myAW);
+		// AaBaCaaD3.xml cost: 11259 7435 11052 16918 14510
+		//AaBaCaaD3(myAW);
+		// AaaBaCaD3.xml cost: 15983 14782 20357 
 		AaaBaCaD3(myAW);
 		System.out.println("Done");
 		
