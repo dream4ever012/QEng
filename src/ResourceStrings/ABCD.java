@@ -20,6 +20,17 @@ public class ABCD {
 	public static final String AaaBaaC_FP = "./Data_ABCD/AaaBaaC.csv";
 	public static final String BaaCaaD = "BaaCaaD";
 	public static final String BaaCaaD_FP = "./Data_ABCD/BaaCaaD.csv";	
+	public static final String AaaBaaC6 = "AaaBaaC6";
+	public static final String AaaBaaC6_FP = "./Data_ABCD/AaaBaaC6.csv";
+	public static final String BaaCaaD6 = "BaaCaaD6";
+	public static final String BaaCaaD6_FP = "./Data_ABCD/BaaCaaD6.csv";
+	
+	public static final String AaaB6 = "AaaB6";
+	public static final String AaaB6_FP = "./Data_ABCD/AaaB6.csv";
+	public static final String BaaC6 = "BaaC6";
+	public static final String BaaC6_FP = "./Data_ABCD/BaaC6.csv";
+	public static final String CaaD6 = "CaaD6";
+	public static final String CaaD6_FP = "./Data_ABCD/CaaD6.csv";
 	
 	public static final String A6k = "A6k";
 	public static final String A6k_FP = "./Data_ABCD/A6k.csv";
@@ -50,6 +61,12 @@ public class ABCD {
 	public static final String BaaC3_FP = "./Data_ABCD/BaaC3.csv";
 	public static final String CaaD3 = "CaaD3";
 	public static final String CaaD3_FP = "./Data_ABCD/CaaD3.csv";
+	public static final String AaaB5 = "AaaB5";
+	public static final String AaaB5_FP = "./Data_ABCD/AaaB5.csv";
+	public static final String BaaC5 = "BaaC5";
+	public static final String BaaC5_FP = "./Data_ABCD/BaaC5.csv";
+	public static final String CaaD5 = "CaaD5";
+	public static final String CaaD5_FP = "./Data_ABCD/CaaD5.csv";
 	
 	public static final String A3k = "A3k";
 	public static final String A3k_FP = "./Data_ABCD/A3k.csv";
@@ -65,8 +82,44 @@ public class ABCD {
 	public static final String BaaC4_FP = "./Data_ABCD/BaaC4.csv";
 	public static final String CaaD4 = "CaaD4";
 	public static final String CaaD4_FP = "./Data_ABCD/CaaD4.csv";
+
 	public static final String AaaBaaC4 = "AaaBaaC4";
 	public static final String AaaBaaC4_FP = "./Data_ABCD/AaaBaaC4.csv";
 	public static final String BaaCaaD4 = "BaaCaaD4";
 	public static final String BaaCaaD4_FP = "./Data_ABCD/BaaCaaD4.csv";
+	public static final String AaaBaaC5 = "AaaBaaC5";
+	public static final String AaaBaaC5_FP = "./Data_ABCD/AaaBaaC5.csv";
+	public static final String BaaCaaD5 = "BaaCaaD5";
+	public static final String BaaCaaD5_FP = "./Data_ABCD/BaaCaaD5.csv";
+	
+	public static final String A2k = "A2k";
+	public static final String A2k_FP = "./Data_ABCD/A2k.csv";
+	public static final String B2k = "B2k";
+	public static final String B2k_FP = "./Data_ABCD/B2k.csv";
+	public static final String C1k = "C1k";
+	public static final String C1k_FP = "./Data_ABCD/C1k.csv";
+	public static final String D1k = "D1k";
+	public static final String D1k_FP = "./Data_ABCD/D1k.csv";
+	public static final String AaaB7 = "AaaB7";
+	public static final String AaaB7_FP = "./Data_ABCD/AaaB7.csv";
+	public static final String BaaC7 = "BaaC7";
+	public static final String BaaC7_FP = "./Data_ABCD/BaaC7.csv";
+	public static final String CaaD7 = "CaaD7";
+	public static final String CaaD7_FP = "./Data_ABCD/CaaD7.csv";
+	public static final String AaaBaaC7 = "AaaBaaC7";
+	public static final String AaaBaaC7_FP = "./Data_ABCD/AaaBaaC7.csv";
+	public static final String BaaCaaD7 = "BaaCaaD7";
+	public static final String BaaCaaD7_FP = "./Data_ABCD/BaaCaaD7.csv";
+	public static final String AaaB8 = "AaaB8";
+	public static final String AaaB8_FP = "./Data_ABCD/AaaB8.csv";
+	public static final String BaaC8 = "BaaC8";
+	public static final String BaaC8_FP = "./Data_ABCD/BaaC8.csv";
+	public static final String CaaD8 = "CaaD8";
+	public static final String CaaD8_FP = "./Data_ABCD/CaaD8.csv";
+	public static final String AaaBaaC8 = "AaaBaaC8";
+	public static final String AaaBaaC8_FP = "./Data_ABCD/AaaBaaC8.csv";
+	public static final String BaaCaaD8 = "BaaCaaD8";
+	public static final String BaaCaaD8_FP = "./Data_ABCD/BaaCaaD8.csv";
+	
+	
 }
