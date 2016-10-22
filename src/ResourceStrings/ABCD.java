@@ -122,4 +122,40 @@ public class ABCD {
 	public static final String BaaCaaD8_FP = "./Data_ABCD/BaaCaaD8.csv";
 	
 	
+	public static final String B1k = "B1k";
+	public static final String B1k_FP = "./Data_ABCD/B1k.csv";
+	public static final String B4k = "B4k";
+	public static final String B4k_FP = "./Data_ABCD/B4k.csv";
+	public static final String AaaB9 = "AaaB9";
+	public static final String AaaB9_FP = "./Data_ABCD/AaaB9.csv";
+	public static final String BaaC9 = "BaaC9";
+	public static final String BaaC9_FP = "./Data_ABCD/BaaC9.csv";
+	public static final String CaaD9 = "CaaD9";
+	public static final String CaaD9_FP = "./Data_ABCD/CaaD9.csv";
+	public static final String AaaBaaC9 = "AaaBaaC9";
+	public static final String AaaBaaC9_FP = "./Data_ABCD/AaaBaaC9.csv";
+	public static final String BaaCaaD9 = "BaaCaaD9";
+	public static final String BaaCaaD9_FP = "./Data_ABCD/BaaCaaD9.csv";
+	public static final String AaaB10 = "AaaB10";
+	public static final String AaaB10_FP = "./Data_ABCD/AaaB10.csv";
+	public static final String BaaC10 = "BaaC10";
+	public static final String BaaC10_FP = "./Data_ABCD/BaaC10.csv";
+	public static final String CaaD10 = "CaaD10";
+	public static final String CaaD10_FP = "./Data_ABCD/CaaD10.csv";
+	public static final String AaaBaaC10 = "AaaBaaC10";
+	public static final String AaaBaaC10_FP = "./Data_ABCD/AaaBaaC10.csv";
+	public static final String BaaCaaD10 = "BaaCaaD10";
+	public static final String BaaCaaD10_FP = "./Data_ABCD/BaaCaaD10.csv";
+	public static final String AaaB11 = "AaaB11";
+	public static final String AaaB11_FP = "./Data_ABCD/AaaB11.csv";
+	public static final String BaaC11 = "BaaC11";
+	public static final String BaaC11_FP = "./Data_ABCD/BaaC11.csv";
+	public static final String CaaD11 = "CaaD11";
+	public static final String CaaD11_FP = "./Data_ABCD/CaaD11.csv";
+	public static final String AaaBaaC11 = "AaaBaaC11";
+	public static final String AaaBaaC11_FP = "./Data_ABCD/AaaBaaC11.csv";
+	public static final String BaaCaaD11 = "BaaCaaD11";
+	public static final String BaaCaaD11_FP = "./Data_ABCD/BaaCaaD11.csv";
+	
+	
 }

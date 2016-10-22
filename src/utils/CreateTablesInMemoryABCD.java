@@ -141,4 +141,62 @@ public class CreateTablesInMemoryABCD {
 		myAW.RegisterTM(ABCD.BaaCaaD8, ABCD.B2k, "BID", ABCD.D1k, "DID");
 		System.out.println("Index created: ABCD4");
 	}
+	
+	public static void createTablesInMemoryABCD5(QueryManager myAW){
+		
+		myAW.importCSVAsTable(ABCD.A2k_FP, ABCD.A2k);
+		myAW.importCSVAsTable(ABCD.B2k_FP, ABCD.B2k);
+		myAW.importCSVAsTable(ABCD.B1k_FP, ABCD.B1k);
+		myAW.importCSVAsTable(ABCD.B3k_FP, ABCD.B3k);
+		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
+		myAW.importCSVAsTable(ABCD.C1k_FP, ABCD.C1k);
+		myAW.importCSVAsTable(ABCD.D1k_FP, ABCD.D1k);
+		myAW.importCSVAsTable(ABCD.AaaB7_FP, ABCD.AaaB7);
+		myAW.importCSVAsTable(ABCD.BaaC7_FP, ABCD.BaaC7);
+		myAW.importCSVAsTable(ABCD.CaaD7_FP, ABCD.CaaD7);
+		myAW.importCSVAsTable(ABCD.AaaB9_FP, ABCD.AaaB9);
+		myAW.importCSVAsTable(ABCD.BaaC9_FP, ABCD.BaaC9);
+		myAW.importCSVAsTable(ABCD.CaaD9_FP, ABCD.CaaD9);
+		myAW.importCSVAsTable(ABCD.AaaB10_FP, ABCD.AaaB10);
+		myAW.importCSVAsTable(ABCD.BaaC10_FP, ABCD.BaaC10);
+		myAW.importCSVAsTable(ABCD.CaaD10_FP, ABCD.CaaD10);
+		myAW.importCSVAsTable(ABCD.AaaB11_FP, ABCD.AaaB11);
+		myAW.importCSVAsTable(ABCD.BaaC11_FP, ABCD.BaaC11);
+		myAW.importCSVAsTable(ABCD.CaaD11_FP, ABCD.CaaD11);
+		
+		myAW.importCSVAsTable(ABCD.AaaBaaC7_FP, ABCD.AaaBaaC7);
+		myAW.importCSVAsTable(ABCD.BaaCaaD7_FP, ABCD.BaaCaaD7);
+		myAW.importCSVAsTable(ABCD.AaaBaaC9_FP, ABCD.AaaBaaC9);
+		myAW.importCSVAsTable(ABCD.BaaCaaD9_FP, ABCD.BaaCaaD9);
+		myAW.importCSVAsTable(ABCD.AaaBaaC10_FP, ABCD.AaaBaaC10);
+		myAW.importCSVAsTable(ABCD.BaaCaaD10_FP, ABCD.BaaCaaD10);
+		myAW.importCSVAsTable(ABCD.AaaBaaC11_FP, ABCD.AaaBaaC11);
+		myAW.importCSVAsTable(ABCD.BaaCaaD11_FP, ABCD.BaaCaaD11);
+		System.out.println("table created: ABCD5");
+	}
+	
+	public static void registerTMABCD5(QueryManager myAW){
+		myAW.RegisterTM(ABCD.AaaB7, ABCD.A2k, "AID", ABCD.B2k, "BID");
+		myAW.RegisterTM(ABCD.BaaC7, ABCD.B2k, "BID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.CaaD7, ABCD.C1k, "CID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaB9, ABCD.A2k, "AID", ABCD.B1k, "BID");
+		myAW.RegisterTM(ABCD.BaaC9, ABCD.B1k, "BID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.CaaD9, ABCD.C1k, "CID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaBaaC9, ABCD.A2k, "AID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD9, ABCD.B1k, "BID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaB10, ABCD.A2k, "AID", ABCD.B4k, "BID");
+		myAW.RegisterTM(ABCD.BaaC10, ABCD.B4k, "BID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.CaaD10, ABCD.C1k, "CID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaB11, ABCD.A2k, "AID", ABCD.B3k, "BID");
+		myAW.RegisterTM(ABCD.BaaC11, ABCD.B3k, "BID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.CaaD11, ABCD.C1k, "CID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaBaaC10, ABCD.A2k, "AID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD10, ABCD.B4k, "BID", ABCD.D1k, "DID");
+		myAW.RegisterTM(ABCD.AaaBaaC11, ABCD.A2k, "AID", ABCD.C1k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD11, ABCD.B3k, "BID", ABCD.D1k, "DID");
+
+		System.out.println("Index created: ABCD5");
+	}
+
+	
 }

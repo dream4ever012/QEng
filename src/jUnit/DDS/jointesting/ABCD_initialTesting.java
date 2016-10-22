@@ -7,14 +7,12 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 import ResourceStrings.ABCD;
-import ResourceStrings.DDS;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import qEng.ExternalOracle;
 import qEng.InternalH2;
 
 import utils.CreateTablesInMemoryABCD;
-import utils.CreateTablesInMemoryDDS;
 import utils.MeasureCostArbitrary;
 
 public class ABCD_initialTesting {
@@ -119,7 +117,7 @@ public class ABCD_initialTesting {
 		// WO/ind: 18981 16346 17674 19083
 		//BaaCaaD2(myAW);
 		//AaaBaCaD2.xml cost: 1267 1565 1300 1367 1019//1303.6
-		// WO/ind: 144523 222899 194685
+		// WO/ind: 222899 194685
 		//AaaBaCaD2(myAW);
 		
 		/*
@@ -138,7 +136,7 @@ public class ABCD_initialTesting {
 		
 		/*
 		 * "does table size is the critical issue?
-		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(6k) = D(1.5k)
+		 * A(3k) = AB(9k) = B(3k) = BC(9k) = C(1.5k) = CD(9k) = D(1.5k)
 		 * AaaB4
 		 */
 		// AaaBaaC4.xml cost: 10117 9967 10021  9866
@@ -179,9 +177,24 @@ public class ABCD_initialTesting {
 		//	AaaBaCaD6.xml cost: 17174 16699 15527
 		//AaaBaCaD6(myAW);
 		
+		
+		/* smaller tables with the same size trace matrices
+		 * CD 3k
+		 * equal distribution of trace link
+		 * A(2k) = AB(6k) = B(2k) = BC(6k) = C(1k) = CD(3k) = D(1k)
+		 */
+		//	AaaBaaC8.xml cost: 5186 5045
+		//AaaBaaC8(myAW);
+		//	AaBaCaaD8.xml cost: 6586 6798
+		AaBaCaaD8(myAW);
+		//	BaaCaaD8.xml cost: 3061 3373
+		//BaaCaaD8(myAW);
+		//	AaaBaCaD8.xml cost: 9679 11598
+		//AaaBaCaD8(myAW);
+		
 		/* smaller tables with the same size trace matrices
 		 * equal distribution of trace link
-		 * 
+		 * A(2k) = AB(6k) = B(2k) = BC(6k) = C(1k) = CD(6k) = D(1k)
 		 */
 		//	AaaBaaC7.xml cost: 5856 6410
 		//AaaBaaC7(myAW);
@@ -192,14 +205,6 @@ public class ABCD_initialTesting {
 		//	AaaBaCaD7.xml cost: 26846 25317
 		//AaaBaCaD7(myAW);
 		
-		//	AaaBaaC8.xml cost: 5186 5045
-		//AaaBaaC8(myAW);
-		//	AaBaCaaD8.xml cost: 6586 6798
-		//AaBaCaaD8(myAW);
-		//	BaaCaaD8.xml cost: 3061 3373
-		//BaaCaaD8(myAW);
-		//	AaaBaCaD8.xml cost: 9679
-		AaaBaCaD8(myAW);
 		System.out.println("Done");
 		
 	}
