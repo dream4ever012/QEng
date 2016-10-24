@@ -183,13 +183,13 @@ public class ABCD_initialTesting {
 		 * equal distribution of trace link
 		 * A(2k) = AB(6k) = B(2k) = BC(6k) = C(1k) = CD(3k) = D(1k)
 		 */
-		//	AaaBaaC8.xml cost: 5186 5045
+		//	AaaBaaC8.xml cost: 5186 5045 // card 18k
 		//AaaBaaC8(myAW);
-		//	AaBaCaaD8.xml cost: 6586 6798
-		AaBaCaaD8(myAW);
-		//	BaaCaaD8.xml cost: 3061 3373
+		//	AaBaCaaD8.xml cost: 6586 6798 // card 54k
+		//AaBaCaaD8(myAW);
+		//	BaaCaaD8.xml cost: 3061 3373 // card 18k
 		//BaaCaaD8(myAW);
-		//	AaaBaCaD8.xml cost: 9679 11598
+		//	AaaBaCaD8.xml cost: 9679 11598 // card 54k
 		//AaaBaCaD8(myAW);
 		
 		/* smaller tables with the same size trace matrices

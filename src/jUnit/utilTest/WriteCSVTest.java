@@ -112,7 +112,7 @@ public class WriteCSVTest {
 		
 		
 		//JoinG_UCS(myAW); // card 12715 
-		// JoinUCS_ECS(myAW); // 362219
+		JoinUCS_ECS(myAW); // 362219
 		//JoinUC_EC(myAW); // 12623
 		//JoinG_EC(myAW); // 10153
 		//JoinUC_ECS(myAW); // 292995
