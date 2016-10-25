@@ -391,11 +391,17 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.AaaBaaC28_FP, ABCD.AaaBaaC28);
 		myAW.importCSVAsTable(ABCD.BaaCaaD28_FP, ABCD.BaaCaaD28);
 		
-		myAW.importCSVAsTable(ABCD.AaaB99_FP, ABCD.AaaB99);
-		myAW.importCSVAsTable(ABCD.BaaC99_FP, ABCD.BaaC99);
-		myAW.importCSVAsTable(ABCD.CaaD99_FP, ABCD.CaaD99);
-		myAW.importCSVAsTable(ABCD.AaaBaaC99_FP, ABCD.AaaBaaC99);
-		myAW.importCSVAsTable(ABCD.BaaCaaD99_FP, ABCD.BaaCaaD99);
+//		myAW.importCSVAsTable(ABCD.AaaB99_FP, ABCD.AaaB99);
+//		myAW.importCSVAsTable(ABCD.BaaC99_FP, ABCD.BaaC99);
+//		myAW.importCSVAsTable(ABCD.CaaD99_FP, ABCD.CaaD99);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC99_FP, ABCD.AaaBaaC99);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD99_FP, ABCD.BaaCaaD99);
+		
+		myAW.importCSVAsTable(ABCD.AaaB98_FP, ABCD.AaaB98);
+		myAW.importCSVAsTable(ABCD.BaaC98_FP, ABCD.BaaC98);
+		myAW.importCSVAsTable(ABCD.CaaD98_FP, ABCD.CaaD98);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC98_FP, ABCD.AaaBaaC98);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD98_FP, ABCD.BaaCaaD98);
 		
 		System.out.println("table created: ABCD6");
 	}
