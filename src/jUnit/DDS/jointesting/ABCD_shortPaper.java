@@ -366,8 +366,8 @@ public class ABCD_shortPaper {
 		 *    - AB = [BC=CD]:  + [] =   sec		
 		 *    ==> findings: what really matters is a fan out ratio on the other side
 		 */
-		//	AaaBaaC23.xml cost: 4644 4948// avg.4796 ;card: 12k 
-		AaaBaaC23(myAW); 
+		//	AaaBaaC23.xml cost: 5745 4948// avg.5347 ;card: 12k 
+		//AaaBaaC23(myAW); 
 		//	BaaCaaD23.xml cost: 1530 1358// avg.1444 ; card: 4k
 		//BaaCaaD23(myAW);
 		//	AaBaCaaD23.xml cost: 1605 2431// avg.2018 ; card: 8k
