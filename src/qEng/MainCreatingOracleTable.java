@@ -159,21 +159,20 @@ public class MainCreatingOracleTable {
 //			
 //			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, DDS.UTL);
 
-			CreateTablesInMemoryABCD.createTablesInMemoryABCD5(myAW);
-			CreateTablesInMemoryABCD.registerTMABCD5(myAW);
+			CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
+			CreateTablesInMemoryABCD.registerTMABCD6(myAW);
 			
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.A3k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.AaaB15);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B1k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B2k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B3k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B4k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B5k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.B5k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.BaaC15);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.C2k);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.CaaD15);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.D2k);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.A2k);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaB99);
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B1k);
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B2k);
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B3k);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B4k);
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B5k);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.BaaC99);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.C3k);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.CaaD99);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.D1k);
 			
 			//read CSV trace matrix
 //			String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
