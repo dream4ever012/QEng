@@ -155,6 +155,8 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.C2k_FP, ABCD.C2k);
 		myAW.importCSVAsTable(ABCD.C3k_FP, ABCD.C3k);
 		myAW.importCSVAsTable(ABCD.C4k_FP, ABCD.C4k);
+		myAW.importCSVAsTable(ABCD.C1_5k_FP, ABCD.C1_5k);
+		myAW.importCSVAsTable(ABCD.D1_5k_FP, ABCD.D1_5k);
 		myAW.importCSVAsTable(ABCD.D1k_FP, ABCD.D1k);
 		myAW.importCSVAsTable(ABCD.D2k_FP, ABCD.D2k);
 		myAW.importCSVAsTable(ABCD.AaaB7_FP, ABCD.AaaB7);
@@ -193,6 +195,33 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.AaaB19_FP, ABCD.AaaB19);
 		myAW.importCSVAsTable(ABCD.BaaC19_FP, ABCD.BaaC19);
 		myAW.importCSVAsTable(ABCD.CaaD19_FP, ABCD.CaaD19);
+		myAW.importCSVAsTable(ABCD.AaaB20_FP, ABCD.AaaB20);
+		myAW.importCSVAsTable(ABCD.BaaC20_FP, ABCD.BaaC20);
+		myAW.importCSVAsTable(ABCD.CaaD20_FP, ABCD.CaaD20);
+		myAW.importCSVAsTable(ABCD.AaaB21_FP, ABCD.AaaB21);
+		myAW.importCSVAsTable(ABCD.BaaC21_FP, ABCD.BaaC21);
+		myAW.importCSVAsTable(ABCD.CaaD21_FP, ABCD.CaaD21);
+		myAW.importCSVAsTable(ABCD.AaaB22_FP, ABCD.AaaB22);
+		myAW.importCSVAsTable(ABCD.BaaC22_FP, ABCD.BaaC22);
+		myAW.importCSVAsTable(ABCD.CaaD22_FP, ABCD.CaaD22);
+		myAW.importCSVAsTable(ABCD.AaaB22_FP, ABCD.AaaB23);
+		myAW.importCSVAsTable(ABCD.BaaC23_FP, ABCD.BaaC23);
+		myAW.importCSVAsTable(ABCD.CaaD23_FP, ABCD.CaaD23);
+		myAW.importCSVAsTable(ABCD.AaaB24_FP, ABCD.AaaB24);
+		myAW.importCSVAsTable(ABCD.BaaC24_FP, ABCD.BaaC24);
+		myAW.importCSVAsTable(ABCD.CaaD24_FP, ABCD.CaaD24);
+		myAW.importCSVAsTable(ABCD.AaaB25_FP, ABCD.AaaB25);
+		myAW.importCSVAsTable(ABCD.BaaC25_FP, ABCD.BaaC25);
+		myAW.importCSVAsTable(ABCD.CaaD25_FP, ABCD.CaaD25);
+		myAW.importCSVAsTable(ABCD.AaaB26_FP, ABCD.AaaB26);
+		myAW.importCSVAsTable(ABCD.BaaC26_FP, ABCD.BaaC26);
+		myAW.importCSVAsTable(ABCD.CaaD26_FP, ABCD.CaaD26);
+		myAW.importCSVAsTable(ABCD.AaaB27_FP, ABCD.AaaB27);
+		myAW.importCSVAsTable(ABCD.BaaC27_FP, ABCD.BaaC27);
+		myAW.importCSVAsTable(ABCD.CaaD27_FP, ABCD.CaaD27);
+		myAW.importCSVAsTable(ABCD.AaaB28_FP, ABCD.AaaB28);
+		myAW.importCSVAsTable(ABCD.BaaC28_FP, ABCD.BaaC28);
+		myAW.importCSVAsTable(ABCD.CaaD28_FP, ABCD.CaaD28);
 		
 		myAW.importCSVAsTable(ABCD.AaaBaaC7_FP, ABCD.AaaBaaC7);
 		myAW.importCSVAsTable(ABCD.BaaCaaD7_FP, ABCD.BaaCaaD7);
@@ -218,6 +247,25 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.BaaCaaD18_FP, ABCD.BaaCaaD18);
 		myAW.importCSVAsTable(ABCD.AaaBaaC19_FP, ABCD.AaaBaaC19);
 		myAW.importCSVAsTable(ABCD.BaaCaaD19_FP, ABCD.BaaCaaD19);
+		myAW.importCSVAsTable(ABCD.AaaBaaC20_FP, ABCD.AaaBaaC20);
+		myAW.importCSVAsTable(ABCD.BaaCaaD20_FP, ABCD.BaaCaaD20);
+		myAW.importCSVAsTable(ABCD.AaaBaaC21_FP, ABCD.AaaBaaC21);
+		myAW.importCSVAsTable(ABCD.BaaCaaD21_FP, ABCD.BaaCaaD21);
+		myAW.importCSVAsTable(ABCD.AaaBaaC22_FP, ABCD.AaaBaaC22);
+		myAW.importCSVAsTable(ABCD.BaaCaaD22_FP, ABCD.BaaCaaD22);
+		
+		myAW.importCSVAsTable(ABCD.AaaBaaC23_FP, ABCD.AaaBaaC23);
+		myAW.importCSVAsTable(ABCD.BaaCaaD23_FP, ABCD.BaaCaaD23);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC24_FP, ABCD.AaaBaaC24);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD24_FP, ABCD.BaaCaaD24);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC25_FP, ABCD.AaaBaaC25);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD25_FP, ABCD.BaaCaaD25);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC26_FP, ABCD.AaaBaaC26);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD26_FP, ABCD.BaaCaaD26);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC27_FP, ABCD.AaaBaaC27);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD27_FP, ABCD.BaaCaaD27);
+//		myAW.importCSVAsTable(ABCD.AaaBaaC28_FP, ABCD.AaaBaaC28);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD28_FP, ABCD.BaaCaaD28);
 		System.out.println("table created: ABCD5");
 	}
 	
@@ -256,10 +304,119 @@ public class CreateTablesInMemoryABCD {
 		myAW.RegisterTM(ABCD.BaaCaaD18, ABCD.B3k, "BID", ABCD.D2k, "DID");
 		myAW.RegisterTM(ABCD.AaaBaaC19, ABCD.A3k, "AID", ABCD.C2k, "CID");
 		myAW.RegisterTM(ABCD.BaaCaaD19, ABCD.B3k, "BID", ABCD.D2k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC20, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD20, ABCD.B3k, "BID", ABCD.D2k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC21, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD21, ABCD.B3k, "BID", ABCD.D2k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC22, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD22, ABCD.B3k, "BID", ABCD.D2k, "DID");
+
+		myAW.RegisterTM(ABCD.AaaBaaC23, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD23, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC24, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD24, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC25, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD25, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC26, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD26, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC27, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD27, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC28, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD28, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+
 		System.out.println("Index created: ABCD5");
 		
 		
 	}
 
+	public static void createTablesInMemoryABCD6(QueryManager myAW){
+		
+		myAW.importCSVAsTable(ABCD.A2k_FP, ABCD.A2k);
+		myAW.importCSVAsTable(ABCD.A3k_FP, ABCD.A3k);
+		myAW.importCSVAsTable(ABCD.B2k_FP, ABCD.B2k);
+		myAW.importCSVAsTable(ABCD.B1k_FP, ABCD.B1k);
+		myAW.importCSVAsTable(ABCD.B3k_FP, ABCD.B3k);
+		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
+		myAW.importCSVAsTable(ABCD.B5k_FP, ABCD.B5k);
+		myAW.importCSVAsTable(ABCD.C1k_FP, ABCD.C1k);
+		myAW.importCSVAsTable(ABCD.C2k_FP, ABCD.C2k);
+		myAW.importCSVAsTable(ABCD.C3k_FP, ABCD.C3k);
+		myAW.importCSVAsTable(ABCD.C4k_FP, ABCD.C4k);
+		myAW.importCSVAsTable(ABCD.C1_5k_FP, ABCD.C1_5k);
+		myAW.importCSVAsTable(ABCD.D1_5k_FP, ABCD.D1_5k);
+		myAW.importCSVAsTable(ABCD.D1k_FP, ABCD.D1k);
+		myAW.importCSVAsTable(ABCD.D2k_FP, ABCD.D2k);
+		myAW.importCSVAsTable(ABCD.AaaB21_FP, ABCD.AaaB21);
+		myAW.importCSVAsTable(ABCD.BaaC21_FP, ABCD.BaaC21);
+		myAW.importCSVAsTable(ABCD.CaaD21_FP, ABCD.CaaD21);
+		myAW.importCSVAsTable(ABCD.AaaB22_FP, ABCD.AaaB22);
+		myAW.importCSVAsTable(ABCD.BaaC22_FP, ABCD.BaaC22);
+		myAW.importCSVAsTable(ABCD.CaaD22_FP, ABCD.CaaD22);
+		myAW.importCSVAsTable(ABCD.AaaB22_FP, ABCD.AaaB23);
+		myAW.importCSVAsTable(ABCD.BaaC23_FP, ABCD.BaaC23);
+		myAW.importCSVAsTable(ABCD.CaaD23_FP, ABCD.CaaD23);
+		myAW.importCSVAsTable(ABCD.AaaB24_FP, ABCD.AaaB24);
+		myAW.importCSVAsTable(ABCD.BaaC24_FP, ABCD.BaaC24);
+		myAW.importCSVAsTable(ABCD.CaaD24_FP, ABCD.CaaD24);
+		myAW.importCSVAsTable(ABCD.AaaB25_FP, ABCD.AaaB25);
+		myAW.importCSVAsTable(ABCD.BaaC25_FP, ABCD.BaaC25);
+		myAW.importCSVAsTable(ABCD.CaaD25_FP, ABCD.CaaD25);
+		myAW.importCSVAsTable(ABCD.AaaB26_FP, ABCD.AaaB26);
+		myAW.importCSVAsTable(ABCD.BaaC26_FP, ABCD.BaaC26);
+		myAW.importCSVAsTable(ABCD.CaaD26_FP, ABCD.CaaD26);
+		myAW.importCSVAsTable(ABCD.AaaB27_FP, ABCD.AaaB27);
+		myAW.importCSVAsTable(ABCD.BaaC27_FP, ABCD.BaaC27);
+		myAW.importCSVAsTable(ABCD.CaaD27_FP, ABCD.CaaD27);
+		myAW.importCSVAsTable(ABCD.AaaB28_FP, ABCD.AaaB28);
+		myAW.importCSVAsTable(ABCD.BaaC28_FP, ABCD.BaaC28);
+		myAW.importCSVAsTable(ABCD.CaaD28_FP, ABCD.CaaD28);
+		
+		myAW.importCSVAsTable(ABCD.AaaBaaC20_FP, ABCD.AaaBaaC20);
+		myAW.importCSVAsTable(ABCD.BaaCaaD20_FP, ABCD.BaaCaaD20);
+		myAW.importCSVAsTable(ABCD.AaaBaaC21_FP, ABCD.AaaBaaC21);
+		myAW.importCSVAsTable(ABCD.BaaCaaD21_FP, ABCD.BaaCaaD21);
+		myAW.importCSVAsTable(ABCD.AaaBaaC22_FP, ABCD.AaaBaaC22);
+		myAW.importCSVAsTable(ABCD.BaaCaaD22_FP, ABCD.BaaCaaD22);
+		
+		myAW.importCSVAsTable(ABCD.AaaBaaC23_FP, ABCD.AaaBaaC23);
+		myAW.importCSVAsTable(ABCD.BaaCaaD23_FP, ABCD.BaaCaaD23);
+		myAW.importCSVAsTable(ABCD.AaaBaaC24_FP, ABCD.AaaBaaC24);
+		myAW.importCSVAsTable(ABCD.BaaCaaD24_FP, ABCD.BaaCaaD24);
+		myAW.importCSVAsTable(ABCD.AaaBaaC25_FP, ABCD.AaaBaaC25);
+		myAW.importCSVAsTable(ABCD.BaaCaaD25_FP, ABCD.BaaCaaD25);
+		myAW.importCSVAsTable(ABCD.AaaBaaC26_FP, ABCD.AaaBaaC26);
+		myAW.importCSVAsTable(ABCD.BaaCaaD26_FP, ABCD.BaaCaaD26);
+		myAW.importCSVAsTable(ABCD.AaaBaaC27_FP, ABCD.AaaBaaC27);
+		myAW.importCSVAsTable(ABCD.BaaCaaD27_FP, ABCD.BaaCaaD27);
+		myAW.importCSVAsTable(ABCD.AaaBaaC28_FP, ABCD.AaaBaaC28);
+		myAW.importCSVAsTable(ABCD.BaaCaaD28_FP, ABCD.BaaCaaD28);
+		System.out.println("table created: ABCD5");
+	}
+	
+	public static void registerTMABCD6(QueryManager myAW){
+		myAW.RegisterTM(ABCD.AaaBaaC20, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD20, ABCD.B3k, "BID", ABCD.D2k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC21, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD21, ABCD.B3k, "BID", ABCD.D2k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC22, ABCD.A3k, "AID", ABCD.C2k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD22, ABCD.B3k, "BID", ABCD.D2k, "DID");
+
+		myAW.RegisterTM(ABCD.AaaBaaC23, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD23, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC24, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD24, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC25, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD25, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC26, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD26, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC27, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD27, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+		myAW.RegisterTM(ABCD.AaaBaaC28, ABCD.A3k, "AID", ABCD.C1_5k, "CID");
+		myAW.RegisterTM(ABCD.BaaCaaD28, ABCD.B3k, "BID", ABCD.D1_5k, "DID");	
+
+		System.out.println("Index created: ABCD5");
+		
+		
+	}
 	
 }

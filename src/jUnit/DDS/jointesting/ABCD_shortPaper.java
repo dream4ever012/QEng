@@ -53,9 +53,12 @@ public class ABCD_shortPaper {
 		//CreateTablesInMemoryABCD.createTablesInMemoryABCD4(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD4(myAW);
 		
-		CreateTablesInMemoryABCD.createTablesInMemoryABCD5(myAW);
+		//CreateTablesInMemoryABCD.createTablesInMemoryABCD5(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD5(myAW);
 
+		CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
+		//CreateTablesInMemoryABCD.registerTMABCD6(myAW);
+		
 		setupIsDone = true;
 		System.out.println("Setup Done");
 		}
@@ -287,25 +290,623 @@ public class ABCD_shortPaper {
 		//AaaBaCaD18(myAW);
 		
 		/* 
-		 * A(3k) = AB(6k) = B(3k) = BC(2k) = C(2k) = CD(6k) = D(2k)
+		 * A(3k) = AB(6k) = B(3k) = BC(3k) = C(2k) = CD(6k) = D(2k)
 		 * B=5k; C=2k
 		 * 	  = running time: +  sec (%)
 		 *    - [AB = BC] = CD: [] +  =  sec <*****
 		 *    - AB = [BC=CD]:  + [] =   sec		
 		 *    ==> findings: what really matters is a fan out ratio on the other side
 		 */
-		//	AaaBaaC19.xml cost: 2604 2385// avg.2150 ;card: 2k 
+		//	AaaBaaC19.xml cost: 2604 2385 // avg.2495 ;card: 2k 
 		//AaaBaaC19(myAW); 
-		//	BaaCaaD19.xml cost: 3041 // avg.1429 ; card: 3k
-		BaaCaaD19(myAW);
-		//	AaBaCaaD19.xml cost: 3559 4029 // avg.3701 ; card: 6k
+		//	BaaCaaD19.xml cost: 3041 3013// avg.3027 ; card: 3k
+		//BaaCaaD19(myAW);
+		//	AaBaCaaD19.xml cost: 5893 4530 // avg.5112 ; card: 6k
 		//AaBaCaaD19(myAW);
-		//	AaaBaCaD19.xml cost: 7535 8191// avg.4201 ; card: 6k
+		//	AaaBaCaD19.xml cost: 6341 6539// avg.6440 ; card: 6k
 		//AaaBaCaD19(myAW);
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(4k) = C(2k) = CD(6k) = D(2k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC20.xml cost: 3540 3510 2512// avg.3187 ;card: 2k 
+		//AaaBaaC20(myAW); 
+		//	BaaCaaD20.xml cost: 3200 3222 2731// avg.3051 ; card: 3k
+		//BaaCaaD20(myAW);
+		//	AaBaCaaD20.xml cost: 4679 6106 7017// avg.5934 ; card: 6k
+		//AaBaCaaD20(myAW);
+		//	AaaBaCaD20.xml cost: 7578 9231 7091// avg.7967 ; card: 6k
+		//AaaBaCaD20(myAW);
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(5k) = C(2k) = CD(6k) = D(2k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC21.xml cost: 2614 3105// avg.2860 ;card: 8k 
+		//AaaBaaC21(myAW); 
+		//	BaaCaaD21.xml cost: 3575 2629// avg.3102 ; card: 12k
+		//BaaCaaD21(myAW);
+		//	AaBaCaaD21.xml cost: 8948 6892// avg.7920 ; card: 24k
+		//AaBaCaaD21(myAW);
+		//	AaaBaCaD21.xml cost: 8645 12098// avg.10371 ; card: 24k
+		//AaaBaCaD21(myAW);
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(2k) = CD(6k) = D(2k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC22.xml cost: 4027 4884// avg.4456 ;card: 8k 
+		//AaaBaaC22(myAW); 
+		//	BaaCaaD22.xml cost: 4353 4573 // avg.4463 ; card: 12k
+		//BaaCaaD22(myAW);
+		//	AaBaCaaD22.xml cost: 8512 9060// avg.8786 ; card: 24k
+		//AaBaCaaD22(myAW);
+		//	AaaBaCaD22.xml cost: 13712 11497 // avg.12605 ; card: 24k
+		//AaaBaCaD22(myAW);
+		
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(1k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC23.xml cost: 4644 4948// avg.4796 ;card: 12k 
+		AaaBaaC23(myAW); 
+		//	BaaCaaD23.xml cost: 1530 1358// avg.1444 ; card: 4k
+		//BaaCaaD23(myAW);
+		//	AaBaCaaD23.xml cost: 1605 2431// avg.2018 ; card: 8k
+		//AaBaCaaD23(myAW);
+		//	AaaBaCaD23.xml cost: 3852 4215// avg.4034 ; card: 8k
+		//AaaBaCaD23(myAW);
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(2k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC24.xml cost: 3536 3889// avg.3713 ;card: 12k 
+		//AaaBaaC24(myAW); 
+		//	BaaCaaD24.xml cost: 1948 2270 // avg.2109	; card: 8k
+		//BaaCaaD24(myAW);
+		//	AaBaCaaD24.xml cost: 3704 3246// avg.3475 ; card: 16k
+		//AaBaCaaD24(myAW);
+		//	AaaBaCaD24.xml cost: 7039 6379// avg.6709 ; card: 16k
+		//AaaBaCaD24(myAW);
+
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(3k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC25.xml cost: 4801 5206// avg.5004 ;card: 12k 
+		//AaaBaaC25(myAW); 
+		//	BaaCaaD25.xml cost: 2627 3942 // avg.3285	; card: 12k
+		//BaaCaaD25(myAW);
+		//	AaBaCaaD25.xml cost: 5555 5881// avg.5718 ; card: 24k
+		//AaBaCaaD25(myAW);
+		//	AaaBaCaD25.xml cost: 8159 8955// avg.8557; card: 24k
+		//AaaBaCaD25(myAW);		
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(4k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC26.xml cost: 4483 5153// avg.4818 ;card: 12k 
+		//AaaBaaC26(myAW); 
+		//	BaaCaaD26.xml cost: 3628 4179 // avg.3904	; card: 16k
+		//BaaCaaD26(myAW);
+		//	AaBaCaaD26.xml cost: 5964 6704// avg.6334 ; card: 32k
+		//AaBaCaaD26(myAW);
+		//	AaaBaCaD26.xml cost: 9083 8896// avg.8990 ; card: 32k (proportionally)
+		//AaaBaCaD26(myAW);		
+
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(5k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC27.xml cost: 4811 5239// avg.5025 ;card: 12k 
+		//AaaBaaC27(myAW); 
+		//	BaaCaaD27.xml cost: 4210 5786 // avg.4998	; card: 20k
+		//BaaCaaD27(myAW);
+		//	AaBaCaaD27.xml cost: 7107 7043// avg.7075 ; card: 40k
+		//AaBaCaaD27(myAW);
+		//	AaaBaCaD27.xml cost: 10812 12840// avg.11826 ; card: 40k (proportionally)
+		//AaaBaCaD27(myAW);	
+		
+		/* 
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(8k) = D(1.5k)
+		 * B=5k; C=2k
+		 * 	  = running time: +  sec (%)
+		 *    - [AB = BC] = CD: [] +  =  sec <*****
+		 *    - AB = [BC=CD]:  + [] =   sec		
+		 *    ==> findings: what really matters is a fan out ratio on the other side
+		 */
+		//	AaaBaaC28.xml cost: 4972 4677// avg.4825 ;card: 12k 
+		//AaaBaaC28(myAW); 
+		//	BaaCaaD28.xml cost: 4298 5612 // avg.4955	; card: 24k
+		//BaaCaaD28(myAW);
+		//	AaBaCaaD28.xml cost: 9226 9020// avg.9123 ; card: 48k
+		//AaBaCaaD28(myAW);
+		//	AaaBaCaD28.xml cost: 17737 17187// avg.17462 ; card: 48k (proportionally)
+		//AaaBaCaD28(myAW);	
 		
 		System.out.println("Done");
 		
 	}
+	private static void AaBaCaaD28(QueryManager myAW){	
+		File AaBaCaaD28 = new File("./results/AaBaCaaD28.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD28 + ".DID, " + ABCD.AaaBaaC28 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD28 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC28 + " " + 
+				"ON " + ABCD.AaaBaaC28 + ".CID = " + ABCD.CaaD28 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD28);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD28.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD28);
+	}
+	private static void AaaBaCaD28(QueryManager myAW){	
+		File AaaBaCaD28 = new File("./results/AaaBaCaD28.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB28 + ".AID, " + ABCD.BaaCaaD28 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB28 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD28 + " " + 
+				"ON " + ABCD.BaaCaaD28 + ".BID = " + ABCD.AaaB28 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD28);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD28.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD28);
+	}
+	private static void AaaBaaC28(QueryManager myAW){	
+		File AaaBaaC28 = new File("./results/AaaBaaC28.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB28 + ".AID, " + ABCD.BaaC28 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB28 + " " + 
+				"INNER JOIN " + ABCD.BaaC28 + " " + 
+				"ON " + ABCD.BaaC28 + ".BID = " + ABCD.AaaB28 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC28);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC28.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC28);
+	}
+	private static void BaaCaaD28(QueryManager myAW){	
+		File BaaCaaD28 = new File("./results/BaaCaaD28.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC28+ ".BID, " + ABCD.CaaD28+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC28 + " " + 
+				"INNER JOIN " + ABCD.CaaD28 + " " + 
+				"ON " + ABCD.CaaD28 + ".CID = " + ABCD.BaaC28 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD28);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD28.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD28);
+	}
+	
+	private static void AaBaCaaD27(QueryManager myAW){	
+		File AaBaCaaD27 = new File("./results/AaBaCaaD27.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD27 + ".DID, " + ABCD.AaaBaaC27 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD27 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC27 + " " + 
+				"ON " + ABCD.AaaBaaC27 + ".CID = " + ABCD.CaaD27 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD27);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD27.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD27);
+	}
+	private static void AaaBaCaD27(QueryManager myAW){	
+		File AaaBaCaD27 = new File("./results/AaaBaCaD27.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB27 + ".AID, " + ABCD.BaaCaaD27 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB27 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD27 + " " + 
+				"ON " + ABCD.BaaCaaD27 + ".BID = " + ABCD.AaaB27 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD27);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD27.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD27);
+	}
+	private static void AaaBaaC27(QueryManager myAW){	
+		File AaaBaaC27 = new File("./results/AaaBaaC27.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB27 + ".AID, " + ABCD.BaaC27 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB27 + " " + 
+				"INNER JOIN " + ABCD.BaaC27 + " " + 
+				"ON " + ABCD.BaaC27 + ".BID = " + ABCD.AaaB27 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC27);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC27.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC27);
+	}
+	private static void BaaCaaD27(QueryManager myAW){	
+		File BaaCaaD27 = new File("./results/BaaCaaD27.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC27+ ".BID, " + ABCD.CaaD27+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC27 + " " + 
+				"INNER JOIN " + ABCD.CaaD27 + " " + 
+				"ON " + ABCD.CaaD27 + ".CID = " + ABCD.BaaC27 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD27);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD27.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD27);
+	}	
+	
+	private static void AaBaCaaD26(QueryManager myAW){	
+		File AaBaCaaD26 = new File("./results/AaBaCaaD26.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD26 + ".DID, " + ABCD.AaaBaaC26 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD26 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC26 + " " + 
+				"ON " + ABCD.AaaBaaC26 + ".CID = " + ABCD.CaaD26 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD26);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD26.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD26);
+	}
+	private static void AaaBaCaD26(QueryManager myAW){	
+		File AaaBaCaD26 = new File("./results/AaaBaCaD26.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB26 + ".AID, " + ABCD.BaaCaaD26 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB26 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD26 + " " + 
+				"ON " + ABCD.BaaCaaD26 + ".BID = " + ABCD.AaaB26 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD26);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD26.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD26);
+	}
+	private static void AaaBaaC26(QueryManager myAW){	
+		File AaaBaaC26 = new File("./results/AaaBaaC26.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB26 + ".AID, " + ABCD.BaaC26 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB26 + " " + 
+				"INNER JOIN " + ABCD.BaaC26 + " " + 
+				"ON " + ABCD.BaaC26 + ".BID = " + ABCD.AaaB26 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC26);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC26.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC26);
+	}
+	private static void BaaCaaD26(QueryManager myAW){	
+		File BaaCaaD26 = new File("./results/BaaCaaD26.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC26+ ".BID, " + ABCD.CaaD26+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC26 + " " + 
+				"INNER JOIN " + ABCD.CaaD26 + " " + 
+				"ON " + ABCD.CaaD26 + ".CID = " + ABCD.BaaC26 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD26);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD26.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD26);
+	}	
+	
+	private static void AaBaCaaD25(QueryManager myAW){	
+		File AaBaCaaD25 = new File("./results/AaBaCaaD25.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD25 + ".DID, " + ABCD.AaaBaaC25 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD25 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC25 + " " + 
+				"ON " + ABCD.AaaBaaC25 + ".CID = " + ABCD.CaaD25 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD25);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD25.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD25);
+	}
+	private static void AaaBaCaD25(QueryManager myAW){	
+		File AaaBaCaD25 = new File("./results/AaaBaCaD25.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB25 + ".AID, " + ABCD.BaaCaaD25 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB25 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD25 + " " + 
+				"ON " + ABCD.BaaCaaD25 + ".BID = " + ABCD.AaaB25 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD25);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD25.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD25);
+	}
+	private static void AaaBaaC25(QueryManager myAW){	
+		File AaaBaaC25 = new File("./results/AaaBaaC25.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB25 + ".AID, " + ABCD.BaaC25 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB25 + " " + 
+				"INNER JOIN " + ABCD.BaaC25 + " " + 
+				"ON " + ABCD.BaaC25 + ".BID = " + ABCD.AaaB25 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC25);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC25.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC25);
+	}
+	private static void BaaCaaD25(QueryManager myAW){	
+		File BaaCaaD25 = new File("./results/BaaCaaD25.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC25+ ".BID, " + ABCD.CaaD25+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC25 + " " + 
+				"INNER JOIN " + ABCD.CaaD25 + " " + 
+				"ON " + ABCD.CaaD25 + ".CID = " + ABCD.BaaC25 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD25);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD25.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD25);
+	}		
+	
+	private static void AaBaCaaD24(QueryManager myAW){	
+		File AaBaCaaD24 = new File("./results/AaBaCaaD24.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD24 + ".DID, " + ABCD.AaaBaaC24 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD24 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC24 + " " + 
+				"ON " + ABCD.AaaBaaC24 + ".CID = " + ABCD.CaaD24 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD24);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD24.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD24);
+	}
+	private static void AaaBaCaD24(QueryManager myAW){	
+		File AaaBaCaD24 = new File("./results/AaaBaCaD24.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB24 + ".AID, " + ABCD.BaaCaaD24 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB24 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD24 + " " + 
+				"ON " + ABCD.BaaCaaD24 + ".BID = " + ABCD.AaaB24 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD24);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD24.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD24);
+	}
+	private static void AaaBaaC24(QueryManager myAW){	
+		File AaaBaaC24 = new File("./results/AaaBaaC24.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB24 + ".AID, " + ABCD.BaaC24 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB24 + " " + 
+				"INNER JOIN " + ABCD.BaaC24 + " " + 
+				"ON " + ABCD.BaaC24 + ".BID = " + ABCD.AaaB24 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC24);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC24.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC24);
+	}
+	private static void BaaCaaD24(QueryManager myAW){	
+		File BaaCaaD24 = new File("./results/BaaCaaD24.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC24+ ".BID, " + ABCD.CaaD24+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC24 + " " + 
+				"INNER JOIN " + ABCD.CaaD24 + " " + 
+				"ON " + ABCD.CaaD24 + ".CID = " + ABCD.BaaC24 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD24);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD24.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD24);
+	}	
+	
+	
+	private static void AaBaCaaD23(QueryManager myAW){	
+		File AaBaCaaD23 = new File("./results/AaBaCaaD23.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD23 + ".DID, " + ABCD.AaaBaaC23 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD23 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC23 + " " + 
+				"ON " + ABCD.AaaBaaC23 + ".CID = " + ABCD.CaaD23 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD23);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD23.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD23);
+	}
+	private static void AaaBaCaD23(QueryManager myAW){	
+		File AaaBaCaD23 = new File("./results/AaaBaCaD23.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB23 + ".AID, " + ABCD.BaaCaaD23 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB23 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD23 + " " + 
+				"ON " + ABCD.BaaCaaD23 + ".BID = " + ABCD.AaaB23 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD23);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD23.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD23);
+	}
+	private static void AaaBaaC23(QueryManager myAW){	
+		File AaaBaaC23 = new File("./results/AaaBaaC23.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB23 + ".AID, " + ABCD.BaaC23 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB23 + " " + 
+				"INNER JOIN " + ABCD.BaaC23 + " " + 
+				"ON " + ABCD.BaaC23 + ".BID = " + ABCD.AaaB23 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC23);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC23.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC23);
+	}
+	private static void BaaCaaD23(QueryManager myAW){	
+		File BaaCaaD23 = new File("./results/BaaCaaD23.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC23 + ".BID, " + ABCD.CaaD23 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC23 + " " + 
+				"INNER JOIN " + ABCD.CaaD23 + " " + 
+				"ON " + ABCD.CaaD23 + ".CID = " + ABCD.BaaC23 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD23);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD23.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD23);
+	}	
+
+	
+	
+	private static void AaBaCaaD22(QueryManager myAW){	
+		File AaBaCaaD22 = new File("./results/AaBaCaaD22.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD22 + ".DID, " + ABCD.AaaBaaC22 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD22 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC22 + " " + 
+				"ON " + ABCD.AaaBaaC22 + ".CID = " + ABCD.CaaD22 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD22);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD22.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD22);
+	}
+	private static void AaaBaCaD22(QueryManager myAW){	
+		File AaaBaCaD22 = new File("./results/AaaBaCaD22.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB22 + ".AID, " + ABCD.BaaCaaD22 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB22 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD22 + " " + 
+				"ON " + ABCD.BaaCaaD22 + ".BID = " + ABCD.AaaB22 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD22);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD22.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD22);
+	}
+	private static void AaaBaaC22(QueryManager myAW){	
+		File AaaBaaC22 = new File("./results/AaaBaaC22.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB22 + ".AID, " + ABCD.BaaC22 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB22 + " " + 
+				"INNER JOIN " + ABCD.BaaC22 + " " + 
+				"ON " + ABCD.BaaC22 + ".BID = " + ABCD.AaaB22 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC22);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC22.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC22);
+	}
+	private static void BaaCaaD22(QueryManager myAW){	
+		File BaaCaaD22 = new File("./results/BaaCaaD22.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC22 + ".BID, " + ABCD.CaaD22 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC22 + " " + 
+				"INNER JOIN " + ABCD.CaaD22 + " " + 
+				"ON " + ABCD.CaaD22 + ".CID = " + ABCD.BaaC22 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD22);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD22.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD22);
+	}	
+	
+	private static void AaBaCaaD21(QueryManager myAW){	
+		File AaBaCaaD21 = new File("./results/AaBaCaaD21.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD21 + ".DID, " + ABCD.AaaBaaC21 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD21 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC21 + " " + 
+				"ON " + ABCD.AaaBaaC21 + ".CID = " + ABCD.CaaD21 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD21);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD21.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD21);
+	}
+	private static void AaaBaCaD21(QueryManager myAW){	
+		File AaaBaCaD21 = new File("./results/AaaBaCaD21.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB21 + ".AID, " + ABCD.BaaCaaD21 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB21 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD21 + " " + 
+				"ON " + ABCD.BaaCaaD21 + ".BID = " + ABCD.AaaB21 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD21);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD21.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD21);
+	}
+	private static void AaaBaaC21(QueryManager myAW){	
+		File AaaBaaC21 = new File("./results/AaaBaaC21.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB21 + ".AID, " + ABCD.BaaC21 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB21 + " " + 
+				"INNER JOIN " + ABCD.BaaC21 + " " + 
+				"ON " + ABCD.BaaC21 + ".BID = " + ABCD.AaaB21 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC21);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC21.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC21);
+	}
+	private static void BaaCaaD21(QueryManager myAW){	
+		File BaaCaaD21 = new File("./results/BaaCaaD21.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC21 + ".BID, " + ABCD.CaaD21 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC21 + " " + 
+				"INNER JOIN " + ABCD.CaaD21 + " " + 
+				"ON " + ABCD.CaaD21 + ".CID = " + ABCD.BaaC21 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD21);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD21.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD21);
+	}
+	
+	private static void AaBaCaaD20(QueryManager myAW){	
+		File AaBaCaaD20 = new File("./results/AaBaCaaD20.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD20 + ".DID, " + ABCD.AaaBaaC20 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD20 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC20 + " " + 
+				"ON " + ABCD.AaaBaaC20 + ".CID = " + ABCD.CaaD20 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD20);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD20.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD20);
+	}
+	private static void AaaBaCaD20(QueryManager myAW){	
+		File AaaBaCaD20 = new File("./results/AaaBaCaD20.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB20 + ".AID, " + ABCD.BaaCaaD20 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB20 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD20 + " " + 
+				"ON " + ABCD.BaaCaaD20 + ".BID = " + ABCD.AaaB20 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD20);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD20.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD20);
+	}
+	private static void AaaBaaC20(QueryManager myAW){	
+		File AaaBaaC20 = new File("./results/AaaBaaC20.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB20 + ".AID, " + ABCD.BaaC20 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB20 + " " + 
+				"INNER JOIN " + ABCD.BaaC20 + " " + 
+				"ON " + ABCD.BaaC20 + ".BID = " + ABCD.AaaB20 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC20);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC20.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC20);
+	}
+	private static void BaaCaaD20(QueryManager myAW){	
+		File BaaCaaD20 = new File("./results/BaaCaaD20.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC20 + ".BID, " + ABCD.CaaD20 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC20 + " " + 
+				"INNER JOIN " + ABCD.CaaD20 + " " + 
+				"ON " + ABCD.CaaD20 + ".CID = " + ABCD.BaaC20 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD20);
+		//myAW.WriteCSV("./Data_ABCD/BaaCaaD20.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD20);
+	}	
 	
 	private static void AaBaCaaD19(QueryManager myAW){	
 		File AaBaCaaD19 = new File("./results/AaBaCaaD19.xml"); 
