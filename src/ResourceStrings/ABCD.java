@@ -337,4 +337,15 @@ public class ABCD {
 	public static final String AaaBaaC28_FP = "./Data_ABCD/AaaBaaC28.csv";
 	public static final String BaaCaaD28 = "BaaCaaD28";
 	public static final String BaaCaaD28_FP = "./Data_ABCD/BaaCaaD28.csv";
+	
+	public static final String AaaB99 = "AaaB99";
+	public static final String AaaB99_FP = "./Data_ABCD/AaaB99.csv";
+	public static final String BaaC99 = "BaaC99";
+	public static final String BaaC99_FP = "./Data_ABCD/BaaC99.csv";
+	public static final String CaaD99 = "CaaD99";
+	public static final String CaaD99_FP = "./Data_ABCD/CaaD99.csv";
+	public static final String AaaBaaC99 = "AaaBaaC99";
+	public static final String AaaBaaC99_FP = "./Data_ABCD/AaaBaaC99.csv";
+	public static final String BaaCaaD99 = "BaaCaaD99";
+	public static final String BaaCaaD99_FP = "./Data_ABCD/BaaCaaD99.csv";
 }

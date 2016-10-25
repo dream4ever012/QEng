@@ -445,7 +445,7 @@ public class ABCD_shortPaper {
 		//AaaBaCaD27(myAW);	
 		
 		/* 
-		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(8k) = D(1.5k)
+		 * A(3k) = AB(6k) = B(3k) = BC(6k) = C(1.5k) = CD(6k) = D(1.5k)
 		 * B=5k; C=2k
 		 * 	  = running time: +  sec (%)
 		 *    - [AB = BC] = CD: [] +  =  sec <*****
@@ -461,9 +461,39 @@ public class ABCD_shortPaper {
 		//	AaaBaCaD28.xml cost: 17737 17187// avg.17462 ; card: 48k (proportionally)
 		//AaaBaCaD28(myAW);	
 		
+		AaaBaaC99(myAW); 
+		BaaCaaD99(myAW);
+		
 		System.out.println("Done");
 		
 	}
+	
+	
+	private static void AaaBaaC99(QueryManager myAW){	
+		File AaaBaaC99 = new File("./results/AaaBaaC99.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB99 + ".AID, " + ABCD.BaaC99 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB99 + " " + 
+				"INNER JOIN " + ABCD.BaaC99 + " " + 
+				"ON " + ABCD.BaaC99 + ".BID = " + ABCD.AaaB99 + ".BID"; 
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC99);
+		myAW.WriteCSV("./Data_ABCD/AaaBaaC99.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC99);
+	}
+	private static void BaaCaaD99(QueryManager myAW){	
+		File BaaCaaD99 = new File("./results/BaaCaaD99.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC99+ ".BID, " + ABCD.CaaD99+ ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.BaaC99 + " " + 
+				"INNER JOIN " + ABCD.CaaD99 + " " + 
+				"ON " + ABCD.CaaD99 + ".CID = " + ABCD.BaaC99 + ".CID"; 
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD99);
+		myAW.WriteCSV("./Data_ABCD/BaaCaaD99.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BaaCaaD99);
+	}
+	
 	private static void AaBaCaaD28(QueryManager myAW){	
 		File AaBaCaaD28 = new File("./results/AaBaCaaD28.xml"); 
 		SQLString =
