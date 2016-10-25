@@ -13,5 +13,8 @@ public class OS {
 	// for DDS
 	public static final String User_DDS = "Tiqi2";
 	public static final String User_ABCD = "Tiqi3";
+	public static final String User_ABCD4 = "Tiqi4";
 	public static final String User_ABCD1 = "Tiqi1";
+	public static final String User_ABCD5 = "Tiqi5";
+	
 }
