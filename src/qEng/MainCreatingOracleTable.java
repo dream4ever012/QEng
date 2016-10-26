@@ -161,7 +161,7 @@ public class MainCreatingOracleTable {
 
 			CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
 			CreateTablesInMemoryABCD.registerTMABCD6(myAW);
-			
+/*			
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.A2k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaB99);
 //			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.B1k);
@@ -173,6 +173,15 @@ public class MainCreatingOracleTable {
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.C3k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.CaaD99);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.D1k);
+*/			
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaB98);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.BaaC98);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.CaaD98);
+			
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaBaaC99);
+//			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.BaaCaaD99);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaBaaC98);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.BaaCaaD98);
 			
 			//read CSV trace matrix
 //			String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
@@ -180,7 +189,7 @@ public class MainCreatingOracleTable {
 //			setupIsDone = true;
 			
 			//myAW.ImportSheet(SD.CP10kFP, SD.CP10kTableName);
-			//ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.CP10kTableName);
+			//ResultSetUtils.CreateOracleTable(myAW, myOA8, OS.URL, OS.User, OS.Pass, SD.CP10kTableName);
 			
 /*			myAW.ImportSheet(SD.SCP15kFP, SD.SCP15kTableName);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, SD.SCP15kTableName);
