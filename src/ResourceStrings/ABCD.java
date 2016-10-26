@@ -70,6 +70,8 @@ public class ABCD {
 	
 	public static final String A3k = "A3k";
 	public static final String A3k_FP = "./Data_ABCD/A3k.csv";
+	public static final String A4k = "A4k";
+	public static final String A4k_FP = "./Data_ABCD/A4k.csv";
 	public static final String B3k = "B3k";
 	public static final String B3k_FP = "./Data_ABCD/B3k.csv";
 	public static final String C1_5k = "C1_5k";
@@ -98,8 +100,14 @@ public class ABCD {
 	public static final String B2k_FP = "./Data_ABCD/B2k.csv";
 	public static final String C1k = "C1k";
 	public static final String C1k_FP = "./Data_ABCD/C1k.csv";
+	public static final String C10k = "C10k";
+	public static final String C10k_FP = "./Data_ABCD/C10k.csv";
+	public static final String C12k = "C12k";
+	public static final String C12k_FP = "./Data_ABCD/C12k.csv";
 	public static final String D1k = "D1k";
 	public static final String D1k_FP = "./Data_ABCD/D1k.csv";
+	public static final String D4k = "D4k";
+	public static final String D4k_FP = "./Data_ABCD/D4k.csv";
 	public static final String AaaB7 = "AaaB7";
 	public static final String AaaB7_FP = "./Data_ABCD/AaaB7.csv";
 	public static final String BaaC7 = "BaaC7";
@@ -337,6 +345,16 @@ public class ABCD {
 	public static final String AaaBaaC28_FP = "./Data_ABCD/AaaBaaC28.csv";
 	public static final String BaaCaaD28 = "BaaCaaD28";
 	public static final String BaaCaaD28_FP = "./Data_ABCD/BaaCaaD28.csv";
+	public static final String AaaB29 = "AaaB29";
+	public static final String AaaB29_FP = "./Data_ABCD/AaaB29.csv";
+	public static final String BaaC29 = "BaaC29";
+	public static final String BaaC29_FP = "./Data_ABCD/BaaC29.csv";
+	public static final String CaaD29 = "CaaD29";
+	public static final String CaaD29_FP = "./Data_ABCD/CaaD29.csv";
+	public static final String AaaBaaC29 = "AaaBaaC29";
+	public static final String AaaBaaC29_FP = "./Data_ABCD/AaaBaaC29.csv";
+	public static final String BaaCaaD29 = "BaaCaaD29";
+	public static final String BaaCaaD29_FP = "./Data_ABCD/BaaCaaD29.csv";
 	
 	public static final String AaaB99 = "AaaB99";
 	public static final String AaaB99_FP = "./Data_ABCD/AaaB99.csv";

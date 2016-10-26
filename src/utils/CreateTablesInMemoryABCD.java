@@ -391,17 +391,17 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.AaaBaaC28_FP, ABCD.AaaBaaC28);
 		myAW.importCSVAsTable(ABCD.BaaCaaD28_FP, ABCD.BaaCaaD28);
 		
-//		myAW.importCSVAsTable(ABCD.AaaB99_FP, ABCD.AaaB99);
-//		myAW.importCSVAsTable(ABCD.BaaC99_FP, ABCD.BaaC99);
-//		myAW.importCSVAsTable(ABCD.CaaD99_FP, ABCD.CaaD99);
-//		myAW.importCSVAsTable(ABCD.AaaBaaC99_FP, ABCD.AaaBaaC99);
-//		myAW.importCSVAsTable(ABCD.BaaCaaD99_FP, ABCD.BaaCaaD99);
+		myAW.importCSVAsTable(ABCD.AaaB99_FP, ABCD.AaaB99);
+		myAW.importCSVAsTable(ABCD.BaaC99_FP, ABCD.BaaC99);
+		myAW.importCSVAsTable(ABCD.CaaD99_FP, ABCD.CaaD99);
+		myAW.importCSVAsTable(ABCD.AaaBaaC99_FP, ABCD.AaaBaaC99);
+		myAW.importCSVAsTable(ABCD.BaaCaaD99_FP, ABCD.BaaCaaD99);
 		
 		myAW.importCSVAsTable(ABCD.AaaB98_FP, ABCD.AaaB98);
 		myAW.importCSVAsTable(ABCD.BaaC98_FP, ABCD.BaaC98);
 		myAW.importCSVAsTable(ABCD.CaaD98_FP, ABCD.CaaD98);
-//		myAW.importCSVAsTable(ABCD.AaaBaaC98_FP, ABCD.AaaBaaC98);
-//		myAW.importCSVAsTable(ABCD.BaaCaaD98_FP, ABCD.BaaCaaD98);
+		myAW.importCSVAsTable(ABCD.AaaBaaC98_FP, ABCD.AaaBaaC98);
+		myAW.importCSVAsTable(ABCD.BaaCaaD98_FP, ABCD.BaaCaaD98);
 		
 		System.out.println("table created: ABCD6");
 	}
@@ -431,6 +431,37 @@ public class CreateTablesInMemoryABCD {
 		myAW.RegisterTM(ABCD.AaaBaaC99, ABCD.A2k, "AID", ABCD.C3k, "CID");
 		myAW.RegisterTM(ABCD.BaaCaaD99, ABCD.B4k, "BID", ABCD.D1k, "DID");
 		System.out.println("Index created: ABCD6");
+		
+		
+	}
+	
+	public static void createTablesInMemoryABCD7(QueryManager myAW){
+		
+		myAW.importCSVAsTable(ABCD.A4k_FP, ABCD.A4k);
+		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
+		myAW.importCSVAsTable(ABCD.C10k_FP, ABCD.C10k);
+		myAW.importCSVAsTable(ABCD.D4k_FP, ABCD.D4k);
+
+		myAW.importCSVAsTable(ABCD.AaaB29_FP, ABCD.AaaB29);
+		myAW.importCSVAsTable(ABCD.BaaC29_FP, ABCD.BaaC29);
+		myAW.importCSVAsTable(ABCD.CaaD29_FP, ABCD.CaaD29);
+		
+//		myAW.importCSVAsTable(ABCD.AaaBaaC29_FP, ABCD.AaaBaaC29);
+//		myAW.importCSVAsTable(ABCD.BaaCaaD29_FP, ABCD.BaaCaaD29);
+		
+		System.out.println("table created: ABCD7");
+	}
+	
+	public static void registerTMABCD7(QueryManager myAW){
+		myAW.RegisterTM(ABCD.AaaB29, ABCD.A4k, "AID", ABCD.B4k, "BID");	
+		myAW.RegisterTM(ABCD.BaaC29, ABCD.B4k, "BID", ABCD.C10k, "CID");	
+		myAW.RegisterTM(ABCD.CaaD29, ABCD.C10k, "CID", ABCD.D4k, "DID");	
+
+		myAW.RegisterTM(ABCD.AaaBaaC29, ABCD.A4k, "AID", ABCD.C10k, "CID");	
+		myAW.RegisterTM(ABCD.BaaCaaD28, ABCD.B4k, "BID", ABCD.D4k, "DID");	
+
+		
+		System.out.println("Index created: ABCD7");
 		
 		
 	}
