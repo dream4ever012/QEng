@@ -56,7 +56,7 @@ public class ABCD_shortPaper {
 		//CreateTablesInMemoryABCD.createTablesInMemoryABCD5(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD5(myAW);
 
-		CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
+		//CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD6(myAW);
 		
 		CreateTablesInMemoryABCD.createTablesInMemoryABCD7(myAW);
@@ -473,28 +473,30 @@ public class ABCD_shortPaper {
 		//	AaaBaaC98.xml cost: 5672 5917
 		//AaaBaaC98(myAW);
 		//AaBaCaaD98.xml cost: 5286 7794 6280 4518
-		AaBaCaaD98(myAW);
+		//AaBaCaaD98(myAW);
 		
 		//	BaaCaaD98.xml cost: 5008 5279
 		//BaaCaaD98(myAW);
 		//	AaaBaCaD98.xml cost:  6665 9510 8771 8952
-		AaaBaCaD98(myAW);
+		//AaaBaCaD98(myAW);
 		
 		/* 
 		 * Predicate test: CAUTHOR ='Jane'
 		 * A(4k) = AB(6k) = B(4k) = BC(12k) = C(10k) = CD(11k) = D(4k)
 		 * (AB-BC)-CD: ; AB-(BC-CD):
 		 */
+		/*
+		 * WO/ predicate
+		 */
+		//	AaaBaaC29.xml cost: 8689 8998 8947
+		//AaaBaaC29(myAW);
+		//AaBaCaaD29.xml cost: 21620 23020 22607
+		//AaBaCaaD29(myAW);
 		
-		//	AaaBaaC28.xml cost: 5672 5917
-		//AaaBaaC98(myAW);
-		//AaBaCaaD28.xml cost: 8926 11003 6245 9894
-		//AaBaCaaD28(myAW);
-		
-		//	BaaCaaD98.xml cost: 5008 5279
-		//BaaCaaD98(myAW);
-		//	AaaBaCaD28.xml cost: 17803 17219
-		//AaaBaCaD28(myAW);	
+		//	BaaCaaD29.xml cost: 16152 14910 16546
+		//BaaCaaD29(myAW);
+		//	AaaBaCaD29.xml cost: 8871 9381 9886
+		//AaaBaCaD29(myAW);	
 		
 
 			
