@@ -459,16 +459,19 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.A4k_FP, ABCD.A4k);
 		myAW.importCSVAsTable(ABCD.B3k_FP, ABCD.B3k);
 		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
-		myAW.importCSVAsTable(ABCD.C9k0_1_FP, ABCD.C9k0_1);
-		myAW.importCSVAsTable(ABCD.C9k0_2_FP, ABCD.C9k0_2);
-		myAW.importCSVAsTable(ABCD.C9k0_3_FP, ABCD.C9k0_3);
-		myAW.importCSVAsTable(ABCD.C9k0_4_FP, ABCD.C9k0_4);
-		myAW.importCSVAsTable(ABCD.C9k0_5_FP, ABCD.C9k0_5);
-		myAW.importCSVAsTable(ABCD.C9k0_6_FP, ABCD.C9k0_6);
-		myAW.importCSVAsTable(ABCD.C9k0_7_FP, ABCD.C9k0_7);
-		myAW.importCSVAsTable(ABCD.C9k0_8_FP, ABCD.C9k0_8);
-		myAW.importCSVAsTable(ABCD.C9k0_9_FP, ABCD.C9k0_9);
-		myAW.importCSVAsTable(ABCD.C9k1_0_FP, ABCD.C9k1_0);
+		
+		myAW.importCSVAsTable(ABCD.C9k01_FP, ABCD.C9k01);
+
+//		myAW.importCSVAsTable(ABCD.C9k0_1_FP, ABCD.C9k0_1);
+//		myAW.importCSVAsTable(ABCD.C9k0_2_FP, ABCD.C9k0_2);
+//		myAW.importCSVAsTable(ABCD.C9k0_3_FP, ABCD.C9k0_3);
+//		myAW.importCSVAsTable(ABCD.C9k0_4_FP, ABCD.C9k0_4);
+//		myAW.importCSVAsTable(ABCD.C9k0_5_FP, ABCD.C9k0_5);
+//		myAW.importCSVAsTable(ABCD.C9k0_6_FP, ABCD.C9k0_6);
+//		myAW.importCSVAsTable(ABCD.C9k0_7_FP, ABCD.C9k0_7);
+//		myAW.importCSVAsTable(ABCD.C9k0_8_FP, ABCD.C9k0_8);
+//		myAW.importCSVAsTable(ABCD.C9k0_9_FP, ABCD.C9k0_9);
+//		myAW.importCSVAsTable(ABCD.C9k1_0_FP, ABCD.C9k1_0);
 		myAW.importCSVAsTable(ABCD.C10k_FP, ABCD.C10k);
 		myAW.importCSVAsTable(ABCD.D4k_FP, ABCD.D4k);
 
@@ -491,9 +494,38 @@ public class CreateTablesInMemoryABCD {
 		myAW.RegisterTM(ABCD.BaaCaaD29, ABCD.B4k, "BID", ABCD.D4k, "DID");	
 
 		
-		System.out.println("Index created: ABCD7");
+		System.out.println("Index created: ABCD7");		
+	}
+	
+	public static void createTablesInMemoryABCD8(QueryManager myAW){
 		
+		myAW.importCSVAsTable(ABCD.A4k_FP, ABCD.A4k);
+		myAW.importCSVAsTable(ABCD.B3k_FP, ABCD.B3k);
+		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
+		myAW.importCSVAsTable(ABCD.C9k0_1_FP, ABCD.C9k0_1);
+		myAW.importCSVAsTable(ABCD.C9k0_2_FP, ABCD.C9k0_2);
+		myAW.importCSVAsTable(ABCD.C9k0_3_FP, ABCD.C9k0_3);
+		myAW.importCSVAsTable(ABCD.C9k0_4_FP, ABCD.C9k0_4);
+		myAW.importCSVAsTable(ABCD.C9k0_5_FP, ABCD.C9k0_5);
+		myAW.importCSVAsTable(ABCD.C9k0_6_FP, ABCD.C9k0_6);
+		myAW.importCSVAsTable(ABCD.C9k0_7_FP, ABCD.C9k0_7);
+		myAW.importCSVAsTable(ABCD.C9k0_8_FP, ABCD.C9k0_8);
+		myAW.importCSVAsTable(ABCD.C9k0_9_FP, ABCD.C9k0_9);
+		myAW.importCSVAsTable(ABCD.C9k1_0_FP, ABCD.C9k1_0);
+		myAW.importCSVAsTable(ABCD.C10k_FP, ABCD.C10k);
+		myAW.importCSVAsTable(ABCD.D4k_FP, ABCD.D4k);
+
+		myAW.importCSVAsTable(ABCD.AaaB29_FP, ABCD.AaaB29);
+		myAW.importCSVAsTable(ABCD.BaaC29_FP, ABCD.BaaC29);
+		myAW.importCSVAsTable(ABCD.CaaD29_FP, ABCD.CaaD29);
+		myAW.importCSVAsTable(ABCD.AaaB30_FP, ABCD.AaaB30);
+		myAW.importCSVAsTable(ABCD.BaaC30_FP, ABCD.BaaC30);
+		myAW.importCSVAsTable(ABCD.CaaD30_FP, ABCD.CaaD30);
 		
+		myAW.importCSVAsTable(ABCD.AaaBaaC29_FP, ABCD.AaaBaaC29);
+		myAW.importCSVAsTable(ABCD.BaaCaaD29_FP, ABCD.BaaCaaD29);
+		
+		System.out.println("table created: ABCD7");
 	}
 	
 }

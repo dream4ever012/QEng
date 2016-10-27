@@ -59,8 +59,10 @@ public class ABCD_shortPaper {
 		//CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD6(myAW);
 		
-		CreateTablesInMemoryABCD.createTablesInMemoryABCD7(myAW);
+		//CreateTablesInMemoryABCD.createTablesInMemoryABCD7(myAW);
 		//CreateTablesInMemoryABCD.registerTMABCD7(myAW);
+		CreateTablesInMemoryABCD.createTablesInMemoryABCD8(myAW);
+		
 		
 		setupIsDone = true;
 		System.out.println("Setup Done");
@@ -498,8 +500,8 @@ public class ABCD_shortPaper {
 		//	AaaBaCaD29.xml cost: 8871 9381 9886
 		//AaaBaCaD29(myAW);	
 		
-		//BCaaCt30(myAW);
-			
+		BCaaCt30(myAW);
+		//BCaaCt29(myAW);
 		System.out.println("Done");
 		
 	}
@@ -543,14 +545,27 @@ public class ABCD_shortPaper {
 	private static void BCaaCt30(QueryManager myAW){	
 		File BCaaCt30 = new File("./results/BCaaCt30.xml"); 
 		SQLString =
-				"SELECT " + ABCD.BaaC30+ ".BID, " + ABCD.BaaC30+ ".CID" + " " +
+				"SELECT " + ABCD.BaaC30 + ".BID, " + ABCD.BaaC30+ ".CID" + " " +
 				"FROM " + ABCD.BaaC30 + " " + 
-				"WHERE " + ABCD.C9k0_5 + ".CAUTHOR = " + "Jane";
+				"INNER JOIN " + ABCD.C9k0_5 + " " +
+				"ON " + ABCD.C9k0_5 + ".CID = " + ABCD.BaaC30 + ".CID " +
+				"WHERE " + ABCD.C9k0_5 + ".CAUTHOR = Jane";
 		System.out.println(SQLString);
 		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BCaaCt30);
 		myAW.WriteCSV("./Data_ABCD/BCaaCt30.csv", SQLString);
 		//myAW.QueryToXML(SQLString, BCaaCt30);
-	}	
+	}
+	private static void BCaaCt29(QueryManager myAW){	
+		File BCaaCt29 = new File("./results/BCaaCt29.xml"); 
+		SQLString =
+				"SELECT *" + " " + 
+				"FROM " + ABCD.C9k0_5 + " " + 
+				"WHERE " + ABCD.C9k0_5 + ".CAUTHOR = 'Jane';";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BCaaCt29);
+		myAW.WriteCSV("./Data_ABCD/BCaaCt29.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BCaaCt29);
+	}
 	
 	private static void AaBaCaaD29(QueryManager myAW){	
 		File AaBaCaaD29 = new File("./results/AaBaCaaD29.xml"); 

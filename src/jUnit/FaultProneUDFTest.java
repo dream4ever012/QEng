@@ -87,9 +87,8 @@ public class FaultProneUDFTest {
 				//"WHERE " + CCTableName5k + ".CREATEDBY IS NOT NULL;";
 		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ1213);
 		myDB.QueryToXML(SQLString, TQ1213);
-
-
-		File TQ12 = new File("./results/TQ12.xml");
+		
+				File TQ12 = new File("./results/TQ12.xml");
 		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
 				"SELECT * " +
 				"FROM " + CCTableName5k + " " +
@@ -98,7 +97,10 @@ public class FaultProneUDFTest {
 				"WHERE " + CCTableName5k + ".CREATEDBY = 'Caleb';";
 		MeasureCostArbitrary.measureCostArbitrary(myDB, SQLString, TQ12);
 		myDB.QueryToXML(SQLString, TQ12);
-		 */
+ */
+
+
+		
 
 		File TQudfWhere = new File("./results/TQudfWhere.xml");
 		SQLString =  //"DROP TABLE TQ112 IF EXISTS; CREATE TABLE TQ112 AS " + //TEMPORARY
@@ -106,7 +108,7 @@ public class FaultProneUDFTest {
 				"FROM " + SD.CCTableName5k + " " +
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+				"WHERE " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQudfWhere);
 		myAW.QueryToXML(SQLString, TQudfWhere);
 

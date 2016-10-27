@@ -417,6 +417,8 @@ public class ABCD {
 	
 	public static final String C9k0_1 = "C9k0_1";
 	public static final String C9k0_1_FP = "./Data_ABCD/C9k0_1.csv";
+	public static final String C9k01 = "C9k01";
+	public static final String C9k01_FP = "./Data_ABCD/C9k01.csv";
 	public static final String C9k0_2 = "C9k0_2";
 	public static final String C9k0_2_FP = "./Data_ABCD/C9k0_2.csv";
 	public static final String C9k0_3 = "C9k0_3";
@@ -436,6 +438,8 @@ public class ABCD {
 	public static final String C9k1_0 = "C9k1_0";
 	public static final String C9k1_0_FP = "./Data_ABCD/C9k1_0.csv";
 	
+	public static final String AaaB30 = "AaaB30";
+	public static final String AaaB30_FP = "./Data_ABCD/AaaB30.csv";
 	public static final String BaaC30 = "BaaC30";
 	public static final String BaaC30_FP = "./Data_ABCD/BaaC30.csv";
 	public static final String CaaD30 = "CaaD30";
