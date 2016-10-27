@@ -414,4 +414,35 @@ public class ABCD {
 	public static final String AaaBaaC98_FP = "./Data_ABCD/AaaBaaC98.csv";
 	public static final String BaaCaaD98 = "BaaCaaD98";
 	public static final String BaaCaaD98_FP = "./Data_ABCD/BaaCaaD98.csv";
+	
+	public static final String C9k0_1 = "C9k0_1";
+	public static final String C9k0_1_FP = "./Data_ABCD/C9k0_1.csv";
+	public static final String C9k0_2 = "C9k0_2";
+	public static final String C9k0_2_FP = "./Data_ABCD/C9k0_2.csv";
+	public static final String C9k0_3 = "C9k0_3";
+	public static final String C9k0_3_FP = "./Data_ABCD/C9k0_3.csv";
+	public static final String C9k0_4 = "C9k0_4";
+	public static final String C9k0_4_FP = "./Data_ABCD/C9k0_4.csv";
+	public static final String C9k0_5 = "C9k0_5";
+	public static final String C9k0_5_FP = "./Data_ABCD/C9k0_5.csv";
+	public static final String C9k0_6 = "C9k0_6";
+	public static final String C9k0_6_FP = "./Data_ABCD/C9k0_6.csv";
+	public static final String C9k0_7 = "C9k0_7";
+	public static final String C9k0_7_FP = "./Data_ABCD/C9k0_7.csv";
+	public static final String C9k0_8 = "C9k0_8";
+	public static final String C9k0_8_FP = "./Data_ABCD/C9k0_8.csv";
+	public static final String C9k0_9 = "C9k0_9";
+	public static final String C9k0_9_FP = "./Data_ABCD/C9k0_9.csv";
+	public static final String C9k1_0 = "C9k1_0";
+	public static final String C9k1_0_FP = "./Data_ABCD/C9k1_0.csv";
+	
+	public static final String BaaC30 = "BaaC30";
+	public static final String BaaC30_FP = "./Data_ABCD/BaaC30.csv";
+	public static final String CaaD30 = "CaaD30";
+	public static final String CaaD30_FP = "./Data_ABCD/CaaD30.csv";
+	public static final String AaaBaaC30 = "AaaBaaC30";
+	public static final String AaaBaaC30_FP = "./Data_ABCD/AaaBaaC30.csv";
+	public static final String BaaCaaD30 = "BaaCaaD30";
+	public static final String BaaCaaD30_FP = "./Data_ABCD/BaaCaaD30.csv";
+
 }

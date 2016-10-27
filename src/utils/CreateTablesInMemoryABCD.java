@@ -139,7 +139,6 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.AaaB_B6k_FP, ABCD.AaaB_B6k);
 		myAW.importCSVAsTable(ABCD.BaaC_B6k_FP, ABCD.BaaC_B6k);
 		myAW.importCSVAsTable(ABCD.CaaD_B6k_FP, ABCD.CaaD_B6k);
-//		/
 		
 		myAW.importCSVAsTable(ABCD.AaaBaaC7_FP, ABCD.AaaBaaC7);
 		myAW.importCSVAsTable(ABCD.BaaCaaD7_FP, ABCD.BaaCaaD7);
@@ -458,7 +457,18 @@ public class CreateTablesInMemoryABCD {
 	public static void createTablesInMemoryABCD7(QueryManager myAW){
 		
 		myAW.importCSVAsTable(ABCD.A4k_FP, ABCD.A4k);
+		myAW.importCSVAsTable(ABCD.B3k_FP, ABCD.B3k);
 		myAW.importCSVAsTable(ABCD.B4k_FP, ABCD.B4k);
+		myAW.importCSVAsTable(ABCD.C9k0_1_FP, ABCD.C9k0_1);
+		myAW.importCSVAsTable(ABCD.C9k0_2_FP, ABCD.C9k0_2);
+		myAW.importCSVAsTable(ABCD.C9k0_3_FP, ABCD.C9k0_3);
+		myAW.importCSVAsTable(ABCD.C9k0_4_FP, ABCD.C9k0_4);
+		myAW.importCSVAsTable(ABCD.C9k0_5_FP, ABCD.C9k0_5);
+		myAW.importCSVAsTable(ABCD.C9k0_6_FP, ABCD.C9k0_6);
+		myAW.importCSVAsTable(ABCD.C9k0_7_FP, ABCD.C9k0_7);
+		myAW.importCSVAsTable(ABCD.C9k0_8_FP, ABCD.C9k0_8);
+		myAW.importCSVAsTable(ABCD.C9k0_9_FP, ABCD.C9k0_9);
+		myAW.importCSVAsTable(ABCD.C9k1_0_FP, ABCD.C9k1_0);
 		myAW.importCSVAsTable(ABCD.C10k_FP, ABCD.C10k);
 		myAW.importCSVAsTable(ABCD.D4k_FP, ABCD.D4k);
 

@@ -498,12 +498,60 @@ public class ABCD_shortPaper {
 		//	AaaBaCaD29.xml cost: 8871 9381 9886
 		//AaaBaCaD29(myAW);	
 		
-
+		//BCaaCt30(myAW);
 			
 		System.out.println("Done");
 		
 	}
 
+	private static void AaBaCaaD30(QueryManager myAW){	
+		File AaBaCaaD29 = new File("./results/AaBaCaaD29.xml"); 
+		SQLString =
+				"SELECT " + ABCD.CaaD29 + ".DID, " + ABCD.AaaBaaC29 + ".AID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.CaaD29 + " " + 
+				"INNER JOIN " + ABCD.AaaBaaC29 + " " + 
+				"ON " + ABCD.AaaBaaC29 + ".CID = " + ABCD.CaaD29 + ".CID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD29);
+		//myAW.WriteCSV("./Data_ABCD/AaBaCaaD29.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaBaCaaD29);
+	}
+	private static void AaaBaCaD30(QueryManager myAW){	
+		File AaaBaCaD29 = new File("./results/AaaBaCaD29.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB29 + ".AID, " + ABCD.BaaCaaD29 + ".DID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB29 + " " + 
+				"INNER JOIN " + ABCD.BaaCaaD29 + " " + 
+				"ON " + ABCD.BaaCaaD29 + ".BID = " + ABCD.AaaB29 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaCaD29);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaCaD29.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaCaD29);
+	}
+	private static void AaaBaaC30(QueryManager myAW){	
+		File AaaBaaC29 = new File("./results/AaaBaaC29.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB29 + ".AID, " + ABCD.BaaC29 + ".CID" + " " + //COUNT(*) " + // "  + 
+				"FROM " + ABCD.AaaB29 + " " + 
+				"INNER JOIN " + ABCD.BaaC29 + " " + 
+				"ON " + ABCD.BaaC29 + ".BID = " + ABCD.AaaB29 + ".BID"; 
+		System.out.println(SQLString);
+		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaaBaaC29);
+		//myAW.WriteCSV("./Data_ABCD/AaaBaaC29.csv", SQLString);
+		//myAW.QueryToXML(SQLString, AaaBaaC29);
+	}
+	private static void BCaaCt30(QueryManager myAW){	
+		File BCaaCt30 = new File("./results/BCaaCt30.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC30+ ".BID, " + ABCD.BaaC30+ ".CID" + " " +
+				"FROM " + ABCD.BaaC30 + " " + 
+				"WHERE " + ABCD.C9k0_5 + ".CAUTHOR = " + "Jane";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BCaaCt30);
+		myAW.WriteCSV("./Data_ABCD/BCaaCt30.csv", SQLString);
+		//myAW.QueryToXML(SQLString, BCaaCt30);
+	}	
+	
 	private static void AaBaCaaD29(QueryManager myAW){	
 		File AaBaCaaD29 = new File("./results/AaBaCaaD29.xml"); 
 		SQLString =
