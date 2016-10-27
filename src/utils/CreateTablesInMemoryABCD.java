@@ -121,6 +121,26 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.BaaC8_FP, ABCD.BaaC8);
 		myAW.importCSVAsTable(ABCD.CaaD8_FP, ABCD.CaaD8);
 		
+		myAW.importCSVAsTable(ABCD.AaaB_B1k_FP, ABCD.AaaB_B1k);
+		myAW.importCSVAsTable(ABCD.BaaC_B1k_FP, ABCD.BaaC_B1k);
+		myAW.importCSVAsTable(ABCD.CaaD_B1k_FP, ABCD.CaaD_B1k);
+		myAW.importCSVAsTable(ABCD.AaaB_B2k_FP, ABCD.AaaB_B2k);
+		myAW.importCSVAsTable(ABCD.BaaC_B2k_FP, ABCD.BaaC_B2k);
+		myAW.importCSVAsTable(ABCD.CaaD_B2k_FP, ABCD.CaaD_B2k);
+		myAW.importCSVAsTable(ABCD.AaaB_B3k_FP, ABCD.AaaB_B3k);
+		myAW.importCSVAsTable(ABCD.BaaC_B3k_FP, ABCD.BaaC_B3k);
+		myAW.importCSVAsTable(ABCD.CaaD_B3k_FP, ABCD.CaaD_B3k);
+		myAW.importCSVAsTable(ABCD.AaaB_B4k_FP, ABCD.AaaB_B4k);
+		myAW.importCSVAsTable(ABCD.BaaC_B4k_FP, ABCD.BaaC_B4k);
+		myAW.importCSVAsTable(ABCD.CaaD_B4k_FP, ABCD.CaaD_B4k);
+		myAW.importCSVAsTable(ABCD.AaaB_B5k_FP, ABCD.AaaB_B5k);
+		myAW.importCSVAsTable(ABCD.BaaC_B5k_FP, ABCD.BaaC_B5k);
+		myAW.importCSVAsTable(ABCD.CaaD_B5k_FP, ABCD.CaaD_B5k);
+		myAW.importCSVAsTable(ABCD.AaaB_B6k_FP, ABCD.AaaB_B6k);
+		myAW.importCSVAsTable(ABCD.BaaC_B6k_FP, ABCD.BaaC_B6k);
+		myAW.importCSVAsTable(ABCD.CaaD_B6k_FP, ABCD.CaaD_B6k);
+//		/
+		
 		myAW.importCSVAsTable(ABCD.AaaBaaC7_FP, ABCD.AaaBaaC7);
 		myAW.importCSVAsTable(ABCD.BaaCaaD7_FP, ABCD.BaaCaaD7);
 		myAW.importCSVAsTable(ABCD.AaaBaaC8_FP, ABCD.AaaBaaC8);
