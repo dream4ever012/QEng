@@ -108,7 +108,7 @@ public class FaultProneUDFTest {
 				"FROM " + SD.CCTableName5k + " " +
 				"INNER JOIN " + SD.TMTableName5k + " " + 
 				"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-				"WHERE " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
+				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQudfWhere);
 		myAW.QueryToXML(SQLString, TQudfWhere);
 

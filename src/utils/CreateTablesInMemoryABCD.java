@@ -512,6 +512,42 @@ public class CreateTablesInMemoryABCD {
 		myAW.importCSVAsTable(ABCD.C9k0_8_FP, ABCD.C9k0_8);
 		myAW.importCSVAsTable(ABCD.C9k0_9_FP, ABCD.C9k0_9);
 		myAW.importCSVAsTable(ABCD.C9k1_0_FP, ABCD.C9k1_0);
+		myAW.importCSVAsTable(ABCD.BCaaCt28_FP, ABCD.BCaaCt28);
+
+		myAW.importCSVAsTable(ABCD.BCaaCt0_1_FP, ABCD.BCaaCt0_1);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_2_FP, ABCD.BCaaCt0_2);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_3_FP, ABCD.BCaaCt0_3);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_4_FP, ABCD.BCaaCt0_4);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_5_FP, ABCD.BCaaCt0_5);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_6_FP, ABCD.BCaaCt0_6);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_7_FP, ABCD.BCaaCt0_7);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_8_FP, ABCD.BCaaCt0_8);
+		myAW.importCSVAsTable(ABCD.BCaaCt0_9_FP, ABCD.BCaaCt0_9);
+		myAW.importCSVAsTable(ABCD.BCaaCt1_0_FP, ABCD.BCaaCt1_0);
+		
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_1_FP, ABCD.ABaaBCaCt0_1);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_2_FP, ABCD.ABaaBCaCt0_2);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_3_FP, ABCD.ABaaBCaCt0_3);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_4_FP, ABCD.ABaaBCaCt0_4);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_5_FP, ABCD.ABaaBCaCt0_5);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_6_FP, ABCD.ABaaBCaCt0_6);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_7_FP, ABCD.ABaaBCaCt0_7);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_8_FP, ABCD.ABaaBCaCt0_8);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt0_9_FP, ABCD.ABaaBCaCt0_9);
+		myAW.importCSVAsTable(ABCD.ABaaBCaCt1_0_FP, ABCD.ABaaBCaCt1_0);
+		
+		myAW.importCSVAsTable(ABCD.BCaCt0_1aaCD_FP, ABCD.BCaCt0_1aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_2aaCD_FP, ABCD.BCaCt0_2aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_3aaCD_FP, ABCD.BCaCt0_3aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_4aaCD_FP, ABCD.BCaCt0_4aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_5aaCD_FP, ABCD.BCaCt0_5aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_6aaCD_FP, ABCD.BCaCt0_6aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_7aaCD_FP, ABCD.BCaCt0_7aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_8aaCD_FP, ABCD.BCaCt0_8aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt0_9aaCD_FP, ABCD.BCaCt0_9aaCD);
+		myAW.importCSVAsTable(ABCD.BCaCt1_0aaCD_FP, ABCD.BCaCt1_0aaCD);
+		
+		
 		myAW.importCSVAsTable(ABCD.C10k_FP, ABCD.C10k);
 		myAW.importCSVAsTable(ABCD.D4k_FP, ABCD.D4k);
 

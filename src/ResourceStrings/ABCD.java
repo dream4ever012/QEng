@@ -438,6 +438,71 @@ public class ABCD {
 	public static final String C9k1_0 = "C9k1_0";
 	public static final String C9k1_0_FP = "./Data_ABCD/C9k1_0.csv";
 	
+	public static final String BCaaCt28 = "BCaaCt28";
+	public static final String BCaaCt28_FP = "./Data_ABCD/BCaaCt28.csv";
+	public static final String BCaaCt0_1 = "BCaaCt0_1";
+	public static final String BCaaCt0_1_FP = "./Data_ABCD/BCaaCt0_1.csv";
+	public static final String BCaaCt0_2 = "BCaaCt0_2";
+	public static final String BCaaCt0_2_FP = "./Data_ABCD/BCaaCt0_2.csv";
+	public static final String BCaaCt0_3 = "BCaaCt0_3";
+	public static final String BCaaCt0_3_FP = "./Data_ABCD/BCaaCt0_3.csv";
+	public static final String BCaaCt0_4 = "BCaaCt0_4";
+	public static final String BCaaCt0_4_FP = "./Data_ABCD/BCaaCt0_4.csv";
+	public static final String BCaaCt0_5 = "BCaaCt0_5";
+	public static final String BCaaCt0_5_FP = "./Data_ABCD/BCaaCt0_5.csv";
+	public static final String BCaaCt0_6 = "BCaaCt0_6";
+	public static final String BCaaCt0_6_FP = "./Data_ABCD/BCaaCt0_6.csv";
+	public static final String BCaaCt0_7 = "BCaaCt0_7";
+	public static final String BCaaCt0_7_FP = "./Data_ABCD/BCaaCt0_7.csv";
+	public static final String BCaaCt0_8 = "BCaaCt0_8";
+	public static final String BCaaCt0_8_FP = "./Data_ABCD/BCaaCt0_8.csv";
+	public static final String BCaaCt0_9 = "BCaaCt0_9";
+	public static final String BCaaCt0_9_FP = "./Data_ABCD/BCaaCt0_9.csv";
+	public static final String BCaaCt1_0 = "BCaaCt1_0";
+	public static final String BCaaCt1_0_FP = "./Data_ABCD/BCaaCt1_0.csv";
+	
+	public static final String ABaaBCaCt0_1 = "ABaaBCaCt0_1";
+	public static final String ABaaBCaCt0_1_FP = "./Data_ABCD/ABaaBCaCt0_1.csv";
+	public static final String ABaaBCaCt0_2 = "ABaaBCaCt0_2";
+	public static final String ABaaBCaCt0_2_FP = "./Data_ABCD/ABaaBCaCt0_2.csv";
+	public static final String ABaaBCaCt0_3 = "ABaaBCaCt0_3";
+	public static final String ABaaBCaCt0_3_FP = "./Data_ABCD/ABaaBCaCt0_3.csv";
+	public static final String ABaaBCaCt0_4 = "ABaaBCaCt0_4";
+	public static final String ABaaBCaCt0_4_FP = "./Data_ABCD/ABaaBCaCt0_4.csv";
+	public static final String ABaaBCaCt0_5 = "ABaaBCaCt0_5";
+	public static final String ABaaBCaCt0_5_FP = "./Data_ABCD/ABaaBCaCt0_5.csv";
+	public static final String ABaaBCaCt0_6 = "ABaaBCaCt0_6";
+	public static final String ABaaBCaCt0_6_FP = "./Data_ABCD/ABaaBCaCt0_6.csv";
+	public static final String ABaaBCaCt0_7 = "ABaaBCaCt0_7";
+	public static final String ABaaBCaCt0_7_FP = "./Data_ABCD/ABaaBCaCt0_7.csv";
+	public static final String ABaaBCaCt0_8 = "ABaaBCaCt0_8";
+	public static final String ABaaBCaCt0_8_FP = "./Data_ABCD/ABaaBCaCt0_8.csv";
+	public static final String ABaaBCaCt0_9 = "ABaaBCaCt0_9";
+	public static final String ABaaBCaCt0_9_FP = "./Data_ABCD/ABaaBCaCt0_9.csv";
+	public static final String ABaaBCaCt1_0 = "ABaaBCaCt1_0";
+	public static final String ABaaBCaCt1_0_FP = "./Data_ABCD/ABaaBCaCt1_0.csv";
+
+	public static final String BCaCt0_1aaCD = "BCaCt0_1aaCD";
+	public static final String BCaCt0_1aaCD_FP = "./Data_ABCD/BCaCt0_1aaCD.csv";
+	public static final String BCaCt0_2aaCD = "BCaCt0_2aaCD";
+	public static final String BCaCt0_2aaCD_FP = "./Data_ABCD/BCaCt0_2aaCD.csv";
+	public static final String BCaCt0_3aaCD = "BCaCt0_3aaCD";
+	public static final String BCaCt0_3aaCD_FP = "./Data_ABCD/BCaCt0_3aaCD.csv";
+	public static final String BCaCt0_4aaCD = "BCaCt0_4aaCD";
+	public static final String BCaCt0_4aaCD_FP = "./Data_ABCD/BCaCt0_4aaCD.csv";
+	public static final String BCaCt0_5aaCD = "BCaCt0_5aaCD";
+	public static final String BCaCt0_5aaCD_FP = "./Data_ABCD/BCaCt0_5aaCD.csv";
+	public static final String BCaCt0_6aaCD = "BCaCt0_6aaCD";
+	public static final String BCaCt0_6aaCD_FP = "./Data_ABCD/BCaCt0_6aaCD.csv";
+	public static final String BCaCt0_7aaCD = "BCaCt0_7aaCD";
+	public static final String BCaCt0_7aaCD_FP = "./Data_ABCD/BCaCt0_7aaCD.csv";
+	public static final String BCaCt0_8aaCD = "BCaCt0_8aaCD";
+	public static final String BCaCt0_8aaCD_FP = "./Data_ABCD/BCaCt0_8aaCD.csv";
+	public static final String BCaCt0_9aaCD = "BCaCt0_9aaCD";
+	public static final String BCaCt0_9aaCD_FP = "./Data_ABCD/BCaCt0_9aaCD.csv";
+	public static final String BCaCt1_0aaCD = "BCaCt1_0aaCD";
+	public static final String BCaCt1_0aaCD_FP = "./Data_ABCD/BCaCt1_0aaCD.csv";
+	
 	public static final String AaaB30 = "AaaB30";
 	public static final String AaaB30_FP = "./Data_ABCD/AaaB30.csv";
 	public static final String BaaC30 = "BaaC30";
@@ -448,5 +513,5 @@ public class ABCD {
 	public static final String AaaBaaC30_FP = "./Data_ABCD/AaaBaaC30.csv";
 	public static final String BaaCaaD30 = "BaaCaaD30";
 	public static final String BaaCaaD30_FP = "./Data_ABCD/BaaCaaD30.csv";
-
+	
 }
