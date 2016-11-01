@@ -599,7 +599,7 @@ public class ABCD_shortPaper {
 //		BCaCt0_8aaCD(myAW);
 		//	BCaCt0_9aaCD.xml cost: 25924
 //		BCaCt0_9aaCD(myAW);
-		//	BCaCt1_0aaCD.xml cost: 51692
+		//	BCaCt1_0aaCD.xml cost: 51692x`
 //		BCaCt1_0aaCD(myAW);
 		
 		//	ABaaaBCaCt0_1aaCD.xml cost: 1651 1701
@@ -617,8 +617,8 @@ public class ABCD_shortPaper {
 //		ABaaaBCaCt0_6aaCD(myAW);
 		//	ABaaaBCaCt0_7aaCD.xml cost: 9009 6461
 //		ABaaaBCaCt0_7aaCD(myAW);
-		//	ABaaaBCaCt0_8aaCD.xml cost: 7781 10197
-		ABaaaBCaCt0_8aaCD(myAW);
+		//	ABaaaBCaCt0_8aaCD.xml cost: 7781 : 8805
+//		ABaaaBCaCt0_8aaCD(myAW);
 		//	ABaaaBCaCt0_9aaCD.xml cost: 8729 9491
 //		ABaaaBCaCt0_9aaCD(myAW);
 		//	ABaaaBCaCt1_0aaCD.xml cost: 10286 9555
