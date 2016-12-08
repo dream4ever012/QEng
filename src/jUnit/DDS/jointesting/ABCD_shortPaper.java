@@ -624,9 +624,40 @@ public class ABCD_shortPaper {
 		//	ABaaaBCaCt1_0aaCD.xml cost: 10286 9555
 //		ABaaaBCaCt1_0aaCD(myAW);
 
+		// to create BaaCaaD wo/ predicate
+		//BaaCaaD30(myAW);
+		// 
+		AaBaCaaD30_1(myAW);
 		
 		System.out.println("Done");
 		
+	}
+	
+
+	private static void AaBaCaaD30_1(QueryManager myAW){	
+		File AaBaCaaD30_1 = new File("./results/AaBaCaaD30_1.xml"); 
+		SQLString =
+				"SELECT " + ABCD.AaaB30 + ".AID, " + ABCD.CaaD30+ ".DID" + " " +
+				"FROM " + ABCD.AaaB30 + " " + 
+				"INNER JOIN " + ABCD.BaaC30 + " " +
+				"ON " + ABCD.BaaC30 + ".BID = " + ABCD.AaaB30 + ".BID " +
+				"INNER JOIN " + ABCD.CaaD30 + " " +
+				"ON " + ABCD.CaaD30 + ".CID = " + ABCD.BaaC30 + ".CID";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, AaBaCaaD30_1);
+		myAW.WriteCSV("./Data_ABCD/AaBaCaaD30.csv", SQLString);
+	}
+	
+	private static void BaaCaaD30(QueryManager myAW){	
+		File BaaCaaD30 = new File("./results/BaaCaaD30.xml"); 
+		SQLString =
+				"SELECT " + ABCD.BaaC30 + ".BID, " + ABCD.CaaD30+ ".DID" + " " +
+				"FROM " + ABCD.BaaC30 + " " + 
+				"INNER JOIN " + ABCD.CaaD30 + " " +
+				"ON " + ABCD.CaaD30 + ".CID = " + ABCD.BaaC30 + ".CID";
+		System.out.println(SQLString);
+		//MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, BaaCaaD30);
+		myAW.WriteCSV("./Data_ABCD/BaaCaaD30.csv", SQLString);
 	}
 
 	private static void AaBaCaaD30(QueryManager myAW){	
