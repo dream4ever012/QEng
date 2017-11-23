@@ -111,6 +111,7 @@ public class FaultProneUDFTest {
 				"WHERE " + "FAULTPRONE(" + SD.CCTableName5k + ".CLASSES) = 1 "+ " AND " + SD.CCTableName5k + ".CREATEDBY = 'Caleb';";
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, TQudfWhere);
 		myAW.QueryToXML(SQLString, TQudfWhere);
+		System.out.println(SQLString);
 
 
 

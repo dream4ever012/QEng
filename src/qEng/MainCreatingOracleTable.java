@@ -6,6 +6,7 @@ import ResourceStrings.ABCD;
 import ResourceStrings.DDS;
 import ResourceStrings.OS;
 import ResourceStrings.SD;
+import ResourceStrings.CSC553;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import utils.CreateCSVFromExcel;
@@ -70,7 +71,10 @@ public class MainCreatingOracleTable {
 
 			new File(ResultsURL).mkdirs();
 
-			myAW = new AskWise(new InternalH2(IH2DBURL));		
+			myAW = new AskWise(new InternalH2(IH2DBURL));
+			
+			CreateTablesInMemoryABCD.createTablesInMemoryCSC553(myAW);
+			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, CSC553.part);
 /*
 			myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
 			myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
@@ -159,8 +163,8 @@ public class MainCreatingOracleTable {
 //			
 //			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, DDS.UTL);
 
-			CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
-			CreateTablesInMemoryABCD.registerTMABCD6(myAW);
+//			CreateTablesInMemoryABCD.createTablesInMemoryABCD6(myAW);
+//			CreateTablesInMemoryABCD.registerTMABCD6(myAW);
 /*			
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.A2k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.AaaB99);
@@ -185,9 +189,9 @@ public class MainCreatingOracleTable {
 //			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD1, OS.Pass, ABCD.BaaCaaD98);
 			
 			
-			CreateTablesInMemoryABCD.createTablesInMemoryABCD4(myAW);
+//			CreateTablesInMemoryABCD.createTablesInMemoryABCD4(myAW);
 			//CreateTablesInMemoryABCD.registerTMABCD4(myAW);
-			
+/*			
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.AaaB_B1k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.BaaC_B1k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.CaaD_B1k);
@@ -206,6 +210,8 @@ public class MainCreatingOracleTable {
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.AaaB_B6k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.BaaC_B6k);
 			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User_ABCD, OS.Pass, ABCD.CaaD_B6k);
+*/
+			
 			//read CSV trace matrix
 //			String ArbSQL = "DROP TABLE "+ SD.TMTableName +" IF EXISTS; CREATE TABLE "+ SD.TMTableName +" AS SELECT * FROM CSVREAD('"+ SD.TMFilePath +"');";
 //			myAW.arbitrarySQL(ArbSQL);

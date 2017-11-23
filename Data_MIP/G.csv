@@ -1,0 +1,11 @@
+G_ID,G_DESC
+G_ID1,"Hardware faults detected, but not masked, shall raise a fault alarm, stop pump, record it in the Fault Log, and display the reason for fault on the user interface."
+G_ID2,"If the drug volume in the reservoir measures less than Vlra = 1 ml, and an infusion is in progress, a low-reservoir warning100 shall be issued."
+G_ID3,Prescriptions that violate a hard limit of the drug in the drug library shall be rejected with visible and audible indication when confirmation is attempted by the clinician.
+G_ID4,Each log entry shall have a time stamp81 with its time of occurrence.
+G_ID5,"When the stop button is pressed, the current pump stroke shall be completed prior to stopping the pump."
+G_ID6,tactile response (button press).
+G_ID7,The PCA pump shall detect upstream occlusion.
+G_ID8,The scanner shall read and authenticate information from the drug’s package label
+G_ID9,The scanner shall read and authenticate information from the patient’s wristband
+G_ID10,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt."

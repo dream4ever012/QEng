@@ -1,0 +1,501 @@
+UC_ID,UC_TITLE,UC_PrC,UC_PoC,UC_STEPS
+UC_ID1,Prescription Authentication Failure0,UC_ID412,UC_ID248,Patient Authentication Failure0
+UC_ID2,Drug Library Soft Limit0,UC_ID65,UC_ID108,Air-in-line Embolism0
+UC_ID3,Power-On Self Test Failure0,UC_ID318,UC_ID474,Sound Failure0
+UC_ID4,Downstream Occlusion0,UC_ID274,UC_ID119,Under-Flow Rate Alarm0
+UC_ID5,Clinician Authentication Failure0,UC_ID39,UC_ID459,Prescription Authentication Failure0
+UC_ID6,Patient Authentication Failure0,UC_ID141,UC_ID367,Drug Library Hard Limit0
+UC_ID7,Upstream Occlusion0,UC_ID393,UC_ID304,Drug Library Soft Limit0
+UC_ID8,Drug Library Not Present or Corrupted0,UC_ID306,UC_ID295,Downstream Occlusion0
+UC_ID9,ICE Failure0,UC_ID414,UC_ID294,Maximum Safe Dose0
+UC_ID10,Over-Flow Rate Alarm0,UC_ID418,UC_ID315,Power-On Self Test Failure0
+UC_ID11,Sound Failure0,UC_ID275,UC_ID56,Bolus request too soon0
+UC_ID12,Internal Electronic Failure0,UC_ID139,UC_ID30,Internal Electronic Failure0
+UC_ID13,Bolus request too soon0,UC_ID449,UC_ID300,Upstream Occlusion0
+UC_ID14,Air-in-line Embolism0,UC_ID156,UC_ID265,Pump Overheating0
+UC_ID15,Pump Priming Failure0,UC_ID345,UC_ID452,Pump Priming Failure0
+UC_ID16,Maximum Safe Dose0,UC_ID291,UC_ID71,Drug Library Not Present or Corrupted0
+UC_ID17,Pump Overheating0,UC_ID317,UC_ID280,Over-Flow Rate Alarm0
+UC_ID18,Under-Flow Rate Alarm0,UC_ID307,UC_ID55,Clinician Authentication Failure0
+UC_ID19,Drug Library Hard Limit0,UC_ID171,UC_ID404,ICE Failure0
+UC_ID20,Prescription Authentication Failure1,UC_ID20,UC_ID337,Clinician Authentication Failure1
+UC_ID21,Pump Priming Failure1,UC_ID192,UC_ID5,Internal Electronic Failure1
+UC_ID22,Sound Failure1,UC_ID338,UC_ID399,Bolus request too soon1
+UC_ID23,Under-Flow Rate Alarm1,UC_ID401,UC_ID456,Pump Overheating1
+UC_ID24,Clinician Authentication Failure1,UC_ID103,UC_ID81,Downstream Occlusion1
+UC_ID25,Upstream Occlusion1,UC_ID31,UC_ID200,ICE Failure1
+UC_ID26,Bolus request too soon1,UC_ID293,UC_ID467,Power-On Self Test Failure1
+UC_ID27,Maximum Safe Dose1,UC_ID107,UC_ID167,Drug Library Hard Limit1
+UC_ID28,Downstream Occlusion1,UC_ID261,UC_ID259,Air-in-line Embolism1
+UC_ID29,Patient Authentication Failure1,UC_ID199,UC_ID500,Patient Authentication Failure1
+UC_ID30,Drug Library Hard Limit1,UC_ID411,UC_ID6,Maximum Safe Dose1
+UC_ID31,Pump Overheating1,UC_ID490,UC_ID286,Sound Failure1
+UC_ID32,Air-in-line Embolism1,UC_ID238,UC_ID87,Over-Flow Rate Alarm1
+UC_ID33,ICE Failure1,UC_ID242,UC_ID400,Drug Library Soft Limit1
+UC_ID34,Power-On Self Test Failure1,UC_ID21,UC_ID52,Under-Flow Rate Alarm1
+UC_ID35,Drug Library Soft Limit1,UC_ID10,UC_ID190,Drug Library Not Present or Corrupted1
+UC_ID36,Over-Flow Rate Alarm1,UC_ID49,UC_ID332,Prescription Authentication Failure1
+UC_ID37,Internal Electronic Failure1,UC_ID17,UC_ID257,Upstream Occlusion1
+UC_ID38,Drug Library Not Present or Corrupted1,UC_ID239,UC_ID58,Pump Priming Failure1
+UC_ID39,Patient Authentication Failure2,UC_ID33,UC_ID227,Internal Electronic Failure2
+UC_ID40,ICE Failure2,UC_ID122,UC_ID201,Prescription Authentication Failure2
+UC_ID41,Clinician Authentication Failure2,UC_ID112,UC_ID254,ICE Failure2
+UC_ID42,Pump Priming Failure2,UC_ID422,UC_ID408,Patient Authentication Failure2
+UC_ID43,Drug Library Soft Limit2,UC_ID497,UC_ID495,Over-Flow Rate Alarm2
+UC_ID44,Upstream Occlusion2,UC_ID308,UC_ID66,Power-On Self Test Failure2
+UC_ID45,Sound Failure2,UC_ID145,UC_ID51,Pump Priming Failure2
+UC_ID46,Drug Library Not Present or Corrupted2,UC_ID379,UC_ID308,Clinician Authentication Failure2
+UC_ID47,Over-Flow Rate Alarm2,UC_ID42,UC_ID205,Pump Overheating2
+UC_ID48,Bolus request too soon2,UC_ID453,UC_ID361,Under-Flow Rate Alarm2
+UC_ID49,Power-On Self Test Failure2,UC_ID463,UC_ID373,Maximum Safe Dose2
+UC_ID50,Air-in-line Embolism2,UC_ID326,UC_ID383,Drug Library Soft Limit2
+UC_ID51,Drug Library Hard Limit2,UC_ID161,UC_ID203,Bolus request too soon2
+UC_ID52,Maximum Safe Dose2,UC_ID446,UC_ID123,Upstream Occlusion2
+UC_ID53,Internal Electronic Failure2,UC_ID187,UC_ID31,Drug Library Not Present or Corrupted2
+UC_ID54,Downstream Occlusion2,UC_ID315,UC_ID185,Drug Library Hard Limit2
+UC_ID55,Pump Overheating2,UC_ID235,UC_ID360,Sound Failure2
+UC_ID56,Prescription Authentication Failure2,UC_ID53,UC_ID145,Downstream Occlusion2
+UC_ID57,Under-Flow Rate Alarm2,UC_ID131,UC_ID82,Air-in-line Embolism2
+UC_ID58,Pump Overheating3,UC_ID173,UC_ID329,Clinician Authentication Failure3
+UC_ID59,Under-Flow Rate Alarm3,UC_ID211,UC_ID372,Patient Authentication Failure3
+UC_ID60,Power-On Self Test Failure3,UC_ID12,UC_ID229,Downstream Occlusion3
+UC_ID61,Downstream Occlusion3,UC_ID381,UC_ID446,ICE Failure3
+UC_ID62,Drug Library Hard Limit3,UC_ID95,UC_ID356,Under-Flow Rate Alarm3
+UC_ID63,Over-Flow Rate Alarm3,UC_ID180,UC_ID147,Drug Library Not Present or Corrupted3
+UC_ID64,Clinician Authentication Failure3,UC_ID210,UC_ID103,Bolus request too soon3
+UC_ID65,Maximum Safe Dose3,UC_ID222,UC_ID42,Sound Failure3
+UC_ID66,Sound Failure3,UC_ID395,UC_ID333,Pump Priming Failure3
+UC_ID67,Air-in-line Embolism3,UC_ID257,UC_ID377,Air-in-line Embolism3
+UC_ID68,Upstream Occlusion3,UC_ID263,UC_ID419,Pump Overheating3
+UC_ID69,Internal Electronic Failure3,UC_ID121,UC_ID299,Maximum Safe Dose3
+UC_ID70,Drug Library Not Present or Corrupted3,UC_ID5,UC_ID246,Drug Library Hard Limit3
+UC_ID71,Bolus request too soon3,UC_ID311,UC_ID3,Power-On Self Test Failure3
+UC_ID72,Patient Authentication Failure3,UC_ID155,UC_ID176,Upstream Occlusion3
+UC_ID73,Prescription Authentication Failure3,UC_ID456,UC_ID344,Drug Library Soft Limit3
+UC_ID74,Drug Library Soft Limit3,UC_ID406,UC_ID57,Internal Electronic Failure3
+UC_ID75,Pump Priming Failure3,UC_ID399,UC_ID173,Prescription Authentication Failure3
+UC_ID76,ICE Failure3,UC_ID440,UC_ID285,Over-Flow Rate Alarm3
+UC_ID77,Patient Authentication Failure4,UC_ID417,UC_ID135,Prescription Authentication Failure4
+UC_ID78,Drug Library Not Present or Corrupted4,UC_ID273,UC_ID437,Bolus request too soon4
+UC_ID79,Pump Priming Failure4,UC_ID398,UC_ID127,Over-Flow Rate Alarm4
+UC_ID80,Sound Failure4,UC_ID70,UC_ID481,Drug Library Hard Limit4
+UC_ID81,ICE Failure4,UC_ID125,UC_ID345,Downstream Occlusion4
+UC_ID82,Maximum Safe Dose4,UC_ID163,UC_ID206,Upstream Occlusion4
+UC_ID83,Upstream Occlusion4,UC_ID213,UC_ID339,Patient Authentication Failure4
+UC_ID84,Power-On Self Test Failure4,UC_ID304,UC_ID417,Air-in-line Embolism4
+UC_ID85,Bolus request too soon4,UC_ID389,UC_ID90,Pump Overheating4
+UC_ID86,Air-in-line Embolism4,UC_ID409,UC_ID252,Drug Library Soft Limit4
+UC_ID87,Under-Flow Rate Alarm4,UC_ID80,UC_ID243,Internal Electronic Failure4
+UC_ID88,Drug Library Hard Limit4,UC_ID301,UC_ID398,Maximum Safe Dose4
+UC_ID89,Clinician Authentication Failure4,UC_ID324,UC_ID183,Drug Library Not Present or Corrupted4
+UC_ID90,Over-Flow Rate Alarm4,UC_ID81,UC_ID128,Pump Priming Failure4
+UC_ID91,Pump Overheating4,UC_ID189,UC_ID107,ICE Failure4
+UC_ID92,Prescription Authentication Failure4,UC_ID349,UC_ID349,Clinician Authentication Failure4
+UC_ID93,Drug Library Soft Limit4,UC_ID364,UC_ID298,Under-Flow Rate Alarm4
+UC_ID94,Internal Electronic Failure4,UC_ID68,UC_ID470,Sound Failure4
+UC_ID95,Downstream Occlusion4,UC_ID113,UC_ID98,Power-On Self Test Failure4
+UC_ID96,Clinician Authentication Failure5,UC_ID234,UC_ID217,Bolus request too soon5
+UC_ID97,ICE Failure5,UC_ID176,UC_ID321,Internal Electronic Failure5
+UC_ID98,Drug Library Not Present or Corrupted5,UC_ID468,UC_ID386,Power-On Self Test Failure5
+UC_ID99,Pump Overheating5,UC_ID148,UC_ID193,Maximum Safe Dose5
+UC_ID100,Power-On Self Test Failure5,UC_ID208,UC_ID70,Over-Flow Rate Alarm5
+UC_ID101,Drug Library Soft Limit5,UC_ID280,UC_ID171,Pump Overheating5
+UC_ID102,Bolus request too soon5,UC_ID288,UC_ID273,Sound Failure5
+UC_ID103,Patient Authentication Failure5,UC_ID253,UC_ID211,Prescription Authentication Failure5
+UC_ID104,Over-Flow Rate Alarm5,UC_ID14,UC_ID382,Drug Library Soft Limit5
+UC_ID105,Internal Electronic Failure5,UC_ID221,UC_ID428,Pump Priming Failure5
+UC_ID106,Downstream Occlusion5,UC_ID28,UC_ID150,Downstream Occlusion5
+UC_ID107,Prescription Authentication Failure5,UC_ID340,UC_ID25,Air-in-line Embolism5
+UC_ID108,Under-Flow Rate Alarm5,UC_ID331,UC_ID251,Drug Library Not Present or Corrupted5
+UC_ID109,Air-in-line Embolism5,UC_ID339,UC_ID390,Upstream Occlusion5
+UC_ID110,Drug Library Hard Limit5,UC_ID355,UC_ID422,ICE Failure5
+UC_ID111,Maximum Safe Dose5,UC_ID489,UC_ID15,Patient Authentication Failure5
+UC_ID112,Sound Failure5,UC_ID251,UC_ID172,Clinician Authentication Failure5
+UC_ID113,Upstream Occlusion5,UC_ID83,UC_ID72,Under-Flow Rate Alarm5
+UC_ID114,Pump Priming Failure5,UC_ID365,UC_ID130,Drug Library Hard Limit5
+UC_ID115,Drug Library Not Present or Corrupted6,UC_ID390,UC_ID484,Drug Library Soft Limit6
+UC_ID116,Power-On Self Test Failure6,UC_ID425,UC_ID231,Bolus request too soon6
+UC_ID117,Over-Flow Rate Alarm6,UC_ID320,UC_ID16,Upstream Occlusion6
+UC_ID118,Sound Failure6,UC_ID373,UC_ID278,Over-Flow Rate Alarm6
+UC_ID119,Upstream Occlusion6,UC_ID258,UC_ID478,Under-Flow Rate Alarm6
+UC_ID120,Pump Overheating6,UC_ID487,UC_ID272,ICE Failure6
+UC_ID121,ICE Failure6,UC_ID282,UC_ID129,Internal Electronic Failure6
+UC_ID122,Air-in-line Embolism6,UC_ID397,UC_ID464,Drug Library Not Present or Corrupted6
+UC_ID123,Bolus request too soon6,UC_ID404,UC_ID283,Pump Priming Failure6
+UC_ID124,Under-Flow Rate Alarm6,UC_ID434,UC_ID405,Maximum Safe Dose6
+UC_ID125,Drug Library Soft Limit6,UC_ID29,UC_ID111,Pump Overheating6
+UC_ID126,Maximum Safe Dose6,UC_ID13,UC_ID274,Prescription Authentication Failure6
+UC_ID127,Internal Electronic Failure6,UC_ID179,UC_ID17,Patient Authentication Failure6
+UC_ID128,Patient Authentication Failure6,UC_ID1,UC_ID136,Power-On Self Test Failure6
+UC_ID129,Pump Priming Failure6,UC_ID35,UC_ID228,Downstream Occlusion6
+UC_ID130,Clinician Authentication Failure6,UC_ID16,UC_ID287,Sound Failure6
+UC_ID131,Prescription Authentication Failure6,UC_ID236,UC_ID177,Air-in-line Embolism6
+UC_ID132,Downstream Occlusion6,UC_ID295,UC_ID120,Clinician Authentication Failure6
+UC_ID133,Drug Library Hard Limit6,UC_ID327,UC_ID385,Drug Library Hard Limit6
+UC_ID134,Power-On Self Test Failure7,UC_ID162,UC_ID160,Downstream Occlusion7
+UC_ID135,Over-Flow Rate Alarm7,UC_ID430,UC_ID223,Pump Overheating7
+UC_ID136,Internal Electronic Failure7,UC_ID170,UC_ID416,Bolus request too soon7
+UC_ID137,Pump Priming Failure7,UC_ID369,UC_ID178,Maximum Safe Dose7
+UC_ID138,Under-Flow Rate Alarm7,UC_ID116,UC_ID392,Patient Authentication Failure7
+UC_ID139,Upstream Occlusion7,UC_ID247,UC_ID9,Clinician Authentication Failure7
+UC_ID140,Sound Failure7,UC_ID348,UC_ID166,Drug Library Not Present or Corrupted7
+UC_ID141,Drug Library Not Present or Corrupted7,UC_ID391,UC_ID335,Internal Electronic Failure7
+UC_ID142,Drug Library Soft Limit7,UC_ID408,UC_ID336,Power-On Self Test Failure7
+UC_ID143,Clinician Authentication Failure7,UC_ID102,UC_ID406,ICE Failure7
+UC_ID144,Prescription Authentication Failure7,UC_ID233,UC_ID204,Prescription Authentication Failure7
+UC_ID145,Patient Authentication Failure7,UC_ID343,UC_ID362,Drug Library Soft Limit7
+UC_ID146,Bolus request too soon7,UC_ID323,UC_ID439,Drug Library Hard Limit7
+UC_ID147,Drug Library Hard Limit7,UC_ID405,UC_ID313,Over-Flow Rate Alarm7
+UC_ID148,Air-in-line Embolism7,UC_ID24,UC_ID447,Under-Flow Rate Alarm7
+UC_ID149,ICE Failure7,UC_ID159,UC_ID402,Upstream Occlusion7
+UC_ID150,Maximum Safe Dose7,UC_ID60,UC_ID483,Air-in-line Embolism7
+UC_ID151,Downstream Occlusion7,UC_ID183,UC_ID393,Sound Failure7
+UC_ID152,Pump Overheating7,UC_ID277,UC_ID328,Pump Priming Failure7
+UC_ID153,Sound Failure8,UC_ID267,UC_ID35,Maximum Safe Dose8
+UC_ID154,Bolus request too soon8,UC_ID48,UC_ID23,Upstream Occlusion8
+UC_ID155,Upstream Occlusion8,UC_ID82,UC_ID414,Drug Library Hard Limit8
+UC_ID156,Downstream Occlusion8,UC_ID396,UC_ID352,Power-On Self Test Failure8
+UC_ID157,Patient Authentication Failure8,UC_ID358,UC_ID222,Pump Priming Failure8
+UC_ID158,Maximum Safe Dose8,UC_ID90,UC_ID74,Bolus request too soon8
+UC_ID159,Under-Flow Rate Alarm8,UC_ID196,UC_ID355,Over-Flow Rate Alarm8
+UC_ID160,Pump Overheating8,UC_ID120,UC_ID236,Pump Overheating8
+UC_ID161,ICE Failure8,UC_ID335,UC_ID14,Air-in-line Embolism8
+UC_ID162,Air-in-line Embolism8,UC_ID73,UC_ID182,Downstream Occlusion8
+UC_ID163,Over-Flow Rate Alarm8,UC_ID407,UC_ID357,Drug Library Not Present or Corrupted8
+UC_ID164,Power-On Self Test Failure8,UC_ID478,UC_ID326,Sound Failure8
+UC_ID165,Drug Library Hard Limit8,UC_ID341,UC_ID18,Clinician Authentication Failure8
+UC_ID166,Pump Priming Failure8,UC_ID292,UC_ID354,Patient Authentication Failure8
+UC_ID167,Clinician Authentication Failure8,UC_ID360,UC_ID22,ICE Failure8
+UC_ID168,Drug Library Not Present or Corrupted8,UC_ID436,UC_ID255,Prescription Authentication Failure8
+UC_ID169,Internal Electronic Failure8,UC_ID255,UC_ID423,Internal Electronic Failure8
+UC_ID170,Drug Library Soft Limit8,UC_ID329,UC_ID421,Under-Flow Rate Alarm8
+UC_ID171,Prescription Authentication Failure8,UC_ID270,UC_ID46,Drug Library Soft Limit8
+UC_ID172,Drug Library Hard Limit9,UC_ID119,UC_ID92,Power-On Self Test Failure9
+UC_ID173,Upstream Occlusion9,UC_ID129,UC_ID480,Over-Flow Rate Alarm9
+UC_ID174,Downstream Occlusion9,UC_ID392,UC_ID197,Drug Library Hard Limit9
+UC_ID175,Internal Electronic Failure9,UC_ID78,UC_ID325,Under-Flow Rate Alarm9
+UC_ID176,Sound Failure9,UC_ID195,UC_ID256,Upstream Occlusion9
+UC_ID177,Power-On Self Test Failure9,UC_ID71,UC_ID258,Bolus request too soon9
+UC_ID178,Patient Authentication Failure9,UC_ID30,UC_ID213,Prescription Authentication Failure9
+UC_ID179,Clinician Authentication Failure9,UC_ID259,UC_ID427,Clinician Authentication Failure9
+UC_ID180,Drug Library Soft Limit9,UC_ID3,UC_ID320,Air-in-line Embolism9
+UC_ID181,Maximum Safe Dose9,UC_ID278,UC_ID323,Downstream Occlusion9
+UC_ID182,Pump Priming Failure9,UC_ID25,UC_ID260,Internal Electronic Failure9
+UC_ID183,ICE Failure9,UC_ID207,UC_ID247,Pump Overheating9
+UC_ID184,Over-Flow Rate Alarm9,UC_ID299,UC_ID412,Pump Priming Failure9
+UC_ID185,Bolus request too soon9,UC_ID214,UC_ID290,Sound Failure9
+UC_ID186,Pump Overheating9,UC_ID157,UC_ID395,Maximum Safe Dose9
+UC_ID187,Prescription Authentication Failure9,UC_ID225,UC_ID95,Patient Authentication Failure9
+UC_ID188,Drug Library Not Present or Corrupted9,UC_ID303,UC_ID376,Drug Library Not Present or Corrupted9
+UC_ID189,Air-in-line Embolism9,UC_ID118,UC_ID86,Drug Library Soft Limit9
+UC_ID190,Under-Flow Rate Alarm9,UC_ID66,UC_ID499,ICE Failure9
+UC_ID191,Drug Library Soft Limit10,UC_ID243,UC_ID364,Upstream Occlusion10
+UC_ID192,Bolus request too soon10,UC_ID433,UC_ID415,Drug Library Hard Limit10
+UC_ID193,Air-in-line Embolism10,UC_ID330,UC_ID216,Clinician Authentication Failure10
+UC_ID194,Drug Library Not Present or Corrupted10,UC_ID457,UC_ID316,Under-Flow Rate Alarm10
+UC_ID195,Over-Flow Rate Alarm10,UC_ID268,UC_ID63,Prescription Authentication Failure10
+UC_ID196,Pump Overheating10,UC_ID300,UC_ID494,Drug Library Soft Limit10
+UC_ID197,Maximum Safe Dose10,UC_ID494,UC_ID365,Bolus request too soon10
+UC_ID198,Upstream Occlusion10,UC_ID491,UC_ID134,Over-Flow Rate Alarm10
+UC_ID199,Clinician Authentication Failure10,UC_ID198,UC_ID143,ICE Failure10
+UC_ID200,ICE Failure10,UC_ID186,UC_ID109,Sound Failure10
+UC_ID201,Power-On Self Test Failure10,UC_ID22,UC_ID67,Pump Priming Failure10
+UC_ID202,Prescription Authentication Failure10,UC_ID190,UC_ID407,Power-On Self Test Failure10
+UC_ID203,Patient Authentication Failure10,UC_ID310,UC_ID144,Air-in-line Embolism10
+UC_ID204,Under-Flow Rate Alarm10,UC_ID353,UC_ID440,Patient Authentication Failure10
+UC_ID205,Drug Library Hard Limit10,UC_ID200,UC_ID77,Internal Electronic Failure10
+UC_ID206,Pump Priming Failure10,UC_ID226,UC_ID433,Downstream Occlusion10
+UC_ID207,Downstream Occlusion10,UC_ID454,UC_ID45,Drug Library Not Present or Corrupted10
+UC_ID208,Internal Electronic Failure10,UC_ID178,UC_ID249,Maximum Safe Dose10
+UC_ID209,Sound Failure10,UC_ID8,UC_ID169,Pump Overheating10
+UC_ID210,Drug Library Hard Limit11,UC_ID260,UC_ID101,Prescription Authentication Failure11
+UC_ID211,Upstream Occlusion11,UC_ID375,UC_ID212,Downstream Occlusion11
+UC_ID212,Internal Electronic Failure11,UC_ID455,UC_ID261,Over-Flow Rate Alarm11
+UC_ID213,Under-Flow Rate Alarm11,UC_ID371,UC_ID125,Patient Authentication Failure11
+UC_ID214,Drug Library Soft Limit11,UC_ID147,UC_ID33,Bolus request too soon11
+UC_ID215,Prescription Authentication Failure11,UC_ID34,UC_ID224,Air-in-line Embolism11
+UC_ID216,Downstream Occlusion11,UC_ID321,UC_ID75,Drug Library Not Present or Corrupted11
+UC_ID217,Drug Library Not Present or Corrupted11,UC_ID447,UC_ID426,Clinician Authentication Failure11
+UC_ID218,Over-Flow Rate Alarm11,UC_ID123,UC_ID477,Drug Library Soft Limit11
+UC_ID219,Patient Authentication Failure11,UC_ID15,UC_ID194,Under-Flow Rate Alarm11
+UC_ID220,Air-in-line Embolism11,UC_ID58,UC_ID276,Drug Library Hard Limit11
+UC_ID221,Sound Failure11,UC_ID177,UC_ID209,ICE Failure11
+UC_ID222,Power-On Self Test Failure11,UC_ID445,UC_ID234,Pump Priming Failure11
+UC_ID223,Maximum Safe Dose11,UC_ID479,UC_ID48,Power-On Self Test Failure11
+UC_ID224,ICE Failure11,UC_ID224,UC_ID88,Internal Electronic Failure11
+UC_ID225,Bolus request too soon11,UC_ID229,UC_ID69,Pump Overheating11
+UC_ID226,Pump Priming Failure11,UC_ID444,UC_ID471,Sound Failure11
+UC_ID227,Clinician Authentication Failure11,UC_ID74,UC_ID50,Maximum Safe Dose11
+UC_ID228,Pump Overheating11,UC_ID426,UC_ID220,Upstream Occlusion11
+UC_ID229,Drug Library Soft Limit12,UC_ID298,UC_ID159,Clinician Authentication Failure12
+UC_ID230,ICE Failure12,UC_ID209,UC_ID186,Air-in-line Embolism12
+UC_ID231,Bolus request too soon12,UC_ID484,UC_ID322,Maximum Safe Dose12
+UC_ID232,Pump Priming Failure12,UC_ID283,UC_ID371,Drug Library Hard Limit12
+UC_ID233,Clinician Authentication Failure12,UC_ID132,UC_ID237,Power-On Self Test Failure12
+UC_ID234,Patient Authentication Failure12,UC_ID128,UC_ID188,Drug Library Soft Limit12
+UC_ID235,Drug Library Not Present or Corrupted12,UC_ID368,UC_ID448,Under-Flow Rate Alarm12
+UC_ID236,Under-Flow Rate Alarm12,UC_ID362,UC_ID394,Prescription Authentication Failure12
+UC_ID237,Prescription Authentication Failure12,UC_ID134,UC_ID219,Patient Authentication Failure12
+UC_ID238,Drug Library Hard Limit12,UC_ID85,UC_ID340,Bolus request too soon12
+UC_ID239,Internal Electronic Failure12,UC_ID52,UC_ID302,Internal Electronic Failure12
+UC_ID240,Sound Failure12,UC_ID319,UC_ID431,Over-Flow Rate Alarm12
+UC_ID241,Downstream Occlusion12,UC_ID193,UC_ID192,Drug Library Not Present or Corrupted12
+UC_ID242,Power-On Self Test Failure12,UC_ID18,UC_ID20,ICE Failure12
+UC_ID243,Over-Flow Rate Alarm12,UC_ID376,UC_ID40,Pump Overheating12
+UC_ID244,Maximum Safe Dose12,UC_ID361,UC_ID457,Sound Failure12
+UC_ID245,Air-in-line Embolism12,UC_ID476,UC_ID163,Upstream Occlusion12
+UC_ID246,Upstream Occlusion12,UC_ID150,UC_ID80,Pump Priming Failure12
+UC_ID247,Pump Overheating12,UC_ID67,UC_ID151,Downstream Occlusion12
+UC_ID248,Prescription Authentication Failure13,UC_ID256,UC_ID370,Pump Overheating13
+UC_ID249,Power-On Self Test Failure13,UC_ID237,UC_ID68,Prescription Authentication Failure13
+UC_ID250,Bolus request too soon13,UC_ID92,UC_ID384,ICE Failure13
+UC_ID251,Clinician Authentication Failure13,UC_ID342,UC_ID207,Bolus request too soon13
+UC_ID252,Over-Flow Rate Alarm13,UC_ID443,UC_ID221,Internal Electronic Failure13
+UC_ID253,Air-in-line Embolism13,UC_ID62,UC_ID41,Under-Flow Rate Alarm13
+UC_ID254,Maximum Safe Dose13,UC_ID47,UC_ID122,Pump Priming Failure13
+UC_ID255,Drug Library Not Present or Corrupted13,UC_ID452,UC_ID434,Air-in-line Embolism13
+UC_ID256,ICE Failure13,UC_ID474,UC_ID181,Upstream Occlusion13
+UC_ID257,Upstream Occlusion13,UC_ID432,UC_ID62,Drug Library Not Present or Corrupted13
+UC_ID258,Pump Overheating13,UC_ID98,UC_ID351,Maximum Safe Dose13
+UC_ID259,Sound Failure13,UC_ID472,UC_ID79,Power-On Self Test Failure13
+UC_ID260,Under-Flow Rate Alarm13,UC_ID334,UC_ID460,Downstream Occlusion13
+UC_ID261,Internal Electronic Failure13,UC_ID205,UC_ID310,Patient Authentication Failure13
+UC_ID262,Downstream Occlusion13,UC_ID96,UC_ID282,Drug Library Hard Limit13
+UC_ID263,Drug Library Soft Limit13,UC_ID480,UC_ID2,Drug Library Soft Limit13
+UC_ID264,Pump Priming Failure13,UC_ID165,UC_ID4,Over-Flow Rate Alarm13
+UC_ID265,Drug Library Hard Limit13,UC_ID458,UC_ID445,Clinician Authentication Failure13
+UC_ID266,Patient Authentication Failure13,UC_ID350,UC_ID318,Sound Failure13
+UC_ID267,Sound Failure14,UC_ID388,UC_ID154,Over-Flow Rate Alarm14
+UC_ID268,Drug Library Hard Limit14,UC_ID77,UC_ID208,ICE Failure14
+UC_ID269,Maximum Safe Dose14,UC_ID290,UC_ID430,Power-On Self Test Failure14
+UC_ID270,Clinician Authentication Failure14,UC_ID271,UC_ID238,Drug Library Soft Limit14
+UC_ID271,Prescription Authentication Failure14,UC_ID244,UC_ID43,Under-Flow Rate Alarm14
+UC_ID272,Drug Library Not Present or Corrupted14,UC_ID464,UC_ID170,Clinician Authentication Failure14
+UC_ID273,Over-Flow Rate Alarm14,UC_ID36,UC_ID13,Patient Authentication Failure14
+UC_ID274,ICE Failure14,UC_ID228,UC_ID475,Sound Failure14
+UC_ID275,Drug Library Soft Limit14,UC_ID175,UC_ID309,Drug Library Hard Limit14
+UC_ID276,Internal Electronic Failure14,UC_ID297,UC_ID436,Internal Electronic Failure14
+UC_ID277,Power-On Self Test Failure14,UC_ID419,UC_ID29,Bolus request too soon14
+UC_ID278,Pump Overheating14,UC_ID367,UC_ID24,Prescription Authentication Failure14
+UC_ID279,Downstream Occlusion14,UC_ID146,UC_ID498,Upstream Occlusion14
+UC_ID280,Air-in-line Embolism14,UC_ID105,UC_ID289,Drug Library Not Present or Corrupted14
+UC_ID281,Under-Flow Rate Alarm14,UC_ID386,UC_ID409,Air-in-line Embolism14
+UC_ID282,Patient Authentication Failure14,UC_ID93,UC_ID133,Pump Priming Failure14
+UC_ID283,Bolus request too soon14,UC_ID402,UC_ID94,Downstream Occlusion14
+UC_ID284,Upstream Occlusion14,UC_ID152,UC_ID198,Maximum Safe Dose14
+UC_ID285,Pump Priming Failure14,UC_ID249,UC_ID244,Pump Overheating14
+UC_ID286,Prescription Authentication Failure15,UC_ID325,UC_ID418,Under-Flow Rate Alarm15
+UC_ID287,Drug Library Not Present or Corrupted15,UC_ID346,UC_ID476,Air-in-line Embolism15
+UC_ID288,Drug Library Hard Limit15,UC_ID465,UC_ID232,Prescription Authentication Failure15
+UC_ID289,Internal Electronic Failure15,UC_ID252,UC_ID435,Clinician Authentication Failure15
+UC_ID290,Bolus request too soon15,UC_ID57,UC_ID479,Drug Library Not Present or Corrupted15
+UC_ID291,Under-Flow Rate Alarm15,UC_ID217,UC_ID202,Patient Authentication Failure15
+UC_ID292,Drug Library Soft Limit15,UC_ID420,UC_ID465,Pump Priming Failure15
+UC_ID293,Pump Priming Failure15,UC_ID374,UC_ID102,Drug Library Hard Limit15
+UC_ID294,Sound Failure15,UC_ID215,UC_ID126,Upstream Occlusion15
+UC_ID295,Maximum Safe Dose15,UC_ID481,UC_ID104,Sound Failure15
+UC_ID296,Air-in-line Embolism15,UC_ID133,UC_ID96,Power-On Self Test Failure15
+UC_ID297,Over-Flow Rate Alarm15,UC_ID378,UC_ID305,ICE Failure15
+UC_ID298,ICE Failure15,UC_ID181,UC_ID297,Over-Flow Rate Alarm15
+UC_ID299,Clinician Authentication Failure15,UC_ID56,UC_ID281,Drug Library Soft Limit15
+UC_ID300,Upstream Occlusion15,UC_ID428,UC_ID184,Internal Electronic Failure15
+UC_ID301,Power-On Self Test Failure15,UC_ID462,UC_ID34,Maximum Safe Dose15
+UC_ID302,Patient Authentication Failure15,UC_ID117,UC_ID195,Downstream Occlusion15
+UC_ID303,Pump Overheating15,UC_ID191,UC_ID469,Bolus request too soon15
+UC_ID304,Downstream Occlusion15,UC_ID382,UC_ID27,Pump Overheating15
+UC_ID305,Drug Library Not Present or Corrupted16,UC_ID164,UC_ID10,Drug Library Soft Limit16
+UC_ID306,Drug Library Soft Limit16,UC_ID451,UC_ID497,Drug Library Hard Limit16
+UC_ID307,ICE Failure16,UC_ID110,UC_ID413,Drug Library Not Present or Corrupted16
+UC_ID308,Air-in-line Embolism16,UC_ID41,UC_ID468,Maximum Safe Dose16
+UC_ID309,Power-On Self Test Failure16,UC_ID88,UC_ID266,Under-Flow Rate Alarm16
+UC_ID310,Downstream Occlusion16,UC_ID470,UC_ID331,Sound Failure16
+UC_ID311,Bolus request too soon16,UC_ID322,UC_ID410,Bolus request too soon16
+UC_ID312,Pump Priming Failure16,UC_ID466,UC_ID275,Prescription Authentication Failure16
+UC_ID313,Sound Failure16,UC_ID69,UC_ID230,Patient Authentication Failure16
+UC_ID314,Drug Library Hard Limit16,UC_ID101,UC_ID152,Pump Priming Failure16
+UC_ID315,Over-Flow Rate Alarm16,UC_ID493,UC_ID334,Power-On Self Test Failure16
+UC_ID316,Under-Flow Rate Alarm16,UC_ID499,UC_ID420,Pump Overheating16
+UC_ID317,Clinician Authentication Failure16,UC_ID272,UC_ID279,Downstream Occlusion16
+UC_ID318,Pump Overheating16,UC_ID231,UC_ID270,Internal Electronic Failure16
+UC_ID319,Prescription Authentication Failure16,UC_ID460,UC_ID175,ICE Failure16
+UC_ID320,Internal Electronic Failure16,UC_ID219,UC_ID353,Upstream Occlusion16
+UC_ID321,Upstream Occlusion16,UC_ID11,UC_ID359,Over-Flow Rate Alarm16
+UC_ID322,Maximum Safe Dose16,UC_ID40,UC_ID348,Air-in-line Embolism16
+UC_ID323,Patient Authentication Failure16,UC_ID44,UC_ID488,Clinician Authentication Failure16
+UC_ID324,Air-in-line Embolism17,UC_ID7,UC_ID164,Clinician Authentication Failure17
+UC_ID325,Downstream Occlusion17,UC_ID37,UC_ID491,Power-On Self Test Failure17
+UC_ID326,Bolus request too soon17,UC_ID450,UC_ID453,Over-Flow Rate Alarm17
+UC_ID327,Pump Priming Failure17,UC_ID262,UC_ID461,Downstream Occlusion17
+UC_ID328,Drug Library Not Present or Corrupted17,UC_ID269,UC_ID463,Pump Overheating17
+UC_ID329,Drug Library Hard Limit17,UC_ID135,UC_ID85,Maximum Safe Dose17
+UC_ID330,Maximum Safe Dose17,UC_ID168,UC_ID253,Drug Library Hard Limit17
+UC_ID331,Sound Failure17,UC_ID23,UC_ID493,Sound Failure17
+UC_ID332,Power-On Self Test Failure17,UC_ID241,UC_ID59,Air-in-line Embolism17
+UC_ID333,Over-Flow Rate Alarm17,UC_ID498,UC_ID443,Pump Priming Failure17
+UC_ID334,Pump Overheating17,UC_ID296,UC_ID60,ICE Failure17
+UC_ID335,Internal Electronic Failure17,UC_ID351,UC_ID161,Drug Library Soft Limit17
+UC_ID336,Upstream Occlusion17,UC_ID19,UC_ID489,Bolus request too soon17
+UC_ID337,Patient Authentication Failure17,UC_ID461,UC_ID39,Patient Authentication Failure17
+UC_ID338,Under-Flow Rate Alarm17,UC_ID441,UC_ID218,Upstream Occlusion17
+UC_ID339,Clinician Authentication Failure17,UC_ID477,UC_ID401,Prescription Authentication Failure17
+UC_ID340,ICE Failure17,UC_ID143,UC_ID38,Drug Library Not Present or Corrupted17
+UC_ID341,Prescription Authentication Failure17,UC_ID64,UC_ID116,Internal Electronic Failure17
+UC_ID342,Drug Library Soft Limit17,UC_ID416,UC_ID338,Under-Flow Rate Alarm17
+UC_ID343,Pump Overheating18,UC_ID91,UC_ID381,Prescription Authentication Failure18
+UC_ID344,Drug Library Not Present or Corrupted18,UC_ID328,UC_ID124,Clinician Authentication Failure18
+UC_ID345,Air-in-line Embolism18,UC_ID158,UC_ID378,Downstream Occlusion18
+UC_ID346,Prescription Authentication Failure18,UC_ID276,UC_ID189,Drug Library Hard Limit18
+UC_ID347,Under-Flow Rate Alarm18,UC_ID437,UC_ID375,Under-Flow Rate Alarm18
+UC_ID348,Sound Failure18,UC_ID240,UC_ID438,Pump Priming Failure18
+UC_ID349,Clinician Authentication Failure18,UC_ID203,UC_ID174,Sound Failure18
+UC_ID350,Internal Electronic Failure18,UC_ID438,UC_ID444,Upstream Occlusion18
+UC_ID351,Upstream Occlusion18,UC_ID87,UC_ID442,Patient Authentication Failure18
+UC_ID352,Over-Flow Rate Alarm18,UC_ID202,UC_ID117,Bolus request too soon18
+UC_ID353,Power-On Self Test Failure18,UC_ID111,UC_ID118,Drug Library Soft Limit18
+UC_ID354,Drug Library Soft Limit18,UC_ID45,UC_ID44,ICE Failure18
+UC_ID355,Pump Priming Failure18,UC_ID424,UC_ID114,Internal Electronic Failure18
+UC_ID356,Patient Authentication Failure18,UC_ID126,UC_ID226,Power-On Self Test Failure18
+UC_ID357,Downstream Occlusion18,UC_ID86,UC_ID233,Air-in-line Embolism18
+UC_ID358,Maximum Safe Dose18,UC_ID248,UC_ID139,Over-Flow Rate Alarm18
+UC_ID359,ICE Failure18,UC_ID459,UC_ID346,Drug Library Not Present or Corrupted18
+UC_ID360,Bolus request too soon18,UC_ID130,UC_ID262,Pump Overheating18
+UC_ID361,Drug Library Hard Limit18,UC_ID294,UC_ID291,Maximum Safe Dose18
+UC_ID362,Drug Library Not Present or Corrupted19,UC_ID448,UC_ID1,Upstream Occlusion19
+UC_ID363,Drug Library Hard Limit19,UC_ID154,UC_ID89,Clinician Authentication Failure19
+UC_ID364,ICE Failure19,UC_ID220,UC_ID49,Under-Flow Rate Alarm19
+UC_ID365,Bolus request too soon19,UC_ID212,UC_ID157,Patient Authentication Failure19
+UC_ID366,Over-Flow Rate Alarm19,UC_ID61,UC_ID268,Maximum Safe Dose19
+UC_ID367,Pump Priming Failure19,UC_ID194,UC_ID76,Drug Library Hard Limit19
+UC_ID368,Prescription Authentication Failure19,UC_ID492,UC_ID363,Drug Library Soft Limit19
+UC_ID369,Pump Overheating19,UC_ID380,UC_ID466,Sound Failure19
+UC_ID370,Maximum Safe Dose19,UC_ID488,UC_ID307,Prescription Authentication Failure19
+UC_ID371,Downstream Occlusion19,UC_ID230,UC_ID473,Pump Priming Failure19
+UC_ID372,Under-Flow Rate Alarm19,UC_ID223,UC_ID105,Pump Overheating19
+UC_ID373,Power-On Self Test Failure19,UC_ID394,UC_ID292,Over-Flow Rate Alarm19
+UC_ID374,Internal Electronic Failure19,UC_ID354,UC_ID137,Downstream Occlusion19
+UC_ID375,Upstream Occlusion19,UC_ID250,UC_ID113,Internal Electronic Failure19
+UC_ID376,Drug Library Soft Limit19,UC_ID153,UC_ID487,ICE Failure19
+UC_ID377,Sound Failure19,UC_ID27,UC_ID450,Drug Library Not Present or Corrupted19
+UC_ID378,Air-in-line Embolism19,UC_ID357,UC_ID472,Air-in-line Embolism19
+UC_ID379,Clinician Authentication Failure19,UC_ID316,UC_ID146,Power-On Self Test Failure19
+UC_ID380,Patient Authentication Failure19,UC_ID94,UC_ID341,Bolus request too soon19
+UC_ID381,Upstream Occlusion20,UC_ID245,UC_ID303,Power-On Self Test Failure20
+UC_ID382,Drug Library Soft Limit20,UC_ID201,UC_ID106,Under-Flow Rate Alarm20
+UC_ID383,Maximum Safe Dose20,UC_ID144,UC_ID156,Maximum Safe Dose20
+UC_ID384,Pump Priming Failure20,UC_ID483,UC_ID396,Over-Flow Rate Alarm20
+UC_ID385,Clinician Authentication Failure20,UC_ID115,UC_ID425,Air-in-line Embolism20
+UC_ID386,Downstream Occlusion20,UC_ID486,UC_ID12,ICE Failure20
+UC_ID387,Over-Flow Rate Alarm20,UC_ID108,UC_ID358,Drug Library Soft Limit20
+UC_ID388,Power-On Self Test Failure20,UC_ID363,UC_ID239,Upstream Occlusion20
+UC_ID389,Prescription Authentication Failure20,UC_ID72,UC_ID121,Patient Authentication Failure20
+UC_ID390,Under-Flow Rate Alarm20,UC_ID136,UC_ID330,Internal Electronic Failure20
+UC_ID391,Drug Library Not Present or Corrupted20,UC_ID89,UC_ID168,Clinician Authentication Failure20
+UC_ID392,Bolus request too soon20,UC_ID309,UC_ID350,Sound Failure20
+UC_ID393,Patient Authentication Failure20,UC_ID204,UC_ID403,Pump Overheating20
+UC_ID394,Sound Failure20,UC_ID149,UC_ID84,Pump Priming Failure20
+UC_ID395,Air-in-line Embolism20,UC_ID75,UC_ID424,Prescription Authentication Failure20
+UC_ID396,Internal Electronic Failure20,UC_ID302,UC_ID153,Bolus request too soon20
+UC_ID397,ICE Failure20,UC_ID46,UC_ID441,Drug Library Hard Limit20
+UC_ID398,Drug Library Hard Limit20,UC_ID246,UC_ID429,Downstream Occlusion20
+UC_ID399,Pump Overheating20,UC_ID286,UC_ID490,Drug Library Not Present or Corrupted20
+UC_ID400,Over-Flow Rate Alarm21,UC_ID26,UC_ID277,Clinician Authentication Failure21
+UC_ID401,Drug Library Soft Limit21,UC_ID43,UC_ID454,Upstream Occlusion21
+UC_ID402,Pump Priming Failure21,UC_ID344,UC_ID458,Bolus request too soon21
+UC_ID403,Bolus request too soon21,UC_ID84,UC_ID293,Downstream Occlusion21
+UC_ID404,Air-in-line Embolism21,UC_ID38,UC_ID19,Over-Flow Rate Alarm21
+UC_ID405,Pump Overheating21,UC_ID4,UC_ID61,Internal Electronic Failure21
+UC_ID406,Under-Flow Rate Alarm21,UC_ID169,UC_ID196,ICE Failure21
+UC_ID407,Upstream Occlusion21,UC_ID471,UC_ID53,Drug Library Hard Limit21
+UC_ID408,Sound Failure21,UC_ID439,UC_ID242,Sound Failure21
+UC_ID409,Patient Authentication Failure21,UC_ID100,UC_ID179,Maximum Safe Dose21
+UC_ID410,Internal Electronic Failure21,UC_ID2,UC_ID180,Pump Overheating21
+UC_ID411,ICE Failure21,UC_ID287,UC_ID240,Power-On Self Test Failure21
+UC_ID412,Downstream Occlusion21,UC_ID500,UC_ID269,Drug Library Not Present or Corrupted21
+UC_ID413,Prescription Authentication Failure21,UC_ID352,UC_ID347,Drug Library Soft Limit21
+UC_ID414,Maximum Safe Dose21,UC_ID385,UC_ID141,Prescription Authentication Failure21
+UC_ID415,Drug Library Not Present or Corrupted21,UC_ID442,UC_ID8,Air-in-line Embolism21
+UC_ID416,Clinician Authentication Failure21,UC_ID9,UC_ID449,Under-Flow Rate Alarm21
+UC_ID417,Power-On Self Test Failure21,UC_ID427,UC_ID369,Patient Authentication Failure21
+UC_ID418,Drug Library Hard Limit21,UC_ID138,UC_ID36,Pump Priming Failure21
+UC_ID419,Pump Priming Failure22,UC_ID403,UC_ID115,Patient Authentication Failure22
+UC_ID420,Maximum Safe Dose22,UC_ID383,UC_ID462,Downstream Occlusion22
+UC_ID421,Downstream Occlusion22,UC_ID140,UC_ID368,Pump Overheating22
+UC_ID422,Drug Library Not Present or Corrupted22,UC_ID435,UC_ID267,Bolus request too soon22
+UC_ID423,Prescription Authentication Failure22,UC_ID114,UC_ID250,Power-On Self Test Failure22
+UC_ID424,ICE Failure22,UC_ID104,UC_ID148,Under-Flow Rate Alarm22
+UC_ID425,Upstream Occlusion22,UC_ID305,UC_ID327,Pump Priming Failure22
+UC_ID426,Patient Authentication Failure22,UC_ID336,UC_ID312,Maximum Safe Dose22
+UC_ID427,Pump Overheating22,UC_ID370,UC_ID319,Clinician Authentication Failure22
+UC_ID428,Bolus request too soon22,UC_ID54,UC_ID314,Drug Library Soft Limit22
+UC_ID429,Sound Failure22,UC_ID32,UC_ID366,Air-in-line Embolism22
+UC_ID430,Drug Library Soft Limit22,UC_ID332,UC_ID485,Drug Library Not Present or Corrupted22
+UC_ID431,Over-Flow Rate Alarm22,UC_ID384,UC_ID301,Sound Failure22
+UC_ID432,Internal Electronic Failure22,UC_ID333,UC_ID149,Internal Electronic Failure22
+UC_ID433,Under-Flow Rate Alarm22,UC_ID281,UC_ID93,Over-Flow Rate Alarm22
+UC_ID434,Air-in-line Embolism22,UC_ID429,UC_ID165,ICE Failure22
+UC_ID435,Power-On Self Test Failure22,UC_ID124,UC_ID411,Drug Library Hard Limit22
+UC_ID436,Drug Library Hard Limit22,UC_ID182,UC_ID138,Prescription Authentication Failure22
+UC_ID437,Clinician Authentication Failure22,UC_ID151,UC_ID131,Upstream Occlusion22
+UC_ID438,Drug Library Soft Limit23,UC_ID206,UC_ID21,Drug Library Soft Limit23
+UC_ID439,Downstream Occlusion23,UC_ID410,UC_ID47,Air-in-line Embolism23
+UC_ID440,Air-in-line Embolism23,UC_ID279,UC_ID388,Under-Flow Rate Alarm23
+UC_ID441,Sound Failure23,UC_ID227,UC_ID397,ICE Failure23
+UC_ID442,Prescription Authentication Failure23,UC_ID266,UC_ID140,Pump Priming Failure23
+UC_ID443,Pump Priming Failure23,UC_ID482,UC_ID100,Internal Electronic Failure23
+UC_ID444,ICE Failure23,UC_ID313,UC_ID187,Drug Library Not Present or Corrupted23
+UC_ID445,Drug Library Not Present or Corrupted23,UC_ID79,UC_ID455,Patient Authentication Failure23
+UC_ID446,Bolus request too soon23,UC_ID109,UC_ID245,Clinician Authentication Failure23
+UC_ID447,Maximum Safe Dose23,UC_ID55,UC_ID387,Sound Failure23
+UC_ID448,Clinician Authentication Failure23,UC_ID106,UC_ID73,Over-Flow Rate Alarm23
+UC_ID449,Pump Overheating23,UC_ID377,UC_ID199,Pump Overheating23
+UC_ID450,Drug Library Hard Limit23,UC_ID415,UC_ID241,Maximum Safe Dose23
+UC_ID451,Upstream Occlusion23,UC_ID216,UC_ID158,Bolus request too soon23
+UC_ID452,Internal Electronic Failure23,UC_ID495,UC_ID32,Upstream Occlusion23
+UC_ID453,Power-On Self Test Failure23,UC_ID59,UC_ID263,Power-On Self Test Failure23
+UC_ID454,Over-Flow Rate Alarm23,UC_ID97,UC_ID317,Downstream Occlusion23
+UC_ID455,Under-Flow Rate Alarm23,UC_ID185,UC_ID486,Drug Library Hard Limit23
+UC_ID456,Patient Authentication Failure23,UC_ID473,UC_ID97,Prescription Authentication Failure23
+UC_ID457,Downstream Occlusion24,UC_ID63,UC_ID296,Pump Priming Failure24
+UC_ID458,Maximum Safe Dose24,UC_ID387,UC_ID110,Drug Library Hard Limit24
+UC_ID459,Prescription Authentication Failure24,UC_ID431,UC_ID191,Downstream Occlusion24
+UC_ID460,Power-On Self Test Failure24,UC_ID51,UC_ID391,Maximum Safe Dose24
+UC_ID461,Upstream Occlusion24,UC_ID254,UC_ID215,ICE Failure24
+UC_ID462,Pump Priming Failure24,UC_ID137,UC_ID112,Power-On Self Test Failure24
+UC_ID463,Clinician Authentication Failure24,UC_ID166,UC_ID380,Prescription Authentication Failure24
+UC_ID464,Pump Overheating24,UC_ID413,UC_ID26,Sound Failure24
+UC_ID465,Under-Flow Rate Alarm24,UC_ID485,UC_ID306,Under-Flow Rate Alarm24
+UC_ID466,Sound Failure24,UC_ID197,UC_ID374,Upstream Occlusion24
+UC_ID467,Drug Library Soft Limit24,UC_ID469,UC_ID264,Pump Overheating24
+UC_ID468,Drug Library Hard Limit24,UC_ID289,UC_ID132,Over-Flow Rate Alarm24
+UC_ID469,Internal Electronic Failure24,UC_ID264,UC_ID99,Patient Authentication Failure24
+UC_ID470,Air-in-line Embolism24,UC_ID99,UC_ID342,Drug Library Soft Limit24
+UC_ID471,ICE Failure24,UC_ID285,UC_ID379,Drug Library Not Present or Corrupted24
+UC_ID472,Over-Flow Rate Alarm24,UC_ID400,UC_ID142,Bolus request too soon24
+UC_ID473,Patient Authentication Failure24,UC_ID366,UC_ID28,Internal Electronic Failure24
+UC_ID474,Drug Library Not Present or Corrupted24,UC_ID142,UC_ID11,Air-in-line Embolism24
+UC_ID475,Bolus request too soon24,UC_ID76,UC_ID324,Clinician Authentication Failure24
+UC_ID476,Pump Overheating25,UC_ID475,UC_ID343,Internal Electronic Failure25
+UC_ID477,Air-in-line Embolism25,UC_ID218,UC_ID155,Upstream Occlusion25
+UC_ID478,Bolus request too soon25,UC_ID172,UC_ID64,Maximum Safe Dose25
+UC_ID479,Drug Library Soft Limit25,UC_ID265,UC_ID37,Pump Priming Failure25
+UC_ID480,Prescription Authentication Failure25,UC_ID423,UC_ID288,Drug Library Soft Limit25
+UC_ID481,Maximum Safe Dose25,UC_ID167,UC_ID225,Over-Flow Rate Alarm25
+UC_ID482,Pump Priming Failure25,UC_ID337,UC_ID482,Prescription Authentication Failure25
+UC_ID483,Drug Library Not Present or Corrupted25,UC_ID188,UC_ID496,Patient Authentication Failure25
+UC_ID484,Downstream Occlusion25,UC_ID421,UC_ID432,Power-On Self Test Failure25
+UC_ID485,ICE Failure25,UC_ID312,UC_ID451,Clinician Authentication Failure25
+UC_ID486,Over-Flow Rate Alarm25,UC_ID496,UC_ID284,Bolus request too soon25
+UC_ID487,Upstream Occlusion25,UC_ID50,UC_ID83,Sound Failure25
+UC_ID488,Under-Flow Rate Alarm25,UC_ID127,UC_ID78,Drug Library Not Present or Corrupted25
+UC_ID489,Clinician Authentication Failure25,UC_ID284,UC_ID54,Drug Library Hard Limit25
+UC_ID490,Drug Library Hard Limit25,UC_ID314,UC_ID235,Air-in-line Embolism25
+UC_ID491,Power-On Self Test Failure25,UC_ID232,UC_ID91,Downstream Occlusion25
+UC_ID492,Sound Failure25,UC_ID359,UC_ID214,Pump Overheating25
+UC_ID493,Patient Authentication Failure25,UC_ID467,UC_ID311,Under-Flow Rate Alarm25
+UC_ID494,Internal Electronic Failure25,UC_ID160,UC_ID162,ICE Failure25
+UC_ID495,Pump Overheating,UC_ID356,UC_ID7,Internal Electronic Failure
+UC_ID496,Air-in-line Embolism,UC_ID174,UC_ID492,Upstream Occlusion
+UC_ID497,Bolus request too soon,UC_ID184,UC_ID210,Maximum Safe Dose
+UC_ID498,Drug Library Soft Limit,UC_ID347,UC_ID389,Pump Priming Failure
+UC_ID499,Prescription Authentication Failure,UC_ID6,UC_ID271,Drug Library Soft Limit
+UC_ID500,Maximum Safe Dose,UC_ID372,UC_ID65,Over-Flow Rate Alarm

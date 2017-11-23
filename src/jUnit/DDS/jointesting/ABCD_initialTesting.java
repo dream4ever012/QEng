@@ -76,7 +76,7 @@ public class ABCD_initialTesting {
 		// AaaBaaCaaD.xml cost: 457 498 291 254 462 // avg 392.4
 		// without indexing: AaaBaaCaaD.xml cost: 28068 26806 31447 27452 27406 // avg 28235.8
 		// card: 46926
-		//AaaBaaCaaD(myAW);
+		AaaBaaCaaD(myAW);
 		
 		
 		//DaaCaaBaaA.xml cost: 223 223 311 250 286 // avg 336.4

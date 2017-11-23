@@ -7,8 +7,8 @@ public class OS {
 	public static final String Port = ":1521";
 	public static final String SID = "/oracle12c";
 	public static final String URL = protocol + DriverType + Host + Port + SID;
-	public static final String User = "Tiqi";
-	public static final String Pass = "Tiqi123";
+	public static final String User = "Student14"; //"Tiqi";
+	public static final String Pass = "CSC553"; //"Tiqi123";
 	
 	// for DDS
 	public static final String User_DDS = "Tiqi2";

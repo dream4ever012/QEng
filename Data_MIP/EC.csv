@@ -1,0 +1,301 @@
+EC_ID,EC_PRC,EC_POC,EC_STEPS
+EC_ID1,EC_ID6,EC_ID82,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6.0"
+EC_ID2,EC_ID37,EC_ID290,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner.0"
+EC_ID3,EC_ID143,EC_ID31,"A clinician-requested bolus shall be delivered at the rate, Fccb, of V T BI divided by the duration chosen by the clinician, ?ccb, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.0"
+EC_ID4,EC_ID28,EC_ID285,The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.0
+EC_ID5,EC_ID118,EC_ID266,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.0
+EC_ID6,EC_ID176,EC_ID68,All alarms not of high priority shall be encrypted and authenticated. High priority alarms may be encrypted and authenticated.0
+EC_ID7,EC_ID48,EC_ID280,The mechanical pump shall not allow reverse flow from the patient into the pump.0
+EC_ID8,EC_ID249,EC_ID29,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.0
+EC_ID9,EC_ID211,EC_ID145,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain.0"
+EC_ID10,EC_ID55,EC_ID24,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.0
+EC_ID11,EC_ID283,EC_ID196,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.0
+EC_ID12,EC_ID36,EC_ID175,The PCA pump shall detect battery failure and issue a battery failure alarm0
+EC_ID13,EC_ID46,EC_ID288,Patient-requested bolus delivery shall be immediately halted when alarms sound.0
+EC_ID14,EC_ID5,EC_ID188,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7).0"
+EC_ID15,EC_ID31,EC_ID59,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE0"
+EC_ID16,EC_ID193,EC_ID251,The Control Panel shall provide means to inactivate audible alarms indefinitely0
+EC_ID17,EC_ID71,EC_ID37,"display of visual information, and0"
+EC_ID18,EC_ID86,EC_ID294,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access.0"
+EC_ID19,EC_ID222,EC_ID56,The PCA pump shall have a start button.0
+EC_ID20,EC_ID259,EC_ID81,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke0"
+EC_ID21,EC_ID40,EC_ID86,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.0
+EC_ID22,EC_ID115,EC_ID154,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface.0"
+EC_ID23,EC_ID271,EC_ID89,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump.0"
+EC_ID24,EC_ID182,EC_ID206,The event log shall record 30 days of typical events before overwriting oldest event records first.0
+EC_ID25,EC_ID7,EC_ID203,The PCA pump must be electromagnetically compatible according to IEC 60601-1-2 (2001)0
+EC_ID26,EC_ID237,EC_ID212,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt.0"
+EC_ID27,EC_ID220,EC_ID44,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence.0"
+EC_ID28,EC_ID281,EC_ID19,–removed all Rx entry via scanner0
+EC_ID29,EC_ID205,EC_ID134,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded.0"
+EC_ID30,EC_ID145,EC_ID261,The PCA pump must not leak current greater than 10 mA0
+EC_ID31,EC_ID12,EC_ID135,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued.0"
+EC_ID32,EC_ID235,EC_ID225,"–requirement removed, Rx read from drug container by scanner0"
+EC_ID33,EC_ID272,EC_ID300,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow0"
+EC_ID34,EC_ID188,EC_ID205,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.0
+EC_ID35,EC_ID221,EC_ID137,The scanner shall read and authenticate information from the patient’s wristband0
+EC_ID36,EC_ID162,EC_ID100,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.0"
+EC_ID37,EC_ID175,EC_ID257,The PCA pump shall detect upstream occlusion.0
+EC_ID38,EC_ID262,EC_ID30,"If delivered patient-requested bolus flow rate is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minutes, or immediately if the flow stops0"
+EC_ID39,EC_ID192,EC_ID69,"A patient-requested bolus shall take precedence over a clinician-requested bolus. The clinicianrequested bolus shall be suspended while the patient-requested bolus dose is administered, and resumed afterward.0"
+EC_ID40,EC_ID97,EC_ID219,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist0"
+EC_ID41,EC_ID191,EC_ID287,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)0"
+EC_ID42,EC_ID268,EC_ID51,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.0
+EC_ID43,EC_ID255,EC_ID22,The scanner shall read and authenticate information from the clinician’s badge0
+EC_ID44,EC_ID284,EC_ID64,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range.0"
+EC_ID45,EC_ID174,EC_ID222,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.0
+EC_ID46,EC_ID107,EC_ID264,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.0"
+EC_ID47,EC_ID64,EC_ID259,The PCA pump shall issue alarms and warnings that require clinician attention.0
+EC_ID48,EC_ID124,EC_ID77,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.0
+EC_ID49,EC_ID269,EC_ID213,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized0
+EC_ID50,EC_ID277,EC_ID223,The PCA pump shall use a physician’s prescription as device parameters.0
+EC_ID51,EC_ID223,EC_ID168,When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.0
+EC_ID52,EC_ID287,EC_ID269,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions0"
+EC_ID53,EC_ID119,EC_ID52,The Control Panel shall provide means to inactivate audible alarms indefinitely1
+EC_ID54,EC_ID153,EC_ID186,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.1
+EC_ID55,EC_ID196,EC_ID143,"A patient-requested bolus shall take precedence over a clinician-requested bolus. The clinicianrequested bolus shall be suspended while the patient-requested bolus dose is administered, and resumed afterward.1"
+EC_ID56,EC_ID300,EC_ID28,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner.1"
+EC_ID57,EC_ID102,EC_ID169,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.1
+EC_ID58,EC_ID96,EC_ID65,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.1
+EC_ID59,EC_ID181,EC_ID262,The mechanical pump shall not allow reverse flow from the patient into the pump.1
+EC_ID60,EC_ID111,EC_ID160,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence.1"
+EC_ID61,EC_ID177,EC_ID46,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range.1"
+EC_ID62,EC_ID227,EC_ID124,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface.1"
+EC_ID63,EC_ID273,EC_ID72,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.1
+EC_ID64,EC_ID15,EC_ID217,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow1"
+EC_ID65,EC_ID179,EC_ID226,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6.1"
+EC_ID66,EC_ID274,EC_ID291,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.1"
+EC_ID67,EC_ID140,EC_ID293,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.1
+EC_ID68,EC_ID240,EC_ID131,The PCA pump shall have a start button.1
+EC_ID69,EC_ID261,EC_ID45,Patient-requested bolus delivery shall be immediately halted when alarms sound.1
+EC_ID70,EC_ID206,EC_ID38,When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.1
+EC_ID71,EC_ID296,EC_ID199,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE1"
+EC_ID72,EC_ID67,EC_ID248,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.1"
+EC_ID73,EC_ID135,EC_ID202,"–requirement removed, Rx read from drug container by scanner1"
+EC_ID74,EC_ID76,EC_ID185,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.1
+EC_ID75,EC_ID88,EC_ID150,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump.1"
+EC_ID76,EC_ID57,EC_ID273,The scanner shall read and authenticate information from the clinician’s badge1
+EC_ID77,EC_ID178,EC_ID195,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized1
+EC_ID78,EC_ID198,EC_ID227,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions1"
+EC_ID79,EC_ID293,EC_ID214,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access.1"
+EC_ID80,EC_ID38,EC_ID263,The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.1
+EC_ID81,EC_ID290,EC_ID153,The scanner shall read and authenticate information from the patient’s wristband1
+EC_ID82,EC_ID9,EC_ID126,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt.1"
+EC_ID83,EC_ID190,EC_ID88,The event log shall record 30 days of typical events before overwriting oldest event records first.1
+EC_ID84,EC_ID279,EC_ID210,The PCA pump shall detect upstream occlusion.1
+EC_ID85,EC_ID69,EC_ID151,All alarms not of high priority shall be encrypted and authenticated. High priority alarms may be encrypted and authenticated.1
+EC_ID86,EC_ID58,EC_ID27,The PCA pump must be electromagnetically compatible according to IEC 60601-1-2 (2001)1
+EC_ID87,EC_ID149,EC_ID123,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke1"
+EC_ID88,EC_ID251,EC_ID114,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.1
+EC_ID89,EC_ID168,EC_ID127,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)1"
+EC_ID90,EC_ID260,EC_ID256,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded.1"
+EC_ID91,EC_ID180,EC_ID3,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist1"
+EC_ID92,EC_ID133,EC_ID211,The PCA pump shall detect battery failure and issue a battery failure alarm1
+EC_ID93,EC_ID163,EC_ID243,"A clinician-requested bolus shall be delivered at the rate, Fccb, of V T BI divided by the duration chosen by the clinician, ?ccb, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.1"
+EC_ID94,EC_ID132,EC_ID136,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7).1"
+EC_ID95,EC_ID184,EC_ID67,The PCA pump shall issue alarms and warnings that require clinician attention.1
+EC_ID96,EC_ID23,EC_ID11,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain.1"
+EC_ID97,EC_ID123,EC_ID8,The PCA pump must not leak current greater than 10 mA1
+EC_ID98,EC_ID34,EC_ID75,–removed all Rx entry via scanner1
+EC_ID99,EC_ID112,EC_ID105,"display of visual information, and1"
+EC_ID100,EC_ID52,EC_ID177,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.1
+EC_ID101,EC_ID167,EC_ID249,The PCA pump shall use a physician’s prescription as device parameters.1
+EC_ID102,EC_ID109,EC_ID216,"If delivered patient-requested bolus flow rate is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minutes, or immediately if the flow stops1"
+EC_ID103,EC_ID90,EC_ID95,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.1
+EC_ID104,EC_ID56,EC_ID295,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued.1"
+EC_ID105,EC_ID257,EC_ID254,–removed all Rx entry via scanner2
+EC_ID106,EC_ID53,EC_ID12,The PCA pump shall detect upstream occlusion.2
+EC_ID107,EC_ID33,EC_ID87,Patient-requested bolus delivery shall be immediately halted when alarms sound.2
+EC_ID108,EC_ID75,EC_ID184,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.2
+EC_ID109,EC_ID101,EC_ID289,The Control Panel shall provide means to inactivate audible alarms indefinitely2
+EC_ID110,EC_ID215,EC_ID228,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump.2"
+EC_ID111,EC_ID169,EC_ID220,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist2"
+EC_ID112,EC_ID225,EC_ID155,"–requirement removed, Rx read from drug container by scanner2"
+EC_ID113,EC_ID183,EC_ID62,The PCA pump must not leak current greater than 10 mA2
+EC_ID114,EC_ID138,EC_ID63,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow2"
+EC_ID115,EC_ID157,EC_ID17,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence.2"
+EC_ID116,EC_ID280,EC_ID265,The mechanical pump shall not allow reverse flow from the patient into the pump.2
+EC_ID117,EC_ID254,EC_ID130,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access.2"
+EC_ID118,EC_ID285,EC_ID35,The event log shall record 30 days of typical events before overwriting oldest event records first.2
+EC_ID119,EC_ID242,EC_ID167,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.2
+EC_ID120,EC_ID95,EC_ID71,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions2"
+EC_ID121,EC_ID62,EC_ID179,All alarms not of high priority shall be encrypted and authenticated. High priority alarms may be encrypted and authenticated.2
+EC_ID122,EC_ID294,EC_ID41,The scanner shall read and authenticate information from the clinician’s badge2
+EC_ID123,EC_ID229,EC_ID53,The PCA pump must be electromagnetically compatible according to IEC 60601-1-2 (2001)2
+EC_ID124,EC_ID128,EC_ID157,The scanner shall read and authenticate information from the patient’s wristband2
+EC_ID125,EC_ID117,EC_ID94,The PCA pump shall issue alarms and warnings that require clinician attention.2
+EC_ID126,EC_ID234,EC_ID85,The PCA pump shall use a physician’s prescription as device parameters.2
+EC_ID127,EC_ID159,EC_ID96,"display of visual information, and2"
+EC_ID128,EC_ID81,EC_ID224,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.2
+EC_ID129,EC_ID35,EC_ID119,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke2"
+EC_ID130,EC_ID212,EC_ID109,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt.2"
+EC_ID131,EC_ID89,EC_ID276,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued.2"
+EC_ID132,EC_ID68,EC_ID238,"A patient-requested bolus shall take precedence over a clinician-requested bolus. The clinicianrequested bolus shall be suspended while the patient-requested bolus dose is administered, and resumed afterward.2"
+EC_ID133,EC_ID161,EC_ID235,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner.2"
+EC_ID134,EC_ID61,EC_ID76,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range.2"
+EC_ID135,EC_ID73,EC_ID80,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7).2"
+EC_ID136,EC_ID85,EC_ID176,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded.2"
+EC_ID137,EC_ID8,EC_ID236,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.2
+EC_ID138,EC_ID286,EC_ID70,"A clinician-requested bolus shall be delivered at the rate, Fccb, of V T BI divided by the duration chosen by the clinician, ?ccb, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.2"
+EC_ID139,EC_ID94,EC_ID239,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.2"
+EC_ID140,EC_ID173,EC_ID198,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.2
+EC_ID141,EC_ID231,EC_ID247,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.2
+EC_ID142,EC_ID152,EC_ID117,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.2"
+EC_ID143,EC_ID252,EC_ID34,When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.2
+EC_ID144,EC_ID19,EC_ID79,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6.2"
+EC_ID145,EC_ID267,EC_ID170,The PCA pump shall have a start button.2
+EC_ID146,EC_ID134,EC_ID215,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.2
+EC_ID147,EC_ID127,EC_ID252,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE2"
+EC_ID148,EC_ID14,EC_ID111,The PCA pump shall detect battery failure and issue a battery failure alarm2
+EC_ID149,EC_ID146,EC_ID55,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.2
+EC_ID150,EC_ID72,EC_ID245,The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.2
+EC_ID151,EC_ID45,EC_ID298,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain.2"
+EC_ID152,EC_ID166,EC_ID60,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized2
+EC_ID153,EC_ID232,EC_ID138,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)2"
+EC_ID154,EC_ID256,EC_ID5,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.2
+EC_ID155,EC_ID1,EC_ID296,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface.2"
+EC_ID156,EC_ID17,EC_ID42,"If delivered patient-requested bolus flow rate is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minutes, or immediately if the flow stops2"
+EC_ID157,EC_ID106,EC_ID103,The PCA pump shall have a start button.3
+EC_ID158,EC_ID246,EC_ID241,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.3
+EC_ID159,EC_ID39,EC_ID268,The scanner shall read and authenticate information from the patient’s wristband3
+EC_ID160,EC_ID171,EC_ID271,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized3
+EC_ID161,EC_ID214,EC_ID165,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6.3"
+EC_ID162,EC_ID142,EC_ID178,"If delivered patient-requested bolus flow rate is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minutes, or immediately if the flow stops3"
+EC_ID163,EC_ID25,EC_ID277,"A patient-requested bolus shall take precedence over a clinician-requested bolus. The clinicianrequested bolus shall be suspended while the patient-requested bolus dose is administered, and resumed afterward.3"
+EC_ID164,EC_ID164,EC_ID284,The PCA pump must not leak current greater than 10 mA3
+EC_ID165,EC_ID238,EC_ID164,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt.3"
+EC_ID166,EC_ID87,EC_ID140,All alarms not of high priority shall be encrypted and authenticated. High priority alarms may be encrypted and authenticated.3
+EC_ID167,EC_ID263,EC_ID23,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.3
+EC_ID168,EC_ID230,EC_ID118,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.3
+EC_ID169,EC_ID228,EC_ID244,The scanner shall read and authenticate information from the clinician’s badge3
+EC_ID170,EC_ID22,EC_ID166,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke3"
+EC_ID171,EC_ID276,EC_ID125,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.3"
+EC_ID172,EC_ID213,EC_ID132,"A clinician-requested bolus shall be delivered at the rate, Fccb, of V T BI divided by the duration chosen by the clinician, ?ccb, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.3"
+EC_ID173,EC_ID51,EC_ID197,–removed all Rx entry via scanner3
+EC_ID174,EC_ID253,EC_ID61,Patient-requested bolus delivery shall be immediately halted when alarms sound.3
+EC_ID175,EC_ID99,EC_ID99,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.3
+EC_ID176,EC_ID248,EC_ID272,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions3"
+EC_ID177,EC_ID110,EC_ID159,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump.3"
+EC_ID178,EC_ID148,EC_ID116,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.3"
+EC_ID179,EC_ID11,EC_ID15,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7).3"
+EC_ID180,EC_ID216,EC_ID43,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow3"
+EC_ID181,EC_ID59,EC_ID218,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface.3"
+EC_ID182,EC_ID258,EC_ID173,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded.3"
+EC_ID183,EC_ID18,EC_ID253,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE3"
+EC_ID184,EC_ID218,EC_ID98,"display of visual information, and3"
+EC_ID185,EC_ID226,EC_ID279,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.3
+EC_ID186,EC_ID74,EC_ID250,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain.3"
+EC_ID187,EC_ID194,EC_ID91,The PCA pump shall issue alarms and warnings that require clinician attention.3
+EC_ID188,EC_ID207,EC_ID32,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.3
+EC_ID189,EC_ID30,EC_ID83,The PCA pump shall use a physician’s prescription as device parameters.3
+EC_ID190,EC_ID289,EC_ID110,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)3"
+EC_ID191,EC_ID84,EC_ID275,The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.3
+EC_ID192,EC_ID137,EC_ID50,The PCA pump must be electromagnetically compatible according to IEC 60601-1-2 (2001)3
+EC_ID193,EC_ID82,EC_ID97,The PCA pump shall detect upstream occlusion.3
+EC_ID194,EC_ID10,EC_ID191,The mechanical pump shall not allow reverse flow from the patient into the pump.3
+EC_ID195,EC_ID70,EC_ID48,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner.3"
+EC_ID196,EC_ID291,EC_ID255,The Control Panel shall provide means to inactivate audible alarms indefinitely3
+EC_ID197,EC_ID41,EC_ID162,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.3
+EC_ID198,EC_ID29,EC_ID270,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access.3"
+EC_ID199,EC_ID151,EC_ID152,"–requirement removed, Rx read from drug container by scanner3"
+EC_ID200,EC_ID241,EC_ID281,When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.3
+EC_ID201,EC_ID3,EC_ID2,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.3
+EC_ID202,EC_ID185,EC_ID9,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued.3"
+EC_ID203,EC_ID282,EC_ID4,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.3
+EC_ID204,EC_ID27,EC_ID58,The PCA pump shall detect battery failure and issue a battery failure alarm3
+EC_ID205,EC_ID91,EC_ID208,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range.3"
+EC_ID206,EC_ID187,EC_ID93,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence.3"
+EC_ID207,EC_ID93,EC_ID40,The event log shall record 30 days of typical events before overwriting oldest event records first.3
+EC_ID208,EC_ID299,EC_ID112,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist3"
+EC_ID209,EC_ID270,EC_ID142,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.4
+EC_ID210,EC_ID100,EC_ID54,–removed all Rx entry via scanner4
+EC_ID211,EC_ID264,EC_ID171,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized4
+EC_ID212,EC_ID139,EC_ID193,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)4"
+EC_ID213,EC_ID233,EC_ID16,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.4
+EC_ID214,EC_ID13,EC_ID1,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7).4"
+EC_ID215,EC_ID141,EC_ID158,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence.4"
+EC_ID216,EC_ID247,EC_ID14,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.4"
+EC_ID217,EC_ID130,EC_ID267,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range.4"
+EC_ID218,EC_ID2,EC_ID149,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface.4"
+EC_ID219,EC_ID195,EC_ID74,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump.4"
+EC_ID220,EC_ID50,EC_ID297,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access.4"
+EC_ID221,EC_ID295,EC_ID144,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.4
+EC_ID222,EC_ID266,EC_ID21,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.4
+EC_ID223,EC_ID121,EC_ID161,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.4
+EC_ID224,EC_ID243,EC_ID57,The PCA pump shall have a start button.4
+EC_ID225,EC_ID78,EC_ID47,The event log shall record 30 days of typical events before overwriting oldest event records first.4
+EC_ID226,EC_ID131,EC_ID246,The scanner shall read and authenticate information from the clinician’s badge4
+EC_ID227,EC_ID224,EC_ID102,The Control Panel shall provide means to inactivate audible alarms indefinitely4
+EC_ID228,EC_ID63,EC_ID146,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist4"
+EC_ID229,EC_ID209,EC_ID204,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE4"
+EC_ID230,EC_ID245,EC_ID182,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.4
+EC_ID231,EC_ID114,EC_ID121,The PCA pump shall issue alarms and warnings that require clinician attention.4
+EC_ID232,EC_ID105,EC_ID163,The scanner shall read and authenticate information from the patient’s wristband4
+EC_ID233,EC_ID147,EC_ID233,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions4"
+EC_ID234,EC_ID54,EC_ID120,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.4
+EC_ID235,EC_ID239,EC_ID73,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded.4"
+EC_ID236,EC_ID144,EC_ID7,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke4"
+EC_ID237,EC_ID43,EC_ID84,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner.4"
+EC_ID238,EC_ID154,EC_ID107,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.4"
+EC_ID239,EC_ID120,EC_ID133,The PCA pump shall detect upstream occlusion.4
+EC_ID240,EC_ID275,EC_ID229,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.4
+EC_ID241,EC_ID83,EC_ID258,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6.4"
+EC_ID242,EC_ID49,EC_ID92,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.4
+EC_ID243,EC_ID80,EC_ID231,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain.4"
+EC_ID244,EC_ID44,EC_ID207,The PCA pump shall use a physician’s prescription as device parameters.4
+EC_ID245,EC_ID236,EC_ID237,The mechanical pump shall not allow reverse flow from the patient into the pump.4
+EC_ID246,EC_ID203,EC_ID181,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued.4"
+EC_ID247,EC_ID16,EC_ID26,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow4"
+EC_ID248,EC_ID60,EC_ID128,The PCA pump must not leak current greater than 10 mA4
+EC_ID249,EC_ID79,EC_ID148,"If delivered patient-requested bolus flow rate is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minutes, or immediately if the flow stops4"
+EC_ID250,EC_ID98,EC_ID201,The PCA pump shall detect battery failure and issue a battery failure alarm4
+EC_ID251,EC_ID297,EC_ID129,"–requirement removed, Rx read from drug container by scanner4"
+EC_ID252,EC_ID104,EC_ID115,When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.4
+EC_ID253,EC_ID217,EC_ID190,"display of visual information, and4"
+EC_ID254,EC_ID129,EC_ID106,"Upon the clinician’s pressing of the stop button, prescribed infusion shall halt.4"
+EC_ID255,EC_ID160,EC_ID156,"A clinician-requested bolus shall be delivered at the rate, Fccb, of V T BI divided by the duration chosen by the clinician, ?ccb, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.4"
+EC_ID256,EC_ID155,EC_ID90,All alarms not of high priority shall be encrypted and authenticated. High priority alarms may be encrypted and authenticated.4
+EC_ID257,EC_ID189,EC_ID39,"A patient-requested bolus shall take precedence over a clinician-requested bolus. The clinicianrequested bolus shall be suspended while the patient-requested bolus dose is administered, and resumed afterward.4"
+EC_ID258,EC_ID92,EC_ID278,The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.4
+EC_ID259,EC_ID165,EC_ID49,The PCA pump must be electromagnetically compatible according to IEC 60601-1-2 (2001)4
+EC_ID260,EC_ID244,EC_ID104,Patient-requested bolus delivery shall be immediately halted when alarms sound.4
+EC_ID261,EC_ID47,EC_ID292,Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.
+EC_ID262,EC_ID24,EC_ID274,–removed all Rx entry via scanner
+EC_ID263,EC_ID65,EC_ID6,An authorized clinician must personally confirm the prescription97 is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription filled by an authorized
+EC_ID264,EC_ID32,EC_ID180,"During normal use and/or single fault condition of the equipment, continuous reverse delivery115 shall not be possible (from IEC 601-2-24)"
+EC_ID265,EC_ID278,EC_ID172,The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.
+EC_ID266,EC_ID186,EC_ID286,"If delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow, the pump shall issue an basal over-infusion alarm (EC3.2.7)."
+EC_ID267,EC_ID66,EC_ID183,"Upon the clinician’s pressing of the start button, prescribed infusion shall commence."
+EC_ID268,EC_ID199,EC_ID10,"Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient."
+EC_ID269,EC_ID172,EC_ID141,"The PCA pump shall detect power supply voltage out-of-range, issue a voltage out-of-range warning, and switch to battery backup when out-of-range."
+EC_ID270,EC_ID125,EC_ID33,"The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm, stop pump, record it in the Fault Log, and display the reason for failure on the user interface."
+EC_ID271,EC_ID265,EC_ID78,"When an empty-reservoir alarm occurs, the current pump stroke shall be completed prior to stopping the pump."
+EC_ID272,EC_ID108,EC_ID108,"Hospital procedures must endow the attending clinician access to the door key135, yet prevent other persons’ access."
+EC_ID273,EC_ID122,EC_ID187,The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.
+EC_ID274,EC_ID42,EC_ID232,Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For “special” flow rates for power malfunctions see Section 6.3.
+EC_ID275,EC_ID116,EC_ID139,The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.
+EC_ID276,EC_ID208,EC_ID25,The PCA pump shall have a start button.
+EC_ID277,EC_ID197,EC_ID36,The event log shall record 30 days of typical events before overwriting oldest event records first.
+EC_ID278,EC_ID292,EC_ID221,The scanner shall read and authenticate information from the clinician’s badge
+EC_ID279,EC_ID150,EC_ID20,The Control Panel shall provide means to inactivate audible alarms indefinitely
+EC_ID280,EC_ID158,EC_ID189,"The drug library102 can be thought of as a lookup table that, given a drug name and a location, provides typical and safe limits of different infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist"
+EC_ID281,EC_ID202,EC_ID209,"If alarms are inactivated or paused through the ICE supervisor user interface, they shall be reactivated upon loss of connection to ICE"
+EC_ID282,EC_ID103,EC_ID242,The drug loaded into the reservoir must also be found in the PCA pump’s drug in library99. The drug code of the prescription must match the drug code of a drug library entry.
+EC_ID283,EC_ID126,EC_ID101,The PCA pump shall issue alarms and warnings that require clinician attention.
+EC_ID284,EC_ID250,EC_ID192,The scanner shall read and authenticate information from the patient’s wristband
+EC_ID285,EC_ID4,EC_ID200,"Because the drugs used for analgesia are often narcotic, requiring Drug Enforcement Agency (DEA) tracking if used in the United States, the drug reservoir and means to change prescriptions"
+EC_ID286,EC_ID26,EC_ID299,The auditory volume of audible alarms signals shall conform to Section 201.3.3.2 Volume of auditory ALARM SIGNALS and INFORMATION SIGNALS of standard IEC 60601-1-8.
+EC_ID287,EC_ID20,EC_ID234,"If the same alert-stop-start sequence occurs 3 or more times in ten minutes, infusion will be stopped, and an audible alarm sounded."
+EC_ID288,EC_ID21,EC_ID66,"When an occlusion alarm occurs, the pump shall be stopped immediately without completing the current pump stroke"
+EC_ID289,EC_ID113,EC_ID174,"Prior to, or coincident with, loading the drug reservoir must also enter prescription96 on the drug container’s label using the scanner."
+EC_ID290,EC_ID210,EC_ID283,"Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb."
+EC_ID291,EC_ID136,EC_ID113,The PCA pump shall detect upstream occlusion.
+EC_ID292,EC_ID219,EC_ID13,An air-in-line alarm116 shall be triggered by the pump if detectable air bubbles are infused into the patient.
+EC_ID293,EC_ID156,EC_ID230,"For each drug that may be infused with a PCA pump, the drug library entry103 for that drug shall have data elements listed in Table 6."
+EC_ID294,EC_ID200,EC_ID240,The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.
+EC_ID295,EC_ID204,EC_ID194,"The user interface must show that the PCA pump is working on battery backup, and an estimate of the number of minutes of battery-powered infusion remain."
+EC_ID296,EC_ID298,EC_ID147,The PCA pump shall use a physician’s prescription as device parameters.
+EC_ID297,EC_ID170,EC_ID282,The mechanical pump shall not allow reverse flow from the patient into the pump.
+EC_ID298,EC_ID201,EC_ID260,"The PCA pump shall maintain an electronic fault log to record each fault condition, and the associated alarm and/or alert issued."
+EC_ID299,EC_ID288,EC_ID18,"If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes, or immediately if the pump goes into free flow"
+EC_ID300,EC_ID77,EC_ID122,The PCA pump must not leak current greater than 10 mA

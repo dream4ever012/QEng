@@ -1,0 +1,11 @@
+	G_ID	GL_DESC
+0	G_ID1	The basal flow rate, F(basal) is prescribed by a physican and entred into the PCA pump by scanning the presription from the drug container label as it is loaded into the reservoir.
+1	G_ID2	The pump shall be able to deliver basal infusion at flows throughout the basal infusion flow range of Fbasal min = 1 to Fbasal max = 10 ml/hr.
+2	G_ID3	The pump shall deliver basal infusion at the prescribed basal rate within a basal infusion flow tolerance of Fbasal tol = 0.5 ml/hr of the prescribed basal rate.
+3	G_ID4	The pump shall maintain a minimum KVO flow rate of FKV O = 1 ml/hr at all times during infusion, even during alarms, unless the alarm also stops flow. Table 4 defines which alarms also stop drug flow completely.
+4	G_ID5	Upon patient’s press of the PCA pump’s patient-button, a prescribed bolus volume-to-be-infused, V T BI, of the drug loaded in the pump is delivered to the patient.
+5	G_ID6	A patient-requested bolus shall be delivered at its prescribed rate, Fbolus, in addition to the prescribed basal flow rate, Fbasal, but no more than the maximum flow rate for the pump, Fmax.
+6	G_ID7	Patient-requested bolus shall not be delivered more often than a prescribed number of minutes, ?prb.
+7	G_ID8	Prescribed V T BI and rate shall not exceed the hard limits set by the drug library from the hospital pharmacy for the drug loaded in the PCA pump.
+8	G_ID9	Patient-requested bolus shall not be delivered if infusing prescribed V T BI will exceed hard limits retrieved from the drug library for the volume of drug infused over a period of time.
+9	G_ID10	Patient-requested bolus delivery shall be immediately halted when alarms sound.

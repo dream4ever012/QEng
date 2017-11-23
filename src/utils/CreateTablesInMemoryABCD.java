@@ -3,7 +3,15 @@ package utils;
 import ResourceStrings.ABCD;
 import optimizer.QueryManager;
 
+import ResourceStrings.CSC553;
+
 public class CreateTablesInMemoryABCD {
+	public static void createTablesInMemoryCSC553(QueryManager myAW){
+		
+		myAW.importCSVAsTable(CSC553.part_FP, CSC553.part);
+		System.out.println("table created: CSC553");
+	}
+	
 	public static void createTablesInMemoryABCD(QueryManager myAW){
 				
 		myAW.importCSVAsTable(ABCD.A_FP, ABCD.A);

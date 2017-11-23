@@ -99,25 +99,25 @@ public class SummerReportTestCases {
 		
 		// step1: create table
 		//ExpenUDFLaterUDF1_1.xml cost: 2949 4464 1950 2659 4579
-		ExpenUDFLaterUDF1_1(myAW);
+		//ExpenUDFLaterUDF1_1(myAW);
 		//step2: hashing
 		//ExpenUDFLaterUDF1_2.xml cost: 2897 3060 2970 2873 4412
-		ExpenUDFLaterUDF1_2(myAW);
+		//ExpenUDFLaterUDF1_2(myAW);
 		// step3: UDF column join w/ CC-SCP 
 		//ExpenUDFLaterUDF1_3.xml cost: 663 613 568 512 841
 		ExpenUDFLaterUDF1_3(myAW);
 		// step 4 hashing
 		// ExpenUDFLaterUDF1_3_1.xml cost: 4366 3681 3872 3695 4839
-		ExpenUDFLaterUDF1_3_1(myAW);
+		//ExpenUDFLaterUDF1_3_1(myAW);
 		// step 5 hashing
 		// ExpenUDFLaterUDF1_4.xml cost: 183 77 68 75 125
-		ExpenUDFLaterUDF1_4(myAW);
+		//ExpenUDFLaterUDF1_4(myAW);
 		// step6: join UDF column with the interim join table
 		// ExpenUDFLaterUDF1_5.xml cost: 2126 2124 1998 2226 2791
-		ExpenUDFLaterUDF1_5(myAW);
+		//ExpenUDFLaterUDF1_5(myAW);
 		// drop tables
 		// ExpenUDFLaterUDF1_6.xml cost: 71 64 70 66 94
-		ExpenUDFLaterUDF1_6(myAW);
+		//ExpenUDFLaterUDF1_6(myAW);
 		
 	}
 
@@ -372,11 +372,11 @@ public class SummerReportTestCases {
 		File ExpenUDFLaterUDF1_3 = new File("./results/ExpenUDFLaterUDF1_3.xml"); 
 		String SQLString =
 				"DROP TABLE TT2 IF EXISTS; CREATE TABLE TT2 AS" + " " +
-				"SELECT " + SD.CC10kTableName + ".CLASSES, " + SD.CC10kTableName + ".ClassName " +
-				"FROM " + SD.CC10kTableName + " " +
-				"INNER JOIN TT1 " +
-				"ON " + SD.CC10kTableName + ".ClassName = " + "TT1.ClassName " +
-				"GROUP BY " +SD.CC10kTableName + ".ClassName" ; 
+				"SELECT * " +//+ SD.CC10kTableName + ".CLASSES, " + SD.CC10kTableName + ".ClassName " +
+				"FROM " + SD.CC10kTableName; //+ " " +
+				//"INNER JOIN TT1 " +
+				//"ON " + SD.CC10kTableName + ".ClassName = " + "TT1.ClassName " +
+				//"GROUP BY " +SD.CC10kTableName + ".ClassName" ; 
 		System.out.println(SQLString);
 		assertTrue("failure " + ExpenUDFLaterUDF1_3.getName().toString() ,
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, ExpenUDFLaterUDF1_3) >= 30.0);

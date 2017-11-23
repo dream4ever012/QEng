@@ -21,8 +21,8 @@ public class ExternalOracle implements InternalDB{
 	private static final String DriverType = ":thin:";
 	private static final String Host = "@rasinsrv06.cstcis.cti.depaul.edu";
 	private static final String Port = ":1521";
-	private static final String User = "Tiqi2";
-	private static final String Pass = "Tiqi123";
+	private static final String User = "Student12";
+	private static final String Pass = "CSC553";
 	private static final String SID = "/oracle12c";
 	private static final String protocol = "jdbc:oracle";
 	//private static Connection conn;
