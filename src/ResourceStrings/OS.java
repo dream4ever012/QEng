@@ -16,5 +16,5 @@ public class OS {
 	public static final String User_ABCD4 = "Tiqi4";
 	public static final String User_ABCD1 = "Tiqi1";
 	public static final String User_ABCD5 = "Tiqi5";
-	
 }
+
