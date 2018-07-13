@@ -90,10 +90,10 @@ public class ExpensiveUDFTestH2 {
 		File equalizer = new File("./results/equalizer.xml");
 		SQLString =
 				"SELECT * " +
-				"FROM " + "CCPredicateTEMP" + ";";
-				//"INNER JOIN " + SD.TMTableName5k + " " + 
-				//"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
-				//"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
+				"FROM " + "CCPredicateTEMP" + " " +
+				"INNER JOIN " + SD.TMTableName5k + " " + 
+				"ON " + SD.TMTableName5k + ".ClassName = " + SD.CCTableName5k + ".ClassName " +
+				"WHERE " + "FAULTPRONE(" + "CCPredicateTEMP" + ".CLASSES) = 1;"; //+ SD.CCTableName5k + ".CREATEDBY = 'Caleb'" + " AND " + 
 		MeasureCostArbitrary.measureCostArbitrary(myAW, SQLString, equalizer);
 		
 		

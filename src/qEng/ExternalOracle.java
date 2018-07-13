@@ -50,6 +50,8 @@ public class ExternalOracle implements InternalDB{
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	//Specialized constructor to create the database at a different location
 	//TODO: convert to throws instead of try/catch and handle the exceptions in the containing class
@@ -157,6 +159,7 @@ public class ExternalOracle implements InternalDB{
 		try {
 
 			fos = new FileOutputStream(fref);
+			//https://docs.oracle.com/cd/B19306_01/java.102/b14355/jcrowset.htm#BABCFJBE
 			OracleWebRowSet set = new OracleWebRowSet();
 			set.writeXml(rs, fos);
 			set.close();
