@@ -186,5 +186,11 @@ public class AskWise implements QueryManager{
 		//DM.addJoinCols(TMTableName, TableTwoColName, TableTwoTableName, TableTwoColName);
 	}
 
+	@Override
+	public void closeServer() {
+		DB.close();
+		
+	}
+
 
 }

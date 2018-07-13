@@ -36,6 +36,8 @@ public interface QueryManager {
 	File queryToXmlH2(String SQL);
 	
 	public void WriteCSV(String FilePath, String SQLString);
+	
+	public void closeServer();
 
 }
 

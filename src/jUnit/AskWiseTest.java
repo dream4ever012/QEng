@@ -45,7 +45,7 @@ public class AskWiseTest {
 		new File(ResultsURL).mkdirs();
 		//myDB = new InternalH2(IH2DBURL);
 		myAW = new AskWise(new InternalH2(IH2DBURL));
-		
+
 		myAW.ImportSheet(SD.REQSheetTC1FP,SD.REQTableNameTC1);
 		myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
 		myAW.ImportSheet(SD.R70FP,SD.R70TableName);
