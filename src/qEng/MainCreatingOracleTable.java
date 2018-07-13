@@ -6,7 +6,7 @@ import ResourceStrings.ABCD;
 import ResourceStrings.DDS;
 import ResourceStrings.OS;
 import ResourceStrings.SD;
-import ResourceStrings.CSC553;
+//import ResourceStrings.CSC553;
 import optimizer.AskWise;
 import optimizer.QueryManager;
 import utils.CreateCSVFromExcel;
@@ -74,7 +74,7 @@ public class MainCreatingOracleTable {
 			myAW = new AskWise(new InternalH2(IH2DBURL));
 			
 			CreateTablesInMemoryABCD.createTablesInMemoryCSC553(myAW);
-			ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, CSC553.part);
+			//ResultSetUtils.CreateOracleTable(myAW, myOAW, OS.URL, OS.User, OS.Pass, CSC553.part);
 /*
 			myAW.ImportSheet(SD.REQSheetFP,SD.REQTableName);
 			myAW.ImportSheet(SD.CCSheetFP,SD.CCTableName);
