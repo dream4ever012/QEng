@@ -37,7 +37,7 @@ public interface QueryManager {
 	
 	public void WriteCSV(String FilePath, String SQLString);
 	
-	public void closeServer();
+	public void closeConn();
 
 }
 

@@ -187,7 +187,7 @@ public class AskWise implements QueryManager{
 	}
 
 	@Override
-	public void closeServer() {
+	public void closeConn() {
 		DB.close();
 		
 	}
