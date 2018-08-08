@@ -48,6 +48,10 @@ public class AskWise implements QueryManager{
 	/*public Connection getConn(){
 		return conn;
 	}*/
+	
+	public String getFullURL() {
+		return DB.getFullURL();
+	}
 
 	//TODO: Call the QueryFactory
 	@Override

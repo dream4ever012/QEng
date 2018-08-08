@@ -356,4 +356,12 @@ public class ExternalOracle implements InternalDB{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	@Override
+	public String getFullURL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

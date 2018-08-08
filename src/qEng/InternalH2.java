@@ -118,19 +118,15 @@ public class InternalH2 implements InternalDB {
 			iconn.close();
 			
 			if(optLevel > 0){
-				gatherStats(tablename);
-				
+				gatherStats(tablename);			
 			}
-			
 			rt = IDBReturnEnum.SUCCESS;
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rt;
 	}
-
 
 	@Override
 	public IDBReturnEnum QueryToXML(String SQLString,File resultLocation) {
@@ -494,6 +490,12 @@ public class InternalH2 implements InternalDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+	}
+
+	@Override
+	public String getFullURL() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
