@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\hkim85\\Documents\\GitHub\\QEng\\.git;C\:\\Users\\hkim85\\git\\QEng\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;C\:\\Users\\hkim85\\git\\QEng\\.git;
-RepositorySearchDialogSearchPath=C\:\\Users\\hkim85\\Documents\\GitHub\\QEng-master\\QEng
+GitRepositoriesView.GitDirectories=C\:\\Users\\hkim85\\Documents\\GitHub\\QEng\\.git;C\:\\Users\\hkim85\\git\\QEng\\.git;C\:\\Users\\hkim85\\Documents\\GitHub\\QEngB\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\Users\\hkim85\\git\\QEng\\.git;C\:\\Users\\hkim85\\Documents\\GitHub\\QEngB\\.git;
+RepositorySearchDialogSearchPath=C\:\\Users\\hkim85\\Documents\\GitHub\\QEng-v2-master
 eclipse.preferences.version=1
